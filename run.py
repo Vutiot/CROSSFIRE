@@ -5,6 +5,11 @@ Entry points for corpus generation, pipeline execution, and evaluation.
 import argparse
 import sys
 
+import yaml
+from loguru import logger
+
+from crossfire.shared.schemas.config import GeneratorConfig
+
 
 def main():
     parser = argparse.ArgumentParser(description="CROSSFIRE benchmark toolkit")
@@ -33,8 +38,35 @@ def main():
         parser.print_help()
         sys.exit(1)
 
-    # Command dispatch will be implemented in later stories
-    print(f"Command '{args.command}' not yet implemented.")
+    if args.command == "generate":
+        _run_generate(args)
+    else:
+        print(f"Command '{args.command}' not yet implemented.")
+
+
+def _run_generate(args):
+    """Run corpus generation from a preset YAML config."""
+    from crossfire.generator.orchestrator import generate_corpus
+    from crossfire.shared.seed_manager import SeedManager
+
+    logger.remove()
+    logger.add(sys.stderr, level="INFO", format="{time:HH:mm:ss} | {level:<7} | {message}")
+
+    with open(args.config) as f:
+        preset = yaml.safe_load(f)
+
+    preset["output_dir"] = args.output
+    preset["dry_run"] = args.dry_run
+    config = GeneratorConfig(**preset)
+
+    seed_mgr = SeedManager(config.master_seed)
+    metadata, error = generate_corpus(config, seed_mgr)
+
+    if error:
+        logger.error(f"Generation failed: {error}")
+        sys.exit(1)
+
+    logger.info(f"Output: {args.output}")
 
 
 if __name__ == "__main__":

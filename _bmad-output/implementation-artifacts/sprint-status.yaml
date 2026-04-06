@@ -56,7 +56,7 @@ development_status:
   2-1-ntsb-data-scraping-and-structure-analysis: done
   2-2-document-type-templates: done
   2-3-entity-graph-builder: done
-  2-4-corpus-generator-orchestrator: backlog
+  2-4-corpus-generator-orchestrator: done
   epic-2-retrospective: optional
 
   # Epic 3: Incoherence Injection & Gold Annotation
