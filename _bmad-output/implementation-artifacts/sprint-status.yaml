@@ -52,8 +52,8 @@ development_status:
   epic-1-retrospective: optional
 
   # Epic 2: Corpus Generation
-  epic-2: backlog
-  2-1-ntsb-data-scraping-and-structure-analysis: backlog
+  epic-2: in-progress
+  2-1-ntsb-data-scraping-and-structure-analysis: done
   2-2-document-type-templates: backlog
   2-3-entity-graph-builder: backlog
   2-4-corpus-generator-orchestrator: backlog

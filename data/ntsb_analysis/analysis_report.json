@@ -1,0 +1,954 @@
+{
+  "generated_at": "2026-04-06T11:44:47.370859+00:00",
+  "dockets_analyzed": [
+    {
+      "ntsb_id": "DCA24MA063",
+      "total_documents": 92,
+      "extracted_documents": 92,
+      "clean_documents": 65,
+      "clean_rate": 0.7065,
+      "type_distribution": {
+        "preliminary_report": 11,
+        "witness_testimony": 17,
+        "investigation_report": 34,
+        "internal_memo": 12,
+        "regulatory_filing": 5,
+        "expert_deposition": 10,
+        "technical_analysis": 3
+      }
+    },
+    {
+      "ntsb_id": "DCA19MA086",
+      "total_documents": 67,
+      "extracted_documents": 67,
+      "clean_documents": 50,
+      "clean_rate": 0.7463,
+      "type_distribution": {
+        "investigation_report": 48,
+        "witness_testimony": 9,
+        "expert_deposition": 6,
+        "technical_analysis": 4
+      }
+    },
+    {
+      "ntsb_id": "ERA18FA120",
+      "total_documents": 42,
+      "extracted_documents": 42,
+      "clean_documents": 24,
+      "clean_rate": 0.5714,
+      "type_distribution": {
+        "investigation_report": 34,
+        "witness_testimony": 5,
+        "technical_analysis": 3
+      }
+    },
+    {
+      "ntsb_id": "DCA19FA089",
+      "total_documents": 30,
+      "extracted_documents": 30,
+      "clean_documents": 27,
+      "clean_rate": 0.9,
+      "type_distribution": {
+        "investigation_report": 20,
+        "witness_testimony": 5,
+        "technical_analysis": 2,
+        "regulatory_filing": 3
+      }
+    },
+    {
+      "ntsb_id": "WPR19FA080",
+      "total_documents": 28,
+      "extracted_documents": 28,
+      "clean_documents": 24,
+      "clean_rate": 0.8571,
+      "type_distribution": {
+        "technical_analysis": 1,
+        "investigation_report": 23,
+        "regulatory_filing": 1,
+        "witness_testimony": 3
+      }
+    }
+  ],
+  "document_type_taxonomy": {
+    "types": [
+      "investigation_report",
+      "technical_analysis",
+      "witness_testimony",
+      "regulatory_filing",
+      "expert_deposition",
+      "internal_memo",
+      "preliminary_report"
+    ],
+    "counts": {
+      "preliminary_report": 11,
+      "witness_testimony": 39,
+      "investigation_report": 159,
+      "internal_memo": 12,
+      "regulatory_filing": 9,
+      "expert_deposition": 16,
+      "technical_analysis": 13
+    },
+    "total_documents": 259,
+    "discovery_notes": [
+      "Types not found in scraped data: press_coverage",
+      "press_coverage is expected absent — NTSB dockets don't contain press articles (synthetic only)"
+    ]
+  },
+  "entity_analysis": {
+    "entity_types": [
+      "equipment",
+      "organization",
+      "regulation"
+    ],
+    "total_unique_entities": 91,
+    "entities_by_type": {
+      "organization": [
+        "ntsb",
+        "faa",
+        "textron aviation",
+        "boeing",
+        "honeywell",
+        "airbus",
+        "cfm international",
+        "spirit aerosystems",
+        "southwest airlines",
+        "rolls-royce",
+        "alaska airlines",
+        "atlas air",
+        "pratt & whitney",
+        "ge aviation",
+        "lion air"
+      ],
+      "regulation": [
+        "14 cfr part 121",
+        "14 cfr part 121.344",
+        "14 cfr part 193",
+        "ad 2024-02-51",
+        "14 cfr part 5",
+        "14 cfr 25.783",
+        "14 cfr 25.1447",
+        "14 cfr 25.571",
+        "14 cfr 121.333",
+        "14 cfr 21.137",
+        "14 cfr 21.146",
+        "ad 2012-09-04",
+        "ad 2012-22-17",
+        "14 cfr 25.1443",
+        "14 cfr part 21",
+        "14 cfr 121.415",
+        "14 cfr part 125",
+        "14 cfr part 119",
+        "14 cfr part 121.373",
+        "14 cfr 121"
+      ],
+      "equipment": [
+        "boeing 737",
+        "dhc-8",
+        "boeing 737-9",
+        "door plug",
+        "med plug",
+        "boeing 767",
+        "737 max",
+        "boeing 767-300",
+        "737max",
+        "mcas",
+        "boeing 737-7",
+        "leap-1b28",
+        "king air series",
+        "boeing 767-375",
+        "boeing 767-400",
+        "king air in"
+      ]
+    },
+    "top_entities": [
+      {
+        "canonical_name": "ntsb",
+        "entity_type": "organization",
+        "aliases": [
+          "NTSB"
+        ],
+        "docket_ids": [
+          "DCA19FA089",
+          "DCA19MA086",
+          "DCA24MA063",
+          "ERA18FA120",
+          "WPR19FA080"
+        ],
+        "mention_count": 153
+      },
+      {
+        "canonical_name": "faa",
+        "entity_type": "organization",
+        "aliases": [
+          "FAA"
+        ],
+        "docket_ids": [
+          "DCA19FA089",
+          "DCA19MA086",
+          "DCA24MA063",
+          "ERA18FA120",
+          "WPR19FA080"
+        ],
+        "mention_count": 107
+      },
+      {
+        "canonical_name": "textron aviation",
+        "entity_type": "organization",
+        "aliases": [
+          "Textron Aviation"
+        ],
+        "docket_ids": [
+          "DCA19FA089",
+          "DCA19MA086",
+          "DCA24MA063",
+          "ERA18FA120",
+          "WPR19FA080"
+        ],
+        "mention_count": 17
+      },
+      {
+        "canonical_name": "boeing",
+        "entity_type": "organization",
+        "aliases": [
+          "Boeing"
+        ],
+        "docket_ids": [
+          "DCA19MA086",
+          "DCA24MA063",
+          "ERA18FA120"
+        ],
+        "mention_count": 89
+      },
+      {
+        "canonical_name": "honeywell",
+        "entity_type": "organization",
+        "aliases": [
+          "Honeywell"
+        ],
+        "docket_ids": [
+          "DCA19FA089",
+          "DCA19MA086",
+          "DCA24MA063"
+        ],
+        "mention_count": 13
+      },
+      {
+        "canonical_name": "airbus",
+        "entity_type": "organization",
+        "aliases": [
+          "Airbus"
+        ],
+        "docket_ids": [
+          "DCA19FA089",
+          "DCA19MA086",
+          "DCA24MA063"
+        ],
+        "mention_count": 12
+      },
+      {
+        "canonical_name": "14 cfr part 121",
+        "entity_type": "regulation",
+        "aliases": [
+          "14 CFR Part 121",
+          "14 CFR part 121"
+        ],
+        "docket_ids": [
+          "DCA19FA089",
+          "DCA19MA086",
+          "DCA24MA063"
+        ],
+        "mention_count": 8
+      },
+      {
+        "canonical_name": "cfm international",
+        "entity_type": "organization",
+        "aliases": [
+          "CFM International"
+        ],
+        "docket_ids": [
+          "DCA19FA089",
+          "DCA19MA086",
+          "DCA24MA063"
+        ],
+        "mention_count": 7
+      },
+      {
+        "canonical_name": "14 cfr part 121.344",
+        "entity_type": "regulation",
+        "aliases": [
+          "14 CFR Part 121.344"
+        ],
+        "docket_ids": [
+          "DCA19FA089",
+          "DCA19MA086",
+          "DCA24MA063"
+        ],
+        "mention_count": 3
+      },
+      {
+        "canonical_name": "boeing 737",
+        "entity_type": "equipment",
+        "aliases": [
+          "Boeing 737"
+        ],
+        "docket_ids": [
+          "DCA19MA086",
+          "DCA24MA063",
+          "ERA18FA120"
+        ],
+        "mention_count": 3
+      },
+      {
+        "canonical_name": "spirit aerosystems",
+        "entity_type": "organization",
+        "aliases": [
+          "Spirit AeroSystems"
+        ],
+        "docket_ids": [
+          "DCA19MA086",
+          "DCA24MA063"
+        ],
+        "mention_count": 33
+      },
+      {
+        "canonical_name": "southwest airlines",
+        "entity_type": "organization",
+        "aliases": [
+          "Southwest Airlines"
+        ],
+        "docket_ids": [
+          "DCA19MA086",
+          "DCA24MA063"
+        ],
+        "mention_count": 5
+      },
+      {
+        "canonical_name": "14 cfr part 193",
+        "entity_type": "regulation",
+        "aliases": [
+          "14\nCFR part 193",
+          "14 CFR Part 193"
+        ],
+        "docket_ids": [
+          "DCA19FA089",
+          "DCA19MA086"
+        ],
+        "mention_count": 5
+      },
+      {
+        "canonical_name": "dhc-8",
+        "entity_type": "equipment",
+        "aliases": [
+          "DHC-8"
+        ],
+        "docket_ids": [
+          "DCA19FA089",
+          "DCA19MA086"
+        ],
+        "mention_count": 4
+      },
+      {
+        "canonical_name": "rolls-royce",
+        "entity_type": "organization",
+        "aliases": [
+          "Rolls-Royce"
+        ],
+        "docket_ids": [
+          "DCA19FA089",
+          "DCA24MA063"
+        ],
+        "mention_count": 2
+      },
+      {
+        "canonical_name": "alaska airlines",
+        "entity_type": "organization",
+        "aliases": [
+          "Alaska Airlines"
+        ],
+        "docket_ids": [
+          "DCA24MA063"
+        ],
+        "mention_count": 57
+      },
+      {
+        "canonical_name": "boeing 737-9",
+        "entity_type": "equipment",
+        "aliases": [
+          "BOEING 737-9",
+          "Boeing 737-9"
+        ],
+        "docket_ids": [
+          "DCA24MA063"
+        ],
+        "mention_count": 54
+      },
+      {
+        "canonical_name": "door plug",
+        "entity_type": "equipment",
+        "aliases": [
+          "DOOR PLUG",
+          "Door Plug",
+          "door plug"
+        ],
+        "docket_ids": [
+          "DCA24MA063"
+        ],
+        "mention_count": 48
+      },
+      {
+        "canonical_name": "atlas air",
+        "entity_type": "organization",
+        "aliases": [
+          "Atlas Air"
+        ],
+        "docket_ids": [
+          "DCA19MA086"
+        ],
+        "mention_count": 37
+      },
+      {
+        "canonical_name": "med plug",
+        "entity_type": "equipment",
+        "aliases": [
+          "MED\nplug",
+          "MED Plug",
+          "MED plug"
+        ],
+        "docket_ids": [
+          "DCA24MA063"
+        ],
+        "mention_count": 28
+      }
+    ]
+  },
+  "cross_docket_patterns": {
+    "sharing_matrix": {
+      "ntsb": [
+        "DCA19FA089",
+        "DCA19MA086",
+        "DCA24MA063",
+        "ERA18FA120",
+        "WPR19FA080"
+      ],
+      "faa": [
+        "DCA19FA089",
+        "DCA19MA086",
+        "DCA24MA063",
+        "ERA18FA120",
+        "WPR19FA080"
+      ],
+      "textron aviation": [
+        "DCA19FA089",
+        "DCA19MA086",
+        "DCA24MA063",
+        "ERA18FA120",
+        "WPR19FA080"
+      ],
+      "boeing": [
+        "DCA19MA086",
+        "DCA24MA063",
+        "ERA18FA120"
+      ],
+      "honeywell": [
+        "DCA19FA089",
+        "DCA19MA086",
+        "DCA24MA063"
+      ],
+      "airbus": [
+        "DCA19FA089",
+        "DCA19MA086",
+        "DCA24MA063"
+      ],
+      "14 cfr part 121": [
+        "DCA19FA089",
+        "DCA19MA086",
+        "DCA24MA063"
+      ],
+      "cfm international": [
+        "DCA19FA089",
+        "DCA19MA086",
+        "DCA24MA063"
+      ],
+      "14 cfr part 121.344": [
+        "DCA19FA089",
+        "DCA19MA086",
+        "DCA24MA063"
+      ],
+      "boeing 737": [
+        "DCA19MA086",
+        "DCA24MA063",
+        "ERA18FA120"
+      ],
+      "spirit aerosystems": [
+        "DCA19MA086",
+        "DCA24MA063"
+      ],
+      "southwest airlines": [
+        "DCA19MA086",
+        "DCA24MA063"
+      ],
+      "14 cfr part 193": [
+        "DCA19FA089",
+        "DCA19MA086"
+      ],
+      "dhc-8": [
+        "DCA19FA089",
+        "DCA19MA086"
+      ],
+      "rolls-royce": [
+        "DCA19FA089",
+        "DCA24MA063"
+      ],
+      "alaska airlines": [
+        "DCA24MA063"
+      ],
+      "boeing 737-9": [
+        "DCA24MA063"
+      ],
+      "door plug": [
+        "DCA24MA063"
+      ],
+      "atlas air": [
+        "DCA19MA086"
+      ],
+      "med plug": [
+        "DCA24MA063"
+      ],
+      "boeing 767": [
+        "DCA19MA086"
+      ],
+      "737 max": [
+        "DCA24MA063"
+      ],
+      "ad 2024-02-51": [
+        "DCA24MA063"
+      ],
+      "14 cfr part 5": [
+        "DCA24MA063"
+      ],
+      "14 cfr 25.783": [
+        "DCA24MA063"
+      ],
+      "boeing 767-300": [
+        "DCA19MA086"
+      ],
+      "14 cfr 25.1447": [
+        "DCA24MA063"
+      ],
+      "14 cfr 25.571": [
+        "DCA24MA063"
+      ],
+      "pratt & whitney": [
+        "DCA24MA063"
+      ],
+      "14 cfr 121.333": [
+        "DCA24MA063"
+      ],
+      "14 cfr 21.137": [
+        "DCA24MA063"
+      ],
+      "14 cfr 21.146": [
+        "DCA24MA063"
+      ],
+      "ad 2012-09-04": [
+        "DCA19MA086"
+      ],
+      "ad 2012-22-17": [
+        "DCA19MA086"
+      ],
+      "737max": [
+        "DCA24MA063"
+      ],
+      "14 cfr 25.1443": [
+        "DCA24MA063"
+      ],
+      "14 cfr part 21": [
+        "DCA24MA063"
+      ],
+      "mcas": [
+        "DCA24MA063"
+      ],
+      "14 cfr 121.415": [
+        "DCA19MA086"
+      ],
+      "14 cfr part 125": [
+        "DCA19MA086"
+      ],
+      "14 cfr part 119": [
+        "DCA19MA086"
+      ],
+      "14 cfr part 121.373": [
+        "DCA19MA086"
+      ],
+      "14 cfr 121": [
+        "DCA19MA086"
+      ],
+      "ge aviation": [
+        "DCA19MA086"
+      ],
+      "14 cfr part 141": [
+        "DCA19FA089"
+      ],
+      "boeing 737-7": [
+        "DCA24MA063"
+      ],
+      "leap-1b28": [
+        "DCA24MA063"
+      ],
+      "14 cfr 121.359": [
+        "DCA24MA063"
+      ],
+      "14 cfr 25.807": [
+        "DCA24MA063"
+      ],
+      "14 cfr 121.329": [
+        "DCA24MA063"
+      ],
+      "14 cfr 21.41": [
+        "DCA24MA063"
+      ],
+      "14 cfr 21.138": [
+        "DCA24MA063"
+      ],
+      "lion air": [
+        "DCA24MA063"
+      ],
+      "14 cfr 21": [
+        "DCA24MA063"
+      ],
+      "14 cfr part 25": [
+        "DCA24MA063"
+      ],
+      "14 cfr 25.365": [
+        "DCA24MA063"
+      ],
+      "14 cfr 25.803": [
+        "DCA24MA063"
+      ],
+      "14 cfr 121.547": [
+        "DCA19MA086"
+      ],
+      "14 cfr 121.427": [
+        "DCA19MA086"
+      ],
+      "14 cfr 121.438": [
+        "DCA19MA086"
+      ],
+      "14 cfr 121.434": [
+        "DCA19MA086"
+      ],
+      "14 cfr 121.683": [
+        "DCA19MA086"
+      ],
+      "14 cfr 91.3": [
+        "DCA19MA086"
+      ],
+      "14 cfr 175.33": [
+        "DCA19MA086"
+      ],
+      "king air series": [
+        "DCA19MA086"
+      ],
+      "14 cfr part 91": [
+        "DCA19MA086"
+      ],
+      "14 cfr part 61": [
+        "DCA19MA086"
+      ],
+      "14 cfr part 110": [
+        "DCA19MA086"
+      ],
+      "14 cfr part 120": [
+        "DCA19MA086"
+      ],
+      "boeing 767-375": [
+        "DCA19MA086"
+      ],
+      "14 cfr 121.1105": [
+        "DCA19MA086"
+      ],
+      "14 cfr 121.703": [
+        "DCA19MA086"
+      ],
+      "14 cfr part 121.705": [
+        "DCA19MA086"
+      ],
+      "14 cfr 121.373": [
+        "DCA19MA086"
+      ],
+      "14 cfr 121.380": [
+        "DCA19MA086"
+      ],
+      "ad 2004-19-06": [
+        "DCA19MA086"
+      ],
+      "ad 2008-06-06": [
+        "DCA19MA086"
+      ],
+      "ad 2011-25-05": [
+        "DCA19MA086"
+      ],
+      "ad 2005-11-02": [
+        "DCA19MA086"
+      ],
+      "ad 2005-02-02": [
+        "DCA19MA086"
+      ],
+      "ad 2006-09-09": [
+        "DCA19MA086"
+      ],
+      "ad 2000-12-17": [
+        "DCA19MA086"
+      ],
+      "ad 2004-16-12": [
+        "DCA19MA086"
+      ],
+      "ad 2009-06-08": [
+        "DCA19MA086"
+      ],
+      "14 cfr part 120.107": [
+        "DCA19MA086"
+      ],
+      "boeing 767-400": [
+        "DCA19MA086"
+      ],
+      "14 cfr 107": [
+        "ERA18FA120"
+      ],
+      "14 cfr 91": [
+        "ERA18FA120"
+      ],
+      "14 cfr part 139": [
+        "DCA19FA089"
+      ],
+      "king air in": [
+        "DCA19FA089"
+      ],
+      "14 cfr 121.542": [
+        "DCA19FA089"
+      ]
+    },
+    "shared_entity_count": 15,
+    "connectivity_score": 3.0667,
+    "naming_variations": {
+      "14 cfr part 121": [
+        "14 CFR Part 121",
+        "14 CFR part 121"
+      ],
+      "14 cfr part 193": [
+        "14\nCFR part 193",
+        "14 CFR Part 193"
+      ],
+      "boeing 737-9": [
+        "BOEING 737-9",
+        "Boeing 737-9"
+      ],
+      "door plug": [
+        "DOOR PLUG",
+        "Door Plug",
+        "door plug"
+      ],
+      "med plug": [
+        "MED\nplug",
+        "MED Plug",
+        "MED plug"
+      ],
+      "boeing 767": [
+        "Boeing\n767",
+        "Boeing 767"
+      ],
+      "737 max": [
+        "737 MAX",
+        "737 Max",
+        "737 max"
+      ],
+      "14 cfr part 5": [
+        "14\nCFR Part 5",
+        "14 CFR Part 5",
+        "14 CFR part 5"
+      ],
+      "boeing 767-300": [
+        "BOEING 767-300",
+        "Boeing 767-300"
+      ],
+      "14 cfr 21.137": [
+        "14\nCFR 21.137",
+        "14 CFR 21.137"
+      ],
+      "14 cfr part 21": [
+        "14 CFR Part\n21",
+        "14 CFR Part 21"
+      ],
+      "14 cfr part 125": [
+        "14 CFR\npart 125",
+        "14 CFR Part 125"
+      ],
+      "14 cfr part 119": [
+        "14 CFR\npart 119",
+        "14 CFR part 119"
+      ]
+    }
+  },
+  "document_characteristics": {
+    "expert_deposition": {
+      "document_type": "expert_deposition",
+      "count": 11,
+      "word_count_min": 126,
+      "word_count_max": 33524,
+      "word_count_mean": 9035.0,
+      "avg_line_count": 901.4,
+      "example_titles": [
+        "BOEING MED PLUG DESIGN ENHANCEMENTS",
+        "SPIRIT AEROSYSTEMS SUBMISSION TO HEARING",
+        "PRESENTATION - BOEING WITNESSES",
+        "PRESENTATION - SPIRIT WITNESSES - TIMELINE",
+        "FOLLOW-UP ANSWERS TO QUESTIONS ASKED DURING INVESTIGATIVE HEARING"
+      ],
+      "structural_notes": [
+        "Contains uppercase section headers",
+        "Medium-length document (1000-5000 words)",
+        "Argumentative structure, evidence-based reasoning"
+      ]
+    },
+    "internal_memo": {
+      "document_type": "internal_memo",
+      "count": 10,
+      "word_count_min": 238,
+      "word_count_max": 4253,
+      "word_count_mean": 1576.7,
+      "avg_line_count": 246.3,
+      "example_titles": [
+        "2-N OPERATIONAL FACTORS - ATTACHMENT 13 - FLIGHT OPS TRAINING BULLETIN (POSTACCIDENT)",
+        "11-B MANUFACTURING RECORDS AND HUMAN PERFORMANCE ATTACHMENT 1 - NCR N1450292531 AND NCO 145-8789-RSH",
+        "11-C MANUFACTURING RECORDS AND HUMAN PERFORMANCE ATTACHMENT 2 - NCR N1450293199 AND NCO 145-8789-RGE",
+        "11-G MANUFACTURING RECORDS AND HUMAN PERFORMANCE ATTACHMENT 6 - BCA QMS DOCUMENT CONTROL EXCERPT",
+        "11-H MANUFACTURING RECORDS AND HUMAN PERFORMANCE ATTACHMENT 7 - BCA QMS SUPPLIER CONTROL EXCERPT"
+      ],
+      "structural_notes": [
+        "Contains uppercase section headers",
+        "Medium-length document (1000-5000 words)",
+        "Organizational communication, process-oriented"
+      ]
+    },
+    "investigation_report": {
+      "document_type": "investigation_report",
+      "count": 110,
+      "word_count_min": 108,
+      "word_count_max": 26233,
+      "word_count_mean": 3181.2,
+      "avg_line_count": 376.7,
+      "example_titles": [
+        "2-A OPERATIONAL FACTORS - GROUP CHAIRMAN FACTUAL REPORT",
+        "OPERATIONAL FACTORS - ERRATA 1 TO GROUP CHAIRMAN'S FACTUAL REPORT",
+        "OPERATIONAL FACTORS - ERRATA 2 TO GROUP CHAIRMAN'S FACTUAL REPORT",
+        "2-E OPERATIONAL FACTORS -ATTACHMENT 4 - ALASKA AIRLINES CHECKLIST",
+        "2-F OPERATIONAL FACTORS - ATTACHMENT 5 - SIMULATOR EVALUATION"
+      ],
+      "structural_notes": [
+        "Contains numbered sections/subsections",
+        "Contains uppercase section headers",
+        "Medium-length document (1000-5000 words)",
+        "Formal factual report with structured sections and findings"
+      ]
+    },
+    "preliminary_report": {
+      "document_type": "preliminary_report",
+      "count": 6,
+      "word_count_min": 743,
+      "word_count_max": 3601,
+      "word_count_mean": 2013.5,
+      "avg_line_count": 284.0,
+      "example_titles": [
+        "1-G WITNESS LIST",
+        "1-H WITNESSES PROFESSIONAL BIOGRAPHIES",
+        "1-I EXHIBIT LIST",
+        "1-J BOARD OF INQUIRY AND TECHNICAL PANEL PROFESSIONAL BIOGRAPHIES",
+        "2-G OPERATIONAL FACTORS - ATTACHMENT 6 - SEQUENCE OF EVENTS"
+      ],
+      "structural_notes": [
+        "Contains uppercase section headers",
+        "Medium-length document (1000-5000 words)",
+        "Summary format, initial findings and procedural content"
+      ]
+    },
+    "regulatory_filing": {
+      "document_type": "regulatory_filing",
+      "count": 7,
+      "word_count_min": 537,
+      "word_count_max": 6966,
+      "word_count_mean": 1796.3,
+      "avg_line_count": 236.0,
+      "example_titles": [
+        "STRUCTURES GROUP - EXPLANATION OF AD COMPLIANCE IN PRODUCTION",
+        "11-R EXCERPTS FROM BOEING PROCESS INSTRUCTION - PROCESSING PRODUCT AND SERVICES SAFETY, QUALITY, OR ",
+        "PRESENTATION - FAA WITNESSES - SMS RULE",
+        "PRESENTATION - FAA WITNESSES - OVERSIGHT",
+        "AIRPORT SPECIALIST'S FACTUAL REPORT - ATTACHMENT 5 (FAA GUIDANCE)"
+      ],
+      "structural_notes": [
+        "Contains numbered sections/subsections",
+        "Contains uppercase section headers",
+        "Medium-length document (1000-5000 words)",
+        "Formal regulatory language, references to CFR/FAR"
+      ]
+    },
+    "technical_analysis": {
+      "document_type": "technical_analysis",
+      "count": 13,
+      "word_count_min": 893,
+      "word_count_max": 8417,
+      "word_count_mean": 3916.0,
+      "avg_line_count": 578.3,
+      "example_titles": [
+        "10-A FLIGHT DATA RECORDER - SPECIALIST'S FACTUAL REPORT",
+        "12 COCKPIT VOICE RECORDER - SPECIALIST'S FACTUAL REPORT",
+        "MATERIALS LABORATORY - SPECIALIST'S FACTUAL REPORT",
+        "FLIGHT DATA RECORDER ANCILLARY SPECIALIST'S FACTUAL REPORT",
+        "FLIGHT DATA RECORDER SPECIALIST'S FACTUAL REPORT"
+      ],
+      "structural_notes": [
+        "Contains numbered sections/subsections",
+        "Contains uppercase section headers",
+        "Medium-length document (1000-5000 words)",
+        "Detailed technical data with specialized terminology"
+      ]
+    },
+    "witness_testimony": {
+      "document_type": "witness_testimony",
+      "count": 33,
+      "word_count_min": 391,
+      "word_count_max": 208212,
+      "word_count_mean": 36258.2,
+      "avg_line_count": 4135.0,
+      "example_titles": [
+        "1-F STATEMENT OF PURPOSE",
+        "2-B OPERATIONAL FACTORS - ATTACHMENT 1 - CREW INTERVIEW TRANSCRIPTS AND STATEMENT - CREW NAMES REDAC",
+        "2-C OPERATIONAL FACTORS - ATTACHMENT 2 - ALASKA PERSONNEL INTERVIEW TRANSCRIPTS",
+        "6B - SURVIVAL FACTORS ATTACHMENT 1 FLIGHT ATTENDANTS INTERVIEW TRANSCRIPTS REDACTED - WITH FA NAMES ",
+        "6-C SURVIVAL FACTORS - ATTACHMENT 2 PASSENGER INTERVIEW SUMMARIES"
+      ],
+      "structural_notes": [
+        "Contains uppercase section headers",
+        "Long-form document (>5000 words typical)",
+        "Narrative/Q&A format, first-person accounts"
+      ]
+    }
+  },
+  "data_quality_notes": [
+    "Overall extraction: 190/259 documents passed quality (73%)",
+    "Docket DCA24MA063: low clean rate (71%)",
+    "Docket DCA19MA086: low clean rate (75%)",
+    "Docket ERA18FA120: low clean rate (57%)"
+  ],
+  "synthesis_recommendations": [
+    "Template for 'expert_deposition': target 126-33524 words (mean 9035.0). Contains uppercase section headers; Medium-length document (1000-5000 words)",
+    "Template for 'internal_memo': target 238-4253 words (mean 1576.7). Contains uppercase section headers; Medium-length document (1000-5000 words)",
+    "Template for 'investigation_report': target 108-26233 words (mean 3181.2). Contains numbered sections/subsections; Contains uppercase section headers",
+    "Template for 'preliminary_report': target 743-3601 words (mean 2013.5). Contains uppercase section headers; Medium-length document (1000-5000 words)",
+    "Template for 'regulatory_filing': target 537-6966 words (mean 1796.3). Contains numbered sections/subsections; Contains uppercase section headers",
+    "Template for 'technical_analysis': target 893-8417 words (mean 3916.0). Contains numbered sections/subsections; Contains uppercase section headers",
+    "Template for 'witness_testimony': target 391-208212 words (mean 36258.2). Contains uppercase section headers; Long-form document (>5000 words typical)",
+    "Entity naming: real data shows significant naming variation. Examples: '14 cfr part 121' appears as: 14 CFR Part 121, 14 CFR part 121; '14 cfr part 193' appears as: 14\nCFR part 193, 14 CFR Part 193; 'boeing 737-9' appears as: BOEING 737-9, Boeing 737-9. Templates should use varied entity references to match reality.",
+    "Entity connectivity: observed score of 3.07 (avg dockets per shared entity). Use this as baseline for connectivity level 2."
+  ]
+}

@@ -7,6 +7,10 @@ pydantic
 loguru
 python-dotenv
 pyyaml
+httpx
+beautifulsoup4
+pdfplumber
+lxml
 
 # Dev dependencies
 pytest

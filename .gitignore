@@ -7,3 +7,5 @@ dist/
 build/
 .pytest_cache/
 notebooks/.ipynb_checkpoints/
+data/ntsb_raw/
+data/ntsb_extracted/
