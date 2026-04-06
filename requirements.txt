@@ -1,0 +1,12 @@
+openai
+networkx
+numpy
+scipy
+scikit-learn
+pydantic
+loguru
+python-dotenv
+pyyaml
+
+# Dev dependencies
+pytest

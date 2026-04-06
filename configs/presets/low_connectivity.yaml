@@ -1,0 +1,20 @@
+name: low_connectivity
+description: "Low connectivity configuration — connectivity 1, agentic-favoring"
+master_seed: 42
+subcorpora_count: 5
+docs_per_subcorpus: 80
+connectivity_level: 1
+doc_type_mix: "balanced"
+incoherences:
+  scope_distribution:
+    intra_doc: 0.2
+    intra_corpus: 0.5
+    inter_corpus: 0.3
+  mechanism: "uniform"
+  detectability_distribution:
+    single_hop: 0.3
+    multi_hop: 0.5
+    entity_resolution: 0.2
+  system_affinity: "agentic-favoring"
+  count: "auto"
+distractor_ratio: 0.3
