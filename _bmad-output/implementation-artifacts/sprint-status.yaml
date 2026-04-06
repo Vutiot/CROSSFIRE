@@ -69,9 +69,9 @@ development_status:
   # Epic 4: Auditing Pipelines
   epic-4: in-progress
   4-1-strategy-interfaces-and-pipeline-skeleton: review
-  4-2-reasoning-strategy-agentic-mode: backlog
-  4-3-graph-strategy-graph-native-mode: backlog
-  4-4-baselines: backlog
+  4-2-reasoning-strategy-agentic-mode: review
+  4-3-graph-strategy-graph-native-mode: review
+  4-4-baselines: review
   epic-4-retrospective: optional
 
   # Epic 5: Evaluation & Diagnostics
