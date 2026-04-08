@@ -1,0 +1,117 @@
+[
+  {
+    "id": "distractor_0000",
+    "scope": "intra_corpus",
+    "document_references": [
+      "sc-1_investigation_report_104",
+      "sc-1_technical_analysis_153"
+    ],
+    "divergence_type": "uncertainty_expression",
+    "description": "Inserted a qualified statement expressing legitimate uncertainty regarding the exact failure origin and sequence, noting that while preliminary data point to a fan blade liberation, definitive confirmation awaits metallurgical teardown and alternative pathways cannot be ruled out at this stage."
+  },
+  {
+    "id": "distractor_0001",
+    "scope": "intra_doc",
+    "document_references": [
+      "sc-4_internal_memo_358"
+    ],
+    "divergence_type": "preliminary_vs_final",
+    "description": "Introduces a preliminary_vs_final divergence by noting that initial telemetry suggested a structural fatigue anomaly, while subsequent analysis confirmed improper bolt torque as the primary cause. This reflects standard investigative evolution rather than a factual contradiction."
+  },
+  {
+    "id": "distractor_0002",
+    "scope": "inter_corpus",
+    "document_references": [
+      "sc-1_regulatory_filing_091",
+      "sc-2_investigation_report_208"
+    ],
+    "divergence_type": "preliminary_vs_final",
+    "description": "Introduces a preliminary finding regarding maintenance interval deviations that was later superseded by metallurgical analysis identifying material fatigue as the primary cause, reflecting standard investigative progression rather than a factual contradiction."
+  },
+  {
+    "id": "distractor_0003",
+    "scope": "intra_corpus",
+    "document_references": [
+      "sc-3_preliminary_report_279",
+      "sc-3_witness_testimony_290"
+    ],
+    "divergence_type": "expert_opinion",
+    "description": "Introduces a legitimate expert disagreement regarding the primary cause of the nose landing gear collapse: operational impact loads versus a potential pre-existing material stress concentration. Both hypotheses are professionally valid and reflect standard investigative practice of evaluating multiple causal pathways before final determination."
+  },
+  {
+    "id": "distractor_0004",
+    "scope": "inter_corpus",
+    "document_references": [
+      "sc-4_press_coverage_364",
+      "sc-2_technical_analysis_225"
+    ],
+    "divergence_type": "expert_opinion",
+    "description": "Introduces a divergent expert opinion from an independent aerospace engineer who suggests that assembly torque procedures, rather than solely retention hardware failure, may have contributed to the detachment. This represents a legitimate methodological disagreement on the primary investigative focus without contradicting the established facts."
+  },
+  {
+    "id": "distractor_0005",
+    "scope": "intra_doc",
+    "document_references": [
+      "sc-4_internal_memo_334"
+    ],
+    "divergence_type": "measurement_methodology",
+    "description": "Inserted a measurement methodology divergence regarding bolt preload values (1,850 lbf via ultrasonic elongation vs. 1,790 lbf via torque-angle method). The text explicitly attributes the difference to known technical variances between axial and rotational measurement techniques, ensuring both values are recognized as valid within engineering tolerances while maintaining the formal aviation maintenance tone."
+  },
+  {
+    "id": "distractor_0006",
+    "scope": "intra_corpus",
+    "document_references": [
+      "sc-0_technical_analysis_049",
+      "sc-0_technical_analysis_041"
+    ],
+    "divergence_type": "expert_opinion",
+    "description": "Introduces a professional disagreement regarding the timing and cause of structural damage to the FDR mounting hardware: the primary team attributes it to post-impact ground forces, while a consulting engineer proposes pre-impact dynamic loading as an alternative, equally plausible interpretation based on fracture morphology."
+  },
+  {
+    "id": "distractor_0007",
+    "scope": "intra_doc",
+    "document_references": [
+      "sc-0_technical_analysis_033"
+    ],
+    "divergence_type": "preliminary_vs_final",
+    "description": "The passage introduces a preliminary finding that initially attributed fuel control telemetry irregularities to in-flight governor instability, which is later clarified as a post-impact electrical transient artifact following comprehensive analysis. This reflects standard investigative refinement rather than a factual contradiction."
+  },
+  {
+    "id": "distractor_0008",
+    "scope": "intra_corpus",
+    "document_references": [
+      "sc-3_regulatory_filing_315",
+      "sc-3_press_coverage_260"
+    ],
+    "divergence_type": "uncertainty_expression",
+    "description": "Inserted a qualified statement expressing legitimate uncertainty regarding the primary causal factors of the hard landing, noting that the relative impact of meteorological conditions versus flight control inputs remains unresolved pending further analysis and simulation."
+  },
+  {
+    "id": "distractor_0009",
+    "scope": "intra_corpus",
+    "document_references": [
+      "sc-2_technical_analysis_225",
+      "sc-2_expert_deposition_237"
+    ],
+    "divergence_type": "uncertainty_expression",
+    "description": "Introduces a qualified statement expressing legitimate uncertainty regarding the pre-impact operational state of the ice protection system and the exact icing conditions encountered, using standard investigative hedging that maintains technical coherence while acknowledging analytical limitations."
+  },
+  {
+    "id": "distractor_0010",
+    "scope": "intra_doc",
+    "document_references": [
+      "sc-1_expert_deposition_125"
+    ],
+    "divergence_type": "measurement_methodology",
+    "description": "Introduces a discrepancy in fan blade crack depth measurements (0.82 inches via ultrasonic testing vs. 0.89 inches via eddy current), explicitly attributing the difference to distinct non-destructive testing methodologies and instrument calibration, which is standard practice in aerospace metallurgical analysis."
+  },
+  {
+    "id": "distractor_0011",
+    "scope": "intra_doc",
+    "document_references": [
+      "sc-1_expert_deposition_125"
+    ],
+    "divergence_type": "measurement_methodology",
+    "description": "Introduces a divergence in recorded cabin pressure differential (8.6 psi vs. 8.9 psi) attributed to differing measurement methodologies between the primary avionics digital sampling and the independent ECS analog transducer array, both of which are technically valid and expected in aviation data acquisition."
+  }
+]

@@ -1,5 +1,6 @@
 """Thin LLM wrapper — single function for all OpenAI API interactions."""
 
+import os
 import time
 
 import openai
@@ -23,7 +24,16 @@ _DEFAULT_PRICING = {"input": 0.15, "output": 0.60}
 def _get_client() -> openai.OpenAI:
     global _client
     if _client is None:
-        _client = openai.OpenAI()
+        # Support OpenRouter via OPENROUTER_API_KEY / OPENRROUTER_API_KEY env vars
+        or_key = os.environ.get("OPENROUTER_API_KEY") or os.environ.get("OPENRROUTER_API_KEY")
+        if or_key:
+            _client = openai.OpenAI(
+                api_key=or_key,
+                base_url="https://openrouter.ai/api/v1",
+            )
+            logger.info("Using OpenRouter API endpoint")
+        else:
+            _client = openai.OpenAI()
     return _client
 
 
@@ -37,21 +47,33 @@ def llm_call(
 
     Returns (response_text, None) on success, (None, error_message) on failure.
     In dry_run mode, returns (estimate_string, None) without calling the API.
+    The LLM_MODEL env var overrides the model parameter if set.
     """
+    model = os.environ.get("LLM_MODEL", model)
+
     if dry_run:
         return _estimate_cost(prompt, model)
 
     client = _get_client()
     pricing = _PRICING.get(model, _DEFAULT_PRICING)
 
+    max_retries = int(os.environ.get("LLM_MAX_RETRIES", "20"))
     last_error = None
-    for attempt in range(4):  # 1 initial + 3 retries
+    for attempt in range(max_retries + 1):
         try:
             response = client.chat.completions.create(
                 model=model,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=temperature,
             )
+            if not response.choices:
+                last_error = "API returned empty choices"
+                if attempt < max_retries:
+                    wait = min(2**attempt, 60)
+                    logger.warning(f"Empty response, retrying in {wait}s (attempt {attempt + 1}/{max_retries})")
+                    time.sleep(wait)
+                    continue
+                return None, last_error
             text = response.choices[0].message.content
             if response.usage:
                 _usage["prompt_tokens"] += response.usage.prompt_tokens
@@ -61,13 +83,13 @@ def llm_call(
 
         except openai.RateLimitError as e:
             last_error = str(e)
-            if attempt < 3:
-                wait = 2**attempt  # 1s, 2s, 4s
-                logger.warning(f"Rate limit hit, retrying in {wait}s (attempt {attempt + 1}/3)")
+            if attempt < max_retries:
+                wait = min(30 * 2**attempt, 300)  # 30s, 60s, 120s, 300s cap
+                logger.warning(f"Rate limit hit, retrying in {wait}s (attempt {attempt + 1}/{max_retries})")
                 time.sleep(wait)
             else:
-                logger.error(f"Rate limit exceeded after 3 retries: {last_error}")
-                return None, f"Rate limit exceeded after 3 retries: {last_error}"
+                logger.error(f"Rate limit exceeded after {max_retries} retries: {last_error}")
+                return None, f"Rate limit exceeded after {max_retries} retries: {last_error}"
 
         except openai.AuthenticationError as e:
             logger.error(f"Authentication error: {e}")
@@ -77,7 +99,7 @@ def llm_call(
             logger.error(f"API error: {e}")
             return None, f"API error: {e}"
 
-    return None, f"Failed after retries: {last_error}"
+    return None, f"Failed after {max_retries} retries: {last_error}"
 
 
 def _estimate_cost(prompt: str, model: str) -> tuple[str, None]:

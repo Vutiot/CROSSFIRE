@@ -1,0 +1,11 @@
+[
+  {
+    "id": "distractor_0000",
+    "scope": "intra_doc",
+    "document_references": [
+      "sc-1_witness_testimony_005"
+    ],
+    "divergence_type": "expert_opinion",
+    "description": "Inserted a sentence presenting Dr. Rostova's alternative technical interpretation of the engine damage (secondary containment ring failure vs. uncontained blade ejection). This reflects a standard, professionally valid engineering debate over complex failure modes, which automated consistency checkers might flag as contradictory but human reviewers would recognize as legitimate investigative divergence."
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "annotation_summary": {
+    "cross_validation_failed": 1,
+    "cross_validation_passed": 1,
+    "incoherences_by_scope": {
+      "intra_corpus": 1,
+      "intra_doc": 1
+    },
+    "total_distractors": 1,
+    "total_incoherences": 2
+  },
+  "benchmark_version": "1.0",
+  "config": {
+    "connectivity_level": 1,
+    "description": "Tiny test configuration — 2 subcorpora, 3 docs each, minimal incoherences",
+    "distractor_ratio": 0.5,
+    "doc_type_mix": "balanced",
+    "docs_per_subcorpus": 3,
+    "dry_run": false,
+    "incoherences": {
+      "count": 2,
+      "detectability_distribution": {
+        "entity_resolution": 0.2,
+        "multi_hop": 0.3,
+        "single_hop": 0.5
+      },
+      "mechanism": "uniform",
+      "scope_distribution": {
+        "inter_corpus": 0.2,
+        "intra_corpus": 0.3,
+        "intra_doc": 0.5
+      },
+      "system_affinity": "balanced"
+    },
+    "master_seed": 42,
+    "name": "tiny_test",
+    "output_dir": "data/datasets/tiny_test",
+    "subcorpora_count": 2
+  },
+  "generation_summary": {
+    "estimated_cost_usd": 0.023854,
+    "total_documents": 6,
+    "total_edges": 66,
+    "total_entities": 17,
+    "total_errors": 0,
+    "total_tokens_used": 41931
+  },
+  "generation_timestamp": "2026-04-07T00:14:49.072694+00:00",
+  "master_seed": 42,
+  "version": "1.0"
+}

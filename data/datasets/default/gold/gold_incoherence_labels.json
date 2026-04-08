@@ -1,0 +1,501 @@
+[
+  {
+    "id": "incoherence_0000",
+    "scope": "intra_corpus",
+    "mechanism": "temporal_contradiction",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-1_technical_analysis_121",
+      "sc-1_witness_testimony_090"
+    ],
+    "modified_fact": "The examination was conducted under the direction of the Investigator-in-Charge (IIC) at the NTSB Materials Laboratory in Washington, D.C., and at the Southwest Airlines maintenance facility in Dallas, Texas, between March 15 and April 10, 2018.",
+    "original_fact": "The examination was conducted under the direction of the Investigator-in-Charge (IIC) at the NTSB Materials Laboratory in Washington, D.C., and at the Southwest Airlines maintenance facility in Dallas, Texas, between May 2 and May 24, 2018."
+  },
+  {
+    "id": "incoherence_0001",
+    "scope": "inter_corpus",
+    "mechanism": "entity_swap",
+    "detectability": "single_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-2_expert_deposition_229",
+      "sc-4_regulatory_filing_355"
+    ],
+    "modified_fact": "Submitted by the Aircraft Systems Engineering Party, this technical analysis is presented in support of the 14 CFR Part 135\u2019s investigative hearing regarding the March 3, 2023, loss-of-control event involving a regional turboprop aircraft.",
+    "original_fact": "Submitted by the Aircraft Systems Engineering Party, this technical analysis is presented in support of the National Transportation Safety Board\u2019s investigative hearing regarding the March 3, 2023, loss-of-control event involving a regional turboprop aircraft."
+  },
+  {
+    "id": "incoherence_0003",
+    "scope": "intra_corpus",
+    "mechanism": "temporal_revision_conflict",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-4_technical_analysis_329",
+      "sc-4_investigation_report_384"
+    ],
+    "modified_fact": "The final examination was conducted from January 10 through January 18, 2024, following the preliminary assessment completed on January 22, 2024,",
+    "original_fact": "The examination was conducted from January 10 through January 18, 2024."
+  },
+  {
+    "id": "incoherence_0004",
+    "scope": "inter_corpus",
+    "mechanism": "entity_swap",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-2_press_coverage_236",
+      "sc-0_technical_analysis_065"
+    ],
+    "modified_fact": "14 CFR 25.571 has deployed a specialized investigative team to the site",
+    "original_fact": "The National Transportation Safety Board (NTSB) has deployed a specialized investigative team to the site"
+  },
+  {
+    "id": "incoherence_0005",
+    "scope": "intra_doc",
+    "mechanism": "omission_based_implicit",
+    "detectability": "entity_resolution_dependent",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-4_preliminary_report_399"
+    ],
+    "modified_fact": "Final factual information has been compiled from initial data downloads, ATC recordings, and early interviews with flight crew and cabin personnel.",
+    "original_fact": "Preliminary factual information has been compiled from initial data downloads, air traffic control recordings, and early interviews with flight crew and cabin personnel."
+  },
+  {
+    "id": "incoherence_0006",
+    "scope": "inter_corpus",
+    "mechanism": "causal_inversion",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-2_regulatory_filing_235",
+      "sc-4_press_coverage_340"
+    ],
+    "modified_fact": "The flight crew requested an immediate diversion and subsequently impacted terrain short of the alternate runway, an event sequence that precipitated the reported rapid airframe ice accumulation.",
+    "original_fact": "The flight crew reported rapid airframe ice accumulation, requested an immediate diversion, and subsequently impacted terrain short of the alternate runway."
+  },
+  {
+    "id": "incoherence_0007",
+    "scope": "intra_doc",
+    "mechanism": "numeric_drift",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-0_internal_memo_054"
+    ],
+    "modified_fact": "All eight persons on board were fatally injured.",
+    "original_fact": "All nine persons on board were fatally injured."
+  },
+  {
+    "id": "incoherence_0008",
+    "scope": "intra_corpus",
+    "mechanism": "causal_inversion",
+    "detectability": "single_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-2_internal_memo_198",
+      "sc-2_investigation_report_232"
+    ],
+    "modified_fact": "The directive is issued to intentionally induce delayed system response, ice accretion during critical approach phases, and potential calibration drift in ice detection hardware.",
+    "original_fact": "The directive is issued to mitigate identified risks associated with delayed system response, ice accretion during critical approach phases, and potential calibration drift in ice detection hardware."
+  },
+  {
+    "id": "incoherence_0009",
+    "scope": "intra_doc",
+    "mechanism": "omission_based_implicit",
+    "detectability": "entity_resolution_dependent",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-1_internal_memo_102"
+    ],
+    "modified_fact": "Regulatory frameworks including SFAR 88 (14 CFR Part 121) and Section 25.783 (14 CFR \u00a7 25.783) establish baseline design and maintenance expectations for fuel system fault tolerance and fuselage door/window structural integrity.",
+    "original_fact": "Regulatory frameworks including SFAR 88 (Special Federal Aviation Regulation No. 88) and Section 25.783 (14 CFR \u00a7 25.783) establish baseline design and maintenance expectations for fuel system fault tolerance and fuselage door/window structural integrity."
+  },
+  {
+    "id": "incoherence_0010",
+    "scope": "inter_corpus",
+    "mechanism": "temporal_contradiction",
+    "detectability": "single_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-2_regulatory_filing_211",
+      "sc-3_technical_analysis_289"
+    ],
+    "modified_fact": "Date of Occurrence: March 15, 2023",
+    "original_fact": "Date of Occurrence: March 3, 2023"
+  },
+  {
+    "id": "incoherence_0011",
+    "scope": "intra_corpus",
+    "mechanism": "temporal_contradiction",
+    "detectability": "entity_resolution_dependent",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-1_preliminary_report_087",
+      "sc-1_investigation_report_096"
+    ],
+    "modified_fact": "On April 17, 2018, at approximately 15:43 Coordinated Universal Time (UTC)",
+    "original_fact": "On April 17, 2018, at approximately 15:43 Eastern Daylight Time"
+  },
+  {
+    "id": "incoherence_0012",
+    "scope": "intra_doc",
+    "mechanism": "causal_inversion",
+    "detectability": "single_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-3_press_coverage_268"
+    ],
+    "modified_fact": "The front strut buckled, causing the aircraft\u2019s nose to slam into the runway.",
+    "original_fact": "The aircraft\u2019s nose slammed into the runway, buckling the front strut."
+  },
+  {
+    "id": "incoherence_0013",
+    "scope": "inter_corpus",
+    "mechanism": "temporal_revision_conflict",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-1_technical_analysis_137",
+      "sc-4_regulatory_filing_331"
+    ],
+    "modified_fact": "The physical examination of the engine components and recovered debris was conducted between May 2 and May 18, 2018, at the NTSB headquarters facility in Washington, D.C., and at the manufacturer's materials testing laboratory in Evendale, Ohio, with the final metallurgical assessment finalized prior to the preliminary FDR data synchronization phase.",
+    "original_fact": "The physical examination of the engine components and recovered debris was conducted between May 2 and May 18, 2018, at the NTSB headquarters facility in Washington, D.C., and at the manufacturer's materials testing laboratory in Evendale, Ohio."
+  },
+  {
+    "id": "incoherence_0014",
+    "scope": "intra_corpus",
+    "mechanism": "numeric_drift",
+    "detectability": "entity_resolution_dependent",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-2_internal_memo_190",
+      "sc-2_preliminary_report_239"
+    ],
+    "modified_fact": "The flight crew reported rapid ice accumulation on unprotected surfaces, initiated a diversion, and subsequently impacted terrain approximately 3.8 NM short of the alternate runway threshold.",
+    "original_fact": "The flight crew reported rapid ice accumulation on unprotected surfaces, initiated a diversion, and subsequently impacted terrain approximately 1.2 NM short of the alternate runway threshold."
+  },
+  {
+    "id": "incoherence_0015",
+    "scope": "intra_corpus",
+    "mechanism": "entity_swap",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-4_investigation_report_384",
+      "sc-4_internal_memo_366"
+    ],
+    "modified_fact": "The flight was conducted in accordance with Atlas Air, governing domestic, flag, and supplemental operations.",
+    "original_fact": "The flight was conducted in accordance with Title 14 of the Code of Federal Regulations (14 CFR) Part 121, Subpart U, governing domestic, flag, and supplemental operations."
+  },
+  {
+    "id": "incoherence_0016",
+    "scope": "intra_corpus",
+    "mechanism": "temporal_revision_conflict",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-2_press_coverage_220",
+      "sc-2_preliminary_report_167"
+    ],
+    "modified_fact": "On March 3, 2023, preliminary assessments concluded a regional turboprop aircraft crashed into a heavily wooded area just short of its primary runway",
+    "original_fact": "On March 3, 2023, a regional turboprop aircraft crashed into a heavily wooded area just short of its alternate runway"
+  },
+  {
+    "id": "incoherence_0017",
+    "scope": "inter_corpus",
+    "mechanism": "temporal_contradiction",
+    "detectability": "entity_resolution_dependent",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-2_expert_deposition_197",
+      "sc-0_preliminary_report_071"
+    ],
+    "modified_fact": "On February 14, 2023, the subject aircraft (alias: NTSB-23-04), a twin-engine regional turboprop, was conducting an instrument approach to its destination airport",
+    "original_fact": "On March 3, 2023, the subject aircraft, a twin-engine regional turboprop, was conducting an instrument approach to its destination airport"
+  },
+  {
+    "id": "incoherence_0018",
+    "scope": "intra_doc",
+    "mechanism": "temporal_contradiction",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-0_expert_deposition_077"
+    ],
+    "modified_fact": "January 24, 2020, accident involving a Sikorsky S-76B helicopter in Calabasas, California.",
+    "original_fact": "January 26, 2020, accident involving a Sikorsky S-76B helicopter in Calabasas, California."
+  },
+  {
+    "id": "incoherence_0019",
+    "scope": "inter_corpus",
+    "mechanism": "entity_swap",
+    "detectability": "entity_resolution_dependent",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-1_preliminary_report_119",
+      "sc-3_preliminary_report_263"
+    ],
+    "modified_fact": "The aircraft subsequently executed an emergency descent and landed safely at FAA.",
+    "original_fact": "The aircraft subsequently executed an emergency descent and landed safely at Philadelphia International Airport."
+  },
+  {
+    "id": "incoherence_0020",
+    "scope": "inter_corpus",
+    "mechanism": "omission_based_implicit",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-0_preliminary_report_047",
+      "sc-1_press_coverage_156"
+    ],
+    "modified_fact": "Early witness accounts, which have been conclusively verified, describe the helicopter operating at a relatively low altitude in a region characterized by clear skies and unlimited visibility.",
+    "original_fact": "Early witness accounts, which remain subject to verification, describe the helicopter operating at a relatively low altitude in a region characterized by patchy fog and low cloud ceilings."
+  },
+  {
+    "id": "incoherence_0021",
+    "scope": "intra_corpus",
+    "mechanism": "causal_inversion",
+    "detectability": "entity_resolution_dependent",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-0_preliminary_report_007",
+      "sc-0_expert_deposition_037"
+    ],
+    "modified_fact": "The fatal destruction of the S-76B and the loss of all nine persons on board resulted in the flight operating under visual flight rules (VFR) when it encountered instrument meteorological conditions (IMC).",
+    "original_fact": "The flight was operating under visual flight rules (VFR) when it encountered instrument meteorological conditions (IMC), resulting in the fatal destruction of the aircraft and the loss of all nine persons on board."
+  },
+  {
+    "id": "incoherence_0022",
+    "scope": "intra_corpus",
+    "mechanism": "entity_swap",
+    "detectability": "single_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-1_expert_deposition_117",
+      "sc-1_press_coverage_132"
+    ],
+    "modified_fact": "Lead Investigator has participated as a designated party to the investigation",
+    "original_fact": "Southwest Airlines Co. has participated as a designated party to the investigation"
+  },
+  {
+    "id": "incoherence_0023",
+    "scope": "intra_corpus",
+    "mechanism": "causal_inversion",
+    "detectability": "single_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-4_internal_memo_374",
+      "sc-4_regulatory_filing_355"
+    ],
+    "modified_fact": "On January 5, 2024, a Boeing 737 MAX 9 operated by a major U.S. carrier experienced a rapid decompression event that caused the left mid-exit door plug to separate from the fuselage during climb through 16,000 feet after departure from a Pacific Northwest hub.",
+    "original_fact": "On January 5, 2024, a Boeing 737 MAX 9 operated by a major U.S. carrier experienced a rapid decompression event when the left mid-exit door plug separated from the fuselage during climb through 16,000 feet after departure from a Pacific Northwest hub."
+  },
+  {
+    "id": "incoherence_0024",
+    "scope": "intra_doc",
+    "mechanism": "causal_inversion",
+    "detectability": "single_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-3_investigation_report_264"
+    ],
+    "modified_fact": "Runway 28C at Chicago O'Hare International Airport (KORD), Chicago, Illinois, was established as a direct consequence of the event taking place there.",
+    "original_fact": "The event took place on Runway 28C at Chicago O'Hare International Airport (KORD), Chicago, Illinois."
+  },
+  {
+    "id": "incoherence_0025",
+    "scope": "intra_corpus",
+    "mechanism": "temporal_revision_conflict",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-3_witness_testimony_290",
+      "sc-3_technical_analysis_281"
+    ],
+    "modified_fact": "Date: August 17, 2023",
+    "original_fact": "Date: August 17, 2021"
+  },
+  {
+    "id": "incoherence_0026",
+    "scope": "intra_corpus",
+    "mechanism": "numeric_drift",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-1_witness_testimony_130",
+      "sc-1_expert_deposition_093"
+    ],
+    "modified_fact": "The aircraft was at cruise, thirty-six thousand feet",
+    "original_fact": "The aircraft was at cruise, thirty-two thousand five hundred feet"
+  },
+  {
+    "id": "incoherence_0027",
+    "scope": "intra_corpus",
+    "mechanism": "entity_swap",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-1_expert_deposition_157",
+      "sc-1_technical_analysis_081"
+    ],
+    "modified_fact": "The scope of this document encompasses an engineering assessment of the MCAS engine failure mechanism.",
+    "original_fact": "The scope of this document encompasses an engineering assessment of the LEAP-1B engine failure mechanism."
+  },
+  {
+    "id": "incoherence_0028",
+    "scope": "intra_corpus",
+    "mechanism": "omission_based_implicit",
+    "detectability": "single_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-2_technical_analysis_233",
+      "sc-2_press_coverage_220"
+    ],
+    "modified_fact": "All recovered components were cataloged, photographed, and secured in violation of NTSB evidence handling protocols (NTSB Order 8020.11C).",
+    "original_fact": "All recovered components were cataloged, photographed, and secured in accordance with NTSB evidence handling protocols (NTSB Order 8020.11C)."
+  },
+  {
+    "id": "incoherence_0029",
+    "scope": "intra_doc",
+    "mechanism": "omission_based_implicit",
+    "detectability": "single_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-0_preliminary_report_047"
+    ],
+    "modified_fact": "Preliminary examination of the wreckage distribution and impact signatures is consistent with a high-energy, controlled-flight-into-terrain (CFIT) scenario, and this assessment is definitive and conclusive.",
+    "original_fact": "Preliminary examination of the wreckage distribution and impact signatures is consistent with a high-energy, controlled-flight-into-terrain (CFIT) scenario, though this assessment remains tentative pending detailed engineering analysis."
+  },
+  {
+    "id": "incoherence_0030",
+    "scope": "intra_corpus",
+    "mechanism": "entity_swap",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-4_preliminary_report_359",
+      "sc-4_regulatory_filing_355"
+    ],
+    "modified_fact": "Meteorological data obtained from the departure airport and surrounding MCAS indicate visual meteorological conditions",
+    "original_fact": "Meteorological data obtained from the departure airport and surrounding National Weather Service stations indicate visual meteorological conditions"
+  },
+  {
+    "id": "incoherence_0031",
+    "scope": "intra_corpus",
+    "mechanism": "causal_inversion",
+    "detectability": "single_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-3_preliminary_report_311",
+      "sc-3_internal_memo_310"
+    ],
+    "modified_fact": "experienced a collapse of the nose landing gear that resulted in a hard landing",
+    "original_fact": "experienced a hard landing that resulted in the collapse of the nose landing gear"
+  },
+  {
+    "id": "incoherence_0032",
+    "scope": "inter_corpus",
+    "mechanism": "numeric_drift",
+    "detectability": "single_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-0_regulatory_filing_003",
+      "sc-4_investigation_report_368"
+    ],
+    "modified_fact": "The regulatory framework governing visual flight rules (VFR) operations, weather minimums, and equipment requirements is codified in 14 CFR 135.181, 14 CFR 135.183, and 14 CFR 135.195.",
+    "original_fact": "The regulatory framework governing visual flight rules (VFR) operations, weather minimums, and equipment requirements is codified in 14 CFR 135.181, 14 CFR 135.183, and 14 CFR 135.185."
+  },
+  {
+    "id": "incoherence_0033",
+    "scope": "intra_doc",
+    "mechanism": "numeric_drift",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-0_preliminary_report_039"
+    ],
+    "modified_fact": "ceilings below 2,500 feet above ground level (AGL) and visibility frequently dropping below three statute miles.",
+    "original_fact": "ceilings below 1,000 feet above ground level (AGL) and visibility frequently dropping below three statute miles."
+  },
+  {
+    "id": "incoherence_0034",
+    "scope": "inter_corpus",
+    "mechanism": "temporal_contradiction",
+    "detectability": "single_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-4_preliminary_report_391",
+      "sc-3_witness_testimony_290"
+    ],
+    "modified_fact": "The aircraft was operating under instrument flight rules and was in a final descent configuration when the decompression event occurred.",
+    "original_fact": "The aircraft was operating under instrument flight rules and was in a normal climb configuration when the decompression event occurred."
+  },
+  {
+    "id": "incoherence_0035",
+    "scope": "inter_corpus",
+    "mechanism": "numeric_drift",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-4_press_coverage_396",
+      "sc-2_regulatory_filing_211"
+    ],
+    "modified_fact": "The aircraft was carrying 164 passengers and six crew members.",
+    "original_fact": "The aircraft was carrying 171 passengers and six crew members."
+  },
+  {
+    "id": "incoherence_0036",
+    "scope": "intra_corpus",
+    "mechanism": "numeric_drift",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-2_witness_testimony_218",
+      "sc-2_regulatory_filing_163"
+    ],
+    "modified_fact": "On the third, I was the primary dispatcher assigned to Flight 447.",
+    "original_fact": "On the third, I was the primary dispatcher assigned to Flight 442."
+  },
+  {
+    "id": "incoherence_0037",
+    "scope": "intra_corpus",
+    "mechanism": "temporal_revision_conflict",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-1_regulatory_filing_107",
+      "sc-1_preliminary_report_103"
+    ],
+    "modified_fact": "DATE: April 20, 2018",
+    "original_fact": "DATE: October 12, 2023"
+  },
+  {
+    "id": "incoherence_0038",
+    "scope": "intra_corpus",
+    "mechanism": "temporal_contradiction",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-2_press_coverage_228",
+      "sc-2_technical_analysis_201"
+    ],
+    "modified_fact": "A regional turboprop aircraft operated by Ethiopian Airlines crashed into rugged, snow-covered terrain on Sunday, March 5, 2023",
+    "original_fact": "A regional turboprop aircraft operated by Ethiopian Airlines crashed into rugged, snow-covered terrain on Friday, March 3, 2023"
+  },
+  {
+    "id": "incoherence_0039",
+    "scope": "intra_corpus",
+    "mechanism": "omission_based_implicit",
+    "detectability": "entity_resolution_dependent",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-4_preliminary_report_375",
+      "sc-4_regulatory_filing_379"
+    ],
+    "modified_fact": "Final factual information has been compiled from initial data downloads, ATC recordings, and early interviews with flight and cabin personnel.",
+    "original_fact": "Preliminary factual information has been compiled from initial data downloads, air traffic control recordings, and early interviews with flight and cabin personnel."
+  }
+]

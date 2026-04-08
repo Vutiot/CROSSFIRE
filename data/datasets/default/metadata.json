@@ -1,0 +1,52 @@
+{
+  "annotation_summary": {
+    "cross_validation_failed": 4,
+    "cross_validation_passed": 35,
+    "incoherences_by_scope": {
+      "inter_corpus": 11,
+      "intra_corpus": 20,
+      "intra_doc": 8
+    },
+    "total_distractors": 12,
+    "total_incoherences": 39
+  },
+  "benchmark_version": "1.0",
+  "config": {
+    "connectivity_level": 2,
+    "description": "Default benchmark configuration — 5 subcorpora, connectivity 2, balanced incoherences",
+    "distractor_ratio": 0.3,
+    "doc_type_mix": "balanced",
+    "docs_per_subcorpus": 80,
+    "dry_run": false,
+    "incoherences": {
+      "count": "auto",
+      "detectability_distribution": {
+        "entity_resolution": 0.2,
+        "multi_hop": 0.5,
+        "single_hop": 0.3
+      },
+      "mechanism": "uniform",
+      "scope_distribution": {
+        "inter_corpus": 0.3,
+        "intra_corpus": 0.5,
+        "intra_doc": 0.2
+      },
+      "system_affinity": "balanced"
+    },
+    "master_seed": 42,
+    "name": "default",
+    "output_dir": "/home/alexandre/Projects/CROSSFIRE/data/datasets/default",
+    "subcorpora_count": 5
+  },
+  "generation_summary": {
+    "estimated_cost_usd": 1.38644,
+    "total_documents": 400,
+    "total_edges": 118,
+    "total_entities": 34,
+    "total_errors": 0,
+    "total_tokens_used": 2448490
+  },
+  "generation_timestamp": "2026-04-07T17:34:20.577719+00:00",
+  "master_seed": 42,
+  "version": "1.0"
+}

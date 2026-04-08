@@ -1,0 +1,528 @@
+{
+  "nodes": [
+    {
+      "id": "equipment_000",
+      "entity_type": "equipment",
+      "canonical_name": "CFM56-7B",
+      "aliases": [
+        "CFM56-7B"
+      ],
+      "subcorpus_memberships": [
+        "sc-0",
+        "sc-1"
+      ]
+    },
+    {
+      "id": "organization_001",
+      "entity_type": "organization",
+      "canonical_name": "FAA",
+      "aliases": [
+        "FAA"
+      ],
+      "subcorpus_memberships": [
+        "sc-0",
+        "sc-1"
+      ]
+    },
+    {
+      "id": "equipment_002",
+      "entity_type": "equipment",
+      "canonical_name": "MED plug",
+      "aliases": [
+        "MED plug"
+      ],
+      "subcorpus_memberships": [
+        "sc-0",
+        "sc-1"
+      ]
+    },
+    {
+      "id": "organization_003",
+      "entity_type": "organization",
+      "canonical_name": "Southwest Airlines",
+      "aliases": [
+        "Southwest Airlines"
+      ],
+      "subcorpus_memberships": [
+        "sc-0",
+        "sc-1"
+      ]
+    },
+    {
+      "id": "equipment_004",
+      "entity_type": "equipment",
+      "canonical_name": "Flight Data Recorder",
+      "aliases": [
+        "Flight Data Recorder"
+      ],
+      "subcorpus_memberships": [
+        "sc-0",
+        "sc-1"
+      ]
+    },
+    {
+      "id": "person_local_000",
+      "entity_type": "person",
+      "canonical_name": "Captain",
+      "aliases": [
+        "Captain"
+      ],
+      "subcorpus_memberships": [
+        "sc-0"
+      ]
+    },
+    {
+      "id": "regulation_local_001",
+      "entity_type": "regulation",
+      "canonical_name": "14 CFR Part 121",
+      "aliases": [
+        "14 CFR Part 121"
+      ],
+      "subcorpus_memberships": [
+        "sc-1"
+      ]
+    },
+    {
+      "id": "regulation_local_002",
+      "entity_type": "regulation",
+      "canonical_name": "14 CFR Part 135",
+      "aliases": [
+        "14 CFR Part 135"
+      ],
+      "subcorpus_memberships": [
+        "sc-0"
+      ]
+    },
+    {
+      "id": "organization_local_003",
+      "entity_type": "organization",
+      "canonical_name": "Atlas Air",
+      "aliases": [
+        "Atlas Air"
+      ],
+      "subcorpus_memberships": [
+        "sc-1"
+      ]
+    },
+    {
+      "id": "regulation_local_004",
+      "entity_type": "regulation",
+      "canonical_name": "Order 8900.1",
+      "aliases": [
+        "Order 8900.1"
+      ],
+      "subcorpus_memberships": [
+        "sc-0"
+      ]
+    },
+    {
+      "id": "regulation_local_005",
+      "entity_type": "regulation",
+      "canonical_name": "SFAR 88",
+      "aliases": [
+        "SFAR 88"
+      ],
+      "subcorpus_memberships": [
+        "sc-1"
+      ]
+    },
+    {
+      "id": "regulation_local_006",
+      "entity_type": "regulation",
+      "canonical_name": "14 CFR Part 25",
+      "aliases": [
+        "14 CFR Part 25"
+      ],
+      "subcorpus_memberships": [
+        "sc-0"
+      ]
+    },
+    {
+      "id": "organization_local_007",
+      "entity_type": "organization",
+      "canonical_name": "Rolls-Royce",
+      "aliases": [
+        "Rolls-Royce"
+      ],
+      "subcorpus_memberships": [
+        "sc-1"
+      ]
+    },
+    {
+      "id": "organization_local_008",
+      "entity_type": "organization",
+      "canonical_name": "NTSB",
+      "aliases": [
+        "NTSB"
+      ],
+      "subcorpus_memberships": [
+        "sc-0"
+      ]
+    },
+    {
+      "id": "equipment_local_009",
+      "entity_type": "equipment",
+      "canonical_name": "DHC-8",
+      "aliases": [
+        "DHC-8"
+      ],
+      "subcorpus_memberships": [
+        "sc-1"
+      ]
+    },
+    {
+      "id": "regulation_local_010",
+      "entity_type": "regulation",
+      "canonical_name": "14 CFR Part 21",
+      "aliases": [
+        "14 CFR Part 21"
+      ],
+      "subcorpus_memberships": [
+        "sc-0"
+      ]
+    },
+    {
+      "id": "location_local_011",
+      "entity_type": "location",
+      "canonical_name": "Portland, Oregon",
+      "aliases": [
+        "Portland, Oregon"
+      ],
+      "subcorpus_memberships": [
+        "sc-1"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "organization_001",
+      "target": "equipment_000",
+      "relationship_type": "operates"
+    },
+    {
+      "source": "organization_001",
+      "target": "equipment_002",
+      "relationship_type": "operates"
+    },
+    {
+      "source": "organization_001",
+      "target": "equipment_004",
+      "relationship_type": "manufactures"
+    },
+    {
+      "source": "organization_001",
+      "target": "equipment_local_009",
+      "relationship_type": "manufactures"
+    },
+    {
+      "source": "organization_003",
+      "target": "equipment_000",
+      "relationship_type": "operates"
+    },
+    {
+      "source": "organization_003",
+      "target": "equipment_002",
+      "relationship_type": "manufactures"
+    },
+    {
+      "source": "organization_003",
+      "target": "equipment_004",
+      "relationship_type": "operates"
+    },
+    {
+      "source": "organization_003",
+      "target": "equipment_local_009",
+      "relationship_type": "manufactures"
+    },
+    {
+      "source": "organization_local_003",
+      "target": "equipment_000",
+      "relationship_type": "manufactures"
+    },
+    {
+      "source": "organization_local_003",
+      "target": "equipment_002",
+      "relationship_type": "manufactures"
+    },
+    {
+      "source": "organization_local_003",
+      "target": "equipment_004",
+      "relationship_type": "manufactures"
+    },
+    {
+      "source": "organization_local_003",
+      "target": "equipment_local_009",
+      "relationship_type": "manufactures"
+    },
+    {
+      "source": "organization_local_007",
+      "target": "equipment_000",
+      "relationship_type": "operates"
+    },
+    {
+      "source": "organization_local_007",
+      "target": "equipment_002",
+      "relationship_type": "operates"
+    },
+    {
+      "source": "organization_local_007",
+      "target": "equipment_004",
+      "relationship_type": "manufactures"
+    },
+    {
+      "source": "organization_local_007",
+      "target": "equipment_local_009",
+      "relationship_type": "operates"
+    },
+    {
+      "source": "organization_local_008",
+      "target": "equipment_000",
+      "relationship_type": "operates"
+    },
+    {
+      "source": "organization_local_008",
+      "target": "equipment_002",
+      "relationship_type": "operates"
+    },
+    {
+      "source": "organization_local_008",
+      "target": "equipment_004",
+      "relationship_type": "operates"
+    },
+    {
+      "source": "organization_001",
+      "target": "regulation_local_001",
+      "relationship_type": "issued_by"
+    },
+    {
+      "source": "organization_001",
+      "target": "regulation_local_002",
+      "relationship_type": "regulated_by"
+    },
+    {
+      "source": "organization_001",
+      "target": "regulation_local_004",
+      "relationship_type": "regulated_by"
+    },
+    {
+      "source": "organization_001",
+      "target": "regulation_local_005",
+      "relationship_type": "issued_by"
+    },
+    {
+      "source": "organization_001",
+      "target": "regulation_local_006",
+      "relationship_type": "regulated_by"
+    },
+    {
+      "source": "organization_001",
+      "target": "regulation_local_010",
+      "relationship_type": "issued_by"
+    },
+    {
+      "source": "organization_003",
+      "target": "regulation_local_001",
+      "relationship_type": "regulated_by"
+    },
+    {
+      "source": "organization_003",
+      "target": "regulation_local_002",
+      "relationship_type": "issued_by"
+    },
+    {
+      "source": "organization_003",
+      "target": "regulation_local_004",
+      "relationship_type": "regulated_by"
+    },
+    {
+      "source": "organization_003",
+      "target": "regulation_local_005",
+      "relationship_type": "regulated_by"
+    },
+    {
+      "source": "organization_003",
+      "target": "regulation_local_006",
+      "relationship_type": "regulated_by"
+    },
+    {
+      "source": "organization_003",
+      "target": "regulation_local_010",
+      "relationship_type": "regulated_by"
+    },
+    {
+      "source": "organization_local_003",
+      "target": "regulation_local_001",
+      "relationship_type": "issued_by"
+    },
+    {
+      "source": "organization_local_003",
+      "target": "regulation_local_005",
+      "relationship_type": "issued_by"
+    },
+    {
+      "source": "organization_local_007",
+      "target": "regulation_local_001",
+      "relationship_type": "regulated_by"
+    },
+    {
+      "source": "organization_local_007",
+      "target": "regulation_local_005",
+      "relationship_type": "issued_by"
+    },
+    {
+      "source": "organization_local_008",
+      "target": "regulation_local_002",
+      "relationship_type": "issued_by"
+    },
+    {
+      "source": "organization_local_008",
+      "target": "regulation_local_004",
+      "relationship_type": "regulated_by"
+    },
+    {
+      "source": "organization_local_008",
+      "target": "regulation_local_006",
+      "relationship_type": "regulated_by"
+    },
+    {
+      "source": "organization_local_008",
+      "target": "regulation_local_010",
+      "relationship_type": "issued_by"
+    },
+    {
+      "source": "organization_001",
+      "target": "location_local_011",
+      "relationship_type": "operates_from"
+    },
+    {
+      "source": "organization_003",
+      "target": "location_local_011",
+      "relationship_type": "operates_from"
+    },
+    {
+      "source": "organization_local_003",
+      "target": "location_local_011",
+      "relationship_type": "headquartered_in"
+    },
+    {
+      "source": "organization_local_007",
+      "target": "location_local_011",
+      "relationship_type": "operates_from"
+    },
+    {
+      "source": "organization_001",
+      "target": "person_local_000",
+      "relationship_type": "employs"
+    },
+    {
+      "source": "organization_003",
+      "target": "person_local_000",
+      "relationship_type": "employs"
+    },
+    {
+      "source": "organization_local_008",
+      "target": "person_local_000",
+      "relationship_type": "employs"
+    },
+    {
+      "source": "equipment_000",
+      "target": "regulation_local_001",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_000",
+      "target": "regulation_local_002",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_000",
+      "target": "regulation_local_004",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_000",
+      "target": "regulation_local_005",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_000",
+      "target": "regulation_local_006",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_000",
+      "target": "regulation_local_010",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_002",
+      "target": "regulation_local_001",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_002",
+      "target": "regulation_local_002",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_002",
+      "target": "regulation_local_004",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_002",
+      "target": "regulation_local_005",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_002",
+      "target": "regulation_local_006",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_002",
+      "target": "regulation_local_010",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_004",
+      "target": "regulation_local_001",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_004",
+      "target": "regulation_local_002",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_004",
+      "target": "regulation_local_004",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_004",
+      "target": "regulation_local_005",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_004",
+      "target": "regulation_local_006",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_004",
+      "target": "regulation_local_010",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_local_009",
+      "target": "regulation_local_001",
+      "relationship_type": "certified_under"
+    },
+    {
+      "source": "equipment_local_009",
+      "target": "regulation_local_005",
+      "relationship_type": "certified_under"
+    }
+  ]
+}

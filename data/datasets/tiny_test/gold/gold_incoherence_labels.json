@@ -1,0 +1,27 @@
+[
+  {
+    "id": "incoherence_0000",
+    "scope": "intra_doc",
+    "mechanism": "entity_swap",
+    "detectability": "single_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-0_technical_analysis_001"
+    ],
+    "modified_fact": "The aviation accident investigation involves a 14 CFR Part 135, registration N72EX, serial number 760345.",
+    "original_fact": "The aviation accident investigation involves a Sikorsky S-76B helicopter, registration N72EX, serial number 760345."
+  },
+  {
+    "id": "incoherence_0001",
+    "scope": "intra_corpus",
+    "mechanism": "numeric_drift",
+    "detectability": "multi_hop",
+    "system_affinity": "balanced",
+    "document_references": [
+      "sc-1_technical_analysis_004",
+      "sc-1_investigation_report_003"
+    ],
+    "modified_fact": "The subject aircraft was equipped with three CFM56-7B26 high-bypass turbofan engines, manufactured under a joint venture between General Electric and Safran Aircraft Engines.",
+    "original_fact": "The subject aircraft was equipped with two CFM56-7B26 high-bypass turbofan engines, manufactured under a joint venture between General Electric and Safran Aircraft Engines."
+  }
+]
