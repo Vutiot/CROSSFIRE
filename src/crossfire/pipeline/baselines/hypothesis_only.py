@@ -1,6 +1,6 @@
 """Hypothesis-only baseline — surface feature detection for contamination validation (FR21).
 
-Evaluates whether incoherences are detectable from surface features alone
+Evaluates whether contradictions are detectable from surface features alone
 (document length, vocabulary complexity, formatting) without reading actual
 content meaning. If this baseline scores significantly above random, it
 indicates contamination in the generated corpus.
@@ -14,12 +14,12 @@ from pathlib import Path
 from loguru import logger
 
 from crossfire.shared.schemas.corpus import Document
-from crossfire.shared.schemas.reports import DetectedIncoherence, PipelineReport
+from crossfire.shared.schemas.reports import DetectedContradiction, PipelineReport
 from crossfire.shared.seed_manager import SeedManager
 
 
 def run_hypothesis_only_baseline(
-    corpus_path: str,
+    case_dir: str,
     seed_manager: SeedManager,
     top_k: int = 10,
 ) -> tuple[PipelineReport | None, str | None]:
@@ -27,59 +27,62 @@ def run_hypothesis_only_baseline(
 
     Extracts surface features from each document (length, vocabulary stats,
     formatting patterns) and flags document pairs with unusual feature
-    divergence as potential incoherences.
+    divergence as potential contradictions.
 
     Args:
-        corpus_path: Path to corpus directory.
+        case_dir: Path to case directory.
         seed_manager: For reproducibility.
         top_k: Maximum number of pairs to flag.
 
     Returns (PipelineReport, None) on success, (None, error) on failure.
     """
-    corpus_dir = Path(corpus_path)
-    if not corpus_dir.is_dir():
-        return None, f"Corpus path is not a directory: {corpus_path}"
+    case_path = Path(case_dir)
+    if not case_path.is_dir():
+        return None, f"Case directory is not a directory: {case_dir}"
 
-    documents = _load_documents(corpus_dir)
+    documents = _load_documents(case_path)
     if len(documents) < 2:
         from datetime import datetime, timezone
 
         return PipelineReport(
             pipeline_mode="baseline-hypothesis-only",
-            corpus_path=corpus_path,
+            case_dir=case_dir,
             detections=[],
             timestamp=datetime.now(timezone.utc).isoformat(),
         ), None
 
     # Extract surface features for each document
-    features = {doc.id: _extract_features(doc) for doc in documents}
+    features = {doc.document_id: _extract_features(doc) for doc in documents}
 
     # Score pairs by feature divergence
     scored_pairs: list[tuple[str, str, float]] = []
     for doc_a, doc_b in combinations(documents, 2):
-        score = _feature_divergence(features[doc_a.id], features[doc_b.id])
+        score = _feature_divergence(features[doc_a.document_id], features[doc_b.document_id])
         if score > 0:
-            scored_pairs.append((doc_a.id, doc_b.id, score))
+            scored_pairs.append((doc_a.document_id, doc_b.document_id, score))
 
     scored_pairs.sort(key=lambda x: x[2], reverse=True)
     top_pairs = scored_pairs[:top_k]
 
     max_score = top_pairs[0][2] if top_pairs else 1.0
     detections = [
-        DetectedIncoherence(
-            id=f"hypothesis_{idx:04d}",
-            evidence_references=[pair[0], pair[1]],
+        DetectedContradiction(
+            scope="inter_doc",
+            document_references=[pair[0], pair[1]],
+            text_span_start=0,
+            text_span_end=0,
+            evidence_text="Surface feature divergence detected",
             confidence=min(pair[2] / max_score, 1.0) if max_score > 0 else 0.0,
             description="Surface feature divergence detected",
         )
-        for idx, pair in enumerate(top_pairs)
+        for pair in top_pairs
     ]
 
     from datetime import datetime, timezone
 
     report = PipelineReport(
         pipeline_mode="baseline-hypothesis-only",
-        corpus_path=corpus_path,
+        case_dir=case_dir,
         detections=detections,
         timestamp=datetime.now(timezone.utc).isoformat(),
     )
@@ -87,9 +90,12 @@ def run_hypothesis_only_baseline(
     return report, None
 
 
-def _load_documents(corpus_dir: Path) -> list[Document]:
+def _load_documents(case_path: Path) -> list[Document]:
     docs: list[Document] = []
-    for jsonl_path in sorted(corpus_dir.glob("subcorpus_*.jsonl")):
+    anon_dir = case_path / "anonymized_docs"
+    if not anon_dir.is_dir():
+        return docs
+    for jsonl_path in sorted(anon_dir.glob("*.jsonl")):
         text = jsonl_path.read_text(encoding="utf-8").strip()
         for line in text.split("\n"):
             if line:

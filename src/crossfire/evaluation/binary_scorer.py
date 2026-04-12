@@ -2,14 +2,14 @@
 
 from loguru import logger
 
+from crossfire.shared.schemas.contradictions import ContradictionLabel
 from crossfire.shared.schemas.evaluation import EvaluationResult
-from crossfire.shared.schemas.incoherences import IncoherenceLabel
 from crossfire.shared.schemas.reports import PipelineReport
 
 
 def score_binary(
     report: PipelineReport,
-    gold_labels: list[IncoherenceLabel],
+    gold_labels: list[ContradictionLabel],
 ) -> EvaluationResult:
     """Score pipeline detections against gold labels using exact match.
 
@@ -67,8 +67,8 @@ def score_binary(
     matched_gold: set[int] = set()
     matched_count = 0
 
-    for detection in sorted(report.detections, key=lambda d: d.id):
-        det_key = tuple(sorted(detection.evidence_references))
+    for detection in sorted(report.detections, key=lambda d: d.description):
+        det_key = tuple(sorted(detection.document_references))
         candidates = gold_ref_map.get(det_key, [])
         for gold_idx in candidates:
             if gold_idx not in matched_gold:

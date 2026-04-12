@@ -311,18 +311,44 @@ No issues encountered during implementation.
 - Task 4: Updated both `__init__.py` files with clean re-exports. `from crossfire.pipeline import HybridPipeline, GraphStrategy, ...` works.
 - Task 5: 22 tests across 9 test classes covering: result models (4), null strategies (4), null pipeline (2), mode switching (3), strategy failure (3), corpus errors (2), AR11 boundary (1), merge deduplication (2), determinism (1). Fixtures in conftest.py: tmp_corpus_dir, seed_manager, sample_detections.
 - Task 6: Full suite — 306 tests pass (284 existing + 22 new). Zero regressions.
+- 2026-04-11 Schema migration: Migrated all pipeline and evaluation code to new schemas after agentic pivot. `DetectedIncoherence` -> `DetectedContradiction`, `evidence_references` -> `document_references`, `corpus_path` -> `case_dir`, `EntityGraph` -> `KnowledgeGraphClaim`, `IncoherenceLabel` -> `ContradictionLabel`. Corpus loading changed from `subcorpus_*.jsonl` to `anonymized_docs/*.jsonl`. Pipeline mode `graph-native` -> `graph_native`. Deprecated Epic 3 generator tests skipped (schemas deleted). Full suite: 402 passed, 3 skipped, 0 failures.
 
 ### File List
 
 - src/crossfire/pipeline/__init__.py (modified)
-- src/crossfire/pipeline/hybrid_pipeline.py (new)
+- src/crossfire/pipeline/hybrid_pipeline.py (modified)
 - src/crossfire/pipeline/strategies/__init__.py (modified)
-- src/crossfire/pipeline/strategies/base.py (new)
-- src/crossfire/pipeline/strategies/null_strategies.py (new)
-- tests/pipeline/__init__.py (new)
-- tests/pipeline/conftest.py (new)
-- tests/pipeline/test_hybrid_pipeline.py (new)
+- src/crossfire/pipeline/strategies/base.py (modified)
+- src/crossfire/pipeline/strategies/null_strategies.py (modified)
+- src/crossfire/pipeline/strategies/graph_strategy.py (modified)
+- src/crossfire/pipeline/strategies/reasoning_strategy.py (modified)
+- src/crossfire/pipeline/baselines/bm25_baseline.py (modified)
+- src/crossfire/pipeline/baselines/random_baseline.py (modified)
+- src/crossfire/pipeline/baselines/hypothesis_only.py (modified)
+- src/crossfire/evaluation/binary_scorer.py (modified)
+- src/crossfire/evaluation/partial_scorer.py (modified)
+- src/crossfire/evaluation/scope_breakdown.py (modified)
+- src/crossfire/evaluation/stage_breakdown.py (modified)
+- src/crossfire/evaluation/distractor_eval.py (modified)
+- src/crossfire/evaluation/representation_eval.py (modified)
+- tests/pipeline/conftest.py (modified)
+- tests/pipeline/test_hybrid_pipeline.py (modified)
+- tests/pipeline/test_baselines.py (modified)
+- tests/pipeline/test_graph_strategy.py (modified)
+- tests/pipeline/test_reasoning_strategy.py (modified)
+- tests/evaluation/conftest.py (modified)
+- tests/evaluation/test_binary_scorer.py (modified)
+- tests/evaluation/test_partial_scorer.py (modified)
+- tests/evaluation/test_scope_breakdown.py (modified)
+- tests/evaluation/test_stage_breakdown.py (modified)
+- tests/evaluation/test_distractor_eval.py (modified)
+- tests/evaluation/test_representation_eval.py (modified)
+- tests/evaluation/test_aggregate.py (modified)
+- tests/generator/test_annotator.py (modified - skipped, deprecated)
+- tests/generator/test_distractor_generator.py (modified - skipped, deprecated)
+- tests/generator/test_injector.py (modified - skipped, deprecated)
 
 ### Change Log
 
 - 2026-04-06: Story 4.1 implemented — strategy interfaces, null strategies, HybridPipeline orchestrator with mode switching, and 22 tests
+- 2026-04-11: Schema migration for agentic pivot — updated all pipeline, evaluation, and baseline code to use new schemas (DetectedContradiction, ContradictionLabel, KnowledgeGraphClaim, case_dir, anonymized_docs). 402 tests pass, 3 deprecated generator tests skipped.

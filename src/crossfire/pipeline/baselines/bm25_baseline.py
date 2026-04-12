@@ -13,7 +13,7 @@ from pathlib import Path
 from loguru import logger
 
 from crossfire.shared.schemas.corpus import Document
-from crossfire.shared.schemas.reports import DetectedIncoherence, PipelineReport
+from crossfire.shared.schemas.reports import DetectedContradiction, PipelineReport
 from crossfire.shared.seed_manager import SeedManager
 
 # Negation and contradiction signal words
@@ -25,49 +25,49 @@ _CONTRADICTION_SIGNALS = {
 
 
 def run_bm25_baseline(
-    corpus_path: str,
+    case_dir: str,
     seed_manager: SeedManager,
     top_k: int = 10,
 ) -> tuple[PipelineReport | None, str | None]:
     """Run BM25 keyword-contradiction baseline.
 
     For each document pair, computes keyword overlap + contradiction signal
-    score. Top-scoring pairs are flagged as potential incoherences.
+    score. Top-scoring pairs are flagged as potential contradictions.
 
     Args:
-        corpus_path: Path to corpus directory.
+        case_dir: Path to case directory.
         seed_manager: For reproducibility (used in tie-breaking).
         top_k: Maximum number of pairs to flag.
 
     Returns (PipelineReport, None) on success, (None, error) on failure.
     """
-    corpus_dir = Path(corpus_path)
-    if not corpus_dir.is_dir():
-        return None, f"Corpus path is not a directory: {corpus_path}"
+    case_path = Path(case_dir)
+    if not case_path.is_dir():
+        return None, f"Case directory is not a directory: {case_dir}"
 
-    documents = _load_documents(corpus_dir)
+    documents = _load_documents(case_path)
     if len(documents) < 2:
         from datetime import datetime, timezone
 
         return PipelineReport(
             pipeline_mode="baseline-bm25",
-            corpus_path=corpus_path,
+            case_dir=case_dir,
             detections=[],
             timestamp=datetime.now(timezone.utc).isoformat(),
         ), None
 
     # Build document term frequencies and IDF
-    doc_terms = {doc.id: _tokenize(doc.content) for doc in documents}
+    doc_terms = {doc.document_id: _tokenize(doc.content) for doc in documents}
     idf = _compute_idf(doc_terms)
 
     # Score all document pairs
     scored_pairs: list[tuple[str, str, float]] = []
     for doc_a, doc_b in combinations(documents, 2):
         score = _contradiction_score(
-            doc_terms[doc_a.id], doc_terms[doc_b.id], idf
+            doc_terms[doc_a.document_id], doc_terms[doc_b.document_id], idf
         )
         if score > 0:
-            scored_pairs.append((doc_a.id, doc_b.id, score))
+            scored_pairs.append((doc_a.document_id, doc_b.document_id, score))
 
     # Sort by score descending, take top_k
     scored_pairs.sort(key=lambda x: x[2], reverse=True)
@@ -76,20 +76,23 @@ def run_bm25_baseline(
     # Normalize scores to 0-1 confidence
     max_score = top_pairs[0][2] if top_pairs else 1.0
     detections = [
-        DetectedIncoherence(
-            id=f"bm25_{idx:04d}",
-            evidence_references=[pair[0], pair[1]],
+        DetectedContradiction(
+            scope="inter_doc",
+            document_references=[pair[0], pair[1]],
+            text_span_start=0,
+            text_span_end=0,
+            evidence_text="BM25 keyword contradiction signal",
             confidence=min(pair[2] / max_score, 1.0) if max_score > 0 else 0.0,
             description="BM25 keyword contradiction signal",
         )
-        for idx, pair in enumerate(top_pairs)
+        for pair in top_pairs
     ]
 
     from datetime import datetime, timezone
 
     report = PipelineReport(
         pipeline_mode="baseline-bm25",
-        corpus_path=corpus_path,
+        case_dir=case_dir,
         detections=detections,
         timestamp=datetime.now(timezone.utc).isoformat(),
     )
@@ -97,9 +100,12 @@ def run_bm25_baseline(
     return report, None
 
 
-def _load_documents(corpus_dir: Path) -> list[Document]:
+def _load_documents(case_path: Path) -> list[Document]:
     docs: list[Document] = []
-    for jsonl_path in sorted(corpus_dir.glob("subcorpus_*.jsonl")):
+    anon_dir = case_path / "anonymized_docs"
+    if not anon_dir.is_dir():
+        return docs
+    for jsonl_path in sorted(anon_dir.glob("*.jsonl")):
         text = jsonl_path.read_text(encoding="utf-8").strip()
         for line in text.split("\n"):
             if line:

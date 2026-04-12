@@ -2,51 +2,63 @@
 
 import pytest
 
-from crossfire.shared.schemas.incoherences import IncoherenceLabel
-from crossfire.shared.schemas.reports import DetectedIncoherence, PipelineReport
+from crossfire.shared.schemas.contradictions import ContradictionLabel
+from crossfire.shared.schemas.reports import DetectedContradiction, PipelineReport
 
 
 @pytest.fixture
 def sample_gold_labels():
-    """3 gold incoherence labels spanning different scopes."""
+    """3 gold contradiction labels spanning different scopes and detectabilities."""
     return [
-        IncoherenceLabel(
-            id="gold_001",
+        ContradictionLabel(
             scope="intra_doc",
             mechanism="numeric_drift",
             detectability="single_hop",
             system_affinity="balanced",
+            difficulty="easy",
+            char_start=0,
+            char_end=20,
+            original_text="speed was 150 mph",
+            modified_text="speed was 120 mph",
+            rationale="Numeric value changed",
+            ground_truth=True,
             document_references=["doc_A", "doc_B"],
-            modified_fact="speed was 120 mph",
-            original_fact="speed was 150 mph",
         ),
-        IncoherenceLabel(
-            id="gold_002",
-            scope="intra_corpus",
+        ContradictionLabel(
+            scope="inter_doc",
             mechanism="entity_swap",
             detectability="multi_hop",
             system_affinity="graph_favoring",
+            difficulty="medium",
+            char_start=0,
+            char_end=15,
+            original_text="Airbus A320",
+            modified_text="Boeing 737",
+            rationale="Aircraft model swapped",
+            ground_truth=True,
             document_references=["doc_C", "doc_D"],
-            modified_fact="Boeing 737",
-            original_fact="Airbus A320",
         ),
-        IncoherenceLabel(
-            id="gold_003",
-            scope="inter_corpus",
+        ContradictionLabel(
+            scope="inter_doc",
             mechanism="temporal_contradiction",
             detectability="entity_resolution_dependent",
             system_affinity="agentic_favoring",
+            difficulty="hard",
+            char_start=0,
+            char_end=25,
+            original_text="incident on March 12",
+            modified_text="incident on March 5",
+            rationale="Date changed",
+            ground_truth=True,
             document_references=["doc_E", "doc_F"],
-            modified_fact="incident on March 5",
-            original_fact="incident on March 12",
         ),
     ]
 
 
-def _make_report(detections: list[DetectedIncoherence]) -> PipelineReport:
+def _make_report(detections: list[DetectedContradiction]) -> PipelineReport:
     return PipelineReport(
         pipeline_mode="hybrid",
-        corpus_path="/test/corpus",
+        case_dir="/test/case",
         detections=detections,
         timestamp="2026-04-06T00:00:00",
     )
@@ -57,21 +69,30 @@ def perfect_report():
     """Pipeline report that perfectly matches all 3 gold labels."""
     return _make_report(
         [
-            DetectedIncoherence(
-                id="det_001",
-                evidence_references=["doc_A", "doc_B"],
+            DetectedContradiction(
+                scope="inter_doc",
+                document_references=["doc_A", "doc_B"],
+                text_span_start=0,
+                text_span_end=20,
+                evidence_text="speed mismatch",
                 confidence=0.9,
                 description="speed mismatch",
             ),
-            DetectedIncoherence(
-                id="det_002",
-                evidence_references=["doc_C", "doc_D"],
+            DetectedContradiction(
+                scope="inter_doc",
+                document_references=["doc_C", "doc_D"],
+                text_span_start=0,
+                text_span_end=15,
+                evidence_text="aircraft model swap",
                 confidence=0.85,
                 description="aircraft model swap",
             ),
-            DetectedIncoherence(
-                id="det_003",
-                evidence_references=["doc_E", "doc_F"],
+            DetectedContradiction(
+                scope="inter_doc",
+                document_references=["doc_E", "doc_F"],
+                text_span_start=0,
+                text_span_end=25,
+                evidence_text="date contradiction",
                 confidence=0.8,
                 description="date contradiction",
             ),
@@ -84,21 +105,30 @@ def partial_report():
     """1 exact match (gold_001), 1 partial overlap (shares doc_C), 1 FP, misses gold_003."""
     return _make_report(
         [
-            DetectedIncoherence(
-                id="det_001",
-                evidence_references=["doc_A", "doc_B"],
+            DetectedContradiction(
+                scope="inter_doc",
+                document_references=["doc_A", "doc_B"],
+                text_span_start=0,
+                text_span_end=20,
+                evidence_text="speed mismatch",
                 confidence=0.9,
                 description="speed mismatch",
             ),
-            DetectedIncoherence(
-                id="det_002",
-                evidence_references=["doc_C", "doc_X"],
+            DetectedContradiction(
+                scope="inter_doc",
+                document_references=["doc_C", "doc_X"],
+                text_span_start=0,
+                text_span_end=15,
+                evidence_text="partial overlap with gold_002",
                 confidence=0.7,
                 description="partial overlap with gold_002",
             ),
-            DetectedIncoherence(
-                id="det_003",
-                evidence_references=["doc_Z", "doc_W"],
+            DetectedContradiction(
+                scope="inter_doc",
+                document_references=["doc_Z", "doc_W"],
+                text_span_start=0,
+                text_span_end=10,
+                evidence_text="false positive",
                 confidence=0.6,
                 description="false positive",
             ),

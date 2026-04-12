@@ -3,14 +3,14 @@
 import pytest
 
 from crossfire.evaluation.distractor_eval import score_distractors
-from crossfire.shared.schemas.incoherences import DistractorLabel
-from crossfire.shared.schemas.reports import DetectedIncoherence, PipelineReport
+from crossfire.shared.schemas.contradictions import DistractorLabel
+from crossfire.shared.schemas.reports import DetectedContradiction, PipelineReport
 
 
 def _make_report(detections):
     return PipelineReport(
         pipeline_mode="hybrid",
-        corpus_path="/test",
+        case_dir="/test",
         detections=detections,
         timestamp="2026-04-06T00:00:00",
     )
@@ -20,22 +20,19 @@ def _make_distractors():
     """3 distractor labels."""
     return [
         DistractorLabel(
-            id="dist_001",
             scope="intra_doc",
             document_references=["doc_A", "doc_B"],
             divergence_type="expert_opinion",
             description="Differing expert assessments",
         ),
         DistractorLabel(
-            id="dist_002",
-            scope="intra_corpus",
+            scope="inter_doc",
             document_references=["doc_C", "doc_D"],
-            divergence_type="methodology",
+            divergence_type="measurement_methodology",
             description="Different measurement methods",
         ),
         DistractorLabel(
-            id="dist_003",
-            scope="inter_corpus",
+            scope="inter_doc",
             document_references=["doc_E", "doc_F"],
             divergence_type="preliminary_vs_final",
             description="Preliminary vs final report",
@@ -44,27 +41,36 @@ def _make_distractors():
 
 
 class TestDistractorAllFlagged:
-    """All distractors incorrectly flagged as incoherences."""
+    """All distractors incorrectly flagged as contradictions."""
 
     def test_fpr_one(self):
         distractors = _make_distractors()
         report = _make_report(
             [
-                DetectedIncoherence(
-                    id="d1",
-                    evidence_references=["doc_A", "doc_B"],
+                DetectedContradiction(
+                    scope="intra_doc",
+                    document_references=["doc_A", "doc_B"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="flagged dist_001",
                     confidence=0.9,
                     description="flagged dist_001",
                 ),
-                DetectedIncoherence(
-                    id="d2",
-                    evidence_references=["doc_C", "doc_D"],
+                DetectedContradiction(
+                    scope="inter_doc",
+                    document_references=["doc_C", "doc_D"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="flagged dist_002",
                     confidence=0.8,
                     description="flagged dist_002",
                 ),
-                DetectedIncoherence(
-                    id="d3",
-                    evidence_references=["doc_E", "doc_F"],
+                DetectedContradiction(
+                    scope="inter_doc",
+                    document_references=["doc_E", "doc_F"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="flagged dist_003",
                     confidence=0.7,
                     description="flagged dist_003",
                 ),
@@ -81,9 +87,12 @@ class TestDistractorNoneFlagged:
         distractors = _make_distractors()
         report = _make_report(
             [
-                DetectedIncoherence(
-                    id="d1",
-                    evidence_references=["doc_X", "doc_Y"],
+                DetectedContradiction(
+                    scope="inter_doc",
+                    document_references=["doc_X", "doc_Y"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="unrelated detection",
                     confidence=0.9,
                     description="unrelated detection",
                 ),
@@ -100,9 +109,12 @@ class TestDistractorPartialFlagging:
         distractors = _make_distractors()
         report = _make_report(
             [
-                DetectedIncoherence(
-                    id="d1",
-                    evidence_references=["doc_A", "doc_B"],
+                DetectedContradiction(
+                    scope="intra_doc",
+                    document_references=["doc_A", "doc_B"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="flagged dist_001",
                     confidence=0.9,
                     description="flagged dist_001",
                 ),
@@ -115,9 +127,12 @@ class TestDistractorPartialFlagging:
         distractors = _make_distractors()
         report = _make_report(
             [
-                DetectedIncoherence(
-                    id="d1",
-                    evidence_references=["doc_B", "doc_A"],  # reversed
+                DetectedContradiction(
+                    scope="intra_doc",
+                    document_references=["doc_B", "doc_A"],  # reversed
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="flagged dist_001",
                     confidence=0.9,
                     description="flagged dist_001",
                 ),
@@ -138,9 +153,12 @@ class TestDistractorEdgeCases:
     def test_empty_distractors(self):
         report = _make_report(
             [
-                DetectedIncoherence(
-                    id="d1",
-                    evidence_references=["a", "b"],
+                DetectedContradiction(
+                    scope="intra_doc",
+                    document_references=["a", "b"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="orphan",
                     confidence=0.9,
                     description="orphan",
                 ),
@@ -158,9 +176,12 @@ class TestDistractorEdgeCases:
         distractors = _make_distractors()
         report = _make_report(
             [
-                DetectedIncoherence(
-                    id="d1",
-                    evidence_references=["doc_A", "doc_B"],
+                DetectedContradiction(
+                    scope="intra_doc",
+                    document_references=["doc_A", "doc_B"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="flagged",
                     confidence=0.9,
                     description="flagged",
                 ),
@@ -180,9 +201,12 @@ class TestDistractorDeterminism:
         distractors = _make_distractors()
         report = _make_report(
             [
-                DetectedIncoherence(
-                    id="d1",
-                    evidence_references=["doc_A", "doc_B"],
+                DetectedContradiction(
+                    scope="intra_doc",
+                    document_references=["doc_A", "doc_B"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="flagged",
                     confidence=0.9,
                     description="flagged",
                 ),

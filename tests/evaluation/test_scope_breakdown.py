@@ -3,14 +3,14 @@
 import pytest
 
 from crossfire.evaluation.scope_breakdown import score_by_scope
-from crossfire.shared.schemas.incoherences import IncoherenceLabel
-from crossfire.shared.schemas.reports import DetectedIncoherence, PipelineReport
+from crossfire.shared.schemas.contradictions import ContradictionLabel
+from crossfire.shared.schemas.reports import DetectedContradiction, PipelineReport
 
 
 def _make_report(detections):
     return PipelineReport(
         pipeline_mode="hybrid",
-        corpus_path="/test",
+        case_dir="/test",
         detections=detections,
         timestamp="2026-04-06T00:00:00",
     )
@@ -21,11 +21,8 @@ class TestScopePerfectMatch:
 
     def test_per_scope_perfect(self, sample_gold_labels, perfect_report):
         result = score_by_scope(perfect_report, sample_gold_labels)
-        assert len(result.per_scope) == 3
+        assert len(result.per_scope) == 2  # intra_doc, inter_doc
         for sr in result.per_scope:
-            # Each scope has 1 gold label matched by 1 detection out of 3 total
-            # Precision = 1/3 (1 match among 3 detections for this scope's gold)
-            # Recall = 1.0 (1 match / 1 gold in scope)
             assert sr.recall == 1.0
             assert sr.partial_credit_score == 1.0
 
@@ -39,19 +36,22 @@ class TestScopePerfectMatch:
         result = score_by_scope(perfect_report, sample_gold_labels)
         scope_names = [sr.scope for sr in result.per_scope]
         # Sorted alphabetically
-        assert scope_names == ["inter_corpus", "intra_corpus", "intra_doc"]
+        assert scope_names == ["inter_doc", "intra_doc"]
 
 
 class TestScopeIndependence:
     """Missing detections in one scope doesn't affect other scopes."""
 
     def test_one_scope_missed(self, sample_gold_labels):
-        # Only match intra_doc (doc_A, doc_B) — miss intra_corpus and inter_corpus
+        # Only match intra_doc (doc_A, doc_B) — miss inter_doc
         report = _make_report(
             [
-                DetectedIncoherence(
-                    id="det_001",
-                    evidence_references=["doc_A", "doc_B"],
+                DetectedContradiction(
+                    scope="intra_doc",
+                    document_references=["doc_A", "doc_B"],
+                    text_span_start=0,
+                    text_span_end=20,
+                    evidence_text="speed mismatch",
                     confidence=0.9,
                     description="speed mismatch",
                 ),
@@ -61,61 +61,70 @@ class TestScopeIndependence:
 
         scope_map = {sr.scope: sr for sr in result.per_scope}
 
-        # intra_doc: 1 detection matches 1 gold → recall=1.0, precision=1.0
+        # intra_doc: 1 detection matches 1 gold -> recall=1.0, precision=1.0
         assert scope_map["intra_doc"].recall == 1.0
         assert scope_map["intra_doc"].precision == 1.0
         assert scope_map["intra_doc"].f1 == 1.0
 
-        # intra_corpus: 0 matches / 1 gold → recall=0.0
-        assert scope_map["intra_corpus"].recall == 0.0
-        assert scope_map["intra_corpus"].f1 == 0.0
-
-        # inter_corpus: 0 matches / 1 gold → recall=0.0
-        assert scope_map["inter_corpus"].recall == 0.0
-        assert scope_map["inter_corpus"].f1 == 0.0
+        # inter_doc: 0 matches / 2 gold -> recall=0.0
+        assert scope_map["inter_doc"].recall == 0.0
+        assert scope_map["inter_doc"].f1 == 0.0
 
 
 class TestScopeAssignment:
     """Detection scope comes from gold label, not pipeline."""
 
     def test_detection_gets_gold_scope(self):
-        # Two gold labels: one intra_doc, one inter_corpus — same doc refs
-        # Detection matches both by doc refs, but greedy picks first
+        # Two gold labels: one intra_doc, one inter_doc — different doc refs
         gold = [
-            IncoherenceLabel(
-                id="g1",
+            ContradictionLabel(
                 scope="intra_doc",
                 mechanism="numeric_drift",
                 detectability="single_hop",
                 system_affinity="balanced",
+                difficulty="easy",
+                char_start=0,
+                char_end=10,
+                original_text="y",
+                modified_text="x",
+                rationale="test",
+                ground_truth=True,
                 document_references=["a", "b"],
-                modified_fact="x",
-                original_fact="y",
             ),
-            IncoherenceLabel(
-                id="g2",
-                scope="inter_corpus",
+            ContradictionLabel(
+                scope="inter_doc",
                 mechanism="entity_swap",
                 detectability="multi_hop",
                 system_affinity="graph_favoring",
+                difficulty="medium",
+                char_start=0,
+                char_end=10,
+                original_text="n",
+                modified_text="m",
+                rationale="test2",
+                ground_truth=True,
                 document_references=["c", "d"],
-                modified_fact="m",
-                original_fact="n",
             ),
         ]
         report = _make_report(
             [
-                DetectedIncoherence(
-                    id="d1",
-                    evidence_references=["a", "b"],
+                DetectedContradiction(
+                    scope="intra_doc",
+                    document_references=["a", "b"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="match intra_doc",
                     confidence=0.9,
                     description="match intra_doc",
                 ),
-                DetectedIncoherence(
-                    id="d2",
-                    evidence_references=["c", "d"],
+                DetectedContradiction(
+                    scope="inter_doc",
+                    document_references=["c", "d"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="match inter_doc",
                     confidence=0.8,
-                    description="match inter_corpus",
+                    description="match inter_doc",
                 ),
             ]
         )
@@ -124,7 +133,7 @@ class TestScopeAssignment:
 
         # Each scope has 1 gold matched by its detection
         assert scope_map["intra_doc"].recall == 1.0
-        assert scope_map["inter_corpus"].recall == 1.0
+        assert scope_map["inter_doc"].recall == 1.0
 
 
 class TestScopeEdgeCases:
@@ -132,7 +141,7 @@ class TestScopeEdgeCases:
 
     def test_empty_report(self, sample_gold_labels, empty_report):
         result = score_by_scope(empty_report, sample_gold_labels)
-        assert len(result.per_scope) == 3
+        assert len(result.per_scope) == 2  # intra_doc, inter_doc
         for sr in result.per_scope:
             assert sr.precision == 0.0
             assert sr.recall == 0.0
@@ -142,9 +151,12 @@ class TestScopeEdgeCases:
     def test_empty_gold(self):
         report = _make_report(
             [
-                DetectedIncoherence(
-                    id="d1",
-                    evidence_references=["a", "b"],
+                DetectedContradiction(
+                    scope="intra_doc",
+                    document_references=["a", "b"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="orphan",
                     confidence=0.9,
                     description="orphan",
                 ),
@@ -155,38 +167,52 @@ class TestScopeEdgeCases:
 
     def test_single_scope_all_gold(self):
         gold = [
-            IncoherenceLabel(
-                id="g1",
+            ContradictionLabel(
                 scope="intra_doc",
                 mechanism="numeric_drift",
                 detectability="single_hop",
                 system_affinity="balanced",
+                difficulty="easy",
+                char_start=0,
+                char_end=10,
+                original_text="y",
+                modified_text="x",
+                rationale="test",
+                ground_truth=True,
                 document_references=["a", "b"],
-                modified_fact="x",
-                original_fact="y",
             ),
-            IncoherenceLabel(
-                id="g2",
+            ContradictionLabel(
                 scope="intra_doc",
                 mechanism="entity_swap",
                 detectability="multi_hop",
                 system_affinity="graph_favoring",
+                difficulty="medium",
+                char_start=0,
+                char_end=10,
+                original_text="n",
+                modified_text="m",
+                rationale="test2",
+                ground_truth=True,
                 document_references=["c", "d"],
-                modified_fact="m",
-                original_fact="n",
             ),
         ]
         report = _make_report(
             [
-                DetectedIncoherence(
-                    id="d1",
-                    evidence_references=["a", "b"],
+                DetectedContradiction(
+                    scope="intra_doc",
+                    document_references=["a", "b"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="first",
                     confidence=0.9,
                     description="first",
                 ),
-                DetectedIncoherence(
-                    id="d2",
-                    evidence_references=["c", "d"],
+                DetectedContradiction(
+                    scope="intra_doc",
+                    document_references=["c", "d"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="second",
                     confidence=0.8,
                     description="second",
                 ),
@@ -204,18 +230,16 @@ class TestScopePartialCredit:
     """Partial credit scoring per scope."""
 
     def test_partial_overlap_per_scope(self, sample_gold_labels, partial_report):
-        # partial_report: det_001 matches gold_001 (intra_doc), det_002 partial with gold_002 (intra_corpus)
+        # partial_report: det_001 matches gold_001 (intra_doc), det_002 partial with gold_002 (inter_doc)
         result = score_by_scope(partial_report, sample_gold_labels)
         scope_map = {sr.scope: sr for sr in result.per_scope}
 
-        # intra_doc: exact match → PCS=1.0
+        # intra_doc: exact match -> PCS=1.0
         assert scope_map["intra_doc"].partial_credit_score == 1.0
 
-        # intra_corpus: partial overlap (doc_C shared) → Jaccard({doc_C,doc_X},{doc_C,doc_D})=1/3
-        assert scope_map["intra_corpus"].partial_credit_score == pytest.approx(1 / 3)
-
-        # inter_corpus: no match → PCS=0.0
-        assert scope_map["inter_corpus"].partial_credit_score == 0.0
+        # inter_doc: partial overlap (doc_C shared) -> Jaccard({doc_C,doc_X},{doc_C,doc_D})=1/3
+        # one match out of 2 gold labels in inter_doc scope
+        assert scope_map["inter_doc"].partial_credit_score == pytest.approx(1 / 3)
 
 
 class TestScopeDeterminism:

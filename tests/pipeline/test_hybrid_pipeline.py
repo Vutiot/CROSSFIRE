@@ -16,8 +16,8 @@ from crossfire.pipeline.strategies.null_strategies import (
     NullGraphStrategy,
     NullReasoningStrategy,
 )
-from crossfire.shared.schemas.entities import EntityGraph, EntityNode
-from crossfire.shared.schemas.reports import DetectedIncoherence, PipelineReport
+from crossfire.shared.schemas.knowledge_graph import KnowledgeGraphClaim
+from crossfire.shared.schemas.reports import DetectedContradiction, PipelineReport
 from crossfire.shared.seed_manager import SeedManager
 
 
@@ -29,15 +29,15 @@ from crossfire.shared.seed_manager import SeedManager
 class MockGraphStrategy(GraphStrategy):
     """Graph strategy that returns pre-configured detections."""
 
-    def __init__(self, detections=None, internal_graph=None):
+    def __init__(self, detections=None, internal_claims=None):
         self._detections = detections or []
-        self._internal_graph = internal_graph
+        self._internal_claims = internal_claims or []
 
-    def run(self, corpus_path):
+    def run(self, case_dir):
         return (
             GraphResult(
-                detected_incoherences=self._detections,
-                internal_graph=self._internal_graph,
+                detected_contradictions=self._detections,
+                internal_claims=self._internal_claims,
             ),
             None,
         )
@@ -49,21 +49,21 @@ class MockReasoningStrategy(ReasoningStrategy):
     def __init__(self, detections=None):
         self._detections = detections or []
 
-    def run(self, corpus_path):
-        return ReasoningResult(detected_incoherences=self._detections), None
+    def run(self, case_dir):
+        return ReasoningResult(detected_contradictions=self._detections), None
 
 
 class FailingGraphStrategy(GraphStrategy):
     """Graph strategy that always fails."""
 
-    def run(self, corpus_path):
+    def run(self, case_dir):
         return None, "Graph strategy failed intentionally"
 
 
 class FailingReasoningStrategy(ReasoningStrategy):
     """Reasoning strategy that always fails."""
 
-    def run(self, corpus_path):
+    def run(self, case_dir):
         return None, "Reasoning strategy failed intentionally"
 
 
@@ -75,28 +75,35 @@ class FailingReasoningStrategy(ReasoningStrategy):
 class TestResultModels:
     def test_graph_result_defaults(self):
         result = GraphResult()
-        assert result.detected_incoherences == []
-        assert result.internal_graph is None
+        assert result.detected_contradictions == []
+        assert result.internal_claims == []
 
     def test_graph_result_with_data(self, sample_detections):
-        graph = EntityGraph(
-            nodes=[EntityNode(id="e1", entity_type="company", canonical_name="AirCo")],
-        )
+        claims = [
+            KnowledgeGraphClaim(
+                claim_id="c1",
+                subject="engine",
+                predicate="failed_at",
+                object="14:32 UTC",
+                source_document="case_001_doc_000",
+                confidence=0.9,
+            ),
+        ]
         result = GraphResult(
-            detected_incoherences=sample_detections,
-            internal_graph=graph,
+            detected_contradictions=sample_detections,
+            internal_claims=claims,
         )
-        assert len(result.detected_incoherences) == 2
-        assert result.internal_graph is not None
-        assert len(result.internal_graph.nodes) == 1
+        assert len(result.detected_contradictions) == 2
+        assert len(result.internal_claims) == 1
+        assert result.internal_claims[0].claim_id == "c1"
 
     def test_reasoning_result_defaults(self):
         result = ReasoningResult()
-        assert result.detected_incoherences == []
+        assert result.detected_contradictions == []
 
     def test_reasoning_result_with_data(self, sample_detections):
-        result = ReasoningResult(detected_incoherences=sample_detections)
-        assert len(result.detected_incoherences) == 2
+        result = ReasoningResult(detected_contradictions=sample_detections)
+        assert len(result.detected_contradictions) == 2
 
 
 # ---------------------------------------------------------------------------
@@ -109,14 +116,14 @@ class TestNullStrategies:
         strategy = NullGraphStrategy()
         result, error = strategy.run("/any/path")
         assert error is None
-        assert result.detected_incoherences == []
-        assert result.internal_graph is None
+        assert result.detected_contradictions == []
+        assert result.internal_claims == []
 
     def test_null_reasoning_returns_empty(self):
         strategy = NullReasoningStrategy()
         result, error = strategy.run("/any/path")
         assert error is None
-        assert result.detected_incoherences == []
+        assert result.detected_contradictions == []
 
     def test_null_graph_is_graph_strategy(self):
         assert isinstance(NullGraphStrategy(), GraphStrategy)
@@ -138,7 +145,7 @@ class TestPipelineNullStrategies:
         assert isinstance(report, PipelineReport)
         assert report.detections == []
         assert report.pipeline_mode == "hybrid"
-        assert report.corpus_path == str(tmp_corpus_dir)
+        assert report.case_dir == str(tmp_corpus_dir)
         assert report.timestamp  # non-empty
 
     def test_report_validates_as_pydantic(self, tmp_corpus_dir, seed_manager):
@@ -192,7 +199,7 @@ class TestModeSwitching:
         )
         report, error = pipeline.run(str(tmp_corpus_dir))
         assert error is None
-        assert report.pipeline_mode == "graph-native"
+        assert report.pipeline_mode == "graph_native"
         assert len(report.detections) == 2
 
 
@@ -246,12 +253,21 @@ class TestCorpusErrors:
         assert "not a directory" in error
 
     def test_empty_dir_returns_error(self, tmp_path, seed_manager):
-        empty_dir = tmp_path / "empty"
+        empty_dir = tmp_path / "empty_case"
         empty_dir.mkdir()
         pipeline = HybridPipeline(NullGraphStrategy(), NullReasoningStrategy(), seed_manager)
         report, error = pipeline.run(str(empty_dir))
         assert report is None
-        assert "No subcorpus JSONL files" in error
+        assert "No anonymized_docs/" in error
+
+    def test_empty_anonymized_docs_returns_error(self, tmp_path, seed_manager):
+        case_dir = tmp_path / "case_empty"
+        case_dir.mkdir()
+        (case_dir / "anonymized_docs").mkdir()
+        pipeline = HybridPipeline(NullGraphStrategy(), NullReasoningStrategy(), seed_manager)
+        report, error = pipeline.run(str(case_dir))
+        assert report is None
+        assert "No JSONL files" in error
 
 
 # ---------------------------------------------------------------------------
@@ -261,11 +277,11 @@ class TestCorpusErrors:
 
 class TestAR11Boundary:
     def test_pipeline_ignores_gold_files(self, tmp_corpus_dir, seed_manager):
-        """Verify pipeline only reads subcorpus JSONL, not gold annotation files."""
+        """Verify pipeline only reads anonymized_docs JSONL, not gold annotation files."""
         # Create gold files that should NOT be accessed
-        (tmp_corpus_dir / "gold_incoherence_labels.json").write_text("[]")
+        (tmp_corpus_dir / "gold_contradiction_labels.json").write_text("[]")
         (tmp_corpus_dir / "gold_distractor_labels.json").write_text("[]")
-        (tmp_corpus_dir / "entity_graph.json").write_text("{}")
+        (tmp_corpus_dir / "knowledge_graph.json").write_text("{}")
         (tmp_corpus_dir / "metadata.json").write_text("{}")
 
         pipeline = HybridPipeline(NullGraphStrategy(), NullReasoningStrategy(), seed_manager)
@@ -282,17 +298,23 @@ class TestAR11Boundary:
 
 
 class TestMergeDeduplication:
-    def test_duplicate_evidence_refs_keep_higher_confidence(self, tmp_corpus_dir, seed_manager):
+    def test_duplicate_document_refs_keep_higher_confidence(self, tmp_corpus_dir, seed_manager):
         """When both strategies detect same document pair, keep higher confidence."""
-        low_conf = DetectedIncoherence(
-            id="graph_det",
-            evidence_references=["sc-0_doc_000", "sc-0_doc_001"],
+        low_conf = DetectedContradiction(
+            scope="inter_doc",
+            document_references=["case_001_doc_000", "case_001_doc_001"],
+            text_span_start=0,
+            text_span_end=10,
+            evidence_text="Graph detection evidence",
             confidence=0.5,
             description="Graph detection",
         )
-        high_conf = DetectedIncoherence(
-            id="reason_det",
-            evidence_references=["sc-0_doc_000", "sc-0_doc_001"],
+        high_conf = DetectedContradiction(
+            scope="inter_doc",
+            document_references=["case_001_doc_000", "case_001_doc_001"],
+            text_span_start=0,
+            text_span_end=10,
+            evidence_text="Reasoning detection evidence",
             confidence=0.9,
             description="Reasoning detection",
         )
@@ -307,12 +329,24 @@ class TestMergeDeduplication:
         assert report.detections[0].confidence == 0.9
 
     def test_distinct_refs_kept_separate(self, tmp_corpus_dir, seed_manager):
-        """Different evidence references are not deduplicated."""
-        det_a = DetectedIncoherence(
-            id="a", evidence_references=["sc-0_doc_000"], confidence=0.8, description="A"
+        """Different document references are not deduplicated."""
+        det_a = DetectedContradiction(
+            scope="intra_doc",
+            document_references=["case_001_doc_000"],
+            text_span_start=0,
+            text_span_end=10,
+            evidence_text="Evidence A",
+            confidence=0.8,
+            description="A",
         )
-        det_b = DetectedIncoherence(
-            id="b", evidence_references=["sc-1_doc_000"], confidence=0.7, description="B"
+        det_b = DetectedContradiction(
+            scope="intra_doc",
+            document_references=["case_001_doc_002"],
+            text_span_start=0,
+            text_span_end=10,
+            evidence_text="Evidence B",
+            confidence=0.7,
+            description="B",
         )
         pipeline = HybridPipeline(
             MockGraphStrategy(detections=[det_a]),
@@ -347,6 +381,5 @@ class TestDeterminism:
         for r in results[1:]:
             assert len(r.detections) == len(results[0].detections)
             for d1, d2 in zip(results[0].detections, r.detections):
-                assert d1.id == d2.id
-                assert d1.evidence_references == d2.evidence_references
+                assert d1.document_references == d2.document_references
                 assert d1.confidence == d2.confidence

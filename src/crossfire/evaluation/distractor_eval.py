@@ -2,8 +2,8 @@
 
 from loguru import logger
 
+from crossfire.shared.schemas.contradictions import DistractorLabel
 from crossfire.shared.schemas.evaluation import EvaluationResult
-from crossfire.shared.schemas.incoherences import DistractorLabel
 from crossfire.shared.schemas.reports import PipelineReport
 
 
@@ -13,11 +13,11 @@ def score_distractors(
 ) -> EvaluationResult:
     """Compute false positive rate on distractor labels.
 
-    A distractor is "flagged" when any detection's evidence_references
+    A distractor is "flagged" when any detection's document_references
     exactly match the distractor's document_references.
 
     FP rate = flagged distractors / total distractors.
-    Reported separately from incoherence detection accuracy.
+    Reported separately from contradiction detection accuracy.
     """
     n_distractors = len(distractor_labels)
     n_detections = len(report.detections)
@@ -38,7 +38,7 @@ def score_distractors(
     # Build detection reference index
     det_ref_set: set[tuple[str, ...]] = set()
     for detection in report.detections:
-        key = tuple(sorted(detection.evidence_references))
+        key = tuple(sorted(detection.document_references))
         det_ref_set.add(key)
 
     # Count flagged distractors

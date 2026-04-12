@@ -179,7 +179,7 @@ class TestAggregatePerStage:
                 0.6,
                 0.685,
                 stages=[
-                    StageResult(stage="scanning", precision=0.9, recall=0.8, f1=0.845),
+                    StageResult(stage="claim_extraction", precision=0.9, recall=0.8, f1=0.845),
                 ],
             ),
             _make_result(
@@ -187,13 +187,13 @@ class TestAggregatePerStage:
                 0.6,
                 0.685,
                 stages=[
-                    StageResult(stage="scanning", precision=0.7, recall=0.6, f1=0.645),
+                    StageResult(stage="claim_extraction", precision=0.7, recall=0.6, f1=0.645),
                 ],
             ),
         ]
         agg = aggregate_seeds(results)
-        assert "scanning" in agg.per_stage
-        assert agg.per_stage["scanning"]["precision"].mean == pytest.approx(0.8)
+        assert "claim_extraction" in agg.per_stage
+        assert agg.per_stage["claim_extraction"]["precision"].mean == pytest.approx(0.8)
 
 
 class TestCompareModes:

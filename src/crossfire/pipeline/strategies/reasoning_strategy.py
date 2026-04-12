@@ -13,7 +13,7 @@ from loguru import logger
 
 from crossfire.pipeline.strategies.base import ReasoningResult, ReasoningStrategy
 from crossfire.shared.schemas.corpus import Document
-from crossfire.shared.schemas.reports import DetectedIncoherence
+from crossfire.shared.schemas.reports import DetectedContradiction
 from crossfire.shared.seed_manager import SeedManager
 
 _EXTRACT_CLAIMS_PROMPT = """\
@@ -66,14 +66,14 @@ class LLMReasoningStrategy(ReasoningStrategy):
         self.seed_manager = seed_manager
         self.model = model
 
-    def run(self, corpus_path: str) -> tuple[ReasoningResult | None, str | None]:
+    def run(self, case_dir: str) -> tuple[ReasoningResult | None, str | None]:
         """Extract claims from all documents, then cross-check for contradictions."""
-        corpus_dir = Path(corpus_path)
-        if not corpus_dir.is_dir():
-            return None, f"Corpus path is not a directory: {corpus_path}"
+        case_path = Path(case_dir)
+        if not case_path.is_dir():
+            return None, f"Case directory is not a directory: {case_dir}"
 
         # Load documents
-        documents = self._load_documents(corpus_dir)
+        documents = self._load_documents(case_path)
         if not documents:
             return ReasoningResult(), None
 
@@ -84,10 +84,10 @@ class LLMReasoningStrategy(ReasoningStrategy):
         for doc in documents:
             claims, error = self._extract_claims(doc)
             if error:
-                logger.warning(f"Claim extraction failed for {doc.id}: {error}")
+                logger.warning(f"Claim extraction failed for {doc.document_id}: {error}")
                 continue
             if claims:
-                claims_by_doc[doc.id] = claims
+                claims_by_doc[doc.document_id] = claims
 
         logger.info(
             f"Extracted claims from {len(claims_by_doc)}/{len(documents)} documents"
@@ -100,11 +100,14 @@ class LLMReasoningStrategy(ReasoningStrategy):
         detections = self._cross_check_all(claims_by_doc)
 
         logger.info(f"Reasoning strategy complete: {len(detections)} contradictions found")
-        return ReasoningResult(detected_incoherences=detections), None
+        return ReasoningResult(detected_contradictions=detections), None
 
-    def _load_documents(self, corpus_dir: Path) -> list[Document]:
+    def _load_documents(self, case_path: Path) -> list[Document]:
         docs: list[Document] = []
-        for jsonl_path in sorted(corpus_dir.glob("subcorpus_*.jsonl")):
+        anon_dir = case_path / "anonymized_docs"
+        if not anon_dir.is_dir():
+            return docs
+        for jsonl_path in sorted(anon_dir.glob("*.jsonl")):
             text = jsonl_path.read_text(encoding="utf-8").strip()
             for line in text.split("\n"):
                 if line:
@@ -113,7 +116,7 @@ class LLMReasoningStrategy(ReasoningStrategy):
 
     def _extract_claims(self, doc: Document) -> tuple[list[str] | None, str | None]:
         prompt = _EXTRACT_CLAIMS_PROMPT.format(
-            doc_id=doc.id,
+            doc_id=doc.document_id,
             doc_type=doc.document_type,
             content=doc.content,
         )
@@ -131,10 +134,9 @@ class LLMReasoningStrategy(ReasoningStrategy):
 
     def _cross_check_all(
         self, claims_by_doc: dict[str, list[str]]
-    ) -> list[DetectedIncoherence]:
+    ) -> list[DetectedContradiction]:
         doc_ids = sorted(claims_by_doc.keys())
-        detections: list[DetectedIncoherence] = []
-        det_idx = 0
+        detections: list[DetectedContradiction] = []
 
         for doc_a_id, doc_b_id in combinations(doc_ids, 2):
             contradictions, error = self._check_pair(
@@ -151,14 +153,16 @@ class LLMReasoningStrategy(ReasoningStrategy):
 
             for c in contradictions:
                 detections.append(
-                    DetectedIncoherence(
-                        id=f"reasoning_{det_idx:04d}",
-                        evidence_references=[doc_a_id, doc_b_id],
+                    DetectedContradiction(
+                        scope="inter_doc",
+                        document_references=[doc_a_id, doc_b_id],
+                        text_span_start=0,
+                        text_span_end=0,
+                        evidence_text=c.get("description", "Contradiction detected"),
                         confidence=c.get("confidence", 0.5),
                         description=c.get("description", "Contradiction detected"),
                     )
                 )
-                det_idx += 1
 
         return detections
 

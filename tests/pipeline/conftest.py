@@ -1,12 +1,11 @@
 """Shared fixtures for pipeline tests."""
 
-import json
 from pathlib import Path
 
 import pytest
 
 from crossfire.shared.schemas.corpus import Document
-from crossfire.shared.schemas.reports import DetectedIncoherence
+from crossfire.shared.schemas.reports import DetectedContradiction
 from crossfire.shared.seed_manager import SeedManager
 
 
@@ -17,47 +16,53 @@ def seed_manager():
 
 @pytest.fixture
 def tmp_corpus_dir(tmp_path):
-    """Create a minimal test corpus with 2 subcorpora x 2 docs each."""
-    corpus_dir = tmp_path / "corpus"
+    """Create a minimal test corpus with anonymized_docs/ containing 2 JSONL files."""
+    corpus_dir = tmp_path / "case_001"
     corpus_dir.mkdir()
+    anon_dir = corpus_dir / "anonymized_docs"
+    anon_dir.mkdir()
 
-    docs_by_subcorpus = {
-        "sc-0": [
+    docs_by_file = {
+        "batch_0.jsonl": [
             Document(
-                id="sc-0_doc_000",
+                document_id="case_001_doc_000",
+                source="ntsb",
                 document_type="investigation_report",
-                subcorpus_id="sc-0",
-                reliability_signal=0.9,
+                source_case_id="case_001",
+                scope_classification="primary",
                 content="The aircraft experienced engine failure at 14:32 UTC.",
             ),
             Document(
-                id="sc-0_doc_001",
+                document_id="case_001_doc_001",
+                source="ntsb",
                 document_type="witness_testimony",
-                subcorpus_id="sc-0",
-                reliability_signal=0.7,
+                source_case_id="case_001",
+                scope_classification="primary",
                 content="I saw smoke coming from the left engine around 2:30 PM.",
             ),
         ],
-        "sc-1": [
+        "batch_1.jsonl": [
             Document(
-                id="sc-1_doc_000",
-                document_type="technical_analysis",
-                subcorpus_id="sc-1",
-                reliability_signal=0.95,
+                document_id="case_001_doc_002",
+                source="ntsb",
+                document_type="meteorology_report",
+                source_case_id="case_001",
+                scope_classification="secondary",
                 content="Metallurgical analysis revealed fatigue cracking in turbine blade.",
             ),
             Document(
-                id="sc-1_doc_001",
-                document_type="regulatory_filing",
-                subcorpus_id="sc-1",
-                reliability_signal=0.85,
-                content="FAA Airworthiness Directive 2025-NE-042 issued for engine model.",
+                document_id="case_001_doc_003",
+                source="ntsb",
+                document_type="maintenance_record",
+                source_case_id="case_001",
+                scope_classification="secondary",
+                content="Maintenance log shows engine overhaul completed 2025-01-15.",
             ),
         ],
     }
 
-    for sc_id, docs in docs_by_subcorpus.items():
-        jsonl_path = corpus_dir / f"subcorpus_{sc_id}.jsonl"
+    for filename, docs in docs_by_file.items():
+        jsonl_path = anon_dir / filename
         jsonl_path.write_text(
             "\n".join(d.model_dump_json() for d in docs) + "\n",
             encoding="utf-8",
@@ -68,17 +73,23 @@ def tmp_corpus_dir(tmp_path):
 
 @pytest.fixture
 def sample_detections():
-    """Pre-built DetectedIncoherence list for mock strategies."""
+    """Pre-built DetectedContradiction list for mock strategies."""
     return [
-        DetectedIncoherence(
-            id="det_001",
-            evidence_references=["sc-0_doc_000", "sc-0_doc_001"],
+        DetectedContradiction(
+            scope="inter_doc",
+            document_references=["case_001_doc_000", "case_001_doc_001"],
+            text_span_start=0,
+            text_span_end=50,
+            evidence_text="Engine failure at 14:32 UTC vs 2:30 PM timing",
             confidence=0.85,
             description="Temporal contradiction: 14:32 UTC vs 2:30 PM timing discrepancy",
         ),
-        DetectedIncoherence(
-            id="det_002",
-            evidence_references=["sc-1_doc_000", "sc-1_doc_001"],
+        DetectedContradiction(
+            scope="inter_doc",
+            document_references=["case_001_doc_002", "case_001_doc_003"],
+            text_span_start=0,
+            text_span_end=40,
+            evidence_text="Fatigue cracking vs recent overhaul",
             confidence=0.72,
             description="Entity reference mismatch in turbine component identification",
         ),

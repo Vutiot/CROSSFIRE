@@ -4,18 +4,18 @@ from loguru import logger
 
 from crossfire.evaluation.binary_scorer import score_binary
 from crossfire.evaluation.partial_scorer import score_partial
+from crossfire.shared.schemas.contradictions import ContradictionLabel
 from crossfire.shared.schemas.evaluation import EvaluationResult, ScopeResult
-from crossfire.shared.schemas.incoherences import IncoherenceLabel
 from crossfire.shared.schemas.reports import PipelineReport
 
 
 def score_by_scope(
     report: PipelineReport,
-    gold_labels: list[IncoherenceLabel],
+    gold_labels: list[ContradictionLabel],
 ) -> EvaluationResult:
     """Score pipeline detections with per-scope breakdown.
 
-    Groups gold labels by scope (intra_doc, intra_corpus, inter_corpus) and
+    Groups gold labels by scope (intra_doc, inter_doc) and
     runs both binary and partial credit scoring independently per scope.
     Each scope is evaluated against ALL detections but only that scope's
     gold labels, ensuring complete independence between scopes.

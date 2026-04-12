@@ -14,44 +14,44 @@ from crossfire.shared.seed_manager import SeedManager
 def _mock_llm(prompt, model="gpt-4o-mini", temperature=0, dry_run=False):
     """Mock LLM for entity extraction and anomaly detection."""
     if "Extract all entities" in prompt:
-        if "sc-0_doc_000" in prompt:
+        if "case_001_doc_000" in prompt:
             return json.dumps({
-                "entities": [
-                    {"name": "Boeing 737-800", "type": "equipment", "attributes": {"flight_hours": "12000"}},
-                    {"name": "Engine #1", "type": "component", "attributes": {"status": "failed"}},
+                "claims": [
+                    {"subject": "Boeing 737-800", "predicate": "has_flight_hours", "object": "12000", "confidence": 0.9},
+                    {"subject": "Engine #1", "predicate": "status", "object": "failed", "confidence": 0.95},
                 ],
                 "relationships": [
                     {"source": "Engine #1", "target": "Boeing 737-800", "type": "installed_on"},
                 ],
             }), None
-        if "sc-0_doc_001" in prompt:
+        if "case_001_doc_001" in prompt:
             return json.dumps({
-                "entities": [
-                    {"name": "Boeing 737-800", "type": "equipment", "attributes": {"flight_hours": "8000"}},
+                "claims": [
+                    {"subject": "Boeing 737-800", "predicate": "has_flight_hours", "object": "8000", "confidence": 0.85},
                 ],
                 "relationships": [],
             }), None
-        if "sc-1_doc_000" in prompt:
+        if "case_001_doc_002" in prompt:
             return json.dumps({
-                "entities": [
-                    {"name": "Turbine blade", "type": "component", "attributes": {}},
+                "claims": [
+                    {"subject": "Turbine blade", "predicate": "condition", "object": "fatigue cracking", "confidence": 0.9},
                 ],
                 "relationships": [],
             }), None
-        if "sc-1_doc_001" in prompt:
+        if "case_001_doc_003" in prompt:
             return json.dumps({
-                "entities": [
-                    {"name": "FAA", "type": "organization", "attributes": {}},
+                "claims": [
+                    {"subject": "Engine", "predicate": "maintenance", "object": "overhaul completed", "confidence": 0.8},
                 ],
                 "relationships": [],
             }), None
-        return json.dumps({"entities": [], "relationships": []}), None
+        return json.dumps({"claims": [], "relationships": []}), None
 
     if "Analyze the following knowledge graph" in prompt:
         return json.dumps([{
             "entity_or_relationship": "Boeing 737-800 flight_hours",
-            "doc_a": "sc-0_doc_000",
-            "doc_b": "sc-0_doc_001",
+            "doc_a": "case_001_doc_000",
+            "doc_b": "case_001_doc_001",
             "confidence": 0.88,
             "description": "Conflicting flight hours: 12000 vs 8000",
         }]), None
@@ -69,40 +69,39 @@ class TestEntityExtraction:
         result, error = strategy.run(str(tmp_corpus_dir))
         assert error is None
         assert result is not None
-        assert result.internal_graph is not None
-        assert len(result.internal_graph.nodes) > 0
+        assert len(result.internal_claims) > 0
 
-    def test_builds_edges(self, tmp_corpus_dir, seed_manager):
+    def test_builds_claims(self, tmp_corpus_dir, seed_manager):
         strategy = LLMGraphStrategy(llm=_mock_llm, seed_manager=seed_manager)
         result, _ = strategy.run(str(tmp_corpus_dir))
-        assert len(result.internal_graph.edges) >= 1
+        assert len(result.internal_claims) >= 4
 
 
 class TestAnomalyDetection:
     def test_detects_anomalies(self, tmp_corpus_dir, seed_manager):
         strategy = LLMGraphStrategy(llm=_mock_llm, seed_manager=seed_manager)
         result, _ = strategy.run(str(tmp_corpus_dir))
-        assert len(result.detected_incoherences) >= 1
+        assert len(result.detected_contradictions) >= 1
 
     def test_detection_has_valid_fields(self, tmp_corpus_dir, seed_manager):
         strategy = LLMGraphStrategy(llm=_mock_llm, seed_manager=seed_manager)
         result, _ = strategy.run(str(tmp_corpus_dir))
-        for det in result.detected_incoherences:
-            assert det.id.startswith("graph_")
-            assert len(det.evidence_references) >= 1
+        for det in result.detected_contradictions:
+            assert len(det.document_references) >= 1
             assert 0.0 <= det.confidence <= 1.0
             assert det.description
 
 
-class TestInternalGraphExposure:
-    def test_exposes_internal_graph_for_layer1_eval(self, tmp_corpus_dir, seed_manager):
+class TestInternalClaimsExposure:
+    def test_exposes_internal_claims_for_layer1_eval(self, tmp_corpus_dir, seed_manager):
         strategy = LLMGraphStrategy(llm=_mock_llm, seed_manager=seed_manager)
         result, _ = strategy.run(str(tmp_corpus_dir))
-        graph = result.internal_graph
-        assert graph is not None
-        # Should be convertible to NetworkX
-        nx_graph = graph.to_networkx()
-        assert nx_graph.number_of_nodes() > 0
+        assert len(result.internal_claims) > 0
+        # Claims should have proper structure
+        for claim in result.internal_claims:
+            assert claim.claim_id
+            assert claim.subject
+            assert claim.source_document
 
 
 class TestGraphNativeModeIntegration:
@@ -112,7 +111,7 @@ class TestGraphNativeModeIntegration:
         report, error = pipeline.run(str(tmp_corpus_dir))
         assert error is None
         assert isinstance(report, PipelineReport)
-        assert report.pipeline_mode == "graph-native"
+        assert report.pipeline_mode == "graph_native"
         assert len(report.detections) >= 1
 
 
@@ -122,7 +121,8 @@ class TestErrorHandling:
         result, error = strategy.run(str(tmp_corpus_dir))
         assert error is None
         assert result is not None
-        assert result.internal_graph is not None
+        # With all LLM calls failing, claims list should be empty
+        assert result.internal_claims == []
 
     def test_nonexistent_path_returns_error(self, seed_manager):
         strategy = LLMGraphStrategy(llm=_mock_llm, seed_manager=seed_manager)
@@ -131,9 +131,10 @@ class TestErrorHandling:
         assert "not a directory" in error
 
     def test_empty_corpus_returns_empty(self, tmp_path, seed_manager):
-        empty_dir = tmp_path / "empty"
+        empty_dir = tmp_path / "empty_case"
         empty_dir.mkdir()
+        (empty_dir / "anonymized_docs").mkdir()
         strategy = LLMGraphStrategy(llm=_mock_llm, seed_manager=seed_manager)
         result, error = strategy.run(str(empty_dir))
         assert error is None
-        assert result.detected_incoherences == []
+        assert result.detected_contradictions == []

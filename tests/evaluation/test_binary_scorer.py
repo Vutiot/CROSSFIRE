@@ -3,14 +3,14 @@
 import pytest
 
 from crossfire.evaluation.binary_scorer import score_binary
-from crossfire.shared.schemas.incoherences import IncoherenceLabel
-from crossfire.shared.schemas.reports import DetectedIncoherence, PipelineReport
+from crossfire.shared.schemas.contradictions import ContradictionLabel
+from crossfire.shared.schemas.reports import DetectedContradiction, PipelineReport
 
 
 def _make_report(detections):
     return PipelineReport(
         pipeline_mode="hybrid",
-        corpus_path="/test",
+        case_dir="/test",
         detections=detections,
         timestamp="2026-04-06T00:00:00",
     )
@@ -36,9 +36,12 @@ class TestBinaryNoOverlap:
     def test_no_overlap_all_zeros(self, sample_gold_labels):
         report = _make_report(
             [
-                DetectedIncoherence(
-                    id="det_x",
-                    evidence_references=["doc_X", "doc_Y"],
+                DetectedContradiction(
+                    scope="inter_doc",
+                    document_references=["doc_X", "doc_Y"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="unrelated",
                     confidence=0.9,
                     description="unrelated",
                 ),
@@ -89,9 +92,12 @@ class TestBinaryDocRefOrder:
     def test_reversed_refs_still_match(self, sample_gold_labels):
         report = _make_report(
             [
-                DetectedIncoherence(
-                    id="det_001",
-                    evidence_references=["doc_B", "doc_A"],  # reversed
+                DetectedContradiction(
+                    scope="inter_doc",
+                    document_references=["doc_B", "doc_A"],  # reversed
+                    text_span_start=0,
+                    text_span_end=20,
+                    evidence_text="speed mismatch",
                     confidence=0.9,
                     description="speed mismatch",
                 ),
@@ -107,28 +113,38 @@ class TestBinaryOneToOne:
 
     def test_duplicate_detections_count_once(self):
         gold = [
-            IncoherenceLabel(
-                id="g1",
+            ContradictionLabel(
                 scope="intra_doc",
                 mechanism="numeric_drift",
                 detectability="single_hop",
                 system_affinity="balanced",
+                difficulty="easy",
+                char_start=0,
+                char_end=10,
+                original_text="y",
+                modified_text="x",
+                rationale="test",
+                ground_truth=True,
                 document_references=["a", "b"],
-                modified_fact="x",
-                original_fact="y",
             ),
         ]
         report = _make_report(
             [
-                DetectedIncoherence(
-                    id="d1",
-                    evidence_references=["a", "b"],
+                DetectedContradiction(
+                    scope="inter_doc",
+                    document_references=["a", "b"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="first",
                     confidence=0.9,
                     description="first",
                 ),
-                DetectedIncoherence(
-                    id="d2",
-                    evidence_references=["a", "b"],
+                DetectedContradiction(
+                    scope="inter_doc",
+                    document_references=["a", "b"],
+                    text_span_start=0,
+                    text_span_end=10,
+                    evidence_text="duplicate",
                     confidence=0.8,
                     description="duplicate",
                 ),

@@ -15,12 +15,12 @@ from crossfire.pipeline.strategies.base import (
 class NullGraphStrategy(GraphStrategy):
     """Returns empty graph results. Used for agentic mode (FR18)."""
 
-    def run(self, corpus_path: str) -> tuple[GraphResult, None]:
+    def run(self, case_dir: str) -> tuple[GraphResult, None]:
         return GraphResult(), None
 
 
 class NullReasoningStrategy(ReasoningStrategy):
     """Returns empty reasoning results. Used for graph-native mode (FR19)."""
 
-    def run(self, corpus_path: str) -> tuple[ReasoningResult, None]:
+    def run(self, case_dir: str) -> tuple[ReasoningResult, None]:
         return ReasoningResult(), None

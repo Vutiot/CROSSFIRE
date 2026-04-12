@@ -3,20 +3,20 @@
 from loguru import logger
 
 from crossfire.evaluation.binary_scorer import score_binary
+from crossfire.shared.schemas.contradictions import ContradictionLabel
 from crossfire.shared.schemas.evaluation import EvaluationResult, StageResult
-from crossfire.shared.schemas.incoherences import IncoherenceLabel
 from crossfire.shared.schemas.reports import PipelineReport
 
 DETECTABILITY_TO_STAGE: dict[str, str] = {
-    "single_hop": "scanning",
-    "multi_hop": "graph_construction",
-    "entity_resolution_dependent": "entity_resolution",
+    "single_hop": "claim_extraction",
+    "multi_hop": "cross_reference_identification",
+    "entity_resolution_dependent": "contradiction_detection",
 }
 
 
 def score_by_stage(
     report: PipelineReport,
-    gold_labels: list[IncoherenceLabel],
+    gold_labels: list[ContradictionLabel],
 ) -> EvaluationResult:
     """Score pipeline detections with per-stage breakdown.
 

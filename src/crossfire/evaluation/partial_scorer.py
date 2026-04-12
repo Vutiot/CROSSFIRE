@@ -2,8 +2,8 @@
 
 from loguru import logger
 
+from crossfire.shared.schemas.contradictions import ContradictionLabel
 from crossfire.shared.schemas.evaluation import EvaluationResult
-from crossfire.shared.schemas.incoherences import IncoherenceLabel
 from crossfire.shared.schemas.reports import PipelineReport
 
 
@@ -19,7 +19,7 @@ def _jaccard_similarity(refs_a: list[str], refs_b: list[str]) -> float:
 
 def score_partial(
     report: PipelineReport,
-    gold_labels: list[IncoherenceLabel],
+    gold_labels: list[ContradictionLabel],
 ) -> EvaluationResult:
     """Score pipeline detections with partial credit for localization proximity.
 
@@ -85,13 +85,13 @@ def score_partial(
     for d_idx, detection in enumerate(report.detections):
         for g_idx, gold in enumerate(gold_labels):
             sim = _jaccard_similarity(
-                detection.evidence_references, gold.document_references
+                detection.document_references, gold.document_references
             )
             if sim > 0:
-                # Tie-breaking: detection id then gold id (deterministic)
-                pairs.append((sim, d_idx, g_idx, detection.id, gold.id))
+                # Tie-breaking: detection description then gold rationale (deterministic)
+                pairs.append((sim, d_idx, g_idx, detection.description, gold.rationale))
 
-    # Sort descending by similarity, then by det id, then by gold id for determinism
+    # Sort descending by similarity, then by det desc, then by gold rationale for determinism
     pairs.sort(key=lambda p: (-p[0], p[3], p[4]))
 
     # Greedy one-to-one assignment
