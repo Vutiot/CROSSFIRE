@@ -1,0 +1,30 @@
+CASE-ANON-001 Pilot Flight Times
+Flight-School-B
+Complex Night X-C Instr
+Dual Solo Dual Solo Dual Solo Dual Solo
+Private 3 4.8 2 3
+Instrument 6.7 31.7
+Commercial 21.4 4.3 7.6 7.2 24.9 8
+Multi 21 5.1 4.1 5.7
+42.4 0 12.4 7.6 22.8 26.9 48.4 0
+20 49.7
+Frasca 142
+EASA Glass Glass P Glass Glass IFR
+FNPT II FNPT2 Warrior Arrow Warrior Seminole Cadet Warrior
+Dual Solo Dual Solo Dual Solo Dual Solo Dual Solo Dual Solo Dual Solo Dual Solo
+Private 10.4 36.8 5.8
+Instrument 3.5 36.5
+Commercial 19.9 3.5 7.4 21.4 1.6 5.9 23 45.2
+Multi 1.5 5.9 21
+24.9 0 9.4 0 43.9 0 21.4 0 1.6 0 21 0 16.3 0 59.8 51
+Training device 34.3
+Dual 164
+Solo 51
+Airline-A Flight-School-B & Airline-A
+Dual Solo total aircraft time 246
+172M 4.8 single engine 225
+172N 3.6 single engine glass 89.5
+172S G1000 1.4 21.2 Solo 80.6
+1.4 29.6 Single engine solo 80.6
+all glass 110.5
+CASE-ANON-001 Pilot Flight Times

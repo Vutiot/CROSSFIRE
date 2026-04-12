@@ -1,0 +1,35 @@
+[
+  {
+    "label_index": 0,
+    "passed": true,
+    "rejection_reason": null,
+    "diff_char_start": 1592,
+    "diff_char_end": 1593,
+    "diff_original_text": "0",
+    "diff_modified_text": "1",
+    "unintended_modification_count": 0,
+    "has_agent_discrepancy": true
+  },
+  {
+    "label_index": 1,
+    "passed": true,
+    "rejection_reason": null,
+    "diff_char_start": 965,
+    "diff_char_end": 966,
+    "diff_original_text": "2",
+    "diff_modified_text": "1",
+    "unintended_modification_count": 0,
+    "has_agent_discrepancy": true
+  },
+  {
+    "label_index": 2,
+    "passed": false,
+    "rejection_reason": "no diff detected between original and modified document",
+    "diff_char_start": null,
+    "diff_char_end": null,
+    "diff_original_text": null,
+    "diff_modified_text": null,
+    "unintended_modification_count": 0,
+    "has_agent_discrepancy": false
+  }
+]

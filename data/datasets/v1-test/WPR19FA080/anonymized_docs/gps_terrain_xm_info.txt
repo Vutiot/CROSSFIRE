@@ -1,0 +1,47 @@
+From:
+el
+Cc:
+Subject: Re: AERA 660 XM? (N-XXXX, CASE-ANON-001)
+Date: Wednesday, August 12, 2020 1:27:00 AM
+[CAUTION] This email originated from outside of the organization. Do not click any links or open attachments
+unless you recognize the sender and know the content is safe.
+Dear Investigator-1,
+GPS Aera 660 in N-XXXX was not connected to any XM weather receiver, it was only wired to
+audiopanel to relay warning messages to intercom/pilot headset. Warnings/messages were
+enabled for terrain or airspace, and user selected track points and crew was getting them via
+audio input to audiopanel and their headset. However terrain and other warning features of
+Aera 660 are not to be used as primary source of information, they have only secondary
+information character - Aera 660 is not certified TAWS system.
+See chapter 4.2 (page 119) of Garmin Aera 660 manual for terrain warning details:
+http://static.garmin.com/pumac/190-02017-20_h.pdf
+With regards
+Witness-4
+Dne 12.08.2020 v 2:05 Investigator-1 napsal(a):
+Hi Witness-3
+Can you please tell me whether the Garmin AERA 660 in N-XXXX was set up to receive
+XM communications (especially weather information)?
+Investigator-1
+Air Safety Investigator
+NTSB Western Pacific Region
+M:
+CONFIDENTIALITY NOTICE - THIS E-MAIL TRANSMISSION MAY
+CONTAIN INFORMATION THAT IS PRIVILEGED, CONFIDENTIAL,
+PROPRIETARY, SUBJECT TO COPYRIGHT, AND/OR EXEMPT FROM
+DISCLOSURE UNDER APPLICABLE LAW. IT IS FOR THE USE OF
+INTENDED RECIPIENTS ONLY. If you are not an intended recipient of this
+message, please notify the original sender immediately by forwarding what you
+received and then delete all copies of the correspondence and attachments from
+your computer system. Any use, distribution, or disclosure of this message by
+unintended recipients is not authorized and may be unlawful.
+--
+
+Witness-4
+Quality & Safety manager
+EASA CZ/ATO-14 / AMO CZ.145.0087 / CAMO CZ.MG0089
+FAA Part 141 & 61 [REDACTED-CERT]
+@ |
+Airline-A
+Professional Flight Training Center
+Prague | Brno | Location-9 | Los Angeles | New Delhi
+Check our socials:
+Bez viru.

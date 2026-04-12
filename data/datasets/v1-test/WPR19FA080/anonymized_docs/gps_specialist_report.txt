@@ -1,0 +1,74 @@
+NATIONAL TRANSPORTATION SAFETY BOARD
+Vehicle Recorder Division
+Washington, D.C. 20594
+March 14, 2020
+Global Positioning System Device
+Specialist's Factual Report
+By Specialist-1
+1. EVENT SUMMARY
+Location: Location-1, Region-West
+Date: March 24, 2019
+Aircraft: Cessna 172M
+Registration: N-XXXX
+Operator: Airline-A
+NTSB Number: CASE-ANON-001
+On March 24, 2019, about 1815 Pacific standard time, a Cessna 172M airplane,
+N-XXXX, impacted mountainous terrain near Location-1, Region-West while on a
+cross-country flight to Airport-Bravo, Location-3, Region-West. The
+commercial pilot and his non pilot-rated passenger received fatal injuries, and the airplane
+was destroyed. The airplane was registered to Airline-A, and
+was being operated as a 14 Code of Federal Regulations Part 91 personal flight.
+Undetermined night meteorological conditions existed at the impact location at the time
+of the accident. The accident flight leg had originated from Airport-Alpha,
+Location-2, Region-West.
+2. GROUP
+A group was not convened.
+3. DETAILS OF INVESTIGATION
+The National Transportation Safety Board (NTSB) Vehicle Recorder Division received
+the following Global Positioning System (GPS) Device:
+Device Manufacturer/Model: Garmin Aera 660
+Serial Number: 4NN007572
+3.1. Device Description
+Garmin Aera 660 is a battery-powered portable multi-function display and GPS receiver
+with a sunlight readable 5-inch diagonal touchscreen operation display. The unit includes
+a built-in Jeppesen database and can receive XM satellite radio for flight information
+CASE-ANON-001
+Global Positioning System Device Factual Report, Page 1
+
+including NEXRAD radar, lightning, METARs, TAFs, and TFRs. The unit can also perform
+and store weight and balance calculations. A built-in AOPA Airport Directory and Safe
+Taxi Airport Diagrams are included for selected fields. The unit stores date, route-of-flight,
+and flight-time information for up to 50 flights. The unit has 23 different map ranges
+available, from 200 feet to 800 nm. A flight record is triggered when groundspeed exceeds
+30 knots and altitude exceeds 250 feet and ends when groundspeed drops below 30
+knots for 10 minutes or more. A detailed track log - including latitude, longitude, date,
+time, and GPS altitude information for an unspecified number of points - is stored within
+the unit whenever the receiver has a lock on the GPS navigation signal. Position is
+updated within the track log as a function of time or distance moved, depending on how
+the unit has been configured. Once the current track log memory becomes full, new
+information either overwrites the oldest information or recording stops, depending on how
+the unit is configured. The current track log can be saved to long-term memory and 15
+saved track logs can be maintained in addition to the current track log. Track log storage
+may be activated or de-activated at user discretion. All recorded data is stored in non-
+volatile memory (NVM). The unit contains hardware and software permitting the
+download of recorded waypoint, route, and track log information to a PC via a built-in USB
+port. An internal button-battery is used to provide back-up power to the internal memory
+and real-time clock during those periods when main power is removed.
+3.2. Data Recovery
+Upon arrival at the Vehicle Recorder Division, an exterior examination revealed the device
+was severely damaged as shown in Figure 1. The device would not power on and was
+disassembled for further examination.
+The Garmin Aera 660 stores recorded data on an eMMC FLASH memory device
+mounted to the main printed circuit board (PCB), as shown in Figure 2. The memory
+device was removed from the PCB using a hot air re-work station. A binary raw-data
+readout of the device was obtained using an eMMC Reader. This raw-data file was
+decoded using a software program in the laboratory. The converted data contained
+around 80 flight sessions, however, none of them was relevant to the accident. Thus, no
+accident related data were recovered from the device.
+CASE-ANON-001
+Global Positioning System Device Factual Report, Page 2
+
+Figure 1: Front and back of Garmin Aera 660 as received.
+Figure 2: The Garmin Aera 660 main circuit board and chipped-off flash memory.
+CASE-ANON-001
+Global Positioning System Device Factual Report, Page 3

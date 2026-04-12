@@ -1,0 +1,103 @@
+From:
+Subject: Re: N-XXXX Dispatch? (CASE-ANON-001)
+Date: Saturday, March 28, 2019 1:00:59 PM
+Attachments: [see referenced documents]
+
+Good afternoon Investigator-1,
+
+Please see information as requested:
+
+A. Pilot arrived to Airline-A located at Airport-Charlie at around 2:45pm on Tuesday afternoon.
+N-XXXX was reserved for him 12pm - end of the day on Tuesday 3/24 followed by second day
+reservation on Wednesday 3/25. With expected return at around 1pm on 3/25. Please see enclosed
+text messages between Witness-3 and Pilot-1 about the reservation. Airplane was scheduled to stay
+overnight at Airport-Bravo before this reservation. Pilot did several overnight trips to Location-3 like
+this before.
+
+B. Airplane dispatch ticket was printed to him at around 3:15pm by Witness-3. Airplane departed at
+around 3:30pm. We do not have exact time available as Witness-3 was serving other customers at that
+time. We believe that exact time could be restored from communication records or radar records in the
+area. Airplane was equipped with GTX-327 C mode SSR and pilot was usually using flight following.
+Please see copy of dispatch ticket for flight on 3/24.
+
+C. Previous flight on N-XXXX was conducted by same person (Pilot-1) on 3/22 with 2.0hrs TT.
+There were no flights or engine runups in between these two flights. We do have electronical dispatch
+system that tracks Hobbs + Tach readings. Any missing reading would be highlighted by the system in red.
+
+D. Please see attached all fuelings from the previous month. (Further records available upon request)
+
+We have restored following time-frame for aircraft operation 7 days prior the accident:
+
+3/18/2019
+Maintenance: 0.2 hobbs engine runup for maintenance (50 hours inspection, SB 366c, Attitude indicator replacement)
+Flights:
+5.4 Tach / 6.4 Hobbs Pilot-2, aircraft dispatched 11:09am, returned 10:50pm (all day reservation with multiple flights)
+Refuelings:
+12:12pm 31.79gal refueled at Airport-Charlie
+2:38pm 6.78gal refueled at Airport-Charlie
+5:19pm 16.10gal refueled at Airport-Golf
+10:45pm 20.04gal refueled at Airport-Charlie
+
+3/19/2019
+Flights:
+1.4 Tach / 2.0 Hobbs Pilot-2, aircraft dispatched 4:26pm, returned 7:10pm
+Refuelings:
+11:20am 19.06gal refueled at Airport-Charlie
+
+3/20/2019
+Flights:
+3.8 Tach / 4.6 Hobbs Pilot-2, aircraft dispatched 8:06am, returned 2:21pm
+Refuelings:
+9:24am 1.71gal refueled at Airport-Charlie
+1:44pm 23.1gal refueled at Airport-Charlie
+
+3/21/2019 - NO FLIGHTS OR FUELING
+
+3/22/2019
+Flights:
+1.3 Tach / 2.0 Hobbs Pilot-1, aircraft dispatched 11:27am, returned 2:40pm
+Refuelings:
+2:34pm 12.5gal refueled at Airport-Charlie
+
+3/23/2019 - NO FLIGHTS OR FUELING
+
+3/24/2019
+Flights:
+Accident flight Pilot-1, aircraft dispatched 3:15pm
+Refuelings:
+NO REFUELINGS
+
+E. Customers at Airport-Charlie are using self-service pump provided by Fuel-Vendor-1. Each airplane has
+unique fuel card provided by Fuel-Vendor-1 which is used during refuelings for payment. Airline-A then
+receives an invoice with total sum at the end of the week and pays for the fuel with a check. After each
+refueling, pump prints receipt with N-registration, date and time, price and amount of fuel. This receipt
+is given to dispatcher at the end of the flight with paper dispatch ticket. Typically airplane is being
+refueled after the flight to full tanks as a courtesy to other customers unless we receive information from
+pilots that they do not want full tanks for performance or W&B reasons. If customers are late or not able
+to refuel after their flight, they should write remaining fuel on the paper dispatch ticket.
+
+Each airplane has its dipstick available in the airplane to crosscheck the readings with onboard fuel
+indicators. If there is a need to refuel, customers taxi the airplane to self service refueling station and
+they refuel the airplane.
+
+If there is a refueling at a different airport, pilots are responsible for checking the fuel after landing and
+they have to refuel as needed. Fuel receipt should be returned to dispatcher after the flight and customers
+are being reimbursed on their account for purchased fuel.
+
+Regards
+Witness-4
+
+Dne 28.03.2019 v 13:40 Investigator-1 napsal(a):
+Witness-3/Witness-4
+Can you please send me:
+A. any info and documentation re when the pilot picked up the airplane, and when he was scheduled to return it?
+B. Any information re the time on the airplane at the time it was released to him
+C. Contact information for the person who flew it before him
+D. Recent Fueling records
+E. Airline-A fueling and aircraft return policies and procedures
+Thanks
+Investigator-1
+Air Safety Investigator
+NTSB Western Pacific Region
+M: [REDACTED]
+Fax: [REDACTED]

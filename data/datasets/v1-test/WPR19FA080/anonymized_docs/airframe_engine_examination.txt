@@ -1,0 +1,92 @@
+NATIONAL TRANSPORTATION SAFETY BOARD
+Office of Aviation Safety
+Western Pacific Region
+AIRFRAME AND ENGINE EXAMINATION
+CASE-ANON-001
+Accident Date: March 24, 2019
+Exam Date: March 27, 2019
+
+A. ACCIDENT
+Location: Location-1, Region-West
+Date: March 24, 2019
+Aircraft: Cessna 172M, N-XXXX, Serial # 1726139
+NTSB IIC: Investigator-1
+
+B. EXAMINATION PARTICIPANTS:
+Investigator-1  (NTSB, Location-10)
+Investigator-3  (Lycoming Engines, Location-12)
+Investigator-2  (Textron Aviation, Location-11)
+
+C. SUMMARY
+The wreckage was removed from the mountainside and transported to Facility-1 in
+Location-8, Region-West on March 26, 2019. Detailed examination of the airframe and engine was conducted
+by the NTSB and parties on March 27, 2019 at Facility-1. No evidence of preimpact
+mechanical malfunction, or any pre-or post-impact fire was noted during the examination.
+
+D. AIRFRAME EXAMINATION
+
+1.0 General
+On-scene information and overall damage patterns were consistent with the airplane
+impacting a very steep (approx. 70 degrees from the horizontal) terrain in an upright,
+approximately wings- and pitch- level attitude.
+All primary components were located at the impact site.
+
+2.0 Fuselage
+The cockpit/cabin area was severely disrupted due to crushing and tearing.
+The engine was pushed aft into the cabin.
+The cabin floor, starting at the firewall, was crushed aft to the main gear attach points.
+
+3.0 Wings
+The outboard 3 ft of the left wing leading edge was crushed diagonally aft.
+Both fuel caps remained securely fastened in their respective filler necks.
+
+4.0 Flight Controls
+All flight controls were present and attached to their respective aerodynamic surfaces.
+Control cable continuity was established for the ailerons, elevators, pitch trim, and rudder.
+The pitch trim actuator was found in a position corresponding to tab 5 degrees TEU.
+The flaps were fully retracted; the flap position indicator registered 40 degrees (full down).
+
+5.0 Controls and Instruments
+The tachometer registered 6967.2 hours, and the needle pointed to about 1,600 rpm.
+The altimeter Kollsman window was set to 29.82.
+The attitude indicator was laid over to the right (left wing down attitude).
+Fuel selector set to the right tank.
+ELT: ACK Technologies model E-01, serial number 033768 - armed but had not activated.
+Battery due date was 12/31/24.
+A flight school document found in the airplane indicated tachometer registered 6966 hrs when
+the airplane was released to the pilot.
+F. ENGINE EXAMINATION
+
+1.0 General
+The powerplant was a Lycoming O-320 E2D series engine; four cylinder; air cooled, direct
+drive, horizontally opposed, normally aspirated (carburetor), rated at 150hp @ 2700rpm.
+Serial # L-44359-27A
+Most recent overhaul 9/13/18 (264.8 hours since overhaul)
+Most recent annual 11/2/18
+Visual examination of the engine revealed no evidence of pre-impact catastrophic mechanical malfunction or fire.
+
+2.0 Engine Internal and Drive Train
+The crankshaft and attached connecting rods were free of heat distress.
+The camshaft was intact and each of the cam lobes exhibited its characteristic elliptical shape.
+There was no evidence of lubrication deprivation.
+No signatures or conditions observed consistent with any pre-impact catastrophic mechanical malfunction.
+
+3.0 Fuel System
+The fuel system utilizes gravity fed fuel; there is no engine driven fuel pump.
+The carburetor was fracture-separated from the engine.
+The foam filter element remained securely attached to the airbox bracket; no pre-impact obstruction to airflow.
+
+4.0 Exhaust System
+No oil residue observed in the exhaust system gas path.
+Maintenance records indicate the muffler and heat shroud were replaced at engine overhaul.
+Entry dated 10/15/2018 @ Tach 6702.7.
+
+G. PROPELLER EXAMINATION
+The metal two bladed fixed pitch propeller was fracture-separated from the crankshaft flange.
+The fracture surfaces exhibited signatures consistent with overload due to the absorption of rotational energy.
+The propeller blades displayed varying degrees of leading edge gouging, torsional twisting,
+chordwise striations across the cambered surface, and trailing edge S bending.
+The signatures were consistent with the absorption of rotational forces applied at the
+crankshaft at the time of impact.
+
+[44 photographs of airframe, engine, and propeller components as in the original examination report]

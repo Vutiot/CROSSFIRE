@@ -1,0 +1,180 @@
+NATIONAL TRANSPORTATION SAFETY BOARD
+Office of Aviation Safety
+Western Pacific Region
+SITE and ON-SCENE INFORMATION (Rev B)
+NTSB Accident: CASE-ANON-001
+Accident Date: March 24, 2019
+Examination Dates: March 25 & 26, 2019
+This document contains 34 embedded images
+Images courtesy NTSB, Textron Aviation (Cessna), and Riverside County Sheriffs Office
+
+A. ACCIDENT
+Location: Location-1, Region-West
+Date: March 24, 2019
+Aircraft: Cessna 172M, N-XXXX, Serial # 1726139
+NTSB IIC: Investigator-1
+B. EXAMINATION PARTICIPANTS:
+Investigator-1                     Inspector-1
+Air Safety Investigator            Air Safety Inspector
+National Transportation Safety Board   Federal Aviation Administration
+Location-10, Region-Northwest      Location-13, Region-West
+
+Inspector-2                        Investigator-2
+Air Safety Inspector               Air Safety Investigator
+Federal Aviation Administration    Textron Aviation
+Location-13, Region-West           Location-11, Region-Midwest
+C. SUMMARY
+On March 24, 2019, about 1815 Pacific Standard time, a Cessna 172M airplane, N-XXXX,
+impacted mountainous terrain near Location-1, Region-West while on a cross-country flight
+to Airport-Bravo, Location-3, Region-West. The commercial pilot and his non pilot-
+rated passenger received fatal injuries, and the airplane was destroyed. The airplane was
+registered to Airline-A, and was being operated as a 14 Code of
+Federal Regulations Part 91 personal flight. Undetermined night meteorological conditions
+existed at the impact location at the time of the accident. The accident flight leg had originated
+from Airport-Alpha, Location-2, Region-West.
+No evidence consistent with in-flight fire or in-flight structural failure was observed.
+D. RESPONSE and SITE LOCATION INFORMATION
+1.0 Background and Response
+The pilot was conducting a VFR flight to Airport-Bravo from the LA Basin
+He was using FAA flight following services and had been assigned a discrete beacon code
+The FAA controller was in voice communications with the pilot, and was receiving the
+secondary radar returns from the airplane
+The pilot advised the controller that he planned to follow a road and remain at an altitude of
+3,500 ft (msl) for the entire flight
+
+Voice communications and radar returns from the airplane were lost about 1815
+An FAA ALNOT was issued at 1843
+Riverside Sheriffs Department personnel located the wreckage in the evening of March 24
+Their initial assessment was that the pilot, believed to be the sole person on board, was
+fatally injured
+FAA inspectors from Riverside FSDO arrived in the morning of March 25
+NTSB IIC arrived the afternoon of March 25
+The Textron Aviation representative arrived the morning of March 26
+2.0 Location, Site Condition, and Ground Scar Information
+The accident site coordinates were 34.02574 N, -116.58775 W
+The accident site elevation was about 2,465 ft, above and west of the road that the pilot was
+believed to be following
+The wreckage was about 800 ft west of the north-south road, which was a paved 4-lane
+highway (CA Rte 62) that was situated in the river/wash valley that formed a pass through a
+small mountain range
+The wreckage was on steep, unstable terrain about 300 ft above the road
+The wreckage was observed to be precariously situated on the mountain slope, which limited
+the extent of the examination of the wreckage in situ
+Only a very few items (lower cowl, windscreen fragments, left and right navigation light lens
+fragments, right-side cabin door, and one MLG tire) were separated from the main wreckage
+o  The lower cowl and the nav light lens fragments were found about 30 ft above the
+main wreckage; this is considered to be the impact point
+o  The terrain at the impact point and between that and the wreckage was steeper than
+the terrain where the wreckage came to rest
+o  The observed ground scars (disturbed soil and rocks) were consistent with the airplane
+then falling/sliding down to its final resting location
+o  The relative locations of the left and right lens fragments were congruent with the
+airplane being upright when it struck the mountain face
+The forward section of the airplane was upright, and partially covered with soil/rocks that
+had slid downhill
+The fuselage was severely crushed and torn, and the wings and empennage were severely
+torn and deformed
+The approximate orientation of the wreckage was on a heading of approximately 230 degrees True
+o  The mountain impact face and wreckage distribution were consistent with this also
+being the approximate ground track at the time of impact
+There was no indication of fire, either inflight or post impact
+First responders reported that the airplane was "covered in fuel" when they arrived at the
+wreckage (about 0050 March 25)
+
+E. WRECKAGE INFORMATION
+1.0 In-Situ Examination
+The engine and propeller were nearly completely obscured by the wreckage and/or terrain
+debris that slid downhill onto the wreckage
+The engine appeared to be upright
+The cabin was crushed, torn and deformed, and unrecognizable except by its location
+The MLG carry-through structure, including the two MLG legs, was inverted and translated
+up and forward from its normal location
+The aft fuselage was folded over, up, and forward of its normal position; it was also rotated
+about 90 degrees (top surface to airplane left) about its longitudinal axis
+The horizontal stabilizer was mostly intact, but mostly separated from the aft fuselage
+Both elevators remained attached to the horizontal stabilizer, and the pitch trim tab remained
+attached to the right elevator
+The fin remained attached to the aft fuselage, and the rudder remained attached to the fin
+Both wings were upright, but crushed, torn, and swept aft about 45 degrees
+Both wings had LE aft crushing continuously across their full spans
+Both ailerons remained attached to the wings
+Both flaps remained attached to their wings, and appeared to be fully retracted
+Both fuel caps were observed installed securely in their respective filler necks
+All flight control surface balance weights appeared to be present
+Multiple control cables were visible, but their routing and continuity could not be determined
+due to the level of damage
+Only a portion of one individual, a male, was able to be seen at first; the total number of
+occupants was initially unable to be determined, due to the condition of the wreckage
+Some personal items and luggage was able to be accessed from the wreckage while it was on
+the hillside
+o  The items included the reported pilot's wallet with his pilot and medical certificates
+o  A small piece of hand luggage appeared to belong to a female, and when it was
+opened, it contained female clothing and accessories
+The luggage indications prompted further attempts to locate additional victims in the
+wreckage, and another person (likely female) was detected
+2.0 Post-Hillside Recovery
+The condition and location of the wreckage warranted its extraction by helicopter
+The helicopter crew packaged and recovered the wreckage to a clearing about a mile from
+the accident site
+The two (and only) victims were recovered from the wreckage
+The wreckage was partially examined and photographed and loaded onto a truck for transport
+to a secure facility where it could be examined in detail
+The all metal fixed pitch two blade propeller was fracture-separated from the engine at its
+attach flange
+
+The onboard clock was stopped at 0115:47 (consistent with being set to UTC time,
+equivalent to 1815:47 PST)
+The artificial horizon was fracture-separated from the instrument panel
+o  It was date stamped January 2, 2019
+No other useful instrument or control indications were able to be made at this time
+
+F. ACCIDENT LOCATION IMAGES
+CA-62
+Approximate Flight Track
+I-10
+Figure 1 - Overview of Route and Accident Location
+
+CA-62
+Figure 2 - Closer View of Site Location (pilot reportedly following CA-62)
+
+CA-62
+Figure 3 - Site Relative to Road and Terrain
+
+N-XXXX
+Figure 4 - Site Location as Seen from Road
+
+N-XXXX
+Figure 5 - Impact Location
+
+N-XXXX
+Figure 6 - Wreckage on Steep Terrain
+
+G. WRECKAGE IMAGES
+Figure 7 - Wreckage Overview
+Figure 8 - Wreckage Overview
+Figure 9 - Right-Side Door
+Figure 10 - Top View of Wreckage
+Figure 11 - Wreckage On-Site
+Figure 12 - Cockpit/Cabin Area
+Figure 13 - Right Side View
+Figure 14 - Right Wing and Fuel Cap
+Figure 15 - Left Wing LE Crush Damage
+Figure 16 - Right Wing LE Crush Damage
+Figure 17 - Upper Fuselage
+Figure 18 - Cockpit/Cabin
+Figure 19 - Horizontal Stabilizers and Elevators
+Figure 20 - Aft Right View of Cabin
+Figure 21 - Main Wreckage Aerial Extraction
+Figure 22 - Front View
+Figure 23 - Front View
+Figure 24 - Fin and Rudder
+Figure 25 - Propeller Flange and Engine
+Figure 26 - Engine
+Figure 27 - Artificial Horizon
+Figure 28 - Artificial Horizon
+Figure 29 - Pilot-Side Instrument Panel
+Figure 30 - Clock Indicating Accident Time
+Figure 31 - Propeller
+Figure 32 - Blade Deformation
+Figure 33 - Blade Deformation
+Figure 34 - Pilot's Certificate

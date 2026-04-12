@@ -1,0 +1,18 @@
+{
+  "case_count": 1,
+  "document_count": 24,
+  "contradictions_per_scope": {
+    "intra_doc": 2,
+    "inter_doc": 0
+  },
+  "distractor_count": 2,
+  "mechanism_distribution": {
+    "numeric_drift": 0.5,
+    "temporal_contradiction": 0.5
+  },
+  "detectability_distribution": {
+    "single_hop": 1.0
+  },
+  "version": "v1-test",
+  "base_version": null
+}

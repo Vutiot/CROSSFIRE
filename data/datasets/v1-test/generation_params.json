@@ -1,0 +1,12 @@
+{
+  "version_id": "v1-test",
+  "base_version": null,
+  "contradiction_rate_intra_doc": 0.0,
+  "contradiction_rate_inter_doc": 0.0,
+  "distractor_ratio": 0.0,
+  "mechanism_distribution": {},
+  "difficulty_distribution": {},
+  "affinity_distribution": {},
+  "extraction_model": "claude-sonnet-4-20250514",
+  "reasoning_model": "claude-opus-4-20250514"
+}

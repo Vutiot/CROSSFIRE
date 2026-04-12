@@ -1,0 +1,67 @@
+EVENT Time of Leg Delta Total Delta leg fuel leg Fuel Total Fuel Rmng
+Day Time Time rate (gph) (g) Burn Fuel
+Engine Start Airport-Charlie 1530
+Depart Airport-Charlie 1540 10 10 1 1 37
+Climb to 3000ft 1543 4 14 1 2 36
+1 GA at Airport-Alpha 1647 1:03 1:17 8 (+1g/a) 9 11 27
+Land Airport-Alpha (incl 1 GA) 1653 6 1:23 1 12 26
+Engine Start Airport-Alpha 1523 0
+Depart Airport-Alpha 1527 4 4 1 13 25
+Climb to 3500ft 1531 4 8 1 14 24
+Accident 1615 44 52 8 6 20 18
+
+Airport-Charlie TAKEOFF Wt and CG
+Mains Full
+Item Station Weight Max Wt Moment
+EW 41.36 1455.5 2300 60199.48
+Ft seat Pilot 37 140 5180
+Ft Seat Pax 37 0 0
+Rear seat 1 73 0
+Rear seat 2 73 0 0
+Baggage Compt 95 30 181.5 2850
+0
+Wing Main Fuel 47.8 228 38g 10898.4
+0
+TOTAL 42.69 1853.5 79127.88
+
+Airport-Alpha TAKEOFF Wt and CG
+Mains down 12 gallons (72 lbs)
+Item Station Weight Max Wt Moment
+EW 41.36 1455.5 2300 60199.48
+Ft seat Pilot 37 140 5180
+Ft Seat Pax 37 100 3700
+Rear seat 1 73 20 1460
+Rear seat 2 73 0 0
+Baggage Compt 95 30 181.5 2850
+0
+Wing Main Fuel 47.8 156 38g 7456.8
+0
+TOTAL 42.52 1901.5 80846.28
+
+Accident Wt and CG
+Mains Down 20 gallons (120 lbs)
+Item Station Weight Max Wt Moment
+EW 41.36 1455.5 2300 60199.48
+Ft seat Pilot 37 140 5180
+Ft Seat Pax 37 100 3700
+Rear seat 1 73 20 1460
+Rear seat 2 73 0 0
+Baggage Compt 95 30 181.5 2850
+0
+Wing Main Fuel 47.8 108 38g 5162.4
+TOTAL 42.38 1853.5 78551.88
+
+CASE-ANON-001
+Estimated N-XXXX W&B
+Estimated Airport-Charlie Takeoff Values
+WEIGHT CG Moment
+(Lbs) (inches) (in-lbs)
+1853.5 42.69 79127.88
+Estimated Airport-Alpha Takeoff Values
+WEIGHT CG Moment
+(Lbs) (inches) (in-lbs)
+1901.5 42.52 80846.28
+Estimated Accident Values
+WEIGHT CG Moment
+(Lbs) (inches) (in-lbs)
+1853.5 42.38 78551.88

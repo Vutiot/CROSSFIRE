@@ -1,0 +1,225 @@
+{
+  "case_id": "WPR19FA080",
+  "entries": [
+    {
+      "domain": "aircraft",
+      "original_value": "Cessna 172M",
+      "anonymized_value": "Cessna 172M"
+    },
+    {
+      "domain": "aircraft",
+      "original_value": "N20556",
+      "anonymized_value": "N-XXXX"
+    },
+    {
+      "domain": "aircraft",
+      "original_value": "Serial number 1726139",
+      "anonymized_value": "Serial number 1726139"
+    },
+    {
+      "domain": "aircraft",
+      "original_value": "Lycoming O-320 E2D engine, serial L-44359-27A",
+      "anonymized_value": "Lycoming O-320 E2D engine, serial L-44359-27A"
+    },
+    {
+      "domain": "aircraft",
+      "original_value": "Garmin Aera 660 (portable GPS, serial 4NN007572)",
+      "anonymized_value": "Garmin Aera 660 (portable GPS, serial 4NN007572)"
+    },
+    {
+      "domain": "operator",
+      "original_value": "Flying Academy Los Angeles",
+      "anonymized_value": "Airline-A"
+    },
+    {
+      "domain": "operator",
+      "original_value": "SILVER EXPRESS CO dba FLYING ACADEMY",
+      "anonymized_value": "Airline-A Parent"
+    },
+    {
+      "domain": "operator",
+      "original_value": "FlightSafety Academy",
+      "anonymized_value": "Flight-School-B"
+    },
+    {
+      "domain": "operator",
+      "original_value": "Corona Air ventures",
+      "anonymized_value": "Fuel-Vendor-1"
+    },
+    {
+      "domain": "airport",
+      "original_value": "San Gabriel Valley Airport (EMT / KEMT)",
+      "anonymized_value": "Airport-Alpha"
+    },
+    {
+      "domain": "airport",
+      "original_value": "North Las Vegas Airport (VGT / KVGT)",
+      "anonymized_value": "Airport-Bravo"
+    },
+    {
+      "domain": "airport",
+      "original_value": "Corona Municipal Airport (KAJO / AJO)",
+      "anonymized_value": "Airport-Charlie"
+    },
+    {
+      "domain": "airport",
+      "original_value": "Palm Springs International Airport (KPSP)",
+      "anonymized_value": "Airport-Delta"
+    },
+    {
+      "domain": "airport",
+      "original_value": "Big Bear City Airport (KL35)",
+      "anonymized_value": "Airport-Echo"
+    },
+    {
+      "domain": "airport",
+      "original_value": "Twentynine Palms SELF Airport (KNXP)",
+      "anonymized_value": "Airport-Foxtrot"
+    },
+    {
+      "domain": "airport",
+      "original_value": "Las Vegas, McCarran International Airport (KLAS)",
+      "anonymized_value": "Airport-Golf"
+    },
+    {
+      "domain": "airport",
+      "original_value": "Riverside Municipal Airport (KRAL)",
+      "anonymized_value": "Airport-Hotel"
+    },
+    {
+      "domain": "airport",
+      "original_value": "Banning Airport",
+      "anonymized_value": "Airport-India"
+    },
+    {
+      "domain": "regulation",
+      "original_value": "14 CFR Part 91",
+      "anonymized_value": "14 CFR Part 91"
+    },
+    {
+      "domain": "regulation",
+      "original_value": "14 CFR Part 61",
+      "anonymized_value": "14 CFR Part 61"
+    },
+    {
+      "domain": "regulation",
+      "original_value": "14 CFR Part 141",
+      "anonymized_value": "14 CFR Part 141"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Jungho Ju (pilot)",
+      "anonymized_value": "Pilot-1"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Park, Jaeryung R. (passenger)",
+      "anonymized_value": "Passenger-1"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Matthew Stewart (CFI)",
+      "anonymized_value": "CFI-1"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Shinwoo Yun (pilot/renter)",
+      "anonymized_value": "Pilot-2"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Veronika Medeova (Airline-A base manager Airport-Charlie)",
+      "anonymized_value": "Witness-3"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Petr Kratochvil (Airline-A safety manager)",
+      "anonymized_value": "Witness-4"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Radim Olbrecht (President Airline-A Parent)",
+      "anonymized_value": "Executive-1"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Michael Huhn (NTSB air safety investigator)",
+      "anonymized_value": "Investigator-1"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Henry Soderlund (Textron Aviation investigator)",
+      "anonymized_value": "Investigator-2"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Mark Platt (Lycoming Engines investigator)",
+      "anonymized_value": "Investigator-3"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Don Eick (NWS senior meteorologist)",
+      "anonymized_value": "Meteorologist-1"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "W. Deven Chen (NTSB GPS specialist)",
+      "anonymized_value": "Specialist-1"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Russell Lewis, Ph.D. (CAMI toxicologist)",
+      "anonymized_value": "Toxicologist-1"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Robert Michaelson (FAA inspector)",
+      "anonymized_value": "Inspector-1"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Rick Hernandez (FAA inspector)",
+      "anonymized_value": "Inspector-2"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Beom-Kyu Lee (witness, friend of pilot)",
+      "anonymized_value": "Witness-1"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "Raymond Murillo (eyewitness at Airport-Alpha)",
+      "anonymized_value": "Witness-2"
+    },
+    {
+      "domain": "personnel_role",
+      "original_value": "James Pocrass (attorney)",
+      "anonymized_value": "Attorney-1"
+    },
+    {
+      "domain": "temporal_bound",
+      "original_value": "Accident date: February 5, 2019",
+      "anonymized_value": "Accident date: March 24, 2019"
+    },
+    {
+      "domain": "temporal_bound",
+      "original_value": "Investigation close date: approximately June 2020",
+      "anonymized_value": "Investigation close date: approximately August 2020"
+    },
+    {
+      "domain": "temporal_bound",
+      "original_value": "Accident time: 1815 PST (0215 UTC March 6, 2019)",
+      "anonymized_value": "Accident time: 1815 PST (0215 UTC March 25, 2019)"
+    },
+    {
+      "domain": "accident_location",
+      "original_value": "Desert Hot Springs, California",
+      "anonymized_value": "Location-1, Region-West"
+    },
+    {
+      "domain": "flight_number",
+      "original_value": "Air Canada 1048 (referenced flight, not accident flight)",
+      "anonymized_value": "Flight-ANON-001"
+    }
+  ]
+}

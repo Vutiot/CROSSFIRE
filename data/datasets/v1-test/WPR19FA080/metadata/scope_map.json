@@ -1,0 +1,173 @@
+{
+  "case_id": "WPR19FA080",
+  "entries": [
+    {
+      "document_id": "airframe_engine_examination",
+      "scope_classification": "wreckage_distribution, fracture_surfaces, material_analysis, engine_teardown, propeller_rotor, fuel_system",
+      "document_type": "structures_powerplants_analysis",
+      "claim_count": 64,
+      "description": "Combined airframe and engine examination conducted at Air Transport facility in Phoenix. Covers cockpit instruments, engine internal inspection, propeller blade damage, control cable continuity, and fuel system."
+    },
+    {
+      "document_id": "annotated_flight_track",
+      "scope_classification": "radar_returns, timestamps, communications",
+      "document_type": "atc_supplemental",
+      "claim_count": 11,
+      "description": "FAA radar tracking data annotations showing accident flight path including approach to Airport-Alpha, Banning Pass transit, north turn toward accident site, and radar data gaps."
+    },
+    {
+      "document_id": "atc_transcript",
+      "scope_classification": "communications, radar_returns, timestamps",
+      "document_type": "atc_transcript",
+      "claim_count": 40,
+      "description": "ATC communications transcript from 0123 to 0225 UTC covering departure from Airport-Alpha, SOCAL approach contacts, handoffs between HEM and SPG sectors, loss of radar contact, and air-to-air contact attempt via Flight-ANON-001."
+    },
+    {
+      "document_id": "destination_weather",
+      "scope_classification": "metar_taf, weather_modeling, visibility_conditions",
+      "document_type": "meteorology_supplemental",
+      "claim_count": 23,
+      "description": "METAR and TAF data for Airport-Golf and Airport-Bravo (destination) around the expected arrival time window showing strong southwest winds gusting 24-32 knots."
+    },
+    {
+      "document_id": "dispatch_email",
+      "scope_classification": "crew_decisions, dispatch, flight_planning, sops",
+      "document_type": "ops_group_report",
+      "claim_count": 18,
+      "description": "Email response from Airline-A regarding dispatch procedures, Pilot-1 arrival and departure times at Airport-Charlie and Airport-Alpha, fuel history, and dispatch system tracking."
+    },
+    {
+      "document_id": "dispatch_sheet",
+      "scope_classification": "dispatch, flight_planning, sops",
+      "document_type": "ops_group_report",
+      "claim_count": 24,
+      "description": "Formal dispatch ticket (ticket 64018) showing reservation details, aircraft airworthiness limits, tach/Hobbs readings, fuel type, and reservation extending past sunset."
+    },
+    {
+      "document_id": "faa_communications_summary",
+      "scope_classification": "communications, radar_returns, timestamps",
+      "document_type": "atc_transcript",
+      "claim_count": 34,
+      "description": "FAA Form 8020-6-1 communications summary from Airport-Alpha ATCT covering initial landing at Airport-Alpha, go-around, second departure, and handoffs through SOCAL Approach sectors until loss of contact."
+    },
+    {
+      "document_id": "fueling_procedures",
+      "scope_classification": "sops, dispatch, flight_planning",
+      "document_type": "ops_group_report",
+      "claim_count": 14,
+      "description": "Airline-A fueling policies, Fuel-Vendor-1 self-service pump procedures at Airport-Charlie, and fuel history for N-XXXX showing last fueling of 12.5 gallons on March 22, 2019."
+    },
+    {
+      "document_id": "gps_specialist_report",
+      "scope_classification": "initial_findings, causal_analysis, radar_returns",
+      "document_type": "investigation_report",
+      "claim_count": 38,
+      "description": "NTSB Vehicle Recorder Division GPS specialist report on Garmin Aera 660 recovered from wreckage. Device severely damaged, memory extracted but contained no accident-related flight data from approximately 80 stored sessions."
+    },
+    {
+      "document_id": "gps_terrain_xm_info",
+      "scope_classification": "crew_decisions, sops",
+      "document_type": "ops_group_report",
+      "claim_count": 15,
+      "description": "Email from Airline-A safety manager clarifying that the Garmin Aera 660 in N-XXXX was wired to audio panel only (no XM weather receiver), with terrain and airspace warnings enabled."
+    },
+    {
+      "document_id": "meteorology_report",
+      "scope_classification": "metar_taf, pireps, weather_modeling, visibility_conditions",
+      "document_type": "meteorology_report",
+      "claim_count": 89,
+      "description": "Full meteorological study by NTSB senior meteorologist covering synoptic conditions, METAR data from multiple stations, RAWS observations, satellite imagery, PIREPs, AIRMETs, winds aloft, HRRR model sounding, and illumination analysis for the accident time."
+    },
+    {
+      "document_id": "operator_procedures",
+      "scope_classification": "crew_decisions, sops, dispatch, flight_planning",
+      "document_type": "ops_group_report",
+      "claim_count": 24,
+      "description": "Airline-A Airport-Charlie base operational procedures including weather briefing requirements, route restrictions (Cajon Pass recommended for Las Vegas trips), no-go zones, fuel and oil procedures, and training area limits."
+    },
+    {
+      "document_id": "parent_company_email",
+      "scope_classification": "crew_decisions, sops, dispatch",
+      "document_type": "ops_group_report",
+      "claim_count": 14,
+      "description": "Email from Airline-A Parent president describing corporate structure, Part 141 approval status at Airport-Charlie base, training contracts, and operations under Part 61 and Part 91."
+    },
+    {
+      "document_id": "party_representatives_statement",
+      "scope_classification": "initial_findings, public_summary",
+      "document_type": "preliminary_report",
+      "claim_count": 10,
+      "description": "NTSB party representative certification forms establishing terms of party participation in the safety investigation."
+    },
+    {
+      "document_id": "pilot_flight_time_summary",
+      "scope_classification": "crew_decisions, flight_planning",
+      "document_type": "ops_group_report",
+      "claim_count": 21,
+      "description": "Summary of Pilot-1 flight hours by category and aircraft type: 246 total hours, 4.8 hours in C172M, 246 total aircraft time, training at Flight-School-B in Florida."
+    },
+    {
+      "document_id": "pilot_rental_privileges",
+      "scope_classification": "crew_decisions, sops",
+      "document_type": "ops_group_report",
+      "claim_count": 9,
+      "description": "Airline-A email confirming Pilot-1 was approved only for VFR day flights, not endorsed for IFR operations or night flying, despite holding commercial and instrument ratings."
+    },
+    {
+      "document_id": "site_onscene_information",
+      "scope_classification": "initial_findings, wreckage_distribution, accident_sequence",
+      "document_type": "preliminary_report",
+      "claim_count": 75,
+      "description": "Site and on-scene wreckage documentation covering accident location coordinates, wreckage orientation (230 degrees true), damage to all major structures, cockpit instruments, occupant information, emergency response timeline, and findings consistent with controlled flight into terrain."
+    },
+    {
+      "document_id": "toxicology_report_passenger",
+      "scope_classification": "final_report, causal_analysis",
+      "document_type": "investigation_report",
+      "claim_count": 20,
+      "description": "CAMI FAA final forensic toxicology report for Passenger-1. Specimens received March 31, 2019. COHb, cyanide, volatiles, and drug screen not performed per CAMI passenger policy for non-fire cases."
+    },
+    {
+      "document_id": "toxicology_report_pilot",
+      "scope_classification": "final_report, causal_analysis",
+      "document_type": "investigation_report",
+      "claim_count": 30,
+      "description": "CAMI FAA final forensic toxicology report for Pilot-1. COHb not detected, ethanol not detected, nine-drug panel negative. Specimens received March 31, 2019."
+    },
+    {
+      "document_id": "weight_balance_information",
+      "scope_classification": "crew_decisions, flight_planning, dispatch",
+      "document_type": "ops_group_report",
+      "claim_count": 29,
+      "description": "Weight and balance calculations for all three flight legs (Airport-Charlie departure, Airport-Alpha departure, accident point). Aircraft within CG envelope throughout. Fuel state estimated at approximately 18 gallons at accident time."
+    },
+    {
+      "document_id": "witness_testimony_01",
+      "scope_classification": "sensory_observations, eyewitness_accounts, timeline_reconstruction",
+      "document_type": "witness_testimony",
+      "claim_count": 23,
+      "description": "Phone interview with Witness-1 (Pilot-1's friend from South Korea). Details Pilot-1's background, move to LA in February 2019 for time-building, accident-day phone call at 11 AM, and no mention of passenger."
+    },
+    {
+      "document_id": "witness_testimony_02",
+      "scope_classification": "sensory_observations, eyewitness_accounts, timeline_reconstruction",
+      "document_type": "witness_testimony",
+      "claim_count": 20,
+      "description": "Interview with Witness-2 (aircraft owner at Airport-Alpha). Observed Pilot-1, a woman, and a male photographer at the accident airplane from ~1710 PST. Noted rushed preflight, tiedown still attached at engine start, removed it himself."
+    },
+    {
+      "document_id": "witness_testimony_03",
+      "scope_classification": "sensory_observations, eyewitness_accounts, timeline_reconstruction",
+      "document_type": "witness_testimony",
+      "claim_count": 14,
+      "description": "Interview with Witness-3 (Airline-A Airport-Charlie base manager). Describes Pilot-1's ~31 hours flown at Airline-A, departure time from Airport-Charlie, policy violation regarding passenger pickup at Airport-Alpha, and prior cancelled trip."
+    },
+    {
+      "document_id": "witness_testimony_04",
+      "scope_classification": "sensory_observations, eyewitness_accounts, timeline_reconstruction",
+      "document_type": "witness_testimony",
+      "claim_count": 22,
+      "description": "Interview with CFI-1 (Matthew Stewart) who conducted Pilot-1's aircraft checkout on February 28, 2019. Covers checkout content, CFI assessment of Pilot-1 as competent commercial-level pilot, specific warning about Banning Pass winds, and routes briefed."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "label_index": 0,
+    "agent_char_start": 1590,
+    "agent_char_end": 1611,
+    "diff_char_start": 1592,
+    "diff_char_end": 1593,
+    "agent_original_text": "1901.5 42.52 80846.28",
+    "agent_modified_text": "1911.5 42.52 80846.28",
+    "diff_original_text": "0",
+    "diff_modified_text": "1"
+  },
+  {
+    "label_index": 1,
+    "agent_char_start": 964,
+    "agent_char_end": 1019,
+    "diff_char_start": 965,
+    "diff_char_end": 966,
+    "agent_original_text": "0215 Universal Coordinated Time (UTC) on March 25, 2019",
+    "agent_modified_text": "0115 Universal Coordinated Time (UTC) on March 25, 2019",
+    "diff_original_text": "2",
+    "diff_modified_text": "1"
+  }
+]

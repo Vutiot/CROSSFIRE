@@ -1,0 +1,38 @@
+28. 3. 2019 Dispatch Ticket
+Dispatch: Pilot-1 Rental
+From: 03/24/19 16:00 to 03/24/19 20:00 Level: 3 Airport-Charlie Ticket: 64018
+Time Note: Sunrise: 06:41 Sunset: 17:29
+Reservation Remarks: TB
+Aircraft: C172M N-XXXX - 1973 C172M N-XXXX Hourly Rate: [see schedule]
+Maintenance Data Item Name Due Remain
+DO NOT FLY N-XXXX BEYOND
+Date 04/01/19 4 days
+Tach 7001.40 35.40 hrs
+Next Calendar-Based Items from 04/01/19
+VOR check 04/01/19 4 days
+FAA Re-registration 07/17/19 111 days
+SEB 01-03R1 12/19/19 266 days
+Next Tach-Based Items from 6966.00
+100 hours 7001.40 35.40 hrs
+Air filter element 7001.40 35.40 hrs
+SB 95-03 FLAP ATTACHMENT 7001.40 35.40 hrs
+New Squawks
+_______________________________________________________
+_______________________________________________________
+Times Hobbs Out: 3349.7 Hobbs In: _________
+Tach Out: 6966 Tach In: _________
+Clock Times Departure: ___ : ___ Return: ___ : ___
+Fuel Pump Start: ________ Pump Stop: _________
+100LL
+Oil Type: W100+ Oil Added: _________
+Fuel On Board: Unknown as of 3/22/19 13:00 Remaining: _________
+Seat Holders: >> none <<
+Student and Instructor Signature: _____________________________________
+Airline-A - Location-9, Region-Southeast - Airport-Charlie, Location-4, Region-West
+HEADSET
+IPAD
+STRATUS
+HEADLIGHT
+FLASHLIGHT
+IPAD YOKE MOUNT
+PLEASE REMEMBER TO FILL IN THE AIRCRAFT LOGBOOK WITH THE NUMBERS
