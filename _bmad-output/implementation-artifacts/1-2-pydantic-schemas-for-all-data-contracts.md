@@ -1,251 +1,439 @@
-# Story 1.2: Pydantic Schemas for All Data Contracts
+# Story 1.2: Pydantic Schemas for All Data Contracts (Rewrite)
 
-Status: in-progress
+Status: review
 
 ## Story
 
-As a developer,
-I want all data contracts defined as Pydantic models,
-so that every component produces and consumes validated, type-safe data structures.
+As a researcher,
+I want validated data models for every structured format in the system,
+So that generation output, pipeline reports, and evaluation results have enforced contracts preventing malformed data from crossing component boundaries.
+
+## Context: Why This Is a Rewrite
+
+The 2026-04-09 sprint change proposal pivoted CROSSFIRE from synthetic corpus generation to agentic processing of real investigation source documents (Grenfell, COPA, NTSB). This story rewrites all Pydantic schemas to match the new multi-source data architecture. The existing schemas were built for the old synthetic pipeline and must be replaced.
+
+**This story's scope is limited to schema files, `__init__.py`, and schema tests.** Downstream consumer code (pipeline, evaluation, generator, scripts, run.py) will break — those are updated in their respective stories (4.x, 5.x) and the deprecated generator code is removed separately.
 
 ## Acceptance Criteria
 
-1. `corpus.py` exports `Document` and `SubcorpusMetadata` models with fields for document_type, subcorpus_id, reliability_signal, and content
-2. `entities.py` exports `EntityNode`, `EntityEdge`, and `EntityGraph` models serializable to NetworkX adjacency JSON
-3. `incoherences.py` exports `IncoherenceLabel` with scope, mechanism, detectability, system_affinity, and document_references fields, plus `DistractorLabel` with same structure
-4. `reports.py` exports `DetectedIncoherence` and `PipelineReport` with evidence_references and confidence fields
-5. `evaluation.py` exports `ScopeResult`, `StageResult`, and `EvaluationResult` with per-scope and per-stage breakdowns
-6. `config.py` exports `GeneratorConfig`, `PipelineConfig`, and `PresetConfig` matching YAML preset structure
-7. All models serialize to snake_case JSON and deserialize back without data loss
+1. **Given** the schemas package at `src/crossfire/shared/schemas/`
+   **When** I import corpus models
+   **Then** `Document` model exists with fields: `document_id`, `source` (e.g., "grenfell", "copa", "ntsb"), `document_type` (str, source-specific — not a fixed enum), `source_case_id`, `scope_classification`, `content` (text), and metadata fields — no `subcorpus_id`
+
+2. **Given** the schemas package
+   **When** I import contradiction models
+   **Then** `ContradictionLabel` model exists with fields: `scope` (Literal["intra_doc", "inter_doc"]), `mechanism`, `detectability`, `system_affinity`, `difficulty`, `char_start`, `char_end`, `original_text`, `modified_text`, `rationale`, `ground_truth`, and document references
+   **And** `DistractorLabel` model exists with divergence type field (Literal["expert_opinion", "preliminary_vs_final", "measurement_methodology", "uncertainty_expression"])
+
+3. **Given** the schemas package
+   **When** I import knowledge graph models
+   **Then** `KnowledgeGraphClaim` and `CrossReference` models exist — marked as intermediate artifacts, not gold evaluation references
+
+4. **Given** the schemas package
+   **When** I import pipeline report models
+   **Then** `DetectedContradiction` model exists with 2-scope taxonomy (intra_doc, inter_doc), document references, text spans, and confidence
+   **And** `PipelineReport` model exists containing a list of `DetectedContradiction` entries plus run metadata
+
+5. **Given** the schemas package
+   **When** I import evaluation models
+   **Then** `ScopeResult`, `StageResult`, and `EvaluationResult` models exist with per-scope (2-level: intra_doc, inter_doc) and per-stage (3-stage: claim_extraction, cross_reference_identification, contradiction_detection) breakdowns
+
+6. **Given** the schemas package
+   **When** I import config models
+   **Then** `PipelineConfig` model exists with `case_dir` path and strategy configuration
+   **And** `DatasetVersion` model exists tracking version ID, base version, and label correction history
+   **And** `GenerationParams` model exists with contradiction rates per scope, distractor ratio, and mechanism/difficulty distributions
+
+7. **Given** any Pydantic model
+   **When** I serialize it to JSON
+   **Then** all field names are `snake_case`
+
+8. **Given** a malformed data dict (e.g., missing required field, wrong type, invalid scope literal)
+   **When** I attempt to construct a Pydantic model from it
+   **Then** a `ValidationError` is raised with a clear message identifying the invalid field
 
 ## Tasks / Subtasks
 
-- [x] Task 1: Create `src/crossfire/shared/schemas/config.py` (AC: #6)
-  - [x] Define `ScopeDistribution` sub-model with `intra_doc`, `intra_corpus`, `inter_corpus` float fields summing to 1.0
-  - [x] Define `DetectabilityDistribution` sub-model with `single_hop`, `multi_hop`, `entity_resolution` float fields summing to 1.0
-  - [x] Define `IncoherenceConfig` sub-model with scope_distribution, mechanism, detectability_distribution, system_affinity, count fields
-  - [x] Define `PresetConfig` with all fields matching existing YAML presets (name, description, master_seed, subcorpora_count, docs_per_subcorpus, connectivity_level, doc_type_mix, incoherences, distractor_ratio)
-  - [x] Define `GeneratorConfig` extending PresetConfig with output_dir and dry_run fields
-  - [x] Define `PipelineConfig` with mode, corpus_path, output_dir fields
-  - [x] Write tests: load each existing preset YAML, parse into PresetConfig, round-trip serialize/deserialize
+### Phase 1: Remove Old Schemas
 
-- [x] Task 2: Create `src/crossfire/shared/schemas/corpus.py` (AC: #1)
-  - [x] Define `Document` model with id (str), document_type (Literal of 8 types), subcorpus_id (str), reliability_signal (float 0-1), content (str)
-  - [x] Define `SubcorpusMetadata` model with subcorpus_id (str), document_count (int), document_types (list[str])
-  - [x] Write tests: create, serialize to JSON, deserialize back, verify snake_case field names
+- [x] Delete `src/crossfire/shared/schemas/entities.py` entirely (AC: all — removes `EntityNode`, `EntityEdge`, `EntityGraph`)
+- [x] Remove `SubcorpusMetadata` from `corpus.py` (AC: 1)
+- [x] Delete `src/crossfire/shared/schemas/incoherences.py` (replaced by `contradictions.py`) (AC: 2)
 
-- [x] Task 3: Create `src/crossfire/shared/schemas/entities.py` (AC: #2)
-  - [x] Define `EntityNode` with id (str), entity_type (str), canonical_name (str), aliases (list[str]), subcorpus_memberships (list[str])
-  - [x] Define `EntityEdge` with source (str), target (str), relationship_type (str)
-  - [x] Define `EntityGraph` with nodes (list[EntityNode]), edges (list[EntityEdge])
-  - [x] Implement `to_networkx()` method on EntityGraph that converts to NetworkX graph
-  - [x] Implement `from_networkx()` classmethod on EntityGraph that constructs from NetworkX graph
-  - [x] Write tests: create EntityGraph, convert to NetworkX, convert back, verify lossless round-trip
+### Phase 2: Create New Schema Files
 
-- [x] Task 4: Create `src/crossfire/shared/schemas/incoherences.py` (AC: #3)
-  - [x] Define `IncoherenceLabel` with id, scope (Literal), mechanism (Literal), detectability (Literal), system_affinity (Literal), document_references (list[str]), modified_fact (str), original_fact (str)
-  - [x] Define `DistractorLabel` with id, scope, document_references (list[str]), divergence_type (str), description (str)
-  - [x] Write tests: create instances, serialize, verify all fields present in JSON output
+- [x] Create `src/crossfire/shared/schemas/contradictions.py` with `ContradictionLabel` and `DistractorLabel` (AC: 2)
+- [x] Create `src/crossfire/shared/schemas/knowledge_graph.py` with `KnowledgeGraphClaim` and `CrossReference` (AC: 3)
+- [x] Create `src/crossfire/shared/schemas/domain_registry.py` with `DomainRegistry` (AC: 6)
+- [x] Create `src/crossfire/shared/schemas/scope_map.py` with `ScopeMap` (AC: 6)
+- [x] Create `src/crossfire/shared/schemas/anonymization.py` with `AnonymizationMapping` (AC: 6)
 
-- [x] Task 5: Create `src/crossfire/shared/schemas/reports.py` (AC: #4)
-  - [x] Define `DetectedIncoherence` with id (str), evidence_references (list[str]), confidence (float 0-1), description (str)
-  - [x] Define `PipelineReport` with pipeline_mode (str), corpus_path (str), detections (list[DetectedIncoherence]), timestamp (str)
-  - [x] Write tests: create PipelineReport with detections, serialize/deserialize round-trip
+### Phase 3: Modify Existing Schema Files
 
-- [x] Task 6: Create `src/crossfire/shared/schemas/evaluation.py` (AC: #5)
-  - [x] Define `ScopeResult` with scope (str), precision (float), recall (float), f1 (float), partial_credit_score (float)
-  - [x] Define `StageResult` with stage (str), precision (float), recall (float), f1 (float)
-  - [x] Define `EvaluationResult` with overall_precision, overall_recall, overall_f1 (floats), per_scope (list[ScopeResult]), per_stage (list[StageResult])
-  - [x] Write tests: create nested EvaluationResult, serialize/deserialize, verify structure
+- [x] Rewrite `corpus.py` — adapt `Document` model (AC: 1)
+- [x] Rewrite `config.py` — remove old generator configs, add `PipelineConfig`, `DatasetVersion`, `GenerationParams` (AC: 6)
+- [x] Rewrite `reports.py` — `DetectedContradiction` replaces `DetectedIncoherence`, update `PipelineReport` (AC: 4)
+- [x] Rewrite `evaluation.py` — adapt for 2-scope, 3-stage, injection-derived gold (AC: 5)
 
-- [x] Task 7: Update `src/crossfire/shared/schemas/__init__.py` and verify (AC: #7)
-  - [x] Re-export all public models from `__init__.py` for convenient imports
-  - [x] Write a comprehensive round-trip test for every model: create → JSON → back → assert equal
-  - [x] Verify all JSON output uses snake_case field names (no camelCase aliasing)
-  - [x] Run full test suite — no regressions
+### Phase 4: Update Exports and Tests
+
+- [x] Rewrite `__init__.py` — update all imports and `__all__` (AC: all)
+- [x] Rewrite `tests/shared/test_schemas.py` — full coverage for all new/modified models (AC: 7, 8)
+- [x] Verify all schema tests pass: `PYTHONPATH=src pytest tests/shared/test_schemas.py -v` (AC: all)
 
 ## Dev Notes
 
-### Architecture Compliance (CRITICAL)
+### What to REMOVE (old synthetic-generation schemas)
 
-All schemas MUST follow the architecture document exactly. These are the data contracts that every other component depends on.
+| Model | File | Reason |
+|-------|------|--------|
+| `EntityNode` | `entities.py` | DELETE FILE — entity graph is now built by agentic pipeline, not Python code |
+| `EntityEdge` | `entities.py` | DELETE FILE |
+| `EntityGraph` | `entities.py` | DELETE FILE |
+| `SubcorpusMetadata` | `corpus.py` | No subcorpus concept in agentic pipeline |
+| `IncoherenceLabel` | `incoherences.py` | DELETE FILE — replaced by `ContradictionLabel` in `contradictions.py` |
+| `ScopeDistribution` | `config.py` | Old 3-scope distribution, no longer applicable |
+| `DetectabilityDistribution` | `config.py` | Old distribution config |
+| `IncoherenceConfig` | `config.py` | Old synthetic injection config |
+| `PresetConfig` | `config.py` | Old preset-based generation |
+| `GeneratorConfig` | `config.py` | Old synthetic generator config |
+| `DetectedIncoherence` | `reports.py` | Renamed to `DetectedContradiction` |
+| `RepresentationQualityResult` | `evaluation.py` | Rewritten for injection-derived gold |
 
-**Schema location:** `src/crossfire/shared/schemas/` — already created in Story 1.1 with empty `__init__.py`.
-[Source: architecture.md#Schema Enforcement]
+### What to CREATE
 
-**Pydantic enforcement rule:** "Every output format has a corresponding Pydantic model. Serialization/deserialization always goes through Pydantic — no raw dict construction."
-[Source: architecture.md#Schema Enforcement]
+#### `contradictions.py` — Gold Labels (replaces `incoherences.py`)
 
-**Naming rule:** All JSON output fields use `snake_case`. "Pydantic models serialize to snake_case by default — no aliasing needed."
-[Source: architecture.md#Naming Patterns]
+```python
+# Enums/Literals
+Scope = Literal["intra_doc", "inter_doc"]  # 2-scope only (was 3)
+Mechanism = Literal["numeric_drift", "entity_swap", "causal_inversion",
+                    "temporal_contradiction", "omission_based_implicit",
+                    "temporal_revision_conflict"]  # unchanged
+Detectability = Literal["single_hop", "multi_hop", "entity_resolution_dependent"]
+SystemAffinity = Literal["balanced", "graph_favoring", "agentic_favoring"]
+DivergenceType = Literal["expert_opinion", "preliminary_vs_final",
+                         "measurement_methodology", "uncertainty_expression"]
+Difficulty = Literal["easy", "medium", "hard"]  # per architecture
 
-**Constraint example from architecture:** `connectivity_level: Literal[0, 1, 2, 3]`
-[Source: architecture.md#Schema Enforcement]
+class ContradictionLabel(BaseModel):
+    scope: Scope
+    mechanism: Mechanism
+    detectability: Detectability
+    system_affinity: SystemAffinity
+    difficulty: Difficulty
+    char_start: int  # character offset in modified document
+    char_end: int    # character offset in modified document
+    original_text: str
+    modified_text: str
+    rationale: str
+    ground_truth: bool  # True = real contradiction, used for validation
+    document_references: list[str]
 
-### Exact Field Specifications
-
-#### config.py — PresetConfig MUST match existing YAML presets
-
-The 4 preset YAML files created in Story 1.1 (`configs/presets/default.yaml`, etc.) define the exact structure that `PresetConfig` must parse. Here is the default.yaml structure:
-
-```yaml
-name: default
-description: "Default benchmark configuration — 5 subcorpora, connectivity 2, balanced incoherences"
-master_seed: 42
-subcorpora_count: 5
-docs_per_subcorpus: 80
-connectivity_level: 2
-doc_type_mix: "balanced"
-incoherences:
-  scope_distribution:
-    intra_doc: 0.2
-    intra_corpus: 0.5
-    inter_corpus: 0.3
-  mechanism: "uniform"
-  detectability_distribution:
-    single_hop: 0.3
-    multi_hop: 0.5
-    entity_resolution: 0.2
-  system_affinity: "balanced"
-  count: "auto"
-distractor_ratio: 0.3
+class DistractorLabel(BaseModel):
+    scope: Scope
+    divergence_type: DivergenceType  # constrained Literal, not free str
+    document_references: list[str]
+    description: str
 ```
 
-Critical: `count` field is `str | int` — it can be `"auto"` (string) or a fixed integer. Use `Union[str, int]` or Pydantic's discriminated approach.
+Key changes from old `IncoherenceLabel`:
+- `id` field removed (JSONL lines are self-contained)
+- `modified_fact`/`original_fact` replaced by `char_start`/`char_end`/`original_text`/`modified_text` (char-span based)
+- Added `difficulty`, `rationale`, `ground_truth`
+- Scope reduced from 3 to 2 values
+- `DistractorLabel.divergence_type` is now a constrained Literal (was free `str`)
 
-#### corpus.py — Document types from architecture
+#### `knowledge_graph.py` — Intermediate Artifacts (NOT gold eval)
 
-The 8 document types: `investigation_report`, `technical_analysis`, `witness_testimony`, `regulatory_filing`, `press_coverage`, `expert_deposition`, `internal_memo`, `preliminary_report`
-[Source: epics.md#Story 2.2, product-brief-CROSSFIRE-distillate.md#Document Type Taxonomy]
+```python
+class KnowledgeGraphClaim(BaseModel):
+    claim_id: str
+    subject: str
+    predicate: str
+    object: str
+    source_document: str
+    confidence: float  # 0.0-1.0
 
-#### entities.py — NetworkX serialization
+class CrossReference(BaseModel):
+    reference_id: str
+    source_claim: str  # claim_id
+    target_claim: str  # claim_id
+    relationship: str
+    source_documents: list[str]
+```
 
-`EntityGraph` must convert to/from NetworkX format. Use `networkx.node_link_data()` and `networkx.node_link_graph()` for JSON-compatible serialization. Entity nodes include attributes: type, canonical_name, aliases, subcorpus_memberships.
-[Source: architecture.md#Data Architecture, epics.md#Story 2.3]
+These are intermediate artifacts that ship for transparency. The evaluator NEVER imports these for scoring.
 
-#### incoherences.py — 4D design space enums
+#### `domain_registry.py`
 
-Scope: `intra_doc`, `intra_corpus`, `inter_corpus`
-Mechanism: `numeric_drift`, `entity_swap`, `causal_inversion`, `temporal_contradiction`, `omission_based_implicit`, `temporal_revision_conflict`
-Detectability: `single_hop`, `multi_hop`, `entity_resolution_dependent`
-System affinity: `balanced`, `graph_favoring`, `agentic_favoring`
-[Source: product-brief-CROSSFIRE-distillate.md#Incoherence Design Space, epics.md#Story 3.1]
+```python
+class DomainEntry(BaseModel):
+    domain: str
+    original_value: str
+    anonymized_value: str
 
-#### reports.py — Standardized across pipeline modes
+class DomainRegistry(BaseModel):
+    case_id: str
+    entries: list[DomainEntry]
+```
 
-Pipeline reports must use a standardized format enabling cross-pipeline comparison (FR20). DetectedIncoherence needs evidence_references (list of document IDs) and confidence (float).
-[Source: architecture.md#Data Architecture, epics.md#Story 4.1]
+Maps to `metadata/domain_registry.json` in case directories.
 
-#### evaluation.py — Two-layer evaluation
+#### `scope_map.py`
 
-ScopeResult covers: intra-document, intra-subcorpus, inter-subcorpus (FR25).
-StageResult covers: entity_resolution, graph_construction, scanning (FR26).
-EvaluationResult aggregates both plus overall metrics.
-[Source: architecture.md#Two-Layer Evaluation, epics.md#Stories 5.1-5.3]
+```python
+class ScopeMapEntry(BaseModel):
+    document_id: str
+    scope_classification: str  # how this document relates to other documents
 
-### Previous Story (1.1) Learnings
+class ScopeMap(BaseModel):
+    case_id: str
+    entries: list[ScopeMapEntry]
+```
 
-- Project structure exists with `src/crossfire/shared/schemas/__init__.py` (empty)
-- All dependencies including `pydantic` are installed via `requirements.txt`
-- Tests run with `PYTHONPATH=src pytest` from project root
-- Test directory `tests/shared/` exists (with `.gitkeep`)
-- No `pyproject.toml` — `PYTHONPATH=src` is required for imports
-- No linting/type-checking configured — skip type annotations beyond what Pydantic requires
+Maps to `metadata/scope_map.json` in case directories.
 
-### Anti-Patterns to Avoid
+#### `anonymization.py`
 
-- Do NOT implement any business logic in schema models — these are pure data contracts
-- Do NOT add computed properties beyond serialization helpers (to_networkx/from_networkx)
-- Do NOT add custom validators that enforce cross-field business rules — keep models simple, validation happens at component boundaries
-- Do NOT use `model_config = ConfigDict(alias_generator=to_camel)` or any camelCase aliasing
-- Do NOT use `Field(alias=...)` for any field — snake_case by default
-- Do NOT import or use loguru in schema files — schemas are dependency-free data definitions
-- Do NOT implement SeedManager (Story 1.3) or llm_call (Story 1.4)
-- Do NOT use `from __future__ import annotations` — it can break Pydantic v2 in some edge cases
-- Do NOT add pydantic `model_validator` for distribution sums — a simple `@model_validator` that checks sum is fine, but don't over-engineer it
+```python
+class AnonymizationMapping(BaseModel):
+    original: str
+    anonymized: str
+    entity_type: str
+```
 
-### Testing Strategy
+Maps to `metadata/entity_mapping.json` in case directories.
 
-Test files go in `tests/shared/` (e.g., `tests/shared/test_schemas.py` or split per module).
+### What to MODIFY
 
-Key test patterns:
-1. **Construction:** Create model instance with valid data
-2. **Serialization:** `model.model_dump_json()` → verify snake_case keys
-3. **Deserialization:** `Model.model_validate_json(json_str)` → verify fields match
-4. **Round-trip:** create → JSON → back → assert original == deserialized
-5. **Validation:** Invalid values (e.g., connectivity_level=5) raise `ValidationError`
-6. **YAML preset loading:** `yaml.safe_load()` → `PresetConfig(**data)` for each existing preset
+#### `corpus.py` — Document Model
+
+```python
+# DocumentType is no longer a fixed Literal enum — it is a plain str field.
+# Document types are source-specific (e.g., "hearing_transcript" for Grenfell,
+# "tactical_response_report" for COPA, "investigation_report" for NTSB).
+
+class Document(BaseModel):
+    document_id: str           # was "id"
+    source: str                # e.g., "grenfell", "copa", "ntsb"
+    document_type: str         # source-specific type (not a fixed enum)
+    source_case_id: str        # source-specific case identifier
+    scope_classification: str  # per scope_map
+    content: str
+    # metadata fields as needed
+```
+
+Key changes: removed `subcorpus_id`, removed `reliability_signal`, renamed `id` to `document_id`, added `source` field (FR31), changed `document_type` from fixed `Literal` enum to `str` for multi-source support (FR5), added `source_case_id` and `scope_classification` per FR31.
+
+#### `config.py` — Pipeline and Dataset Config
+
+Remove all old generator configs. Keep/rewrite:
+
+```python
+class PipelineConfig(BaseModel):
+    mode: Literal["hybrid", "agentic", "graph_native"]  # underscore not hyphen
+    case_dir: str  # path to case directory (was corpus_path)
+    output_dir: str = "output/reports"
+
+class DatasetVersion(BaseModel):
+    version_id: str
+    base_version: str | None = None  # if re-injection on same anonymized base
+    label_corrections: list[str] = []
+
+class GenerationParams(BaseModel):
+    version_id: str
+    base_version: str | None = None
+    contradiction_rate_intra_doc: float
+    contradiction_rate_inter_doc: float
+    distractor_ratio: float
+    mechanism_distribution: dict[str, float]  # mechanism -> proportion
+    difficulty_distribution: dict[str, float]  # difficulty -> proportion
+```
+
+#### `reports.py` — Pipeline Output
+
+```python
+class DetectedContradiction(BaseModel):  # renamed from DetectedIncoherence
+    scope: Literal["intra_doc", "inter_doc"]
+    document_references: list[str]
+    text_span_start: int
+    text_span_end: int
+    evidence_text: str
+    confidence: float  # 0.0-1.0
+    description: str
+
+class PipelineReport(BaseModel):
+    pipeline_mode: str
+    case_dir: str  # was corpus_path
+    detections: list[DetectedContradiction] = []
+    timestamp: str
+    run_metadata: dict = {}  # token counts, timing, etc.
+```
+
+#### `evaluation.py` — Evaluation Results
+
+Adapt for 2-scope taxonomy, 3 defined stages, injection-derived gold:
+
+```python
+class ScopeResult(BaseModel):
+    scope: Literal["intra_doc", "inter_doc"]  # constrained, was free str
+    precision: float
+    recall: float
+    f1: float
+    partial_credit_score: float
+
+class StageResult(BaseModel):
+    stage: Literal["claim_extraction", "cross_reference_identification",
+                   "contradiction_detection"]  # constrained, was free str
+    precision: float
+    recall: float
+    f1: float
+
+class RepresentationQualityResult(BaseModel):
+    claim_coverage: float  # vs injection-targeted gold claims, not full KG
+    cross_reference_accuracy: float
+    # removed entity_resolution_quality (old entity graph concept)
+
+class EvaluationResult(BaseModel):
+    overall_precision: float
+    overall_recall: float
+    overall_f1: float
+    overall_partial_credit_score: float | None = None
+    distractor_false_positive_rate: float | None = None
+    per_scope: list[ScopeResult] = []
+    per_stage: list[StageResult] = []
+    representation_quality: RepresentationQualityResult | None = None
+```
+
+### Downstream Blast Radius (DO NOT FIX in this story)
+
+These files import from schemas and will break after this rewrite. They are fixed in their own stories:
+
+| Consumer | Imports | Fixed In |
+|----------|---------|----------|
+| `src/crossfire/generator/*` | `EntityGraph`, `EntityNode`, `GeneratorConfig`, `IncoherenceLabel`, etc. | DEPRECATED — entire generator package removed |
+| `src/crossfire/pipeline/strategies/base.py` | `EntityGraph`, `DetectedIncoherence` | Story 4-1 |
+| `src/crossfire/pipeline/strategies/graph_strategy.py` | `EntityGraph`, `EntityNode`, `EntityEdge`, `DetectedIncoherence` | Story 4-3 |
+| `src/crossfire/pipeline/strategies/reasoning_strategy.py` | `DetectedIncoherence` | Story 4-2 |
+| `src/crossfire/pipeline/hybrid_pipeline.py` | `DetectedIncoherence`, `PipelineReport` | Story 4-1 |
+| `src/crossfire/pipeline/baselines/*.py` | `DetectedIncoherence`, `PipelineReport` | Story 4-4 |
+| `src/crossfire/evaluation/*.py` | `IncoherenceLabel`, `EntityGraph`, `DetectedIncoherence` | Stories 5-1 through 5-5 |
+| `scripts/*.py` | `GeneratorConfig`, `EntityGraph`, `IncoherenceLabel` | DEPRECATED |
+| `run.py` | `GeneratorConfig` | Updated when generator is removed |
+| `tests/generator/*`, `tests/pipeline/*`, `tests/evaluation/*` | Various old schemas | Updated in respective stories |
+| `configs/presets/*.yaml` | Old `PresetConfig` format | DEPRECATED — do not delete in this story |
+
+### Architecture Constraints
+
+- **snake_case everywhere**: Python code, JSON output fields, config keys. Pydantic defaults to snake_case — no aliasing needed.
+- **Pydantic v2**: Use `BaseModel`, `model_dump_json()`, `model_validate_json()`, `model_dump()`. No v1 methods.
+- **Literal constraints**: Use `Literal[...]` for all enum-like fields (scope, mechanism, detectability, system_affinity, difficulty, divergence_type, stage, pipeline mode). No free `str` where values are known.
+- **No `id` fields on JSONL records**: `ContradictionLabel` and `DistractorLabel` are JSONL line items — they don't need an `id` field.
+- **Serialization through Pydantic only**: No raw dict construction. Always construct model instances.
+- **Evaluator boundary**: `evaluation.py` models must NEVER import or reference `KnowledgeGraphClaim` or `CrossReference`.
+- **loguru**: No `print()` statements. (Schemas are pure data models so this is trivially satisfied — no logging needed in schema files.)
+
+### Testing Requirements
+
+Rewrite `tests/shared/test_schemas.py` completely. Cover:
+
+- Construction of every model with valid data
+- Round-trip serialization (`model_dump_json()` → `model_validate_json()`)
+- snake_case verification on JSON output for every model
+- `ValidationError` on invalid data (wrong type, missing required field, invalid Literal value)
+- All Literal enum values accepted (all mechanisms, all scopes, all stages, all divergence types, all difficulties)
+- `char_start` / `char_end` are non-negative integers
+- `confidence` fields are bounded [0.0, 1.0]
+- Optional fields default correctly (`None`, `[]`, `{}`)
+
+Do NOT test: preset YAML loading (presets are deprecated), NetworkX conversion (entities.py deleted), downstream consumer integration.
+
+Run: `PYTHONPATH=src pytest tests/shared/test_schemas.py -v`
 
 ### Project Structure Notes
 
-Files to create:
+Target file layout after this story:
+
 ```
 src/crossfire/shared/schemas/
-├── __init__.py          # UPDATE: re-export all models
-├── config.py            # NEW
-├── corpus.py            # NEW
-├── entities.py          # NEW
-├── incoherences.py      # NEW
-├── reports.py           # NEW
-└── evaluation.py        # NEW
-
-tests/shared/
-├── test_schemas.py      # NEW (or split per module)
+├── __init__.py              # updated exports
+├── anonymization.py         # NEW: AnonymizationMapping
+├── config.py                # REWRITTEN: PipelineConfig, DatasetVersion, GenerationParams
+├── contradictions.py        # NEW (replaces incoherences.py): ContradictionLabel, DistractorLabel
+├── corpus.py                # MODIFIED: Document (adapted)
+├── domain_registry.py       # NEW: DomainRegistry, DomainEntry
+├── evaluation.py            # MODIFIED: 2-scope, 3-stage, injection-derived gold
+├── knowledge_graph.py       # NEW: KnowledgeGraphClaim, CrossReference
+├── reports.py               # MODIFIED: DetectedContradiction, PipelineReport
+└── scope_map.py             # NEW: ScopeMap, ScopeMapEntry
 ```
+
+Deleted:
+- `entities.py` (removed)
+- `incoherences.py` (replaced by `contradictions.py`)
 
 ### References
 
-- [Source: architecture.md#Schema Enforcement]
-- [Source: architecture.md#Naming Patterns]
-- [Source: architecture.md#Data Architecture — Output Formats]
-- [Source: architecture.md#Complete Project Directory Structure]
-- [Source: epics.md#Story 1.2]
-- [Source: epics.md#Story 2.2 — Document Types]
-- [Source: epics.md#Story 2.3 — Entity Graph]
-- [Source: epics.md#Story 3.1 — Incoherence 4D Design Space]
-- [Source: product-brief-CROSSFIRE-distillate.md#Generator Core API]
-- [Source: product-brief-CROSSFIRE-distillate.md#Incoherence Design Space]
-- [Source: product-brief-CROSSFIRE-distillate.md#Document Type Taxonomy]
+- [Source: _bmad-output/planning-artifacts/architecture.md#Schema Enforcement] — schema organization and file layout
+- [Source: _bmad-output/planning-artifacts/architecture.md#Data Architecture] — output formats and case directory layout
+- [Source: _bmad-output/planning-artifacts/architecture.md#Architectural Boundaries] — generation/dataset/pipeline/evaluator boundaries
+- [Source: _bmad-output/planning-artifacts/epics.md#Story 1.2] — acceptance criteria and user story
+- [Source: _bmad-output/planning-artifacts/sprint-change-proposal-2026-04-09.md#Section 4.3] — specific schema changes for pivot
+- [Source: _bmad-output/planning-artifacts/prd.md#FR14-NEW] — ContradictionLabel field requirements
+- [Source: _bmad-output/planning-artifacts/prd.md#FR31-NEW] — Document metadata requirements
+
+### Previous Story Intelligence
+
+From Story 1-1:
+- Project uses `PYTHONPATH=src pytest` for test execution
+- Empty `__init__.py` files with no placeholder implementations
+- `pyproject.toml` now exists (added in later commits)
+- Preset YAML configs exist in `configs/presets/` — these are deprecated but should not be deleted in this story (separate cleanup)
+
+From existing Story 1-2 implementation (pre-pivot):
+- 18 models across 6 files, 60 tests passing
+- Known bugs: `system_affinity` Literal uses hyphens in `config.py` but underscores in `incoherences.py` — moot now since both files are rewritten
+- Known bug: `EntityGraph.from_networkx()` integer node ID coercion — moot since `entities.py` is deleted
 
 ## Dev Agent Record
 
 ### Agent Model Used
 
-Claude Opus 4.6
+Claude Opus 4.6 (1M context)
 
 ### Debug Log References
 
-No issues encountered during implementation.
+- All 127 schema tests pass (`PYTHONPATH=src pytest tests/shared/test_schemas.py -v`)
+- 1 pre-existing failure in `test_llm.py` (retry count mismatch — unrelated to schema changes)
 
 ### Completion Notes List
 
-- Task 1: Created config.py with ScopeDistribution, DetectabilityDistribution, IncoherenceConfig, PresetConfig, GeneratorConfig, PipelineConfig. All 4 existing preset YAMLs parse and round-trip successfully. Union[str, int] for count field handles both "auto" and integer values.
-- Task 2: Created corpus.py with Document (8 Literal document types, reliability_signal bounded 0-1) and SubcorpusMetadata. All serialization uses snake_case.
-- Task 3: Created entities.py with EntityNode, EntityEdge, EntityGraph. Implemented to_networkx() and from_networkx() classmethod for lossless NetworkX conversion. Round-trip verified.
-- Task 4: Created incoherences.py with IncoherenceLabel (full 4D design space as Literal types) and DistractorLabel. All 6 mechanisms, 3 scopes, 3 detectability levels, 3 system affinities validated.
-- Task 5: Created reports.py with DetectedIncoherence (confidence bounded 0-1) and PipelineReport with detection list.
-- Task 6: Created evaluation.py with ScopeResult, StageResult, EvaluationResult with nested per-scope and per-stage breakdowns.
-- Task 7: Updated __init__.py to re-export all 18 public models. All 60 tests pass. All JSON output uses snake_case. No regressions.
-- All 7 acceptance criteria satisfied.
-
-### File List
-
-- src/crossfire/shared/schemas/__init__.py (modified)
-- src/crossfire/shared/schemas/config.py (new)
-- src/crossfire/shared/schemas/corpus.py (new)
-- src/crossfire/shared/schemas/entities.py (new)
-- src/crossfire/shared/schemas/incoherences.py (new)
-- src/crossfire/shared/schemas/reports.py (new)
-- src/crossfire/shared/schemas/evaluation.py (new)
-- tests/shared/test_schemas.py (new)
-
-### Review Findings
-
-- [ ] [Review][Patch] system_affinity Literal uses hyphens in config.py but underscores in incoherences.py; YAML presets also use hyphens — violates AC5 (snake_case enum values) and creates silent mismatch between config and annotation schemas [config.py:24, incoherences.py:17, configs/presets/high_connectivity.yaml:18, configs/presets/low_connectivity.yaml:18]
-- [ ] [Review][Patch] from_networkx passes node_id directly to EntityNode(id=...) without coercing to str — Pydantic v2 raises ValidationError if a manually-constructed NetworkX graph uses integer node IDs [entities.py:47]
-- [x] [Review][Defer] EntityGraph.to_networkx() returns undirected nx.Graph — directional relationships like "caused_by" silently lose direction [entities.py:25] — deferred, pre-existing design choice; no directed graph requirement in current stories
-- [x] [Review][Defer] ScopeDistribution and DetectabilityDistribution floats have no sum-to-1.0 validation — downstream sampling silently non-normalized [config.py:8-17] — deferred, beyond current story scope
+- Deleted `entities.py` (EntityNode, EntityEdge, EntityGraph removed) and `incoherences.py` (replaced by contradictions.py)
+- Removed `SubcorpusMetadata` from `corpus.py`
+- Created 5 new schema files: `contradictions.py`, `knowledge_graph.py`, `domain_registry.py`, `scope_map.py`, `anonymization.py`
+- Rewrote 4 existing files: `corpus.py` (Document adapted for multi-source case dirs with `source` field and `document_type` as str), `config.py` (PipelineConfig, DatasetVersion, GenerationParams), `reports.py` (DetectedContradiction, PipelineReport with run_metadata), `evaluation.py` (2-scope, 3-stage, injection-derived gold)
+- All Literal constraints enforced: 2 scopes, 6 mechanisms, 3 detectabilities, 3 affinities, 3 difficulties, 4 divergence types, 3 pipeline modes, 3 stages. Document type is now a free str (source-specific, not a fixed enum).
+- `char_start`/`char_end` validated as non-negative, `confidence` bounded [0.0, 1.0]
+- Updated `__init__.py` with 21 model exports
+- Rewrote `test_schemas.py` with 127 tests covering construction, round-trip serialization, snake_case keys, ValidationError on invalid data, and all Literal enum values
 
 ### Change Log
 
-- 2026-04-06: Story 1.2 implemented — all Pydantic data contract schemas created with 60 tests covering construction, validation, round-trip serialization, YAML preset loading, and snake_case verification
+- 2026-04-10: Complete schema rewrite for agentic pipeline pivot — deleted 2 files, created 5 new files, rewrote 4 existing files, rewrote test file (127 tests)
+
+### File List
+
+- `src/crossfire/shared/schemas/entities.py` — DELETED
+- `src/crossfire/shared/schemas/incoherences.py` — DELETED
+- `src/crossfire/shared/schemas/contradictions.py` — NEW
+- `src/crossfire/shared/schemas/knowledge_graph.py` — NEW
+- `src/crossfire/shared/schemas/domain_registry.py` — NEW
+- `src/crossfire/shared/schemas/scope_map.py` — NEW
+- `src/crossfire/shared/schemas/anonymization.py` — NEW
+- `src/crossfire/shared/schemas/corpus.py` — MODIFIED
+- `src/crossfire/shared/schemas/config.py` — MODIFIED
+- `src/crossfire/shared/schemas/reports.py` — MODIFIED
+- `src/crossfire/shared/schemas/evaluation.py` — MODIFIED
+- `src/crossfire/shared/schemas/__init__.py` — MODIFIED
+- `tests/shared/test_schemas.py` — MODIFIED

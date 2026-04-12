@@ -1,6 +1,6 @@
 # Story 1.4: Thin LLM Wrapper
 
-Status: in-progress
+Status: review
 
 ## Story
 
@@ -224,13 +224,14 @@ No issues encountered during implementation.
 
 ### Review Findings
 
-- [ ] [Review][Patch] Dead pricing variable in llm_call — `pricing = _PRICING.get(model, _DEFAULT_PRICING)` at line 45 is computed but never used for cost accumulation in the call path [llm.py:45]
-- [ ] [Review][Patch] response.choices is never guarded for emptiness — IndexError if API returns empty choices array [llm.py:56]
-- [ ] [Review][Patch] response.choices[0].message.content can be None (e.g. tool-call response) — returns (None, None) which is indistinguishable from a successful empty response [llm.py:56]
-- [ ] [Review][Patch] Post-loop return None on line 80 is dead code — unreachable for all three exception types handled in the loop [llm.py:80]
+- [x] [Review][Patch] Dead pricing variable in llm_call — removed unused `pricing` assignment from call path
+- [x] [Review][Patch] response.choices is never guarded for emptiness — already fixed with empty-choices guard + retry
+- [x] [Review][Patch] response.choices[0].message.content can be None (e.g. tool-call response) — added explicit None check returning error tuple
+- [x] [Review][Patch] Post-loop return None on line 80 is dead code — kept as safety fallback with descriptive error message
 - [x] [Review][Defer] get_usage_summary() hardcodes _DEFAULT_PRICING regardless of which model generated tokens — inaccurate cost for non-default models [llm.py:98] — deferred, requires per-model token tracking; larger change for future story
 - [x] [Review][Defer] _usage dict not thread-safe — will corrupt under concurrent LLM calls [llm.py:14] — deferred, MVP is synchronous per spec
 
 ### Change Log
 
 - 2026-04-06: Story 1.4 implemented — thin LLM wrapper with cost tracking, dry-run mode, exponential backoff retry, and 14 mocked tests
+- 2026-04-10: Resolved 4 review findings — removed dead pricing var, added None content guard, fixed test for configurable retry count (LLM_MAX_RETRIES env var)

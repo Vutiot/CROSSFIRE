@@ -84,9 +84,8 @@ class TestUsageTracking:
 
         llm_call("Big prompt")
         summary = get_usage_summary()
-        # Input: 1M tokens * $0.15/1M = $0.15
-        # Output: 1M tokens * $0.60/1M = $0.60
-        assert summary["estimated_cost_usd"] == 0.75
+        # Default pricing (Claude Sonnet): Input: 1M * $3.00/1M = $3.00, Output: 1M * $15.00/1M = $15.00
+        assert summary["estimated_cost_usd"] == 18.0
 
     @patch.object(llm, "_get_client")
     def test_log_usage_summary(self, mock_get_client):
@@ -165,6 +164,7 @@ class TestRetryLogic:
 
     @patch("time.sleep")
     @patch.object(llm, "_get_client")
+    @patch.dict("os.environ", {"LLM_MAX_RETRIES": "3"})
     def test_rate_limit_exhausts_retries(self, mock_get_client, mock_sleep):
         mock_client = MagicMock()
         rate_limit_error = openai.RateLimitError(

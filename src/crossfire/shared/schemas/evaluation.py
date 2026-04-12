@@ -1,10 +1,12 @@
-"""Evaluation result schemas."""
+"""Evaluation result schemas for 2-scope, 3-stage pipeline evaluation."""
+
+from typing import Literal
 
 from pydantic import BaseModel
 
 
 class ScopeResult(BaseModel):
-    scope: str
+    scope: Literal["intra_doc", "inter_doc"]
     precision: float
     recall: float
     f1: float
@@ -12,16 +14,19 @@ class ScopeResult(BaseModel):
 
 
 class StageResult(BaseModel):
-    stage: str
+    stage: Literal[
+        "claim_extraction",
+        "cross_reference_identification",
+        "contradiction_detection",
+    ]
     precision: float
     recall: float
     f1: float
 
 
 class RepresentationQualityResult(BaseModel):
-    entity_coverage: float
-    relationship_accuracy: float
-    entity_resolution_quality: float
+    claim_coverage: float
+    cross_reference_accuracy: float
 
 
 class EvaluationResult(BaseModel):

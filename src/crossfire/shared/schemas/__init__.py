@@ -1,46 +1,52 @@
 """CROSSFIRE data contract schemas."""
 
+from crossfire.shared.schemas.anonymization import AnonymizationMapping
 from crossfire.shared.schemas.config import (
-    ScopeDistribution,
-    DetectabilityDistribution,
-    IncoherenceConfig,
-    PresetConfig,
-    GeneratorConfig,
+    DatasetVersion,
+    GenerationParams,
     PipelineConfig,
 )
-from crossfire.shared.schemas.corpus import Document, SubcorpusMetadata
-from crossfire.shared.schemas.entities import EntityNode, EntityEdge, EntityGraph
-from crossfire.shared.schemas.incoherences import IncoherenceLabel, DistractorLabel
-from crossfire.shared.schemas.reports import DetectedIncoherence, PipelineReport
+from crossfire.shared.schemas.contradictions import (
+    ContradictionLabel,
+    DistractorLabel,
+)
+from crossfire.shared.schemas.corpus import Document
+from crossfire.shared.schemas.domain_registry import DomainEntry, DomainRegistry
 from crossfire.shared.schemas.evaluation import (
-    ScopeResult,
-    StageResult,
-    RepresentationQualityResult,
+    AggregatedResult,
     EvaluationResult,
     MetricStats,
-    AggregatedResult,
+    RepresentationQualityResult,
+    ScopeResult,
+    StageResult,
 )
+from crossfire.shared.schemas.knowledge_graph import (
+    CrossReference,
+    KnowledgeGraphClaim,
+)
+from crossfire.shared.schemas.reports import DetectedContradiction, PipelineReport
+from crossfire.shared.schemas.scope_map import ScopeMap, ScopeMapEntry
 
 __all__ = [
-    "ScopeDistribution",
-    "DetectabilityDistribution",
-    "IncoherenceConfig",
-    "PresetConfig",
-    "GeneratorConfig",
-    "PipelineConfig",
-    "Document",
-    "SubcorpusMetadata",
-    "EntityNode",
-    "EntityEdge",
-    "EntityGraph",
-    "IncoherenceLabel",
+    "AnonymizationMapping",
+    "AggregatedResult",
+    "ContradictionLabel",
+    "CrossReference",
+    "DatasetVersion",
+    "DetectedContradiction",
     "DistractorLabel",
-    "DetectedIncoherence",
+    "Document",
+    "DomainEntry",
+    "DomainRegistry",
+    "EvaluationResult",
+    "GenerationParams",
+    "KnowledgeGraphClaim",
+    "MetricStats",
+    "PipelineConfig",
     "PipelineReport",
+    "RepresentationQualityResult",
+    "ScopeMap",
+    "ScopeMapEntry",
     "ScopeResult",
     "StageResult",
-    "RepresentationQualityResult",
-    "EvaluationResult",
-    "MetricStats",
-    "AggregatedResult",
 ]

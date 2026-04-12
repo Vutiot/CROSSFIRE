@@ -14,11 +14,15 @@ _client = None
 # Module-level usage tracking
 _usage = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
 
-# Approximate pricing per 1M tokens (GPT-4o-mini)
+# Approximate pricing per 1M tokens
 _PRICING = {
     "gpt-4o-mini": {"input": 0.15, "output": 0.60},
+    "claude-sonnet-4-20250514": {"input": 3.00, "output": 15.00},
+    "claude-opus-4-20250514": {"input": 15.00, "output": 75.00},
+    "anthropic/claude-sonnet-4": {"input": 3.00, "output": 15.00},
+    "anthropic/claude-opus-4": {"input": 15.00, "output": 75.00},
 }
-_DEFAULT_PRICING = {"input": 0.15, "output": 0.60}
+_DEFAULT_PRICING = {"input": 3.00, "output": 15.00}
 
 
 def _get_client() -> openai.OpenAI:
@@ -55,7 +59,6 @@ def llm_call(
         return _estimate_cost(prompt, model)
 
     client = _get_client()
-    pricing = _PRICING.get(model, _DEFAULT_PRICING)
 
     max_retries = int(os.environ.get("LLM_MAX_RETRIES", "20"))
     last_error = None
@@ -75,6 +78,8 @@ def llm_call(
                     continue
                 return None, last_error
             text = response.choices[0].message.content
+            if text is None:
+                return None, "API returned empty content (e.g. tool-call response)"
             if response.usage:
                 _usage["prompt_tokens"] += response.usage.prompt_tokens
                 _usage["completion_tokens"] += response.usage.completion_tokens

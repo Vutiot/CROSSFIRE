@@ -9,3 +9,8 @@ build/
 notebooks/.ipynb_checkpoints/
 data/ntsb_raw/
 data/ntsb_extracted/
+data/grenfell_raw/
+data/grenfell_extracted/
+data/copa_raw/
+data/copa_extracted/
+corpus/

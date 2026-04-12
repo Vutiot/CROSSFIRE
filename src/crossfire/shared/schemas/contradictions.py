@@ -1,10 +1,10 @@
-"""Incoherence and distractor label schemas."""
+"""Contradiction and distractor label schemas (replaces incoherences.py)."""
 
 from typing import Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
-Scope = Literal["intra_doc", "intra_corpus", "inter_corpus"]
+Scope = Literal["intra_doc", "inter_doc"]
 Mechanism = Literal[
     "numeric_drift",
     "entity_swap",
@@ -15,22 +15,32 @@ Mechanism = Literal[
 ]
 Detectability = Literal["single_hop", "multi_hop", "entity_resolution_dependent"]
 SystemAffinity = Literal["balanced", "graph_favoring", "agentic_favoring"]
+DivergenceType = Literal[
+    "expert_opinion",
+    "preliminary_vs_final",
+    "measurement_methodology",
+    "uncertainty_expression",
+]
+Difficulty = Literal["easy", "medium", "hard"]
 
 
-class IncoherenceLabel(BaseModel):
-    id: str
+class ContradictionLabel(BaseModel):
     scope: Scope
     mechanism: Mechanism
     detectability: Detectability
     system_affinity: SystemAffinity
+    difficulty: Difficulty
+    char_start: int = Field(ge=0)
+    char_end: int = Field(ge=0)
+    original_text: str
+    modified_text: str
+    rationale: str
+    ground_truth: bool
     document_references: list[str]
-    modified_fact: str
-    original_fact: str
 
 
 class DistractorLabel(BaseModel):
-    id: str
     scope: Scope
+    divergence_type: DivergenceType
     document_references: list[str]
-    divergence_type: str
     description: str
