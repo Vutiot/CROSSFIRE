@@ -1,443 +1,527 @@
-"""Tests for the distractor generator."""
+"""Tests for the distractor generator.
+
+Validates:
+- Distractor count matches ratio (AC1)
+- All 4 divergence types can appear (AC2)
+- Documents are NOT modified — no content truncation (AC5, P5 fix)
+- JSONL output written to distractors/distractor_labels.jsonl (AC4)
+- Model selection uses params.reasoning_model (AC6)
+- Zero contradiction count returns empty list
+- Markdown fence stripping in LLM responses
+"""
 
 import json
 from pathlib import Path
 
 import pytest
 
-from crossfire.shared.schemas.config import (
-    DetectabilityDistribution,
-    GeneratorConfig,
-    IncoherenceConfig,
-    ScopeDistribution,
-)
+from crossfire.shared.schemas.config import GenerationParams
+from crossfire.shared.schemas.contradictions import DistractorLabel
 from crossfire.shared.schemas.corpus import Document
-from crossfire.shared.schemas.entities import EntityEdge, EntityGraph, EntityNode
-from crossfire.shared.schemas.incoherences import DistractorLabel
 from crossfire.shared.seed_manager import SeedManager
 
+from crossfire.generator.distractor_generator import generate_distractors
+
 
 # ---------------------------------------------------------------------------
-# Test helpers
+# Helpers
 # ---------------------------------------------------------------------------
 
-def _mock_llm(prompt: str, model: str = "gpt-4o-mini", temperature: float = 0, dry_run: bool = False):
-    """Mock LLM that returns predictable text for distractor tests."""
-    if dry_run:
-        return "Dry-run estimate: ~500 tokens, ~$0.0001", None
 
-    if "divergence" in prompt.lower() or "distractor" in prompt.lower() or "perspective" in prompt.lower():
-        return json.dumps({
-            "modified_passage": (
-                "The aircraft was traveling at approximately 450 knots when the incident occurred. "
-                "Some analysts noted the airspeed indicator may have been reading slightly high due "
-                "to pitot tube calibration differences."
-            ),
-            "description": (
-                "Different measurement methodology: pitot tube calibration differences "
-                "can produce slightly varying airspeed readings, which is a legitimate "
-                "technical divergence, not a factual contradiction."
-            ),
-        }), None
-
-    return json.dumps({
-        "modified_passage": "Modified text.",
-        "description": "A legitimate divergence.",
-    }), None
-
-
-def _make_config(
-    tmp_path: Path,
-    distractor_ratio=0.3,
-    subcorpora_count=2,
-    docs_per_subcorpus=4,
-) -> GeneratorConfig:
-    return GeneratorConfig(
-        name="test",
-        description="test config",
-        master_seed=42,
-        subcorpora_count=subcorpora_count,
-        docs_per_subcorpus=docs_per_subcorpus,
-        connectivity_level=2,
-        doc_type_mix="balanced",
-        incoherences=IncoherenceConfig(
-            scope_distribution=ScopeDistribution(
-                intra_doc=0.2, intra_corpus=0.5, inter_corpus=0.3
-            ),
-            mechanism="uniform",
-            detectability_distribution=DetectabilityDistribution(
-                single_hop=0.3, multi_hop=0.5, entity_resolution=0.2
-            ),
-            system_affinity="balanced",
-            count="auto",
-        ),
-        distractor_ratio=distractor_ratio,
-        output_dir=str(tmp_path / "output"),
+def _make_doc(document_id: str, content: str, doc_type: str = "report") -> Document:
+    return Document(
+        document_id=document_id,
+        source="ntsb",
+        document_type=doc_type,
+        source_case_id="case_001",
+        scope_classification="intra_doc",
+        content=content,
     )
 
 
-def _make_entity_graph() -> EntityGraph:
-    """Create a small entity graph for testing."""
-    nodes = [
-        EntityNode(
-            id="org_000", entity_type="organization",
-            canonical_name="Boeing", aliases=["The Boeing Company", "BCA"],
-            subcorpus_memberships=["sc-0", "sc-1"],
-        ),
-        EntityNode(
-            id="org_001", entity_type="organization",
-            canonical_name="FAA", aliases=["Federal Aviation Administration"],
-            subcorpus_memberships=["sc-0", "sc-1"],
-        ),
-        EntityNode(
-            id="equip_000", entity_type="equipment",
-            canonical_name="Boeing 737 MAX 9", aliases=["737 MAX 9"],
-            subcorpus_memberships=["sc-0"],
-        ),
-    ]
-    edges = [
-        EntityEdge(source="org_000", target="equip_000", relationship_type="manufactures"),
-    ]
-    return EntityGraph(nodes=nodes, edges=edges)
+def _write_case(tmp_path: Path, docs: list[Document]) -> Path:
+    """Write docs into case_dir/anonymized_docs/ and return case_dir."""
+    case_dir = tmp_path / "case_001"
+    docs_dir = case_dir / "anonymized_docs"
+    docs_dir.mkdir(parents=True)
+
+    by_type: dict[str, list[Document]] = {}
+    for doc in docs:
+        by_type.setdefault(doc.document_type, []).append(doc)
+
+    for doc_type, type_docs in by_type.items():
+        path = docs_dir / f"{doc_type}.jsonl"
+        with open(path, "w") as f:
+            for d in type_docs:
+                f.write(d.model_dump_json() + "\n")
+
+    return case_dir
 
 
-def _create_test_corpus(corpus_dir: Path) -> list[Document]:
-    """Create a small test corpus on disk and return the documents."""
-    corpus_dir.mkdir(parents=True, exist_ok=True)
-    all_docs = []
+_CALL_COUNT = 0
 
-    for sc_idx in range(2):
-        sc_id = f"sc-{sc_idx}"
-        docs = []
-        for doc_idx in range(4):
-            doc = Document(
-                id=f"{sc_id}_doc_{doc_idx:03d}",
-                document_type="investigation_report",
-                subcorpus_id=sc_id,
-                reliability_signal=0.85,
-                content=(
-                    f"FACTUAL REPORT — Subcorpus {sc_idx}, Document {doc_idx}\n\n"
-                    f"The aircraft was traveling at 450 knots when the incident occurred. "
-                    f"Boeing manufactured the aircraft model involved in the investigation. "
-                    f"The FAA issued an airworthiness directive following the event. "
-                    f"The incident occurred on January 5, 2024 near Portland, Oregon. "
-                    f"Engine failure caused the emergency landing. "
-                    f"Preliminary findings indicated structural fatigue in the fuselage. "
-                    f"The final report concluded that maintenance procedures were inadequate."
-                ),
-            )
-            docs.append(doc)
-            all_docs.append(doc)
 
-        jsonl_path = corpus_dir / f"subcorpus_{sc_id}.jsonl"
-        with open(jsonl_path, "w", encoding="utf-8") as f:
-            for doc in docs:
-                f.write(doc.model_dump_json() + "\n")
+def _fake_llm(prompt: str, model: str = "test-model", temperature: float = 0):
+    """Fake LLM that returns a valid distractor response with rotating divergence types."""
+    global _CALL_COUNT
+    _CALL_COUNT += 1
+    return json.dumps({
+        "divergence_type": "expert_opinion",
+        "description": f"Expert A and Expert B disagree on failure cause (call {_CALL_COUNT}).",
+        "scope": "intra_doc",
+    }), None
 
-    return all_docs
+
+def _fake_llm_with_fences(prompt: str, model: str = "test-model", temperature: float = 0):
+    """Fake LLM that returns a response wrapped in markdown code fences."""
+    return '```json\n' + json.dumps({
+        "divergence_type": "expert_opinion",
+        "description": "Expert disagreement on root cause analysis.",
+        "scope": "intra_doc",
+    }) + '\n```', None
+
+
+def _default_params(**overrides) -> GenerationParams:
+    """Create GenerationParams with sensible defaults."""
+    kwargs = dict(
+        version_id="v1",
+        contradiction_rate_intra_doc=0.5,
+        contradiction_rate_inter_doc=0.5,
+        distractor_ratio=0.5,
+        reasoning_model="test-reasoning-model",
+    )
+    kwargs.update(overrides)
+    return GenerationParams(**kwargs)
 
 
 # ---------------------------------------------------------------------------
-# Task 1 tests: Core scaffold
+# Tests
 # ---------------------------------------------------------------------------
 
-class TestGenerateDistractorsScaffold:
-    """Tests for the core generate_distractors function."""
 
-    def test_function_exists_and_callable(self):
-        from crossfire.generator.distractor_generator import generate_distractors
-        assert callable(generate_distractors)
-
-    def test_returns_labels_on_success(self, tmp_path):
-        from crossfire.generator.distractor_generator import generate_distractors
-
-        corpus_dir = tmp_path / "corpus"
-        _create_test_corpus(corpus_dir)
-        config = _make_config(tmp_path, distractor_ratio=0.5)
-        entity_graph = _make_entity_graph()
-        seed_mgr = SeedManager(42)
-
-        labels, error = generate_distractors(
-            corpus_dir, config, entity_graph,
-            incoherence_count=10, seed_mgr=seed_mgr, llm=_mock_llm
-        )
-        assert error is None
-        assert isinstance(labels, list)
+class TestDistractorCount:
+    """AC1: Distractor count matches ratio."""
 
     def test_count_matches_ratio(self, tmp_path):
-        from crossfire.generator.distractor_generator import generate_distractors
-
-        corpus_dir = tmp_path / "corpus"
-        _create_test_corpus(corpus_dir)
-        config = _make_config(tmp_path, distractor_ratio=0.5)
-        entity_graph = _make_entity_graph()
+        """round(contradiction_count * distractor_ratio) distractors should be generated."""
+        docs = [
+            _make_doc("doc_001", "The aircraft experienced a loss of control."),
+            _make_doc("doc_002", "Maintenance logs show no discrepancies."),
+            _make_doc("doc_003", "Weather conditions were within normal limits."),
+        ]
+        case_dir = _write_case(tmp_path, docs)
+        params = _default_params(distractor_ratio=0.5)
         seed_mgr = SeedManager(42)
 
-        # 10 incoherences * 0.5 ratio = 5 distractors
         labels, error = generate_distractors(
-            corpus_dir, config, entity_graph,
-            incoherence_count=10, seed_mgr=seed_mgr, llm=_mock_llm
+            case_dir=case_dir,
+            contradiction_count=4,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=_fake_llm,
         )
+
         assert error is None
-        assert len(labels) == 5
+        assert labels is not None
+        assert len(labels) == 2  # round(4 * 0.5)
 
-    def test_zero_ratio_produces_empty(self, tmp_path):
-        from crossfire.generator.distractor_generator import generate_distractors
-
-        corpus_dir = tmp_path / "corpus"
-        _create_test_corpus(corpus_dir)
-        config = _make_config(tmp_path, distractor_ratio=0.0)
-        entity_graph = _make_entity_graph()
+    def test_count_with_different_ratio(self, tmp_path):
+        """Different ratio should produce different count."""
+        docs = [
+            _make_doc("doc_001", "Content A."),
+            _make_doc("doc_002", "Content B."),
+        ]
+        case_dir = _write_case(tmp_path, docs)
+        params = _default_params(distractor_ratio=1.0)
         seed_mgr = SeedManager(42)
 
         labels, error = generate_distractors(
-            corpus_dir, config, entity_graph,
-            incoherence_count=10, seed_mgr=seed_mgr, llm=_mock_llm
+            case_dir=case_dir,
+            contradiction_count=3,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=_fake_llm,
         )
+
+        assert error is None
+        assert labels is not None
+        assert len(labels) == 3  # round(3 * 1.0)
+
+
+class TestZeroCount:
+    """Zero contradiction count or zero ratio should return empty list."""
+
+    def test_zero_ratio(self, tmp_path):
+        """distractor_ratio=0.0 should produce zero distractors."""
+        docs = [_make_doc("doc_001", "Some content.")]
+        case_dir = _write_case(tmp_path, docs)
+        params = _default_params(distractor_ratio=0.0)
+        seed_mgr = SeedManager(42)
+
+        labels, error = generate_distractors(
+            case_dir=case_dir,
+            contradiction_count=5,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=_fake_llm,
+        )
+
         assert error is None
         assert labels == []
 
-    def test_returns_error_on_empty_corpus(self, tmp_path):
-        from crossfire.generator.distractor_generator import generate_distractors
-
-        corpus_dir = tmp_path / "empty"
-        corpus_dir.mkdir(parents=True, exist_ok=True)
-        config = _make_config(tmp_path, distractor_ratio=0.3)
-        entity_graph = _make_entity_graph()
+    def test_zero_contradiction_count(self, tmp_path):
+        """contradiction_count=0 should produce zero distractors."""
+        docs = [_make_doc("doc_001", "Some content.")]
+        case_dir = _write_case(tmp_path, docs)
+        params = _default_params(distractor_ratio=0.5)
         seed_mgr = SeedManager(42)
 
         labels, error = generate_distractors(
-            corpus_dir, config, entity_graph,
-            incoherence_count=10, seed_mgr=seed_mgr, llm=_mock_llm
+            case_dir=case_dir,
+            contradiction_count=0,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=_fake_llm,
         )
-        assert labels is None
-        assert error is not None
 
+        assert error is None
+        assert labels == []
 
-# ---------------------------------------------------------------------------
-# Task 2 tests: Divergence types
-# ---------------------------------------------------------------------------
 
 class TestDivergenceTypes:
-    """Tests for divergence type selection."""
+    """AC2: All 4 divergence types can appear."""
 
     def test_all_four_types_appear(self, tmp_path):
-        from crossfire.generator.distractor_generator import generate_distractors
-
-        corpus_dir = tmp_path / "corpus"
-        _create_test_corpus(corpus_dir)
-        config = _make_config(tmp_path, distractor_ratio=1.0)
-        entity_graph = _make_entity_graph()
+        """With enough distractors, all 4 divergence types should be assigned."""
+        docs = [
+            _make_doc("doc_001", "Content A about investigation."),
+            _make_doc("doc_002", "Content B about maintenance."),
+            _make_doc("doc_003", "Content C about weather conditions."),
+        ]
+        case_dir = _write_case(tmp_path, docs)
+        # Request 8 distractors to ensure round-robin covers all 4 types
+        params = _default_params(distractor_ratio=1.0)
         seed_mgr = SeedManager(42)
 
-        # 8 incoherences * 1.0 = 8 distractors — enough for all 4 types
         labels, error = generate_distractors(
-            corpus_dir, config, entity_graph,
-            incoherence_count=8, seed_mgr=seed_mgr, llm=_mock_llm
+            case_dir=case_dir,
+            contradiction_count=8,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=_fake_llm,
         )
+
         assert error is None
-        types_used = {label.divergence_type for label in labels}
-        expected = {
-            "expert_opinion", "preliminary_vs_final",
-            "measurement_methodology", "uncertainty_expression",
+        assert labels is not None
+        types_found = {label.divergence_type for label in labels}
+        assert types_found == {
+            "expert_opinion",
+            "preliminary_vs_final",
+            "measurement_methodology",
+            "uncertainty_expression",
         }
-        assert types_used == expected
 
-    def test_divergence_types_are_valid(self, tmp_path):
-        from crossfire.generator.distractor_generator import generate_distractors
 
-        corpus_dir = tmp_path / "corpus"
-        _create_test_corpus(corpus_dir)
-        config = _make_config(tmp_path, distractor_ratio=0.5)
-        entity_graph = _make_entity_graph()
+class TestNoContentTruncation:
+    """AC5 / P5 fix: Document content must NOT be modified."""
+
+    def test_document_content_unchanged(self, tmp_path):
+        """Documents must be byte-identical after distractor generation."""
+        long_content = "A" * 5000  # Well above the old 2000-char truncation
+        docs = [_make_doc("doc_001", long_content)]
+        case_dir = _write_case(tmp_path, docs)
+        params = _default_params(distractor_ratio=1.0)
+        seed_mgr = SeedManager(42)
+
+        # Record content before
+        content_before = long_content
+
+        labels, error = generate_distractors(
+            case_dir=case_dir,
+            contradiction_count=2,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=_fake_llm,
+        )
+
+        assert error is None
+        assert labels is not None
+
+        # Re-read documents from disk — they should be unchanged
+        docs_dir = case_dir / "anonymized_docs"
+        for jsonl_path in docs_dir.glob("*.jsonl"):
+            for line in jsonl_path.read_text().strip().split("\n"):
+                if line:
+                    doc = Document.model_validate_json(line)
+                    assert doc.content == content_before
+                    assert len(doc.content) == 5000
+
+    def test_multiple_documents_all_preserved(self, tmp_path):
+        """All documents should retain their exact original content."""
+        docs = [
+            _make_doc("doc_001", "First document " * 300),
+            _make_doc("doc_002", "Second document " * 400),
+            _make_doc("doc_003", "Third document " * 200),
+        ]
+        case_dir = _write_case(tmp_path, docs)
+        original_contents = {d.document_id: d.content for d in docs}
+        params = _default_params(distractor_ratio=1.0)
         seed_mgr = SeedManager(42)
 
         labels, error = generate_distractors(
-            corpus_dir, config, entity_graph,
-            incoherence_count=10, seed_mgr=seed_mgr, llm=_mock_llm
+            case_dir=case_dir,
+            contradiction_count=3,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=_fake_llm,
         )
+
         assert error is None
-        valid_types = {
-            "expert_opinion", "preliminary_vs_final",
-            "measurement_methodology", "uncertainty_expression",
-        }
-        for label in labels:
-            assert label.divergence_type in valid_types
+
+        # Re-read and verify all docs unchanged
+        docs_dir = case_dir / "anonymized_docs"
+        for jsonl_path in docs_dir.glob("*.jsonl"):
+            for line in jsonl_path.read_text().strip().split("\n"):
+                if line:
+                    doc = Document.model_validate_json(line)
+                    assert doc.content == original_contents[doc.document_id]
 
 
-# ---------------------------------------------------------------------------
-# Task 4 tests: DistractorLabel metadata
-# ---------------------------------------------------------------------------
+class TestJSONLOutput:
+    """AC4: Labels written to distractors/distractor_labels.jsonl."""
 
-class TestDistractorLabels:
-    """Tests for DistractorLabel metadata completeness."""
-
-    def test_labels_have_all_required_fields(self, tmp_path):
-        from crossfire.generator.distractor_generator import generate_distractors
-
-        corpus_dir = tmp_path / "corpus"
-        _create_test_corpus(corpus_dir)
-        config = _make_config(tmp_path, distractor_ratio=0.5)
-        entity_graph = _make_entity_graph()
+    def test_jsonl_written(self, tmp_path):
+        """Labels should be written as JSONL to the distractors directory."""
+        docs = [
+            _make_doc("doc_001", "Investigation content here."),
+            _make_doc("doc_002", "Maintenance record content."),
+        ]
+        case_dir = _write_case(tmp_path, docs)
+        params = _default_params(distractor_ratio=1.0)
         seed_mgr = SeedManager(42)
 
         labels, error = generate_distractors(
-            corpus_dir, config, entity_graph,
-            incoherence_count=10, seed_mgr=seed_mgr, llm=_mock_llm
+            case_dir=case_dir,
+            contradiction_count=3,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=_fake_llm,
         )
+
         assert error is None
-        for label in labels:
-            assert label.id.startswith("distractor_")
-            assert label.scope in {"intra_doc", "intra_corpus", "inter_corpus"}
-            assert len(label.document_references) >= 1
-            assert label.divergence_type
-            assert label.description
+        assert labels is not None
 
-    def test_document_references_are_valid(self, tmp_path):
-        from crossfire.generator.distractor_generator import generate_distractors
+        # Verify JSONL file exists
+        jsonl_path = case_dir / "distractors" / "distractor_labels.jsonl"
+        assert jsonl_path.exists()
 
-        corpus_dir = tmp_path / "corpus"
-        original_docs = _create_test_corpus(corpus_dir)
-        valid_ids = {d.id for d in original_docs}
-        config = _make_config(tmp_path, distractor_ratio=0.5)
-        entity_graph = _make_entity_graph()
+        # Verify each line validates against DistractorLabel
+        lines = jsonl_path.read_text().strip().split("\n")
+        assert len(lines) == len(labels)
+
+        for line in lines:
+            parsed = DistractorLabel.model_validate_json(line)
+            assert parsed.scope in ("intra_doc", "inter_doc")
+            assert parsed.divergence_type in (
+                "expert_opinion",
+                "preliminary_vs_final",
+                "measurement_methodology",
+                "uncertainty_expression",
+            )
+            assert len(parsed.document_references) >= 1
+            assert parsed.description
+
+    def test_no_id_field_in_output(self, tmp_path):
+        """DistractorLabel should not have an id field in the JSONL output."""
+        docs = [_make_doc("doc_001", "Some content.")]
+        case_dir = _write_case(tmp_path, docs)
+        params = _default_params(distractor_ratio=1.0)
         seed_mgr = SeedManager(42)
 
         labels, error = generate_distractors(
-            corpus_dir, config, entity_graph,
-            incoherence_count=10, seed_mgr=seed_mgr, llm=_mock_llm
+            case_dir=case_dir,
+            contradiction_count=1,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=_fake_llm,
         )
+
         assert error is None
-        for label in labels:
-            for ref in label.document_references:
-                assert ref in valid_ids, f"Invalid doc reference: {ref}"
+        assert labels is not None
+        assert len(labels) == 1
 
-    def test_labels_are_valid_pydantic_models(self, tmp_path):
-        from crossfire.generator.distractor_generator import generate_distractors
+        # Check label object
+        dumped = labels[0].model_dump()
+        assert "id" not in dumped
 
-        corpus_dir = tmp_path / "corpus"
-        _create_test_corpus(corpus_dir)
-        config = _make_config(tmp_path, distractor_ratio=0.5)
-        entity_graph = _make_entity_graph()
+        # Also check JSONL on disk
+        jsonl_path = case_dir / "distractors" / "distractor_labels.jsonl"
+        line = jsonl_path.read_text().strip()
+        data = json.loads(line)
+        assert "id" not in data
+
+
+class TestModelSelection:
+    """AC6: Uses params.reasoning_model for LLM calls."""
+
+    def test_uses_reasoning_model(self, tmp_path):
+        """LLM should be called with params.reasoning_model, not a hardcoded model."""
+        docs = [_make_doc("doc_001", "Content about the investigation.")]
+        case_dir = _write_case(tmp_path, docs)
+        params = _default_params(reasoning_model="custom-reasoning-model-v2")
+        seed_mgr = SeedManager(42)
+
+        models_used = []
+
+        def tracking_llm(prompt: str, model: str = "default", temperature: float = 0):
+            models_used.append(model)
+            return json.dumps({
+                "divergence_type": "expert_opinion",
+                "description": "Expert disagreement.",
+                "scope": "intra_doc",
+            }), None
+
+        labels, error = generate_distractors(
+            case_dir=case_dir,
+            contradiction_count=2,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=tracking_llm,
+        )
+
+        assert error is None
+        assert labels is not None
+        # All LLM calls should use the custom reasoning model
+        assert len(models_used) > 0
+        for m in models_used:
+            assert m == "custom-reasoning-model-v2"
+
+
+class TestMarkdownFenceStripping:
+    """Markdown fences in LLM responses should be stripped before JSON parsing."""
+
+    def test_handles_fenced_response(self, tmp_path):
+        """LLM response wrapped in ```json...``` should be parsed correctly."""
+        docs = [_make_doc("doc_001", "Investigation content here.")]
+        case_dir = _write_case(tmp_path, docs)
+        params = _default_params(distractor_ratio=1.0)
         seed_mgr = SeedManager(42)
 
         labels, error = generate_distractors(
-            corpus_dir, config, entity_graph,
-            incoherence_count=10, seed_mgr=seed_mgr, llm=_mock_llm
+            case_dir=case_dir,
+            contradiction_count=1,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=_fake_llm_with_fences,
         )
+
         assert error is None
-        for label in labels:
-            revalidated = DistractorLabel.model_validate(label.model_dump())
-            assert revalidated == label
-
-
-# ---------------------------------------------------------------------------
-# Task 5 tests: Write back to disk
-# ---------------------------------------------------------------------------
-
-class TestCorpusWriteBack:
-    """Tests for writing modified corpus back to disk."""
-
-    def test_documents_written_back(self, tmp_path):
-        from crossfire.generator.distractor_generator import generate_distractors
-
-        corpus_dir = tmp_path / "corpus"
-        _create_test_corpus(corpus_dir)
-        config = _make_config(tmp_path, distractor_ratio=0.5)
-        entity_graph = _make_entity_graph()
-        seed_mgr = SeedManager(42)
-
-        generate_distractors(
-            corpus_dir, config, entity_graph,
-            incoherence_count=10, seed_mgr=seed_mgr, llm=_mock_llm
-        )
-
-        # Verify JSONL files still valid
-        for jsonl_path in corpus_dir.glob("subcorpus_*.jsonl"):
-            for line in jsonl_path.read_text(encoding="utf-8").strip().split("\n"):
-                doc = Document.model_validate_json(line)
-                assert doc.document_type == "investigation_report"
-                assert 0.0 <= doc.reliability_signal <= 1.0
-
-    def test_document_ids_preserved(self, tmp_path):
-        from crossfire.generator.distractor_generator import generate_distractors
-
-        corpus_dir = tmp_path / "corpus"
-        original_docs = _create_test_corpus(corpus_dir)
-        original_ids = {d.id for d in original_docs}
-
-        config = _make_config(tmp_path, distractor_ratio=0.5)
-        entity_graph = _make_entity_graph()
-        seed_mgr = SeedManager(42)
-
-        generate_distractors(
-            corpus_dir, config, entity_graph,
-            incoherence_count=10, seed_mgr=seed_mgr, llm=_mock_llm
-        )
-
-        disk_ids = set()
-        for jsonl_path in corpus_dir.glob("subcorpus_*.jsonl"):
-            for line in jsonl_path.read_text(encoding="utf-8").strip().split("\n"):
-                doc = Document.model_validate_json(line)
-                disk_ids.add(doc.id)
-
-        assert disk_ids == original_ids
-
-
-# ---------------------------------------------------------------------------
-# Task 6 tests: Determinism and error handling
-# ---------------------------------------------------------------------------
-
-class TestDeterminism:
-    """Tests for reproducibility."""
-
-    def test_same_seed_produces_identical_results(self, tmp_path):
-        from crossfire.generator.distractor_generator import generate_distractors
-
-        corpus_dir1 = tmp_path / "corpus1"
-        corpus_dir2 = tmp_path / "corpus2"
-        _create_test_corpus(corpus_dir1)
-        _create_test_corpus(corpus_dir2)
-
-        config1 = _make_config(tmp_path / "c1", distractor_ratio=0.5)
-        config2 = _make_config(tmp_path / "c2", distractor_ratio=0.5)
-        entity_graph = _make_entity_graph()
-
-        labels1, _ = generate_distractors(
-            corpus_dir1, config1, entity_graph,
-            incoherence_count=10, seed_mgr=SeedManager(42), llm=_mock_llm
-        )
-        labels2, _ = generate_distractors(
-            corpus_dir2, config2, entity_graph,
-            incoherence_count=10, seed_mgr=SeedManager(42), llm=_mock_llm
-        )
-
-        assert len(labels1) == len(labels2)
-        for l1, l2 in zip(labels1, labels2):
-            assert l1.id == l2.id
-            assert l1.scope == l2.scope
-            assert l1.divergence_type == l2.divergence_type
+        assert labels is not None
+        assert len(labels) == 1
+        assert labels[0].description == "Expert disagreement on root cause analysis."
 
 
 class TestErrorHandling:
-    """Tests for graceful error handling."""
+    """Error cases: no documents, LLM failures."""
 
-    def test_llm_errors_handled_gracefully(self, tmp_path):
-        from crossfire.generator.distractor_generator import generate_distractors
-
-        def failing_llm(prompt, **kwargs):
-            return None, "API error"
-
-        corpus_dir = tmp_path / "corpus"
-        _create_test_corpus(corpus_dir)
-        config = _make_config(tmp_path, distractor_ratio=0.5)
-        entity_graph = _make_entity_graph()
+    def test_no_documents(self, tmp_path):
+        """Should return error when no documents are found."""
+        case_dir = tmp_path / "empty_case"
+        case_dir.mkdir()
+        params = _default_params(distractor_ratio=0.5)
         seed_mgr = SeedManager(42)
 
         labels, error = generate_distractors(
-            corpus_dir, config, entity_graph,
-            incoherence_count=10, seed_mgr=seed_mgr, llm=failing_llm
+            case_dir=case_dir,
+            contradiction_count=4,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=_fake_llm,
         )
+
+        assert labels is None
+        assert error is not None
+        assert "No documents found" in error
+
+    def test_llm_failure(self, tmp_path):
+        """Should handle LLM failures gracefully — failed calls produce fewer labels."""
+        docs = [_make_doc("doc_001", "Some content.")]
+        case_dir = _write_case(tmp_path, docs)
+
+        def failing_llm(prompt, model="test-model", temperature=0):
+            return None, "LLM service unavailable"
+
+        params = _default_params(distractor_ratio=1.0)
+        seed_mgr = SeedManager(42)
+
+        labels, error = generate_distractors(
+            case_dir=case_dir,
+            contradiction_count=2,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=failing_llm,
+        )
+
         assert error is None
-        assert isinstance(labels, list)
-        assert len(labels) == 0  # All failed gracefully
+        assert labels is not None
+        assert len(labels) == 0  # All failed
+
+    def test_malformed_json_response(self, tmp_path):
+        """Should handle malformed JSON from LLM gracefully."""
+        docs = [_make_doc("doc_001", "Content here.")]
+        case_dir = _write_case(tmp_path, docs)
+
+        def bad_json_llm(prompt, model="test-model", temperature=0):
+            return "not valid json {{{", None
+
+        params = _default_params(distractor_ratio=1.0)
+        seed_mgr = SeedManager(42)
+
+        labels, error = generate_distractors(
+            case_dir=case_dir,
+            contradiction_count=1,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=bad_json_llm,
+        )
+
+        assert error is None
+        assert labels is not None
+        assert len(labels) == 0  # Parsing failed, but no hard error
+
+
+class TestLabelStructure:
+    """Verify DistractorLabel has the correct fields."""
+
+    def test_label_fields(self, tmp_path):
+        """Each label should have scope, divergence_type, document_references, description."""
+        docs = [
+            _make_doc("doc_001", "Content A."),
+            _make_doc("doc_002", "Content B."),
+        ]
+        case_dir = _write_case(tmp_path, docs)
+        params = _default_params(distractor_ratio=1.0)
+        seed_mgr = SeedManager(42)
+
+        labels, error = generate_distractors(
+            case_dir=case_dir,
+            contradiction_count=2,
+            params=params,
+            seed_mgr=seed_mgr,
+            llm=_fake_llm,
+        )
+
+        assert error is None
+        assert labels is not None
+        for label in labels:
+            assert isinstance(label, DistractorLabel)
+            assert label.scope in ("intra_doc", "inter_doc")
+            assert label.divergence_type in (
+                "expert_opinion",
+                "preliminary_vs_final",
+                "measurement_methodology",
+                "uncertainty_expression",
+            )
+            assert len(label.document_references) >= 1
+            assert isinstance(label.description, str)
+            assert len(label.description) > 0

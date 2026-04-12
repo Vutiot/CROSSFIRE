@@ -1,9 +1,18 @@
-"""Distractor generator — plants legitimate perspective divergences into corpora.
+"""Distractor generator — labels legitimate perspective divergences in case corpora.
 
 Produces DistractorLabel records for legitimate disagreements that should NOT
-be flagged as incoherences. Runs after incoherence injection (Story 3.1).
+be flagged as contradictions. Runs after contradiction injection.
 
-FRs covered: FR11, FR15
+KEY DESIGN: Distractors do NOT modify documents. Unlike contradictions (which
+alter doc content), a distractor labels an *existing* passage as a legitimate
+divergence. The LLM identifies naturally divergent content and describes it.
+
+Operates on per-case directory layout:
+    case_dir/anonymized_docs/*.jsonl
+    case_dir/distractors/distractor_labels.jsonl  (output)
+
+Bug fixes applied (from code review):
+    P5: No longer replaces doc.content — documents stay unchanged.
 """
 
 import json
@@ -12,11 +21,11 @@ from pathlib import Path
 
 from loguru import logger
 
+from crossfire.generator.injector import strip_json_fences
 from crossfire.shared.llm import llm_call
-from crossfire.shared.schemas.config import GeneratorConfig
+from crossfire.shared.schemas.config import GenerationParams
+from crossfire.shared.schemas.contradictions import DistractorLabel, Scope
 from crossfire.shared.schemas.corpus import Document
-from crossfire.shared.schemas.entities import EntityGraph
-from crossfire.shared.schemas.incoherences import DistractorLabel
 from crossfire.shared.seed_manager import SeedManager
 
 # The 4 divergence types
@@ -29,20 +38,22 @@ _DIVERGENCE_TYPES = [
 
 
 def generate_distractors(
-    corpus_dir: Path,
-    config: GeneratorConfig,
-    entity_graph: EntityGraph,
-    incoherence_count: int,
+    case_dir: Path,
+    contradiction_count: int,
+    params: GenerationParams,
     seed_mgr: SeedManager,
     llm=None,
 ) -> tuple[list[DistractorLabel] | None, str | None]:
-    """Generate legitimate perspective divergences in a corpus.
+    """Generate legitimate perspective divergence labels for a case corpus.
+
+    Distractors do NOT modify document content. The LLM reads existing docs
+    and identifies passages that represent legitimate professional disagreement,
+    methodological differences, or uncertainty expressions.
 
     Args:
-        corpus_dir: Directory containing subcorpus JSONL files.
-        config: Generator configuration with distractor_ratio.
-        entity_graph: Gold entity graph for context.
-        incoherence_count: Number of injected incoherences (used to compute count).
+        case_dir: Case directory containing ``anonymized_docs/*.jsonl``.
+        contradiction_count: Number of injected contradictions (used to compute count).
+        params: Generation parameters with ``distractor_ratio``.
         seed_mgr: SeedManager for reproducibility.
         llm: LLM call function (defaults to shared llm_call).
 
@@ -55,50 +66,47 @@ def generate_distractors(
     rng = random.Random(seed_mgr.get_seed("distractor_generator", 0))
 
     # Compute distractor count
-    count = round(incoherence_count * config.distractor_ratio)
+    count = round(contradiction_count * params.distractor_ratio)
     if count == 0:
         logger.info("Distractor ratio produces 0 distractors — skipping")
         return [], None
 
-    # Load corpus
-    docs_by_subcorpus, all_docs = _load_corpus(corpus_dir)
+    # Load documents (read-only — distractors don't modify content)
+    all_docs = _load_docs(case_dir)
     if not all_docs:
-        return None, f"No documents found in {corpus_dir}"
+        return None, f"No documents found in {case_dir / 'anonymized_docs'}"
 
     logger.info(
-        f"Generating {count} distractors (ratio={config.distractor_ratio}, "
-        f"incoherence_count={incoherence_count}) across {len(all_docs)} documents"
+        f"Generating {count} distractors (ratio={params.distractor_ratio}, "
+        f"contradiction_count={contradiction_count}) across {len(all_docs)} documents"
     )
 
-    # Assign divergence types — round-robin then shuffle
+    # Assign divergence types — round-robin then shuffle for variety
     div_types = _assign_divergence_types(count, rng)
 
     # Execute distractor generation
     labels: list[DistractorLabel] = []
     success_count = 0
     fail_count = 0
-    subcorpus_ids = sorted(docs_by_subcorpus.keys())
 
     for idx in range(count):
         div_type = div_types[idx]
 
-        # Select target document(s)
-        scope, target_docs = _select_targets(
-            docs_by_subcorpus, subcorpus_ids, rng
-        )
+        # Select target document(s) — intra_doc or inter_doc scope
+        scope, target_docs = _select_targets(all_docs, rng)
 
         primary_doc = target_docs[0]
 
-        # Generate the distractor via LLM
+        # Generate the distractor via LLM (read-only: no document mutation)
         label, error = _generate_single_distractor(
             idx=idx,
             div_type=div_type,
             scope=scope,
             target_docs=target_docs,
             primary_doc=primary_doc,
-            entity_graph=entity_graph,
             rng=rng,
             llm=llm,
+            model=params.reasoning_model,
         )
 
         if error:
@@ -109,8 +117,8 @@ def generate_distractors(
         labels.append(label)
         success_count += 1
 
-    # Write modified corpus back
-    _write_corpus(corpus_dir, docs_by_subcorpus)
+    # Write distractor labels to JSONL (no _write_docs — documents stay unchanged)
+    _write_labels(case_dir, labels)
 
     # Log summary
     type_counts: dict[str, int] = {}
@@ -132,23 +140,20 @@ def generate_distractors(
 # ---------------------------------------------------------------------------
 
 
-def _load_corpus(corpus_dir: Path) -> tuple[dict[str, list[Document]], list[Document]]:
-    """Load all subcorpus JSONL files."""
-    docs_by_subcorpus: dict[str, list[Document]] = {}
-    all_docs: list[Document] = []
+def _load_docs(case_dir: Path) -> list[Document]:
+    """Load all documents from ``case_dir/anonymized_docs/*.jsonl``."""
+    docs: list[Document] = []
+    docs_dir = case_dir / "anonymized_docs"
+    if not docs_dir.exists():
+        return docs
 
-    for jsonl_path in sorted(corpus_dir.glob("subcorpus_*.jsonl")):
-        docs = []
+    for jsonl_path in sorted(docs_dir.glob("*.jsonl")):
         for line in jsonl_path.read_text(encoding="utf-8").strip().split("\n"):
             if line:
                 doc = Document.model_validate_json(line)
                 docs.append(doc)
-                all_docs.append(doc)
-        if docs:
-            sc_id = docs[0].subcorpus_id
-            docs_by_subcorpus[sc_id] = docs
 
-    return docs_by_subcorpus, all_docs
+    return docs
 
 
 def _assign_divergence_types(count: int, rng: random.Random) -> list[str]:
@@ -161,36 +166,19 @@ def _assign_divergence_types(count: int, rng: random.Random) -> list[str]:
 
 
 def _select_targets(
-    docs_by_subcorpus: dict[str, list[Document]],
-    subcorpus_ids: list[str],
+    all_docs: list[Document],
     rng: random.Random,
 ) -> tuple[str, list[Document]]:
     """Select target documents. Returns (scope, [docs])."""
-    # Alternate between intra_doc and intra_corpus scope
-    # (inter_corpus less common for legitimate divergences)
-    scope_choice = rng.random()
-    if scope_choice < 0.5:
-        # intra_doc: single document
-        sc_id = rng.choice(subcorpus_ids)
-        doc = rng.choice(docs_by_subcorpus[sc_id])
+    # 50/50 split between intra_doc and inter_doc
+    if rng.random() < 0.5:
+        doc = rng.choice(all_docs)
         return "intra_doc", [doc]
-    elif scope_choice < 0.85:
-        # intra_corpus: two docs same subcorpus
-        sc_id = rng.choice(subcorpus_ids)
-        docs = docs_by_subcorpus[sc_id]
-        if len(docs) >= 2:
-            pair = rng.sample(docs, 2)
-            return "intra_corpus", pair
-        return "intra_doc", [rng.choice(docs)]
     else:
-        # inter_corpus: two docs different subcorpora
-        if len(subcorpus_ids) >= 2:
-            sc_pair = rng.sample(subcorpus_ids, 2)
-            doc_a = rng.choice(docs_by_subcorpus[sc_pair[0]])
-            doc_b = rng.choice(docs_by_subcorpus[sc_pair[1]])
-            return "inter_corpus", [doc_a, doc_b]
-        sc_id = rng.choice(subcorpus_ids)
-        return "intra_doc", [rng.choice(docs_by_subcorpus[sc_id])]
+        if len(all_docs) >= 2:
+            pair = rng.sample(all_docs, 2)
+            return "inter_doc", pair
+        return "intra_doc", [rng.choice(all_docs)]
 
 
 def _generate_single_distractor(
@@ -199,52 +187,66 @@ def _generate_single_distractor(
     scope: str,
     target_docs: list[Document],
     primary_doc: Document,
-    entity_graph: EntityGraph,
     rng: random.Random,
     llm,
+    model: str,
 ) -> tuple[DistractorLabel | None, str | None]:
-    """Generate a single distractor and modify the document."""
+    """Identify a legitimate perspective divergence in an existing document.
+
+    Does NOT modify document content. The LLM reads the document and describes
+    an existing or plausible divergence passage.
+    """
     type_instruction = _divergence_instruction(div_type)
 
+    # Build context from target docs
+    if scope == "inter_doc" and len(target_docs) >= 2:
+        doc_context = (
+            f"Document A ({target_docs[0].document_id}):\n"
+            f"{target_docs[0].content}\n\n"
+            f"Document B ({target_docs[1].document_id}):\n"
+            f"{target_docs[1].content}"
+        )
+    else:
+        doc_context = (
+            f"Document ({primary_doc.document_id}):\n"
+            f"{primary_doc.content}"
+        )
+
     prompt = (
-        "You are adding a legitimate perspective divergence to a document. "
+        "You are identifying a legitimate perspective divergence in a document. "
         "This is NOT a factual contradiction — it is a valid professional "
         "disagreement, methodological difference, or uncertainty expression "
-        "that should NOT be flagged as an incoherence.\n\n"
+        "that should NOT be flagged as a contradiction.\n\n"
         f"Divergence type: {div_type}\n"
         f"Instruction: {type_instruction}\n\n"
-        f"Document passage:\n{primary_doc.content[:2000]}\n\n"
-        "Modify the passage to include this divergence naturally. "
-        "Keep the same writing style and voice. The divergence should be "
-        "subtle enough that an automated system might consider flagging it, "
-        "but a human would recognize it as legitimate.\n\n"
+        f"{doc_context}\n\n"
+        "Identify an existing passage or aspect of the document(s) that represents "
+        "a legitimate perspective divergence. Describe the divergence you found.\n\n"
         "Return a JSON object with:\n"
-        '- "modified_passage": the full passage with the divergence added\n'
-        '- "description": a brief description of the divergence\n\n'
+        '- "divergence_type": the type of divergence (must be exactly: '
+        f'"{div_type}")\n'
+        '- "description": a clear description of the legitimate divergence\n'
+        f'- "scope": "{scope}"\n\n'
         "Return ONLY valid JSON."
     )
 
-    response, error = llm(prompt, model="gpt-4o-mini", temperature=0)
+    response, error = llm(prompt, model=model, temperature=0)
     if error:
         return None, error
 
     try:
-        data = json.loads(response)
-        modified_passage = data["modified_passage"]
+        cleaned = strip_json_fences(response)
+        data = json.loads(cleaned)
         description = data["description"]
     except (json.JSONDecodeError, KeyError, TypeError) as e:
         return None, f"Failed to parse distractor response: {e}"
 
-    # Apply modification to document
-    primary_doc.content = modified_passage
-
-    # Build label
-    doc_refs = [d.id for d in target_docs]
+    # Build label — no document mutation
+    doc_refs = [d.document_id for d in target_docs]
     label = DistractorLabel(
-        id=f"distractor_{idx:04d}",
         scope=scope,
-        document_references=doc_refs,
         divergence_type=div_type,
+        document_references=doc_refs,
         description=description,
     )
 
@@ -255,8 +257,8 @@ def _divergence_instruction(div_type: str) -> str:
     """Generate type-specific instruction for the LLM."""
     if div_type == "expert_opinion":
         return (
-            "Add a sentence where a different expert or investigator offers "
-            "a different but plausible interpretation of the evidence. Both "
+            "Look for a passage where different experts or investigators offer "
+            "different but plausible interpretations of the evidence. Both "
             "opinions should be professionally valid — this is a disagreement, "
             "not an error. Example: 'While Investigator A attributed the failure "
             "to metal fatigue, Investigator B suggested a manufacturing defect "
@@ -264,7 +266,7 @@ def _divergence_instruction(div_type: str) -> str:
         )
     elif div_type == "preliminary_vs_final":
         return (
-            "Add a reference to a preliminary finding that legitimately differs "
+            "Look for a reference to a preliminary finding that legitimately differs "
             "from a later conclusion. This represents normal investigation "
             "evolution, not contradiction. Example: 'Initial assessments focused "
             "on pilot error, though subsequent analysis identified mechanical "
@@ -272,7 +274,7 @@ def _divergence_instruction(div_type: str) -> str:
         )
     elif div_type == "measurement_methodology":
         return (
-            "Add a measurement or data point that differs from another due to "
+            "Look for a measurement or data point that differs from another due to "
             "different measurement methods or instruments. Both values are valid. "
             "Example: 'Radar indicated an altitude of 16,200 feet, while the "
             "barometric altimeter read 16,450 feet — a discrepancy consistent "
@@ -280,22 +282,22 @@ def _divergence_instruction(div_type: str) -> str:
         )
     elif div_type == "uncertainty_expression":
         return (
-            "Add a qualified or hedged statement that expresses legitimate "
+            "Look for a qualified or hedged statement that expresses legitimate "
             "uncertainty about a finding. Example: 'Evidence suggests the "
             "component may have experienced pre-existing stress, though "
             "definitive confirmation awaits metallurgical analysis.'"
         )
-    return f"Add a legitimate {div_type} divergence."
+    return f"Identify a legitimate {div_type} divergence."
 
 
-def _write_corpus(
-    corpus_dir: Path,
-    docs_by_subcorpus: dict[str, list[Document]],
-) -> None:
-    """Write modified documents back to JSONL files."""
-    for sc_id, docs in docs_by_subcorpus.items():
-        jsonl_path = corpus_dir / f"subcorpus_{sc_id}.jsonl"
-        with open(jsonl_path, "w", encoding="utf-8") as f:
-            for doc in docs:
-                f.write(doc.model_dump_json() + "\n")
-    logger.info(f"Modified corpus written to {corpus_dir}")
+def _write_labels(case_dir: Path, labels: list[DistractorLabel]) -> None:
+    """Write distractor labels to ``case_dir/distractors/distractor_labels.jsonl``."""
+    out_dir = case_dir / "distractors"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / "distractor_labels.jsonl"
+
+    with open(out_path, "w", encoding="utf-8") as f:
+        for label in labels:
+            f.write(label.model_dump_json() + "\n")
+
+    logger.info(f"Wrote {len(labels)} distractor labels to {out_path}")
