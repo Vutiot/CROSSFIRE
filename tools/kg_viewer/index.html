@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CROSSFIRE KG Viewer</title>
+<script src="https://unpkg.com/cytoscape@3/dist/cytoscape.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #0a0c10;
+    --bg-surface: #0d1117;
+    --bg-raised: #161b22;
+    --bg-overlay: #1c2129;
+    --border: #21262d;
+    --border-subtle: #151920;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --text-muted: #484f58;
+    --accent: #d4a855;
+    --accent-dim: rgba(212,168,85,0.15);
+    --contra-color: #f47067;
+    --contra-dim: rgba(244,112,103,0.12);
+    --distractor-color: #a371f7;
+    --distractor-dim: rgba(163,113,247,0.12);
+    --success: #56d364;
+    --font-ui: 'IBM Plex Sans', -apple-system, sans-serif;
+    --font-data: 'IBM Plex Mono', 'Fira Code', monospace;
+    --type-person: #79c0ff;
+    --type-organization: #d2a8ff;
+    --type-equipment: #56d364;
+    --type-regulation: #ffa657;
+    --type-location: #f778ba;
+    --type-temporal: #79c0ff;
+    --type-mechanical: #56d364;
+    --type-causal: #ffa657;
+    --type-procedural: #d2a8ff;
+    --type-meteorological: #a5d6ff;
+    --type-numeric: #ff7b72;
+    --type-personnel: #f778ba;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-ui); background: var(--bg-deep); color: var(--text-primary); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+  /* ── Toolbar ── */
+  #toolbar {
+    background: var(--bg-surface);
+    padding: 0 20px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  #toolbar .brand {
+    font-family: var(--font-data);
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 2px;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  #toolbar .sep { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
+  #toolbar .group { display: flex; align-items: center; gap: 8px; }
+
+  /* Custom toggle pills */
+  .toggle-pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 10px 3px 6px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: var(--text-muted);
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .toggle-pill.active {
+    border-color: transparent;
+    color: #fff;
+  }
+  .toggle-pill .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .toggle-pill.active .dot { background: currentColor; box-shadow: 0 0 6px currentColor; }
+  .toggle-pill input { display: none; }
+
+  .toggle-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .toggle-chip.active { background: var(--bg-raised); border-color: var(--text-muted); color: var(--text-primary); }
+  .toggle-chip input { display: none; }
+
+  #toolbar select {
+    background: var(--bg-raised);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-family: var(--font-ui);
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  #toolbar select:hover { border-color: var(--text-muted); }
+  #toolbar select:focus { outline: none; border-color: var(--accent); }
+
+  /* Search */
+  #search-box {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-family: var(--font-data);
+    width: 140px;
+    transition: all 0.2s;
+  }
+  #search-box::placeholder { color: var(--text-muted); }
+  #search-box:focus { outline: none; border-color: var(--accent); width: 180px; }
+
+  /* ── Main ── */
+  #main { display: flex; flex: 1; overflow: hidden; position: relative; }
+  #cy {
+    flex: 1;
+    background: var(--bg-deep);
+    background-image: radial-gradient(circle, var(--border-subtle) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* ── Sidebar ── */
+  #sidebar {
+    width: 360px;
+    background: var(--bg-surface);
+    border-left: 1px solid var(--border);
+    overflow-y: auto;
+    font-size: 13px;
+    flex-shrink: 0;
+    transition: width 0.3s;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  #sidebar::-webkit-scrollbar { width: 5px; }
+  #sidebar::-webkit-scrollbar-track { background: transparent; }
+  #sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  .sidebar-header {
+    position: sticky;
+    top: 0;
+    background: var(--bg-surface);
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid var(--border);
+    z-index: 1;
+  }
+  .sidebar-header h3 {
+    font-family: var(--font-data);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .sidebar-body { padding: 16px 20px; }
+
+  .field { margin-bottom: 14px; }
+  .field-label {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .field-value {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .field-value .mono { font-family: var(--font-data); font-size: 12px; }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-family: var(--font-data);
+    font-weight: 400;
+    margin: 1px 2px;
+    border: 1px solid transparent;
+  }
+
+  /* Contradiction & distractor cards */
+  .card-section { margin-top: 20px; }
+  .card-section-title {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-section-title .count {
+    background: var(--bg-raised);
+    padding: 1px 6px;
+    border-radius: 8px;
+    font-size: 10px;
+    color: var(--text-secondary);
+  }
+
+  .evidence-card {
+    background: var(--bg-deep);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 8px;
+    transition: border-color 0.2s;
+  }
+  .evidence-card:hover { border-color: var(--text-muted); }
+  .evidence-card.contra { border-left: 3px solid var(--contra-color); }
+  .evidence-card.distractor { border-left: 3px solid var(--distractor-color); }
+
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+  .card-tags .tag { font-size: 9px; }
+
+  .diff-label { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 2px; }
+  .diff-block { font-size: 11px; line-height: 1.6; font-family: var(--font-data); }
+  .diff-block .removed {
+    color: var(--contra-color);
+    background: var(--contra-dim);
+    text-decoration: line-through;
+    padding: 1px 3px;
+    border-radius: 2px;
+  }
+  .diff-block .added {
+    color: var(--success);
+    background: rgba(86,211,100,0.1);
+    padding: 1px 3px;
+    border-radius: 2px;
+  }
+  .card-rationale {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    line-height: 1.5;
+    font-style: italic;
+  }
+  .card-docs {
+    font-size: 10px;
+    font-family: var(--font-data);
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  .empty-state {
+    color: var(--text-muted);
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .empty-state p { margin-bottom: 6px; }
+  .empty-state .hint { font-size: 11px; color: var(--border); }
+
+  /* ── Stats bar ── */
+  #stats {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+    padding: 5px 20px;
+    font-size: 10px;
+    font-family: var(--font-data);
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  #stats .stat-val { color: var(--text-secondary); }
+
+  /* ── Drop zone ── */
+  #dropzone {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,12,16,0.96);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+  #dropzone.active { display: flex; }
+  #dropzone .drop-title {
+    font-family: var(--font-data);
+    font-size: 16px;
+    color: var(--accent);
+    letter-spacing: 2px;
+  }
+  #dropzone .drop-hint { font-size: 12px; color: var(--text-muted); }
+  #dropzone .drop-border {
+    width: 280px;
+    height: 160px;
+    border: 2px dashed var(--border);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: border-color 0.2s;
+  }
+  body.dragging #dropzone .drop-border { border-color: var(--accent); }
+
+  /* ── Entity type tag colors ── */
+  .type-person { background: rgba(121,192,255,0.15); color: var(--type-person); border-color: rgba(121,192,255,0.25); }
+  .type-organization { background: rgba(210,168,255,0.15); color: var(--type-organization); border-color: rgba(210,168,255,0.25); }
+  .type-equipment { background: rgba(86,211,100,0.15); color: var(--type-equipment); border-color: rgba(86,211,100,0.25); }
+  .type-regulation { background: rgba(255,166,87,0.15); color: var(--type-regulation); border-color: rgba(255,166,87,0.25); }
+  .type-location { background: rgba(247,120,186,0.15); color: var(--type-location); border-color: rgba(247,120,186,0.25); }
+  .type-temporal { background: rgba(121,192,255,0.15); color: var(--type-temporal); border-color: rgba(121,192,255,0.25); }
+  .type-mechanical { background: rgba(86,211,100,0.15); color: var(--type-mechanical); border-color: rgba(86,211,100,0.25); }
+  .type-causal { background: rgba(255,166,87,0.15); color: var(--type-causal); border-color: rgba(255,166,87,0.25); }
+  .type-procedural { background: rgba(210,168,255,0.15); color: var(--type-procedural); border-color: rgba(210,168,255,0.25); }
+  .type-meteorological { background: rgba(165,214,255,0.15); color: var(--type-meteorological); border-color: rgba(165,214,255,0.25); }
+  .type-numeric { background: rgba(255,123,114,0.15); color: var(--type-numeric); border-color: rgba(255,123,114,0.25); }
+  .type-personnel { background: rgba(247,120,186,0.15); color: var(--type-personnel); border-color: rgba(247,120,186,0.25); }
+  .type-unknown { background: rgba(139,148,158,0.15); color: var(--text-secondary); border-color: rgba(139,148,158,0.25); }
+
+  /* Mechanism tag colors */
+  .mech-numeric_drift { background: rgba(255,166,87,0.18); color: #ffa657; }
+  .mech-entity_swap { background: rgba(255,123,114,0.18); color: #ff7b72; }
+  .mech-causal_inversion { background: rgba(210,168,255,0.18); color: #d2a8ff; }
+  .mech-temporal_contradiction { background: rgba(121,192,255,0.18); color: #79c0ff; }
+  .mech-omission_based_implicit { background: rgba(86,211,100,0.18); color: #56d364; }
+  .mech-temporal_revision_conflict { background: rgba(212,168,85,0.18); color: #d4a855; }
+</style>
+</head>
+<body>
+
+<div id="toolbar">
+  <span class="brand">crossfire</span>
+  <div class="sep"></div>
+  <select id="dataset-select"></select>
+  <div class="sep"></div>
+  <input type="text" id="search-box" placeholder="Search nodes...">
+  <div class="sep"></div>
+  <div class="group" id="type-filters"></div>
+  <div class="sep"></div>
+  <div class="group" id="overlay-toggles"></div>
+  <div class="sep"></div>
+  <select id="view-select" style="display:none">
+    <option value="documents">Documents</option>
+    <option value="entities">Entities</option>
+    <option value="claims">Claims</option>
+  </select>
+  <select id="scope-filter"><option value="all">All scopes</option></select>
+  <select id="layout-select">
+    <option value="cose">Force-directed</option>
+    <option value="circle">Circle</option>
+    <option value="grid">Grid</option>
+    <option value="breadthfirst">Hierarchy</option>
+  </select>
+</div>
+
+<div id="main">
+  <div id="cy"></div>
+  <div id="sidebar">
+    <div class="empty-state">
+      <p>Select a node or edge</p>
+      <p class="hint">scroll to zoom / drag to pan</p>
+    </div>
+  </div>
+</div>
+
+<div id="stats"></div>
+
+<div id="dropzone">
+  <div class="drop-border">
+    <div class="drop-title">DROP FILES</div>
+    <div class="drop-hint">entity_graph.json / labels / distractors</div>
+  </div>
+</div>
+
+<script>
+const TYPE_COLORS = {
+  person: '#79c0ff', organization: '#d2a8ff', equipment: '#56d364',
+  regulation: '#ffa657', location: '#f778ba',
+  temporal: '#79c0ff', mechanical: '#56d364', causal: '#ffa657',
+  procedural: '#d2a8ff', meteorological: '#a5d6ff', numeric: '#ff7b72',
+  personnel: '#f778ba', unknown: '#484f58'
+};
+
+let cy, DATA = null;
+let DATASETS = [];
+let ACTIVE_VIEW = 'documents';
+
+// ── Init ──
+
+async function init() {
+  try {
+    // Try multi-dataset endpoint first
+    const listResp = await fetch('/api/datasets');
+    if (listResp.ok) {
+      DATASETS = await listResp.json();
+      if (DATASETS.length > 0) {
+        buildDatasetSelector();
+        await loadDataset(DATASETS[0]);
+        return;
+      }
+    }
+  } catch (_) {}
+  // Fallback: single dataset endpoint
+  try {
+    const resp = await fetch('/api/data');
+    if (resp.ok) { DATA = await resp.json(); render(); return; }
+  } catch (_) {}
+  setupDragDrop();
+}
+
+function buildDatasetSelector() {
+  const sel = document.getElementById('dataset-select');
+  sel.innerHTML = '';
+  DATASETS.forEach(name => {
+    const opt = document.createElement('option');
+    opt.value = name;
+    opt.textContent = name;
+    sel.appendChild(opt);
+  });
+  sel.addEventListener('change', () => loadDataset(sel.value));
+  sel.style.display = DATASETS.length > 1 ? '' : 'none';
+  // Also hide the separator before it if only one dataset
+  if (DATASETS.length <= 1) {
+    const seps = document.querySelectorAll('#toolbar .sep');
+    if (seps[0]) seps[0].style.display = 'none';
+  }
+}
+
+async function loadDataset(name) {
+  try {
+    const resp = await fetch(`/api/data/${name}`);
+    if (resp.ok) { DATA = await resp.json(); ACTIVE_VIEW = 'documents'; render(); }
+  } catch (err) {
+    console.error('Failed to load dataset:', err);
+  }
+}
+
+function setupDragDrop() {
+  const dz = document.getElementById('dropzone');
+  dz.classList.add('active');
+  const files = {};
+  document.body.addEventListener('dragover', e => { e.preventDefault(); document.body.classList.add('dragging'); });
+  document.body.addEventListener('dragleave', () => document.body.classList.remove('dragging'));
+  document.body.addEventListener('drop', async e => {
+    e.preventDefault(); document.body.classList.remove('dragging');
+    for (const file of e.dataTransfer.files) {
+      const data = JSON.parse(await file.text());
+      const name = file.name.toLowerCase();
+      if (name.includes('entity_graph') || (data.nodes && data.edges)) files.graph = data;
+      else if (name.includes('incoherence') || name.includes('contradiction')) files.contradictions = Array.isArray(data) ? data : [data];
+      else if (name.includes('distractor')) files.distractors = Array.isArray(data) ? data : [data];
+      else if (data.claims) files.claims = data;
+    }
+    if (files.graph || files.claims) { DATA = buildPayloadFromFiles(files); dz.classList.remove('active'); render(); }
+  });
+}
+
+function buildPayloadFromFiles(files) {
+  const graph = files.graph || { nodes: [], edges: [] };
+  const contradictions = (files.contradictions || []).map((c, i) => {
+    if (c.modified_fact && !c.modified_text) { c.modified_text = c.modified_fact; delete c.modified_fact; }
+    if (c.original_fact && !c.original_text) { c.original_text = c.original_fact; delete c.original_fact; }
+    if (!c.id) c.id = `c_${i}`;
+    return c;
+  });
+  const distractors = files.distractors || [];
+  const annotations = {};
+  graph.nodes.forEach(n => { annotations[n.id] = { contradiction_ids: [], distractor_ids: [], contradiction_count: 0, distractor_count: 0 }; });
+  return { dataset_name: 'local', layout: 'entity_graph', graph, contradictions, distractors, node_annotations: annotations,
+    stats: { total_nodes: graph.nodes.length, total_edges: graph.edges.length, total_contradictions: contradictions.length, total_distractors: distractors.length }
+  };
+}
+
+// ── Render ──
+
+function render() {
+  if (cy) { cy.destroy(); cy = null; }
+  buildFilters();
+  buildGraph();
+  updateStats();
+  setupSearch();
+}
+
+function buildFilters() {
+  const isClaims = ACTIVE_VIEW === 'claims' && DATA.claims_graph;
+  const isEntities = ACTIVE_VIEW === 'entities' && DATA.entity_graph;
+  const activeGraph = isClaims ? DATA.claims_graph : isEntities ? DATA.entity_graph : DATA.graph;
+  const types = [...new Set(activeGraph.nodes.map(n => n.entity_type))];
+  const container = document.getElementById('type-filters');
+  container.innerHTML = '';
+  types.forEach(t => {
+    const pill = document.createElement('label');
+    pill.className = 'toggle-pill active';
+    pill.style.color = TYPE_COLORS[t] || '#888';
+    const cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.checked = true; cb.dataset.type = t;
+    cb.addEventListener('change', function() { pill.classList.toggle('active', this.checked); applyFilters(); });
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+    pill.appendChild(cb);
+    pill.appendChild(dot);
+    pill.appendChild(document.createTextNode(t));
+    container.appendChild(pill);
+  });
+
+  // Overlay toggles
+  const overlays = document.getElementById('overlay-toggles');
+  overlays.innerHTML = '';
+  [
+    { id: 'show-contradictions', label: 'Contradictions', color: 'var(--contra-color)' },
+    { id: 'show-distractors', label: 'Distractors', color: 'var(--distractor-color)' }
+  ].forEach(o => {
+    const chip = document.createElement('label');
+    chip.className = 'toggle-chip active';
+    const cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.checked = true; cb.id = o.id;
+    cb.addEventListener('change', function() { chip.classList.toggle('active', this.checked); applyFilters(); });
+    chip.appendChild(cb);
+    chip.appendChild(document.createTextNode(o.label));
+    overlays.appendChild(chip);
+  });
+
+  // Scope filter
+  const scopes = new Set();
+  DATA.contradictions.forEach(c => { if (c.scope) scopes.add(c.scope); });
+  DATA.distractors.forEach(d => { if (d.scope) scopes.add(d.scope); });
+  const sel = document.getElementById('scope-filter');
+  sel.innerHTML = '<option value="all">All scopes</option>';
+  scopes.forEach(s => { const opt = document.createElement('option'); opt.value = s; opt.textContent = s.replace(/_/g, ' '); sel.appendChild(opt); });
+  sel.onchange = applyFilters;
+
+  const layoutSel = document.getElementById('layout-select');
+  layoutSel.onchange = () => {
+    const name = layoutSel.value;
+    const opts = { name, animate: true, animationDuration: 600, padding: 40 };
+    if (name === 'cose') Object.assign(opts, { nodeRepulsion: 400000, idealEdgeLength: 100, edgeElasticity: 100, gravity: 80, numIter: 1000 });
+    cy.layout(opts).run();
+  };
+
+  // View toggle (documents / entities / claims) — only for claims-layout datasets
+  const viewSel = document.getElementById('view-select');
+  if ((DATA.entity_graph && DATA.entity_graph.nodes.length > 0) ||
+      (DATA.claims_graph && DATA.claims_graph.nodes.length > 0)) {
+    viewSel.style.display = '';
+    viewSel.onchange = () => {
+      ACTIVE_VIEW = viewSel.value;
+      if (cy) { cy.destroy(); cy = null; }
+      buildFilters();
+      buildGraph();
+      updateStats();
+    };
+  } else {
+    viewSel.style.display = 'none';
+  }
+}
+
+function setupSearch() {
+  const box = document.getElementById('search-box');
+  box.addEventListener('input', () => {
+    const q = box.value.toLowerCase().trim();
+    if (!q) { cy.nodes().removeClass('search-dim search-match'); return; }
+    cy.batch(() => {
+      cy.nodes().forEach(n => {
+        const label = (n.data('label') || '').toLowerCase();
+        const aliases = (n.data('aliases') || []).join(' ').toLowerCase();
+        const subject = (n.data('subject') || '').toLowerCase();
+        const obj = (n.data('object') || '').toLowerCase();
+        const match = label.includes(q) || aliases.includes(q) || subject.includes(q) || obj.includes(q);
+        n.toggleClass('search-match', match);
+        n.toggleClass('search-dim', !match);
+      });
+    });
+  });
+}
+
+function buildGraph() {
+  const elements = [];
+  // Pick graph + annotations based on active view
+  const isClaims = ACTIVE_VIEW === 'claims' && DATA.claims_graph;
+  const isEntities = ACTIVE_VIEW === 'entities' && DATA.entity_graph;
+  let graphData, ann;
+  if (isClaims) {
+    graphData = DATA.claims_graph;
+    ann = DATA.claims_annotations || {};
+  } else if (isEntities) {
+    graphData = DATA.entity_graph;
+    ann = DATA.entity_annotations || {};
+  } else {
+    graphData = DATA.graph;
+    ann = DATA.node_annotations || {};
+  }
+  const isClaimsLayout = isClaims || isEntities || DATA.layout === 'claims';
+
+  graphData.nodes.forEach(n => {
+    const a = ann[n.id] || { contradiction_count: 0, distractor_count: 0 };
+    const nodeData = {
+      id: n.id, label: n.canonical_name || n.id,
+      entity_type: n.entity_type || 'unknown',
+      aliases: n.aliases || [],
+      subcorpus_memberships: n.subcorpus_memberships || [],
+      claim_count: n.claim_count || 0,
+      category_breakdown: n.category_breakdown || {},
+      contradiction_count: a.contradiction_count,
+      distractor_count: a.distractor_count,
+      contradiction_ids: a.contradiction_ids || [],
+      distractor_ids: a.distractor_ids || [],
+    };
+    if (isClaims) {
+      nodeData.confidence = n.confidence || 0;
+      nodeData.predicate = n.predicate || '';
+      nodeData.object = n.object || '';
+      nodeData.subject = n.subject || '';
+      nodeData.source_document = n.source_document || '';
+    }
+    elements.push({ data: nodeData, classes: [n.entity_type || 'unknown'] });
+  });
+
+  graphData.edges.forEach((e, i) => {
+    elements.push({ data: { id: `e_${i}`, source: e.source, target: e.target, relationship_type: e.relationship_type || '', weight: e.weight || 0 } });
+  });
+
+  const styleRules = [
+    // Base node
+    { selector: 'node', style: {
+      'label': 'data(label)',
+      'text-valign': 'bottom', 'text-halign': 'center',
+      'font-family': 'IBM Plex Mono, monospace',
+      'font-size': 8, 'font-weight': 300,
+      'color': '#6e7681', 'text-margin-y': 4,
+      'width': 10, 'height': 10,
+      'background-color': '#484f58',
+      'background-opacity': 0.9,
+      'border-width': 0,
+      'overlay-padding': 3,
+      'transition-property': 'background-color, border-width, border-color, width, height, opacity',
+      'transition-duration': '0.2s',
+    }},
+    // Base edge
+    { selector: 'edge', style: {
+      'width': 0.5, 'line-color': '#3d444d', 'target-arrow-color': '#3d444d',
+      'target-arrow-shape': 'triangle', 'curve-style': 'bezier',
+      'opacity': 0.55, 'arrow-scale': 0.4,
+      'transition-property': 'opacity, width, line-color',
+      'transition-duration': '0.2s',
+    }},
+    // Shared entities — dotted
+    { selector: 'edge[relationship_type="shared_entities"]', style: {
+      'opacity': 0.5, 'width': 2, 'line-style': 'dotted',
+    }},
+    // Shared facts — yellow
+    { selector: 'edge[relationship_type="shared_facts"]', style: {
+      'opacity': 0.6, 'width': 2, 'line-color': '#d4a855', 'target-arrow-color': '#d4a855',
+    }},
+    // Selected states
+    { selector: 'node:selected', style: { 'border-width': 2, 'border-color': '#d4a855', 'width': 14, 'height': 14 } },
+    { selector: 'edge:selected', style: {
+      'label': 'data(relationship_type)', 'font-size': 8, 'font-family': 'IBM Plex Mono, monospace',
+      'color': '#8b949e', 'text-rotation': 'autorotate', 'text-margin-y': -8,
+      'opacity': 1, 'width': 1.5, 'line-color': '#d4a855', 'target-arrow-color': '#d4a855',
+    }},
+    // Neighborhood highlighting
+    { selector: 'node.neighbor', style: { 'opacity': 1, 'width': 12, 'height': 12, 'color': '#c9d1d9' } },
+    { selector: 'edge.neighbor', style: { 'opacity': 0.85, 'width': 1, 'line-color': '#525a63', 'target-arrow-color': '#525a63' } },
+    { selector: 'node.dimmed', style: { 'opacity': 0.15 } },
+    { selector: 'edge.dimmed', style: { 'opacity': 0.06 } },
+    // Search
+    { selector: 'node.search-match', style: { 'border-width': 2, 'border-color': '#d4a855', 'color': '#d4a855', 'width': 14, 'height': 14 } },
+    { selector: 'node.search-dim', style: { 'opacity': 0.2 } },
+    // Hidden
+    { selector: '.hidden', style: { 'display': 'none' } },
+  ];
+
+  // Entity type colors
+  Object.entries(TYPE_COLORS).forEach(([type, color]) => {
+    styleRules.push({ selector: `node.${type}`, style: { 'background-color': color } });
+  });
+
+  // Contradiction border
+  styleRules.push({ selector: 'node[contradiction_count > 0]', style: {
+    'border-width': 'mapData(contradiction_count, 0, 30, 1, 2.5)',
+    'border-color': '#f47067',
+  }});
+  // Distractor border
+  styleRules.push({ selector: 'node[distractor_count > 0]', style: {
+    'border-style': 'dashed', 'border-width': 1, 'border-color': '#a371f7',
+  }});
+  // Both
+  styleRules.push({ selector: 'node[contradiction_count > 0][distractor_count > 0]', style: {
+    'border-width': 'mapData(contradiction_count, 0, 30, 1, 2.5)',
+    'border-color': '#f47067', 'border-style': 'dashed',
+  }});
+
+  // View-specific node sizing
+  if (isClaims) {
+    styleRules.push({ selector: 'node[confidence > 0]', style: {
+      'width': 'mapData(confidence, 0.7, 1.0, 6, 18)', 'height': 'mapData(confidence, 0.7, 1.0, 6, 18)'
+    }});
+  } else if (isClaimsLayout) {
+    styleRules.push({ selector: 'node[claim_count > 0]', style: {
+      'width': 'mapData(claim_count, 1, 100, 8, 28)', 'height': 'mapData(claim_count, 1, 100, 8, 28)'
+    }});
+  }
+
+  // Layout options — claims view uses tighter packing for many orphan nodes
+  const layoutOpts = isClaims
+    ? { name: 'cose', animate: false, fit: true, padding: 40, nodeRepulsion: 200000, idealEdgeLength: 60, edgeElasticity: 100, nestingFactor: 5, gravity: 150, numIter: 1000, initialTemp: 200, coolingFactor: 0.95, minTemp: 1.0, componentSpacing: 40 }
+    : { name: 'cose', animate: false, fit: true, padding: 40, nodeRepulsion: 400000, idealEdgeLength: 100, edgeElasticity: 100, nestingFactor: 5, gravity: 80, numIter: 1000, initialTemp: 200, coolingFactor: 0.95, minTemp: 1.0, componentSpacing: 100 };
+
+  cy = cytoscape({
+    container: document.getElementById('cy'),
+    elements,
+    style: styleRules,
+    layout: layoutOpts,
+    minZoom: 0.2, maxZoom: 5,
+  });
+
+  // Interactions
+  cy.on('tap', 'node', e => { highlightNeighborhood(e.target); showNodeDetails(e.target.data()); });
+  cy.on('tap', 'edge', e => { showEdgeDetails(e.target.data()); });
+  cy.on('tap', e => { if (e.target === cy) { resetHighlight(); clearSidebar(); } });
+}
+
+// ── Neighborhood Highlight ──
+
+function highlightNeighborhood(node) {
+  resetHighlight();
+  const neighborhood = node.neighborhood().add(node);
+  cy.elements().not(neighborhood).addClass('dimmed');
+  neighborhood.edges().addClass('neighbor');
+  neighborhood.nodes().not(node).addClass('neighbor');
+}
+
+function resetHighlight() {
+  cy.elements().removeClass('dimmed neighbor');
+}
+
+// ── Filters ──
+
+function applyFilters() {
+  const showContra = document.getElementById('show-contradictions').checked;
+  const showDist = document.getElementById('show-distractors').checked;
+  const scopeFilter = document.getElementById('scope-filter').value;
+  const activeTypes = new Set();
+  document.querySelectorAll('#type-filters input[type="checkbox"]').forEach(cb => { if (cb.checked) activeTypes.add(cb.dataset.type); });
+
+  const activeContraIds = new Set();
+  const activeDistIds = new Set();
+  if (showContra) DATA.contradictions.forEach(c => { if (scopeFilter === 'all' || c.scope === scopeFilter) activeContraIds.add(c.id); });
+  if (showDist) DATA.distractors.forEach(d => { if (scopeFilter === 'all' || d.scope === scopeFilter) activeDistIds.add(d.id); });
+
+  cy.batch(() => {
+    cy.nodes().forEach(node => {
+      const d = node.data();
+      if (!activeTypes.has(d.entity_type)) { node.addClass('hidden'); return; }
+      node.removeClass('hidden');
+      node.data('contradiction_count', (d.contradiction_ids || []).filter(id => activeContraIds.has(id)).length);
+      node.data('distractor_count', (d.distractor_ids || []).filter(id => activeDistIds.has(id)).length);
+    });
+    cy.edges().forEach(edge => {
+      edge.toggleClass('hidden', edge.source().hasClass('hidden') || edge.target().hasClass('hidden'));
+    });
+  });
+}
+
+// ── Sidebar ──
+
+function clearSidebar() {
+  document.getElementById('sidebar').innerHTML = `<div class="empty-state"><p>Select a node or edge</p><p class="hint">scroll to zoom / drag to pan</p></div>`;
+}
+
+function showNodeDetails(d) {
+  const sb = document.getElementById('sidebar');
+  let html = `<div class="sidebar-header"><h3>${esc(d.label)}</h3>`;
+  html += `<span class="tag type-${d.entity_type}">${d.entity_type}</span>`;
+  html += `</div><div class="sidebar-body">`;
+
+  if (ACTIVE_VIEW === 'claims') {
+    html += field('Claim ID', `<span class="mono">${esc(d.id)}</span>`);
+    html += field('Subject', esc(d.subject));
+    html += field('Predicate', `<span class="mono">${esc(d.predicate)}</span>`);
+    html += field('Object', esc(d.object));
+    html += field('Category', `<span class="tag type-${d.entity_type}">${d.entity_type}</span>`);
+    html += field('Source Document', `<span class="mono">${esc(d.source_document)}</span>`);
+    html += field('Confidence', `<span class="mono">${d.confidence}</span>`);
+  } else {
+    html += field('ID', `<span class="mono">${d.id}</span>`);
+    if (d.aliases?.length) html += field('Aliases', d.aliases.map(a => esc(a)).join(', '));
+    if (d.claim_count) {
+      html += field('Claims', d.claim_count);
+      if (d.category_breakdown && Object.keys(d.category_breakdown).length) {
+        html += field('Categories', Object.entries(d.category_breakdown).map(([k,v]) => `<span class="tag type-${k}">${k}: ${v}</span>`).join(' '));
+      }
+    }
+  }
+
+  const contraIds = d.contradiction_ids || [];
+  if (contraIds.length) {
+    html += `<div class="card-section"><div class="card-section-title"><span style="color:var(--contra-color)">Contradictions</span> <span class="count">${contraIds.length}</span></div>`;
+    contraIds.forEach(cid => { const c = DATA.contradictions.find(x => x.id === cid); if (c) html += contradictionCard(c); });
+    html += '</div>';
+  }
+
+  const distIds = d.distractor_ids || [];
+  if (distIds.length) {
+    html += `<div class="card-section"><div class="card-section-title"><span style="color:var(--distractor-color)">Distractors</span> <span class="count">${distIds.length}</span></div>`;
+    distIds.forEach(did => { const di = DATA.distractors.find(x => x.id === did); if (di) html += distractorCard(di); });
+    html += '</div>';
+  }
+  html += '</div>';
+  sb.innerHTML = html;
+}
+
+function showEdgeDetails(d) {
+  const sb = document.getElementById('sidebar');
+  const src = cy.getElementById(d.source).data();
+  const tgt = cy.getElementById(d.target).data();
+  let html = `<div class="sidebar-header"><h3>${esc(d.relationship_type || 'Edge')}</h3></div>`;
+  html += `<div class="sidebar-body">`;
+  html += field('Source', `<span class="tag type-${src.entity_type}">${esc(src.label)}</span>`);
+  html += field('Target', `<span class="tag type-${tgt.entity_type}">${esc(tgt.label)}</span>`);
+  html += field('Type', `<span class="mono">${d.relationship_type}</span>`);
+  if (d.weight) html += field('Weight', d.weight);
+  html += '</div>';
+  sb.innerHTML = html;
+}
+
+function contradictionCard(c) {
+  let html = `<div class="evidence-card contra"><div class="card-tags">`;
+  html += `<span class="tag mech-${c.mechanism || 'unknown'}">${(c.mechanism||'unknown').replace(/_/g,' ')}</span>`;
+  html += `<span class="tag" style="background:rgba(139,148,158,0.1);color:var(--text-secondary)">${(c.scope||'').replace(/_/g,' ')}</span>`;
+  if (c.detectability) html += `<span class="tag" style="background:rgba(139,148,158,0.1);color:var(--text-muted)">${c.detectability.replace(/_/g,' ')}</span>`;
+  if (c.difficulty) html += `<span class="tag" style="background:rgba(139,148,158,0.1);color:var(--text-muted)">${c.difficulty}</span>`;
+  html += `</div>`;
+  if (c.original_text) html += `<div class="diff-label">original</div><div class="diff-block"><span class="removed">${esc(trunc(c.original_text, 180))}</span></div>`;
+  if (c.modified_text) html += `<div class="diff-label" style="margin-top:6px">injected</div><div class="diff-block"><span class="added">${esc(trunc(c.modified_text, 180))}</span></div>`;
+  if (c.rationale) html += `<div class="diff-label" style="margin-top:6px">rationale</div><div class="card-rationale">${esc(trunc(c.rationale, 250))}</div>`;
+  if ((c.scope === 'inter_doc' || c.scope === 'inter_corpus') && (c.document_references||[]).length > 1) {
+    html += `<div class="diff-label" style="margin-top:6px">contradicting document</div>`;
+    html += `<div class="card-docs">${esc(c.document_references[1])}</div>`;
+  }
+  html += `<div class="diff-label" style="margin-top:6px">documents</div><div class="card-docs">${(c.document_references||[]).join(' / ')}</div></div>`;
+  return html;
+}
+
+function distractorCard(d) {
+  let html = `<div class="evidence-card distractor"><div class="card-tags">`;
+  html += `<span class="tag" style="background:rgba(163,113,247,0.15);color:var(--distractor-color)">${(d.divergence_type||'').replace(/_/g,' ')}</span>`;
+  html += `<span class="tag" style="background:rgba(139,148,158,0.1);color:var(--text-secondary)">${(d.scope||'').replace(/_/g,' ')}</span>`;
+  html += `</div>`;
+  if (d.description) html += `<div style="font-size:12px;color:var(--text-secondary);line-height:1.5">${esc(trunc(d.description, 280))}</div>`;
+  html += `<div class="card-docs">${(d.document_references||[]).join(' / ')}</div></div>`;
+  return html;
+}
+
+// ── Helpers ──
+
+function field(label, value) { return `<div class="field"><div class="field-label">${label}</div><div class="field-value">${value}</div></div>`; }
+function esc(s) { return s ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') : ''; }
+function trunc(s, n) { return s && s.length > n ? s.slice(0,n) + '\u2026' : s; }
+
+function updateStats() {
+  const s = DATA.stats;
+  const el = document.getElementById('stats');
+  const sep = ' <span style="color:var(--border)">/</span> ';
+  let html = `<span>${DATA.dataset_name}</span>${sep}`;
+  if (ACTIVE_VIEW === 'claims' && DATA.claims_graph) {
+    html += `<span>claims <span class="stat-val">${s.total_claims}</span></span>${sep}`;
+    html += `<span>cross-refs <span class="stat-val">${s.total_cross_references}</span></span>${sep}`;
+    html += `<span>edges <span class="stat-val">${DATA.claims_graph.edges.length}</span></span>${sep}`;
+    html += `<span>contradictions <span class="stat-val">${s.total_contradictions}</span></span>`;
+  } else {
+    html += `<span>nodes <span class="stat-val">${s.total_nodes}</span></span>${sep}`;
+    html += `<span>edges <span class="stat-val">${s.total_edges}</span></span>${sep}`;
+    html += `<span>contradictions <span class="stat-val">${s.total_contradictions}</span></span>${sep}`;
+    html += `<span>distractors <span class="stat-val">${s.total_distractors}</span></span>`;
+    if (s.total_claims) html += `${sep}<span>claims <span class="stat-val">${s.total_claims}</span></span>`;
+  }
+  el.innerHTML = html;
+}
+
+window.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>

@@ -559,6 +559,27 @@ So that I can produce multiple dataset versions with different contradiction rat
 **When** distractor labels are packaged
 **Then** `distractors/distractor_labels.jsonl` is included in each case directory with all distractor labels (FR15)
 
+## Epic 3.5: Knowledge Graph Visualization (Research Utility)
+
+Lightweight interactive viewer for inspecting entity graphs, KG claims, contradictions, and distractors produced by E3. Supports both entity-graph (default dataset) and claims-based (v1-test) layouts. No new Python dependencies.
+
+### Story 3.5-1: Interactive KG Viewer
+
+**Status:** done (2026-04-12)
+
+**Files:** `tools/kg_viewer/serve.py`, `tools/kg_viewer/index.html`, `tools/kg_viewer/README.md`
+
+**Acceptance Criteria:**
+- `python tools/kg_viewer/serve.py data/datasets/default` serves interactive graph at localhost:8080
+- Nodes color-coded by entity type (person, organization, equipment, regulation, location)
+- Contradiction overlay: orange borders on affected nodes, click for details (mechanism, scope, original vs modified text)
+- Distractor overlay: purple dashed borders, click for divergence type and description
+- Filter controls: toggle entity types, contradiction/distractor visibility, scope filter
+- Supports both dataset layouts (entity_graph and claims-based)
+- Standalone drag-and-drop mode (no server required)
+
+---
+
 ## Epic 4: Auditing Pipelines
 
 Researcher can run hybrid, agentic, and graph-native pipeline modes plus baselines (hypothesis-only, random, BM25) against a dataset case directory, producing standardized contradiction reports with 2-scope taxonomy.
