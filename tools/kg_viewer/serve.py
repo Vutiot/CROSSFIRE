@@ -43,6 +43,7 @@ def discover_datasets(root: Path) -> dict[str, Path]:
 def load_dataset(dataset_path: Path) -> dict:
     all_claims = []
     all_cross_refs = []
+    all_claim_clusters = []
     all_contradictions = []
     all_distractors = []
 
@@ -55,6 +56,7 @@ def load_dataset(dataset_path: Path) -> dict:
             kg = json.load(f)
         all_claims.extend(kg.get("claims", []))
         all_cross_refs.extend(kg.get("cross_references", []))
+        all_claim_clusters.extend(kg.get("claim_clusters", []))
 
         contra_dir = case_dir / "contradictions"
         if contra_dir.exists():
@@ -155,14 +157,22 @@ def load_dataset(dataset_path: Path) -> dict:
                 annotations[doc_ref]["contradiction_ids"].append(cid)
                 annotations[doc_ref]["contradiction_count"] += 1
 
+    # Merge pairwise cross-references and multi-claim clusters into a single
+    # list of "link records" that both graph builders iterate over. Clusters
+    # contribute N(N-1)/2 pairwise edges that all share the cluster's
+    # categorical relation as `relationship_type` and the prose `theme` as
+    # `rationale` — so the rel-type filter stays clean and the prose lives
+    # on the edge's sidebar detail rather than being used as a category.
+    links = _merge_links(all_cross_refs, all_claim_clusters)
+
     # Build entity-centric view (subjects with 3+ claims as nodes)
     entity_graph, entity_annotations = build_entity_graph(
-        all_claims, all_cross_refs, all_contradictions
+        all_claims, links, all_contradictions
     )
 
     # Build claim-level graph
     claims_graph, claims_annotations = build_claims_graph(
-        all_claims, all_cross_refs, all_contradictions
+        all_claims, links, all_contradictions
     )
 
     return {
@@ -177,23 +187,59 @@ def load_dataset(dataset_path: Path) -> dict:
         "distractors": all_distractors,
         "claims": all_claims,
         "cross_references": all_cross_refs,
+        "claim_clusters": all_claim_clusters,
         "node_annotations": annotations,
         "stats": {
             "total_nodes": len(nodes),
             "total_edges": len(edges),
             "total_claims": len(all_claims),
             "total_cross_references": len(all_cross_refs),
+            "total_claim_clusters": len(all_claim_clusters),
             "total_contradictions": len(all_contradictions),
             "total_distractors": len(all_distractors),
         },
     }
 
 
-def build_entity_graph(claims, cross_refs, contradictions, min_claims=3):
+def _merge_links(cross_refs: list[dict], clusters: list[dict]) -> list[dict]:
+    """Unify pairwise cross-refs and multi-claim clusters into one list of
+    link records with a consistent shape: {claim_ids, relationship_type,
+    rationale}. Tolerates the legacy xref shapes (source_claim/target_claim,
+    from_claim/to_claim) and the raw free-text `relationship` field.
+    """
+    out: list[dict] = []
+    for x in cross_refs:
+        claim_ids = x.get("claim_ids") or []
+        if not claim_ids:
+            src = x.get("source_claim") or x.get("from_claim") or ""
+            tgt = x.get("target_claim") or x.get("to_claim") or ""
+            if src and tgt:
+                claim_ids = [src, tgt]
+            elif src:
+                claim_ids = [src]
+        rel = x.get("relationship_type") or x.get("relationship") or "cross_reference"
+        rationale = x.get("rationale") or x.get("description") or None
+        out.append({
+            "claim_ids": list(claim_ids),
+            "relationship_type": rel,
+            "rationale": rationale,
+        })
+    for cl in clusters:
+        out.append({
+            "claim_ids": list(cl.get("claim_ids") or []),
+            "relationship_type": cl.get("relation") or "cross_reference",
+            "rationale": cl.get("theme") or None,
+        })
+    return out
+
+
+def build_entity_graph(claims, links, contradictions, min_claims=3):
     """Build an entity-centric graph from KG claims.
 
     Nodes = unique subjects with >= min_claims mentions.
-    Edges = subjects linked via cross-references or strong document co-occurrence.
+    Edges = subjects linked via cross-references / claim-clusters, or strong
+    document co-occurrence. `links` is the unified list produced by
+    _merge_links().
     """
 
     # Count claims per subject and gather metadata
@@ -223,35 +269,33 @@ def build_entity_graph(claims, cross_refs, contradictions, min_claims=3):
 
     entity_ids = set(entities.keys())
 
-    # Edges from cross-references (subjects of linked claims)
+    # Edges from cross-references / clusters (subjects of linked claims)
     claim_to_subject = {c["claim_id"]: c["subject"] for c in claims}
     edges = []
     edge_set = set()
 
-    for xref in cross_refs:
-        claim_ids = xref.get("claim_ids", [])
-        if not claim_ids:
-            src = xref.get("source_claim", "")
-            tgt = xref.get("target_claim", "")
-            if src and tgt:
-                claim_ids = [src, tgt]
+    for link in links:
         subjects = set()
-        for cid in claim_ids:
+        for cid in link["claim_ids"]:
             s = claim_to_subject.get(cid)
             if s and s in entity_ids:
                 subjects.add(s)
         sub_list = sorted(subjects)
-        rel = xref.get("relationship_type", "cross_reference")
+        rel = link["relationship_type"]
+        rationale = link.get("rationale")
         for i in range(len(sub_list)):
             for j in range(i + 1, len(sub_list)):
                 key = (sub_list[i], sub_list[j])
                 if key not in edge_set:
                     edge_set.add(key)
-                    edges.append({
+                    edge = {
                         "source": sub_list[i],
                         "target": sub_list[j],
                         "relationship_type": rel,
-                    })
+                    }
+                    if rationale:
+                        edge["rationale"] = rationale
+                    edges.append(edge)
 
     # Edges from document co-occurrence (both entities in same doc, weighted)
     doc_entities = defaultdict(set)
@@ -307,11 +351,12 @@ def build_entity_graph(claims, cross_refs, contradictions, min_claims=3):
     return graph, annotations
 
 
-def build_claims_graph(claims, cross_refs, contradictions):
+def build_claims_graph(claims, links, contradictions):
     """Build a claim-level graph from KG claims.
 
     Nodes = individual claims.
-    Edges = claims linked via the same cross-reference group.
+    Edges = claims linked via the same cross-reference group or claim cluster.
+    `links` is the unified list produced by _merge_links().
     """
     nodes = []
     for c in claims:
@@ -339,26 +384,24 @@ def build_claims_graph(claims, cross_refs, contradictions):
 
     edges = []
     edge_set = set()
-    for xref in cross_refs:
-        xref_claim_ids = xref.get("claim_ids", [])
-        if not xref_claim_ids:
-            src = xref.get("source_claim", "")
-            tgt = xref.get("target_claim", "")
-            if src and tgt:
-                xref_claim_ids = [src, tgt]
+    for link in links:
         # Filter to claims that exist in this dataset
-        valid = sorted(cid for cid in xref_claim_ids if cid in claim_ids_set)
-        rel = xref.get("relationship_type", "cross_reference")
+        valid = sorted(cid for cid in link["claim_ids"] if cid in claim_ids_set)
+        rel = link["relationship_type"]
+        rationale = link.get("rationale")
         for i in range(len(valid)):
             for j in range(i + 1, len(valid)):
                 key = (valid[i], valid[j])
                 if key not in edge_set:
                     edge_set.add(key)
-                    edges.append({
+                    edge = {
                         "source": valid[i],
                         "target": valid[j],
                         "relationship_type": rel,
-                    })
+                    }
+                    if rationale:
+                        edge["rationale"] = rationale
+                    edges.append(edge)
 
     graph = {"nodes": nodes, "edges": edges}
 

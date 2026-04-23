@@ -14538,7 +14538,8 @@
         "GT_D11_001",
         "GT_D11_002"
       ],
-      "relationship_type": "GT_D11_002 explains the absence of cavity barriers noted in GT_D11_001",
+      "relationship_type": "omission",
+      "rationale": "GT_D11_002 explains the absence of cavity barriers noted in GT_D11_001",
       "description": "",
       "confidence": 1.0
     },
@@ -14548,7 +14549,8 @@
         "GT_D11_005",
         "GT_D11_006"
       ],
-      "relationship_type": "GT_D11_006 provides the causal detail behind the 90-minute rating issue noted in GT_D11_005",
+      "relationship_type": "elaborates",
+      "rationale": "GT_D11_006 provides the causal detail behind the 90-minute rating issue noted in GT_D11_005",
       "description": "",
       "confidence": 1.0
     },
@@ -14558,7 +14560,8 @@
         "GT_D11_007",
         "GT_D11_008"
       ],
-      "relationship_type": "Both describe Witness-3's relationship with Agency-G and building control over cavity barrier / firestop confusion",
+      "relationship_type": "shared_topic",
+      "rationale": "Both describe Witness-3's relationship with Agency-G and building control over cavity barrier / firestop confusion",
       "description": "",
       "confidence": 1.0
     },
@@ -14568,866 +14571,327 @@
         "GT_D11_013",
         "GT_D11_014"
       ],
-      "relationship_type": "GT_D11_014 is Witness-3's disagreement with the building control response described in GT_D11_013",
+      "relationship_type": "disagrees_with",
+      "rationale": "GT_D11_014 is Witness-3's disagreement with the building control response described in GT_D11_013",
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0005",
       "claim_ids": [
-        "GT_D11_017",
-        "GT_D11_018",
-        "GT_D11_019"
+        "GT_D11_025",
+        "GT_D11_026"
       ],
-      "relationship_type": "Sequential documents in the cavity barrier rating negotiation: Siderise's position, Contractor-I's upgrade, then cost resistance",
+      "relationship_type": "other",
+      "rationale": "Building control acceptance of cavity barrier solution: GT_D11_025 is Hoban's email, GT_D11_026 is Contractor-J's communication of that outcome",
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0006",
       "claim_ids": [
-        "GT_D11_020",
-        "GT_D11_021",
-        "GT_D11_022"
+        "GT_D11_031",
+        "GT_D11_032"
       ],
-      "relationship_type": "GT_D11_020 establishes cost as driver; GT_D11_021-022 describe Witness-3's response and brokerage role",
+      "relationship_type": "disagrees_with",
+      "rationale": "GT_D11_031 is Lead-Counsel's challenge; GT_D11_032 is Witness-3's justification regarding crown fire spread",
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0007",
       "claim_ids": [
-        "GT_D11_025",
-        "GT_D11_026"
+        "GT_D11_044",
+        "GT_D11_045"
       ],
-      "relationship_type": "Building control acceptance of cavity barrier solution: GT_D11_025 is Hoban's email, GT_D11_026 is Contractor-J's communication of that outcome",
+      "relationship_type": "omission",
+      "rationale": "Jason North's insulation query and Witness-3's failure to respond formally",
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0008",
       "claim_ids": [
-        "GT_D11_028",
-        "GT_D11_030",
-        "GT_D11_113"
+        "GT_D11_046",
+        "GT_D11_047"
       ],
-      "relationship_type": "All concern the omission of horizontal cavity barrier at the crown-cladding junction in Contractor-I's design",
+      "relationship_type": "awareness",
+      "rationale": "Both concern PIR/phenolic substitution for specified Rockwool and Firm-H's lack of awareness",
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0009",
       "claim_ids": [
-        "GT_D11_031",
-        "GT_D11_032"
+        "GT_D11_067",
+        "GT_D11_068"
       ],
-      "relationship_type": "GT_D11_031 is Lead-Counsel's challenge; GT_D11_032 is Witness-3's justification regarding crown fire spread",
+      "relationship_type": "omission",
+      "rationale": "GT_D11_067 is Contractor-J's statement about building control sign-off; GT_D11_068 is Witness-3's failure to verify it",
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0010",
       "claim_ids": [
-        "GT_D11_033",
-        "GT_D11_034",
-        "GT_D11_035"
+        "GT_D11_071",
+        "GT_D11_120"
       ],
-      "relationship_type": "Sequence on ADB diagram 33 'close top of cavity' requirement and Witness-3's rationale for non-application",
+      "relationship_type": "awareness",
+      "rationale": "Both relate to Regulation 38 non-compliance and Witness-3's lack of awareness or action",
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0011",
       "claim_ids": [
-        "GT_D11_037",
-        "GT_D11_038",
-        "GT_D11_039"
+        "GT_D11_081",
+        "GT_D11_082"
       ],
-      "relationship_type": "All relate to the two versions of drawing C1059-302 and Witness-3's lack of knowledge of design changes",
+      "relationship_type": "shared_topic",
+      "rationale": "Both are Witness-3's final reflective statements on the regulatory failings and what he would have done differently",
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0012",
       "claim_ids": [
-        "GT_D11_041",
-        "GT_D11_042",
-        "GT_D11_043"
+        "GT_D12_110",
+        "GT_D12_024"
       ],
-      "relationship_type": "The NBS specification for Rockwool vs the drawing's 'insulation by others' discrepancy and Witness-3's response",
+      "relationship_type": "other",
+      "rationale": "ADB regulatory requirements on external wall construction and limited combustibility above 18 metres",
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0013",
       "claim_ids": [
-        "GT_D11_044",
-        "GT_D11_045"
+        "GT_D12_083",
+        "GT_D12_084"
       ],
-      "relationship_type": "Jason North's insulation query and Witness-3's failure to respond formally",
+      "relationship_type": "response_to",
+      "rationale": "Witness-2's advice to Organisation-D not to show the building control mark-up to the LFB",
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0014",
       "claim_ids": [
-        "GT_D11_046",
-        "GT_D11_047"
+        "GT_D13A_019",
+        "GT_D13A_080"
       ],
-      "relationship_type": "Both concern PIR/phenolic substitution for specified Rockwool and Firm-H's lack of awareness",
+      "relationship_type": "other",
+      "rationale": "Organization-D client pressure to include ACM as a cheaper alternative to zinc in the tender",
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0015",
       "claim_ids": [
-        "GT_D11_048",
-        "GT_D11_049",
-        "GT_D11_050"
+        "GT_D01_014",
+        "GT_D01_015"
       ],
-      "relationship_type": "Sequence of Company-C TP10 specification, then substitution of Styrofoam for P1, and Witness-3's lack of awareness",
+      "relationship_type": "supports",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0016",
       "claim_ids": [
-        "GT_D11_051",
-        "GT_D11_053",
-        "GT_D11_054"
+        "GT_D01_015",
+        "GT_D01_057"
       ],
-      "relationship_type": "All relate to Witness-3's position on responsibility for checking insulation compliance with statutory requirements",
+      "relationship_type": "same_fact",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0017",
       "claim_ids": [
-        "GT_D11_058",
-        "GT_D11_060",
-        "GT_D11_061"
+        "GT_D01_031",
+        "GT_D01_032"
       ],
-      "relationship_type": "All concern what Firm-H submitted to building control and its limitations",
+      "relationship_type": "same_fact",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0018",
       "claim_ids": [
-        "GT_D11_064",
-        "GT_D11_069",
-        "GT_D11_070"
+        "GT_D01_058",
+        "GT_D01_059"
       ],
-      "relationship_type": "All relate to the missing B4 external fire spread analysis and Witness-3's lack of concern about it",
+      "relationship_type": "contradicts",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0019",
       "claim_ids": [
-        "GT_D11_067",
-        "GT_D11_068"
+        "GT_D01_060",
+        "GT_D01_062"
       ],
-      "relationship_type": "GT_D11_067 is Contractor-J's statement about building control sign-off; GT_D11_068 is Witness-3's failure to verify it",
+      "relationship_type": "supports",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0020",
       "claim_ids": [
-        "GT_D11_071",
-        "GT_D11_120"
+        "GT_D01_063",
+        "GT_D01_064"
       ],
-      "relationship_type": "Both relate to Regulation 38 non-compliance and Witness-3's lack of awareness or action",
+      "relationship_type": "same_fact",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0021",
       "claim_ids": [
-        "GT_D11_074",
-        "GT_D11_075",
-        "GT_D11_076"
+        "GT_D01_068",
+        "GT_D01_069"
       ],
-      "relationship_type": "The October 2016 technical review: its late timing, justification, and recorded findings",
+      "relationship_type": "supports",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0022",
       "claim_ids": [
-        "GT_D11_081",
-        "GT_D11_082"
+        "GT_D01_069",
+        "GT_D01_070"
       ],
-      "relationship_type": "Both are Witness-3's final reflective statements on the regulatory failings and what he would have done differently",
+      "relationship_type": "supports",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0023",
       "claim_ids": [
-        "GT_D11_055",
-        "GT_D11_056",
-        "GT_D11_090"
+        "GT_D01_070",
+        "GT_D01_071"
       ],
-      "relationship_type": "All relate to the two RBKC building control officers and their respective roles on the project",
+      "relationship_type": "supports",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0024",
       "claim_ids": [
-        "GT_D12_001",
-        "GT_D12_002",
-        "GT_D12_005"
+        "GT_D01_072",
+        "GT_D01_074"
       ],
-      "relationship_type": "Witness-4's timeline of employment and involvement at Firm-H on Tower-X",
+      "relationship_type": "supports",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0025",
       "claim_ids": [
-        "GT_D12_003",
-        "GT_D12_004",
-        "GT_D12_011"
+        "GT_D01_033",
+        "GT_D01_095"
       ],
-      "relationship_type": "Witness-4's qualifications and training, absence of fire safety coverage",
+      "relationship_type": "same_fact",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0026",
       "claim_ids": [
-        "GT_D12_006",
-        "GT_D12_007",
-        "GT_D12_010"
+        "GT_D01_091",
+        "GT_D01_092"
       ],
-      "relationship_type": "Nature and circumstances of Witness-4's briefing and induction on the Tower-X project",
+      "relationship_type": "supports",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0027",
       "claim_ids": [
-        "GT_D12_013",
-        "GT_D12_014",
-        "GT_D12_017",
-        "GT_D12_023"
+        "GT_D01_042",
+        "GT_D01_092"
       ],
-      "relationship_type": "Witness-4's lack of knowledge of ADB compliance routes and combustibility requirements at time of project",
+      "relationship_type": "supports",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0028",
       "claim_ids": [
-        "GT_D12_019",
-        "GT_D12_020",
-        "GT_D12_021",
-        "GT_D12_106"
+        "GT_D01_036",
+        "GT_D01_085"
       ],
-      "relationship_type": "CWCT standard inclusion in NBS specification and Witness-4's lack of familiarity with it",
+      "relationship_type": "same_fact",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0029",
       "claim_ids": [
-        "GT_D12_022",
-        "GT_D12_044",
-        "GT_D12_073"
+        "GT_D01_050",
+        "GT_D01_057"
       ],
-      "relationship_type": "Timeline of NBS Specification versions and crown design status",
+      "relationship_type": "supports",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0030",
       "claim_ids": [
-        "GT_D12_032",
-        "GT_D12_033",
-        "GT_D12_062",
-        "GT_D12_064"
+        "GT_D01_075",
+        "GT_D01_076"
       ],
-      "relationship_type": "Hays Galleria meeting: attendance, discussion focus on appearance and cost rather than fire performance",
+      "relationship_type": "supports",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0031",
       "claim_ids": [
-        "GT_D12_035",
-        "GT_D12_036",
-        "GT_D12_037",
-        "GT_D12_038"
+        "GT_D01_066",
+        "GT_D01_067"
       ],
-      "relationship_type": "Contractor-I's ACM preference, Ferrier Point project reference, and Witness-4's resulting assumptions about ACM suitability",
+      "relationship_type": "supports",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0032",
       "claim_ids": [
-        "GT_D12_039",
-        "GT_D12_041",
-        "GT_D12_065",
-        "GT_D12_066"
+        "GT_D01_017",
+        "GT_D01_044"
       ],
-      "relationship_type": "NBS Specification prescriptive vs permissive approach to material selection, 'similar or equal' wording",
+      "relationship_type": "same_fact",
+      "rationale": null,
       "description": "",
       "confidence": 1.0
     },
     {
       "xref_id": "GT_XREF_0033",
       "claim_ids": [
-        "GT_D12_054",
-        "GT_D12_055",
-        "GT_D12_056",
-        "GT_D12_057",
-        "GT_D12_058"
-      ],
-      "relationship_type": "Company-B FR5000 specification in NBS H92 section: manual entry, software warning, and Witness-4's unawareness",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0034",
-      "claim_ids": [
-        "GT_D12_059",
-        "GT_D12_060",
-        "GT_D12_061"
-      ],
-      "relationship_type": "Failure to check whether Company-B FR5000 complied with CWCT standard also specified in NBS",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0035",
-      "claim_ids": [
-        "GT_D12_047",
-        "GT_D12_048",
-        "GT_D12_049",
-        "GT_D12_050",
-        "GT_D12_051",
-        "GT_D12_052"
-      ],
-      "relationship_type": "Cavity barrier specification: email exchange with Agency-G, 30-minute resistance decision, drawing ambiguity",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0036",
-      "claim_ids": [
-        "GT_D12_075",
-        "GT_D12_076",
-        "GT_D12_077",
-        "GT_D12_078"
-      ],
-      "relationship_type": "Agency-G's OFSS Issue 3: content, omissions, and status as final fire safety strategy",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0037",
-      "claim_ids": [
-        "GT_D12_079",
-        "GT_D12_080",
-        "GT_D12_081",
-        "GT_D12_082",
-        "GT_D12_115"
-      ],
-      "relationship_type": "Firm-H never received detailed B4 analysis and failed to chase or communicate the outstanding analysis",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0038",
-      "claim_ids": [
-        "GT_D12_086",
-        "GT_D12_087",
-        "GT_D12_088",
-        "GT_D12_089"
-      ],
-      "relationship_type": "Contractor-J's refusal to engage a fire consultant post-novation and Witness-2's response",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0039",
-      "claim_ids": [
-        "GT_D12_091",
-        "GT_D12_092",
-        "GT_D12_093",
-        "GT_D12_096"
-      ],
-      "relationship_type": "Company-B FR5000 data sheet class 0 claim, Witness-2's misunderstanding of class 0 vs limited combustibility",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0040",
-      "claim_ids": [
-        "GT_D12_107",
-        "GT_D12_108",
-        "GT_D12_109"
-      ],
-      "relationship_type": "CWCT standard requirements on cavity materials and limited combustibility, Witness-4's ignorance thereof",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0041",
-      "claim_ids": [
-        "GT_D12_110",
-        "GT_D12_024"
-      ],
-      "relationship_type": "ADB regulatory requirements on external wall construction and limited combustibility above 18 metres",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0042",
-      "claim_ids": [
-        "GT_D12_069",
-        "GT_D12_070",
-        "GT_D12_101"
-      ],
-      "relationship_type": "BREEAM-driven U-values, Max Fordham's role, and how the U-value target drove insulation thickness",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0043",
-      "claim_ids": [
-        "GT_D12_083",
-        "GT_D12_084"
-      ],
-      "relationship_type": "Witness-2's advice to Organisation-D not to show the building control mark-up to the LFB",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0044",
-      "claim_ids": [
-        "GT_D13A_011",
-        "GT_D13A_012",
-        "GT_D13A_082"
-      ],
-      "relationship_type": "Firm-H included the Standards-Body-1 standard in the NBS spec but Witness-4 was not familiar with its contents",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0045",
-      "claim_ids": [
-        "GT_D13A_013",
-        "GT_D13A_014",
-        "GT_D13A_015"
-      ],
-      "relationship_type": "The Standards-Body-1 standard contained principles about fire resistance of aluminium envelope systems and limited combustibility that Witness-4 was unaware of",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0046",
-      "claim_ids": [
-        "GT_D13A_036",
-        "GT_D13A_037",
-        "GT_D13A_038"
-      ],
-      "relationship_type": "ADB paragraphs 12.5 and 12.7 set compliance requirements that Witness-4 was not aware of at the time of Tower-X",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0047",
-      "claim_ids": [
-        "GT_D13A_041",
-        "GT_D13A_068",
-        "GT_D13A_073"
-      ],
-      "relationship_type": "Company-B FR5000 was specified for Tower-X; its datasheets stated class 0 performance but did not reference limited combustibility or 18m height restrictions",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0048",
-      "claim_ids": [
-        "GT_D13A_053",
-        "GT_D13A_054",
-        "GT_D13A_058",
-        "GT_D13A_066"
-      ],
-      "relationship_type": "Agency-G's OFSS Issue 3 promised a future analysis of B4 that was never delivered; no detailed written fire safety analysis of the overcladding was ever provided",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0049",
-      "claim_ids": [
-        "GT_D13A_061",
-        "GT_D13A_062",
-        "GT_D13A_063",
-        "GT_D13A_065"
-      ],
-      "relationship_type": "Witness-2 learned Contractor-J would not appoint a fire consultant and expected Contractor-I to handle fire strategy, but never pressed this issue formally or in writing post-novation",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0050",
-      "claim_ids": [
-        "GT_D13A_023",
-        "GT_D13A_024",
-        "GT_D13A_025",
-        "GT_D13A_026"
-      ],
-      "relationship_type": "The NBS specification included Proteus HR as the primary product and Reynobond/Alucobond as alternatives without checking manufacturer databases or fire performance",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0051",
-      "claim_ids": [
-        "GT_D13A_028",
-        "GT_D13A_029",
-        "GT_D13A_042"
-      ],
-      "relationship_type": "At the Hays Galleria meeting and throughout, fire performance of ACM and insulation was never discussed",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0052",
-      "claim_ids": [
-        "GT_D13A_043",
-        "GT_D13A_044",
-        "GT_D13A_045",
-        "GT_D13A_046",
-        "GT_D13A_047"
-      ],
-      "relationship_type": "Cavity barrier specification for Tower-X: Agency-G advice, product selected, fire resistance specified, and gaps around windows",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0053",
-      "claim_ids": [
-        "GT_D13A_019",
-        "GT_D13A_080"
-      ],
-      "relationship_type": "Organization-D client pressure to include ACM as a cheaper alternative to zinc in the tender",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0054",
-      "claim_ids": [
-        "GT_D14_041",
-        "GT_D14_042",
-        "GT_D14_043"
-      ],
-      "relationship_type": "GT_D14_041 establishes that Witness-5 relied on James Lee for the site survey; GT_D14_042 establishes Lee's site visit was 29 May 2013 lasting two hours; GT_D14_043 establishes Lee left Agency-G on 20 July 2013 before Witness-5 began her work",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0055",
-      "claim_ids": [
-        "GT_D14_051",
-        "GT_D14_052",
-        "GT_D14_053",
-        "GT_D14_054",
-        "GT_D14_055"
-      ],
-      "relationship_type": "These claims establish the sequence of conflicting information about firefighting lifts: Witness-5 asked Witness-2, who said no firefighting lift; FRA said there were firefighting lifts; Witness-5 noticed the contradiction but did not resolve it; learned post-fire the lifts were not firefighting lifts",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0056",
-      "claim_ids": [
-        "GT_D14_073",
-        "GT_D14_074",
-        "GT_D14_075",
-        "GT_D14_078"
-      ],
-      "relationship_type": "These claims establish the assumption of high compartmentation: the strategy assumed high compartmentation to justify stay-put; Witness-5 relied on concrete robustness without invasive survey; compartmentation surveys were not common at the time; the regulatory minimum was 120 minutes fire resistance",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0057",
-      "claim_ids": [
-        "GT_D14_076",
-        "GT_D14_079",
-        "GT_D14_080",
-        "GT_D14_081"
-      ],
-      "relationship_type": "These claims establish the interdependence of excessive travel distance acceptability and the AOV smoke ventilation system: excessive travel was accepted on basis of smoke ventilation working, but the smoke extract shaft was significantly undersized",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0058",
-      "claim_ids": [
-        "GT_D14_056",
-        "GT_D14_057",
-        "GT_D14_058",
-        "GT_D14_096"
-      ],
-      "relationship_type": "These claims establish the compressed timeline of the draft: 15 hours total work, sent for peer review 15 August 2013, signed off 16 August 2013 with only 'fine', and the draft was never finalised",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0059",
-      "claim_ids": [
-        "GT_D14_047",
-        "GT_D14_048",
-        "GT_D14_092"
-      ],
-      "relationship_type": "These claims establish Witness-5's incomplete use of the FRA: the FRA was nearly two years out of date, she did not read the significant findings and action plan, and never saw the separate significant findings record",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0060",
-      "claim_ids": [
-        "GT_D14_099",
-        "GT_D14_101",
-        "GT_D14_102",
-        "GT_D14_103"
-      ],
-      "relationship_type": "These claims establish Witness-5's awareness that the refurbishment proposals had serious fire safety problems: single stair with merged uses not great, making existing crap condition worse, significant approvals risk, system theoretically making conditions worse — but she did not communicate these concerns to the client",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0061",
-      "claim_ids": [
-        "GT_D14_083",
-        "GT_D14_084",
-        "GT_D14_085"
-      ],
-      "relationship_type": "These claims address the confused use of firestopping and cavity barriers terminology in section 5.1.3, which Witness-5 admitted could be clearer and could mislead a less expert reader",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0062",
-      "claim_ids": [
-        "GT_D14_001",
-        "GT_D14_002",
-        "GT_D14_009",
-        "GT_D14_010",
-        "GT_D14_168"
-      ],
-      "relationship_type": "These claims establish the COVID-19 procedural context of Day 14: the panel member illness, the three options considered, and the eventual decision to hold limited-attendance hearings",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0063",
-      "claim_ids": [
-        "GT_D14_060",
-        "GT_D14_061",
-        "GT_D14_063",
-        "GT_D14_064",
-        "GT_D14_065"
-      ],
-      "relationship_type": "These claims collectively establish that Witness-5 made multiple unverified assumptions about Tower-X's existing compliance and construction throughout the draft strategy",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0064",
-      "claim_ids": [
-        "GT_D01_014",
-        "GT_D01_015"
-      ],
-      "relationship_type": "supports",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0065",
-      "claim_ids": [
-        "GT_D01_015",
-        "GT_D01_057"
-      ],
-      "relationship_type": "same_fact",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0066",
-      "claim_ids": [
-        "GT_D01_031",
-        "GT_D01_032"
-      ],
-      "relationship_type": "same_fact",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0067",
-      "claim_ids": [
-        "GT_D01_058",
-        "GT_D01_059"
-      ],
-      "relationship_type": "contradicts",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0068",
-      "claim_ids": [
-        "GT_D01_060",
-        "GT_D01_062"
-      ],
-      "relationship_type": "supports",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0069",
-      "claim_ids": [
-        "GT_D01_063",
-        "GT_D01_064"
-      ],
-      "relationship_type": "same_fact",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0070",
-      "claim_ids": [
-        "GT_D01_068",
-        "GT_D01_069"
-      ],
-      "relationship_type": "supports",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0071",
-      "claim_ids": [
-        "GT_D01_069",
-        "GT_D01_070"
-      ],
-      "relationship_type": "supports",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0072",
-      "claim_ids": [
-        "GT_D01_070",
-        "GT_D01_071"
-      ],
-      "relationship_type": "supports",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0073",
-      "claim_ids": [
-        "GT_D01_072",
-        "GT_D01_074"
-      ],
-      "relationship_type": "supports",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0074",
-      "claim_ids": [
-        "GT_D01_033",
-        "GT_D01_095"
-      ],
-      "relationship_type": "same_fact",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0075",
-      "claim_ids": [
-        "GT_D01_091",
-        "GT_D01_092"
-      ],
-      "relationship_type": "supports",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0076",
-      "claim_ids": [
-        "GT_D01_042",
-        "GT_D01_092"
-      ],
-      "relationship_type": "supports",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0077",
-      "claim_ids": [
-        "GT_D01_036",
-        "GT_D01_085"
-      ],
-      "relationship_type": "same_fact",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0078",
-      "claim_ids": [
-        "GT_D01_050",
-        "GT_D01_057"
-      ],
-      "relationship_type": "supports",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0079",
-      "claim_ids": [
-        "GT_D01_075",
-        "GT_D01_076"
-      ],
-      "relationship_type": "supports",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0080",
-      "claim_ids": [
-        "GT_D01_066",
-        "GT_D01_067"
-      ],
-      "relationship_type": "supports",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0081",
-      "claim_ids": [
-        "GT_D01_017",
-        "GT_D01_044"
-      ],
-      "relationship_type": "same_fact",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0082",
-      "claim_ids": [
         "GT_D02_009",
         "GT_D02_013"
       ],
-      "relationship_type": "related",
+      "relationship_type": "other",
+      "rationale": null,
       "description": "Agency-G's fire strategy reports (issues 1-3) are referenced across multiple chunks and establish the B4 compliance language that is contested throughout the hearing",
       "confidence": 1.0,
       "chunks_involved": [
@@ -15437,7 +14901,926 @@
       ]
     },
     {
-      "xref_id": "GT_XREF_0083",
+      "xref_id": "GT_XREF_0034",
+      "claim_ids": [
+        "GT_D02_004"
+      ],
+      "relationship_type": "other",
+      "rationale": null,
+      "description": "Counsel to the Inquiry's Day 1 submissions on 'merry-go-round of buck-passing' are referenced in Agency-G's opening statement on Day 2",
+      "confidence": 1.0,
+      "chunks_involved": [
+        "Transcript_28_January_2020_chunk_001.txt"
+      ]
+    },
+    {
+      "xref_id": "GT_XREF_0035",
+      "claim_ids": [
+        "GT_D06_068",
+        "GT_D06_069"
+      ],
+      "relationship_type": "other",
+      "rationale": null,
+      "description": "Witness-1's closing statement attributes the tragedy to unreliable regulations/certifications/specialist advice, while accepting more technical reviews should have occurred",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0036",
+      "claim_ids": [
+        "GT_D04_008",
+        "GT_D04_009"
+      ],
+      "relationship_type": "causal",
+      "rationale": "Facility-1 cladding choice directly created the precedent that contractors at Tower-X relied upon",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0037",
+      "claim_ids": [
+        "GT_D04_010",
+        "GT_D04_012"
+      ],
+      "relationship_type": "other",
+      "rationale": "Environmental sustainability drive led directly to combustible insulation selection",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0038",
+      "claim_ids": [
+        "GT_D04_015",
+        "GT_D04_016"
+      ],
+      "relationship_type": "causal",
+      "rationale": "Procurement circumvention led to unqualified architect being retained",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0039",
+      "claim_ids": [
+        "GT_D04_018",
+        "GT_D04_019"
+      ],
+      "relationship_type": "causal",
+      "rationale": "Private cost negotiation with Contractor-J led to cladding material change without safety consideration",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0040",
+      "claim_ids": [
+        "GT_D04_031",
+        "GT_D04_032"
+      ],
+      "relationship_type": "other",
+      "rationale": "Flawed fire strategy documents contained the negligent misrepresentation about external fire spread",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0041",
+      "claim_ids": [
+        "GT_D04_037",
+        "GT_D04_039"
+      ],
+      "relationship_type": "awareness",
+      "rationale": "Company-A knew product was Euroclass E but planned to increase UK sales",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0042",
+      "claim_ids": [
+        "GT_D04_045",
+        "GT_D04_046"
+      ],
+      "relationship_type": "causal",
+      "rationale": "Company-B test discrepancies and lambda value understatement enabled misleading marketing",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0043",
+      "claim_ids": [
+        "GT_D04_057",
+        "GT_D04_059"
+      ],
+      "relationship_type": "omission",
+      "rationale": "Contractor-J's failure to appoint fire engineer was driven by cost avoidance",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0044",
+      "claim_ids": [
+        "GT_D04_108",
+        "GT_D04_109"
+      ],
+      "relationship_type": "awareness",
+      "rationale": "Contractor-I knew ACM was dangerous but promoted it externally",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0045",
+      "claim_ids": [
+        "GT_D04_121",
+        "GT_D04_122"
+      ],
+      "relationship_type": "omission",
+      "rationale": "Claire Williams' Lacknell moment concern was not followed up, representing the last chance to avert disaster",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0046",
+      "claim_ids": [
+        "GT_D04_099",
+        "GT_D04_100"
+      ],
+      "relationship_type": "causal",
+      "rationale": "Negative NPV assessment drove Authority-L to prioritise cost above all other considerations",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0047",
+      "claim_ids": [
+        "GT_D04_062",
+        "GT_D04_098"
+      ],
+      "relationship_type": "awareness",
+      "rationale": "Government knowledge of ADB flaws from 2001 was not shared with industry",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0048",
+      "claim_ids": [
+        "GT_D04_123",
+        "GT_D04_125"
+      ],
+      "relationship_type": "omission",
+      "rationale": "Resident warnings about safety were consistently ignored by Authority-L and Organization-D",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0049",
+      "claim_ids": [
+        "GT_D04_006",
+        "GT_D04_053"
+      ],
+      "relationship_type": "causal",
+      "rationale": "Aesthetic obsession with Tower-X appearance drove material selection at expense of fire safety",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0050",
+      "claim_ids": [
+        "GT_D04_027",
+        "GT_D04_028"
+      ],
+      "relationship_type": "omission",
+      "rationale": "Despite clear regulatory requirements, no formal compliance route was followed at Tower-X",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0051",
+      "claim_ids": [
+        "GT_D05_006"
+      ],
+      "relationship_type": "other",
+      "rationale": null,
+      "description": "Phase 1 firefighter evidence given without undertaking - contrasted with corporate witnesses' Phase 2 application",
+      "confidence": 1.0,
+      "related_document": "hearing_transcript_day_01"
+    },
+    {
+      "xref_id": "GT_XREF_0052",
+      "claim_ids": [
+        "GT_D05_028"
+      ],
+      "relationship_type": "other",
+      "rationale": null,
+      "description": "Oral opening statements of Firm-H at Day1/36:17-23 and Contractor-I at Day1/94:9-12 cited by Lead-Counsel as evidence of no prior warning of privilege claims",
+      "confidence": 1.0,
+      "related_document": "hearing_transcript_day_01"
+    },
+    {
+      "xref_id": "GT_XREF_0053",
+      "claim_ids": [
+        "GT_D05_015"
+      ],
+      "relationship_type": "other",
+      "rationale": null,
+      "description": "Counsel-H's original undertaking application made on Day 4 (Thursday); transcript reference Day4/124:24-25 cited regarding Contractor-I funding constraints",
+      "confidence": 1.0,
+      "related_document": "hearing_transcript_day_04"
+    },
+    {
+      "xref_id": "GT_XREF_0054",
+      "claim_ids": [
+        "GT_D05_007"
+      ],
+      "relationship_type": "other",
+      "rationale": null,
+      "description": "Metropolitan Police corporate manslaughter investigation announced July 2017 (date-shifted to 2018) is foundational to the self-incrimination risk across all cladding parties",
+      "confidence": 1.0,
+      "related_document": "hearing_transcript_day_05"
+    },
+    {
+      "xref_id": "GT_XREF_0055",
+      "claim_ids": [
+        "GT_D05_014"
+      ],
+      "relationship_type": "other",
+      "rationale": null,
+      "description": "Dr Lane's Phase 1 report (mid-April 2019, date-shifted) identifying combustible cladding and missing cavity barriers used to establish Contractor-I's constructive knowledge of prosecution risk",
+      "confidence": 1.0,
+      "related_document": "hearing_transcript_day_05"
+    },
+    {
+      "xref_id": "GT_XREF_0056",
+      "claim_ids": [
+        "GT_D07A_076",
+        "GT_D07A_077"
+      ],
+      "relationship_type": "omission",
+      "rationale": "RIBA Practice Management Handbook competence principle and Firm-H's failure to conduct any appraisal of its ability to undertake the Tower-X project",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0057",
+      "claim_ids": [
+        "GT_D07B_004",
+        "GT_D07B_005"
+      ],
+      "relationship_type": "elaborates",
+      "rationale": "Context for Witness-2's decision to front the Tower-X project directly, citing Organization-D as a new client separate from Authority-L",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0058",
+      "claim_ids": [
+        "GT_D08_018",
+        "GT_D08_024"
+      ],
+      "relationship_type": "omission",
+      "rationale": "The identical text in both issues demonstrates a pattern of repeatedly deferring the B4 external fire spread analysis that was never fulfilled",
+      "description": "Agency-G Design Note 1 (12 Sep 2012) B4 deferred analysis promise repeated verbatim in Issue 2 (24 Oct 2013) - one year later with no analysis provided",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0059",
+      "claim_ids": [
+        "GT_D08_017",
+        "GT_D08_019"
+      ],
+      "relationship_type": "omission",
+      "rationale": "Agency-G issued the fire strategy in the afternoon of the same day it received the Stage C report specifying Company-B FR5000 and zinc cladding; Witness-2 never asked Agency-G whether they had reviewed the Stage C report before issuing their strategy",
+      "description": "Stage C report sent to Agency-G same morning Agency-G issued Issue 1 fire strategy",
+      "confidence": 1.0
+    },
+    {
+      "xref_id": "GT_XREF_0060",
+      "claim_ids": [
+        "GT_D08_021",
+        "GT_D08_022"
+      ],
+      "relationship_type": "shared_topic",
+      "rationale": "Jess's notes of the building control meeting show no discussion of cladding or overcladding, yet Witness-2 believed building control had expressed no concern about it - suggesting the cladding was not discussed at the meeting at all",
+      "description": "Building control meeting of 6 November 2012 - no discussion of cladding",
+      "confidence": 1.0
+    }
+  ],
+  "claim_clusters": [
+    {
+      "cluster_id": "GT_CLUSTER_0001",
+      "claim_ids": [
+        "GT_D11_017",
+        "GT_D11_018",
+        "GT_D11_019"
+      ],
+      "relation": "sequence",
+      "theme": "Sequential documents in the cavity barrier rating negotiation: Siderise's position, Contractor-I's upgrade, then cost resistance",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0002",
+      "claim_ids": [
+        "GT_D11_020",
+        "GT_D11_021",
+        "GT_D11_022"
+      ],
+      "relation": "causal",
+      "theme": "GT_D11_020 establishes cost as driver; GT_D11_021-022 describe Witness-3's response and brokerage role",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0003",
+      "claim_ids": [
+        "GT_D11_028",
+        "GT_D11_030",
+        "GT_D11_113"
+      ],
+      "relation": "omission",
+      "theme": "All concern the omission of horizontal cavity barrier at the crown-cladding junction in Contractor-I's design",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0004",
+      "claim_ids": [
+        "GT_D11_033",
+        "GT_D11_034",
+        "GT_D11_035"
+      ],
+      "relation": "sequence",
+      "theme": "Sequence on ADB diagram 33 'close top of cavity' requirement and Witness-3's rationale for non-application",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0005",
+      "claim_ids": [
+        "GT_D11_037",
+        "GT_D11_038",
+        "GT_D11_039"
+      ],
+      "relation": "awareness",
+      "theme": "All relate to the two versions of drawing C1059-302 and Witness-3's lack of knowledge of design changes",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0006",
+      "claim_ids": [
+        "GT_D11_041",
+        "GT_D11_042",
+        "GT_D11_043"
+      ],
+      "relation": "discrepancy",
+      "theme": "The NBS specification for Rockwool vs the drawing's 'insulation by others' discrepancy and Witness-3's response",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0007",
+      "claim_ids": [
+        "GT_D11_048",
+        "GT_D11_049",
+        "GT_D11_050"
+      ],
+      "relation": "sequence",
+      "theme": "Sequence of Company-C TP10 specification, then substitution of Styrofoam for P1, and Witness-3's lack of awareness",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0008",
+      "claim_ids": [
+        "GT_D11_051",
+        "GT_D11_053",
+        "GT_D11_054"
+      ],
+      "relation": "shared_topic",
+      "theme": "All relate to Witness-3's position on responsibility for checking insulation compliance with statutory requirements",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0009",
+      "claim_ids": [
+        "GT_D11_058",
+        "GT_D11_060",
+        "GT_D11_061"
+      ],
+      "relation": "shared_topic",
+      "theme": "All concern what Firm-H submitted to building control and its limitations",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0010",
+      "claim_ids": [
+        "GT_D11_064",
+        "GT_D11_069",
+        "GT_D11_070"
+      ],
+      "relation": "omission",
+      "theme": "All relate to the missing B4 external fire spread analysis and Witness-3's lack of concern about it",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0011",
+      "claim_ids": [
+        "GT_D11_074",
+        "GT_D11_075",
+        "GT_D11_076"
+      ],
+      "relation": "response_to",
+      "theme": "The October 2016 technical review: its late timing, justification, and recorded findings",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0012",
+      "claim_ids": [
+        "GT_D11_055",
+        "GT_D11_056",
+        "GT_D11_090"
+      ],
+      "relation": "shared_topic",
+      "theme": "All relate to the two RBKC building control officers and their respective roles on the project",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0013",
+      "claim_ids": [
+        "GT_D12_001",
+        "GT_D12_002",
+        "GT_D12_005"
+      ],
+      "relation": "sequence",
+      "theme": "Witness-4's timeline of employment and involvement at Firm-H on Tower-X",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0014",
+      "claim_ids": [
+        "GT_D12_003",
+        "GT_D12_004",
+        "GT_D12_011"
+      ],
+      "relation": "omission",
+      "theme": "Witness-4's qualifications and training, absence of fire safety coverage",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0015",
+      "claim_ids": [
+        "GT_D12_006",
+        "GT_D12_007",
+        "GT_D12_010"
+      ],
+      "relation": "response_to",
+      "theme": "Nature and circumstances of Witness-4's briefing and induction on the Tower-X project",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0016",
+      "claim_ids": [
+        "GT_D12_013",
+        "GT_D12_014",
+        "GT_D12_017",
+        "GT_D12_023"
+      ],
+      "relation": "awareness",
+      "theme": "Witness-4's lack of knowledge of ADB compliance routes and combustibility requirements at time of project",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0017",
+      "claim_ids": [
+        "GT_D12_019",
+        "GT_D12_020",
+        "GT_D12_021",
+        "GT_D12_106"
+      ],
+      "relation": "other",
+      "theme": "CWCT standard inclusion in NBS specification and Witness-4's lack of familiarity with it",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0018",
+      "claim_ids": [
+        "GT_D12_022",
+        "GT_D12_044",
+        "GT_D12_073"
+      ],
+      "relation": "sequence",
+      "theme": "Timeline of NBS Specification versions and crown design status",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0019",
+      "claim_ids": [
+        "GT_D12_032",
+        "GT_D12_033",
+        "GT_D12_062",
+        "GT_D12_064"
+      ],
+      "relation": "other",
+      "theme": "Hays Galleria meeting: attendance, discussion focus on appearance and cost rather than fire performance",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0020",
+      "claim_ids": [
+        "GT_D12_035",
+        "GT_D12_036",
+        "GT_D12_037",
+        "GT_D12_038"
+      ],
+      "relation": "other",
+      "theme": "Contractor-I's ACM preference, Ferrier Point project reference, and Witness-4's resulting assumptions about ACM suitability",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0021",
+      "claim_ids": [
+        "GT_D12_039",
+        "GT_D12_041",
+        "GT_D12_065",
+        "GT_D12_066"
+      ],
+      "relation": "discrepancy",
+      "theme": "NBS Specification prescriptive vs permissive approach to material selection, 'similar or equal' wording",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0022",
+      "claim_ids": [
+        "GT_D12_054",
+        "GT_D12_055",
+        "GT_D12_056",
+        "GT_D12_057",
+        "GT_D12_058"
+      ],
+      "relation": "other",
+      "theme": "Company-B FR5000 specification in NBS H92 section: manual entry, software warning, and Witness-4's unawareness",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0023",
+      "claim_ids": [
+        "GT_D12_059",
+        "GT_D12_060",
+        "GT_D12_061"
+      ],
+      "relation": "omission",
+      "theme": "Failure to check whether Company-B FR5000 complied with CWCT standard also specified in NBS",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0024",
+      "claim_ids": [
+        "GT_D12_047",
+        "GT_D12_048",
+        "GT_D12_049",
+        "GT_D12_050",
+        "GT_D12_051",
+        "GT_D12_052"
+      ],
+      "relation": "other",
+      "theme": "Cavity barrier specification: email exchange with Agency-G, 30-minute resistance decision, drawing ambiguity",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0025",
+      "claim_ids": [
+        "GT_D12_075",
+        "GT_D12_076",
+        "GT_D12_077",
+        "GT_D12_078"
+      ],
+      "relation": "other",
+      "theme": "Agency-G's OFSS Issue 3: content, omissions, and status as final fire safety strategy",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0026",
+      "claim_ids": [
+        "GT_D12_079",
+        "GT_D12_080",
+        "GT_D12_081",
+        "GT_D12_082",
+        "GT_D12_115"
+      ],
+      "relation": "omission",
+      "theme": "Firm-H never received detailed B4 analysis and failed to chase or communicate the outstanding analysis",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0027",
+      "claim_ids": [
+        "GT_D12_086",
+        "GT_D12_087",
+        "GT_D12_088",
+        "GT_D12_089"
+      ],
+      "relation": "response_to",
+      "theme": "Contractor-J's refusal to engage a fire consultant post-novation and Witness-2's response",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0028",
+      "claim_ids": [
+        "GT_D12_091",
+        "GT_D12_092",
+        "GT_D12_093",
+        "GT_D12_096"
+      ],
+      "relation": "discrepancy",
+      "theme": "Company-B FR5000 data sheet class 0 claim, Witness-2's misunderstanding of class 0 vs limited combustibility",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0029",
+      "claim_ids": [
+        "GT_D12_107",
+        "GT_D12_108",
+        "GT_D12_109"
+      ],
+      "relation": "awareness",
+      "theme": "CWCT standard requirements on cavity materials and limited combustibility, Witness-4's ignorance thereof",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0030",
+      "claim_ids": [
+        "GT_D12_069",
+        "GT_D12_070",
+        "GT_D12_101"
+      ],
+      "relation": "causal",
+      "theme": "BREEAM-driven U-values, Max Fordham's role, and how the U-value target drove insulation thickness",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0031",
+      "claim_ids": [
+        "GT_D13A_011",
+        "GT_D13A_012",
+        "GT_D13A_082"
+      ],
+      "relation": "awareness",
+      "theme": "Firm-H included the Standards-Body-1 standard in the NBS spec but Witness-4 was not familiar with its contents",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0032",
+      "claim_ids": [
+        "GT_D13A_013",
+        "GT_D13A_014",
+        "GT_D13A_015"
+      ],
+      "relation": "awareness",
+      "theme": "The Standards-Body-1 standard contained principles about fire resistance of aluminium envelope systems and limited combustibility that Witness-4 was unaware of",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0033",
+      "claim_ids": [
+        "GT_D13A_036",
+        "GT_D13A_037",
+        "GT_D13A_038"
+      ],
+      "relation": "awareness",
+      "theme": "ADB paragraphs 12.5 and 12.7 set compliance requirements that Witness-4 was not aware of at the time of Tower-X",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0034",
+      "claim_ids": [
+        "GT_D13A_041",
+        "GT_D13A_068",
+        "GT_D13A_073"
+      ],
+      "relation": "other",
+      "theme": "Company-B FR5000 was specified for Tower-X; its datasheets stated class 0 performance but did not reference limited combustibility or 18m height restrictions",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0035",
+      "claim_ids": [
+        "GT_D13A_053",
+        "GT_D13A_054",
+        "GT_D13A_058",
+        "GT_D13A_066"
+      ],
+      "relation": "omission",
+      "theme": "Agency-G's OFSS Issue 3 promised a future analysis of B4 that was never delivered; no detailed written fire safety analysis of the overcladding was ever provided",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0036",
+      "claim_ids": [
+        "GT_D13A_061",
+        "GT_D13A_062",
+        "GT_D13A_063",
+        "GT_D13A_065"
+      ],
+      "relation": "omission",
+      "theme": "Witness-2 learned Contractor-J would not appoint a fire consultant and expected Contractor-I to handle fire strategy, but never pressed this issue formally or in writing post-novation",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0037",
+      "claim_ids": [
+        "GT_D13A_023",
+        "GT_D13A_024",
+        "GT_D13A_025",
+        "GT_D13A_026"
+      ],
+      "relation": "other",
+      "theme": "The NBS specification included Proteus HR as the primary product and Reynobond/Alucobond as alternatives without checking manufacturer databases or fire performance",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0038",
+      "claim_ids": [
+        "GT_D13A_028",
+        "GT_D13A_029",
+        "GT_D13A_042"
+      ],
+      "relation": "omission",
+      "theme": "At the Hays Galleria meeting and throughout, fire performance of ACM and insulation was never discussed",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0039",
+      "claim_ids": [
+        "GT_D13A_043",
+        "GT_D13A_044",
+        "GT_D13A_045",
+        "GT_D13A_046",
+        "GT_D13A_047"
+      ],
+      "relation": "response_to",
+      "theme": "Cavity barrier specification for Tower-X: Agency-G advice, product selected, fire resistance specified, and gaps around windows",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0040",
+      "claim_ids": [
+        "GT_D14_041",
+        "GT_D14_042",
+        "GT_D14_043"
+      ],
+      "relation": "other",
+      "theme": "GT_D14_041 establishes that Witness-5 relied on James Lee for the site survey; GT_D14_042 establishes Lee's site visit was 29 May 2013 lasting two hours; GT_D14_043 establishes Lee left Agency-G on 20 July 2013 before Witness-5 began her work",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0041",
+      "claim_ids": [
+        "GT_D14_051",
+        "GT_D14_052",
+        "GT_D14_053",
+        "GT_D14_054",
+        "GT_D14_055"
+      ],
+      "relation": "contradicts",
+      "theme": "These claims establish the sequence of conflicting information about firefighting lifts: Witness-5 asked Witness-2, who said no firefighting lift; FRA said there were firefighting lifts; Witness-5 noticed the contradiction but did not resolve it; learned post-fire the lifts were not firefighting lifts",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0042",
+      "claim_ids": [
+        "GT_D14_073",
+        "GT_D14_074",
+        "GT_D14_075",
+        "GT_D14_078"
+      ],
+      "relation": "shared_topic",
+      "theme": "These claims establish the assumption of high compartmentation: the strategy assumed high compartmentation to justify stay-put; Witness-5 relied on concrete robustness without invasive survey; compartmentation surveys were not common at the time; the regulatory minimum was 120 minutes fire resistance",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0043",
+      "claim_ids": [
+        "GT_D14_076",
+        "GT_D14_079",
+        "GT_D14_080",
+        "GT_D14_081"
+      ],
+      "relation": "shared_topic",
+      "theme": "These claims establish the interdependence of excessive travel distance acceptability and the AOV smoke ventilation system: excessive travel was accepted on basis of smoke ventilation working, but the smoke extract shaft was significantly undersized",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0044",
+      "claim_ids": [
+        "GT_D14_056",
+        "GT_D14_057",
+        "GT_D14_058",
+        "GT_D14_096"
+      ],
+      "relation": "omission",
+      "theme": "These claims establish the compressed timeline of the draft: 15 hours total work, sent for peer review 15 August 2013, signed off 16 August 2013 with only 'fine', and the draft was never finalised",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0045",
+      "claim_ids": [
+        "GT_D14_047",
+        "GT_D14_048",
+        "GT_D14_092"
+      ],
+      "relation": "omission",
+      "theme": "These claims establish Witness-5's incomplete use of the FRA: the FRA was nearly two years out of date, she did not read the significant findings and action plan, and never saw the separate significant findings record",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0046",
+      "claim_ids": [
+        "GT_D14_099",
+        "GT_D14_101",
+        "GT_D14_102",
+        "GT_D14_103"
+      ],
+      "relation": "awareness",
+      "theme": "These claims establish Witness-5's awareness that the refurbishment proposals had serious fire safety problems: single stair with merged uses not great, making existing crap condition worse, significant approvals risk, system theoretically making conditions worse — but she did not communicate these concerns to the client",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0047",
+      "claim_ids": [
+        "GT_D14_083",
+        "GT_D14_084",
+        "GT_D14_085"
+      ],
+      "relation": "shared_topic",
+      "theme": "These claims address the confused use of firestopping and cavity barriers terminology in section 5.1.3, which Witness-5 admitted could be clearer and could mislead a less expert reader",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0048",
+      "claim_ids": [
+        "GT_D14_001",
+        "GT_D14_002",
+        "GT_D14_009",
+        "GT_D14_010",
+        "GT_D14_168"
+      ],
+      "relation": "shared_topic",
+      "theme": "These claims establish the COVID-19 procedural context of Day 14: the panel member illness, the three options considered, and the eventual decision to hold limited-attendance hearings",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0049",
+      "claim_ids": [
+        "GT_D14_060",
+        "GT_D14_061",
+        "GT_D14_063",
+        "GT_D14_064",
+        "GT_D14_065"
+      ],
+      "relation": "shared_topic",
+      "theme": "These claims collectively establish that Witness-5 made multiple unverified assumptions about Tower-X's existing compliance and construction throughout the draft strategy",
+      "description": "",
+      "confidence": 1.0
+    },
+    {
+      "cluster_id": "GT_CLUSTER_0050",
       "claim_ids": [
         "GT_D02_048",
         "GT_D02_049",
@@ -15445,7 +15828,8 @@
         "GT_D02_051",
         "GT_D02_052"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "March 2016 email exchange between Contractor-I, Firm-H, Agency-G and Contractor-J about cavity barriers and ACM fire behaviour is central to Company-B's opening statement",
       "confidence": 1.0,
       "chunks_involved": [
@@ -15454,7 +15838,7 @@
       ]
     },
     {
-      "xref_id": "GT_XREF_0084",
+      "cluster_id": "GT_CLUSTER_0051",
       "claim_ids": [
         "GT_D02_036",
         "GT_D02_037",
@@ -15462,7 +15846,8 @@
         "GT_D02_039",
         "GT_D02_061"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "BBA certificate for Company-A ACMPE is referenced by Company-A, Company-B and CEP as a central document in multiple opening statements",
       "confidence": 1.0,
       "chunks_involved": [
@@ -15473,26 +15858,15 @@
       ]
     },
     {
-      "xref_id": "GT_XREF_0085",
-      "claim_ids": [
-        "GT_D02_004"
-      ],
-      "relationship_type": "related",
-      "description": "Counsel to the Inquiry's Day 1 submissions on 'merry-go-round of buck-passing' are referenced in Agency-G's opening statement on Day 2",
-      "confidence": 1.0,
-      "chunks_involved": [
-        "Transcript_28_January_2020_chunk_001.txt"
-      ]
-    },
-    {
-      "xref_id": "GT_XREF_0086",
+      "cluster_id": "GT_CLUSTER_0052",
       "claim_ids": [
         "GT_D02_043",
         "GT_D02_044",
         "GT_D02_045",
         "GT_D02_046"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "BR135 (Agency-F report on fire performance of external thermal insulation) is cross-referenced between Company-B's submissions and the regulatory compliance framework",
       "confidence": 1.0,
       "chunks_involved": [
@@ -15501,7 +15875,7 @@
       ]
     },
     {
-      "xref_id": "GT_XREF_0087",
+      "cluster_id": "GT_CLUSTER_0053",
       "claim_ids": [
         "GT_D03_009",
         "GT_D03_010",
@@ -15509,7 +15883,8 @@
         "GT_D03_014",
         "GT_D03_028"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "Consultant-K's contractual exclusion from design responsibility (point 4.4) and lead consultant role is contested across Consultant-K's and Organization-D's opening statements",
       "confidence": 1.0,
       "chunks_involved": [
@@ -15520,7 +15895,7 @@
       ]
     },
     {
-      "xref_id": "GT_XREF_0088",
+      "cluster_id": "GT_CLUSTER_0054",
       "claim_ids": [
         "GT_D03_024",
         "GT_D03_025",
@@ -15528,7 +15903,8 @@
         "GT_D03_028",
         "GT_D03_040"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "Organization-D's self-portrayal as passive bystander vs. Consultant-K's evidence of Organization-D's active project management role and design sign-off decisions",
       "confidence": 1.0,
       "chunks_involved": [
@@ -15538,14 +15914,15 @@
       ]
     },
     {
-      "xref_id": "GT_XREF_0089",
+      "cluster_id": "GT_CLUSTER_0055",
       "claim_ids": [
         "GT_D03_020",
         "GT_D03_021",
         "GT_D03_022",
         "GT_D03_023"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "The Lakanal House moment (November 2015 email exchange about cladding flame retardance) is referenced by Consultant-K and BSR groups as pivotal to the question of who was responsible for checking cladding compliance",
       "confidence": 1.0,
       "chunks_involved": [
@@ -15554,7 +15931,7 @@
       ]
     },
     {
-      "xref_id": "GT_XREF_0090",
+      "cluster_id": "GT_CLUSTER_0056",
       "claim_ids": [
         "GT_D03_047",
         "GT_D03_053",
@@ -15563,7 +15940,8 @@
         "GT_D03_067",
         "GT_D03_068"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "Authority-L building control failings are admitted by Authority-L and referenced by FBU as exemplifying systemic enforcement failure and the minimum compliance culture identified by Dame Judith Hackitt",
       "confidence": 1.0,
       "chunks_involved": [
@@ -15573,7 +15951,7 @@
       ]
     },
     {
-      "xref_id": "GT_XREF_0091",
+      "cluster_id": "GT_CLUSTER_0057",
       "claim_ids": [
         "GT_D03_001",
         "GT_D03_002",
@@ -15582,7 +15960,8 @@
         "GT_D03_070",
         "GT_D03_071"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "Self-incrimination privilege application runs through the opening and close of Day 3, with The-Chairman's announcement, Counsel-C's objections, and procedural scheduling for Monday hearing",
       "confidence": 1.0,
       "chunks_involved": [
@@ -15591,7 +15970,7 @@
       ]
     },
     {
-      "xref_id": "GT_XREF_0092",
+      "cluster_id": "GT_CLUSTER_0058",
       "claim_ids": [
         "GT_D03_038",
         "GT_D03_039",
@@ -15600,7 +15979,8 @@
         "GT_D03_065",
         "GT_D03_078"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "Value engineering and cost as a driver of the project is addressed from opposing perspectives by Consultant-K, Organization-D, and FBU",
       "confidence": 1.0,
       "chunks_involved": [
@@ -15611,13 +15991,14 @@
       ]
     },
     {
-      "xref_id": "GT_XREF_0093",
+      "cluster_id": "GT_CLUSTER_0059",
       "claim_ids": [
         "GT_D03_035",
         "GT_D03_036",
         "GT_D03_037"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "Agency-G's fire safety strategy and the B4 compliance language appears in Organization-D's opening statement (Day 3) and connects to Day 2 Agency-G submissions",
       "confidence": 1.0,
       "chunks_involved": [
@@ -15625,331 +16006,131 @@
       ]
     },
     {
-      "xref_id": "GT_XREF_0094",
+      "cluster_id": "GT_CLUSTER_0060",
       "claim_ids": [
         "GT_D06_013",
         "GT_D06_014",
         "GT_D06_037"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "Multiple claims establish Firm-H had zero experience in high-rise residential overcladding, and Witness-1 accepted they would not have qualified in a competitive procurement",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0095",
+      "cluster_id": "GT_CLUSTER_0061",
       "claim_ids": [
         "GT_D06_041",
         "GT_D06_092",
         "GT_D06_093",
         "GT_D06_094"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "Witness-2's 'a little green' email is interpreted differently by Witness-1 and Witness-2: Witness-2 focused on occupied-building logistics and M&E rather than overcladding design competence",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0096",
+      "cluster_id": "GT_CLUSTER_0062",
       "claim_ids": [
         "GT_D06_051",
         "GT_D06_036",
         "GT_D06_099"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "No competence check was done on Firm-H for Tower-X by Organization-D or Authority-L, confirmed by both witnesses",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0097",
+      "cluster_id": "GT_CLUSTER_0063",
       "claim_ids": [
         "GT_D06_061",
         "GT_D06_062",
         "GT_D06_063",
         "GT_D06_065"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "The sole technical review occurred in October 2016 when facade works were 60% complete, with no independent reviewer, and no technical review at tender stage",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0098",
+      "cluster_id": "GT_CLUSTER_0064",
       "claim_ids": [
         "GT_D06_085",
         "GT_D06_087",
         "GT_D06_088"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "Witness-2 had no experience with PE composites/ACM, no training on Part B4 or rainscreen cladding, and no CPD seminars were organised in 2015-2016",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0099",
+      "cluster_id": "GT_CLUSTER_0065",
       "claim_ids": [
         "GT_D06_052",
         "GT_D06_053",
         "GT_D06_058"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "Neither the project lead (Witness-2) nor the later project architect (Witness-3, who had not completed Part 3) had overcladding experience; Witness-3 was the only person with any high-rise experience",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0100",
+      "cluster_id": "GT_CLUSTER_0066",
       "claim_ids": [
         "GT_D06_101",
         "GT_D06_102",
         "GT_D06_103"
       ],
-      "relationship_type": "related",
+      "relation": "other",
+      "theme": "",
       "description": "Witness-2 expected specialist subcontractors to take responsibility for overcladding design detail under the design and build procurement route",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0101",
-      "claim_ids": [
-        "GT_D06_068",
-        "GT_D06_069"
-      ],
-      "relationship_type": "related",
-      "description": "Witness-1's closing statement attributes the tragedy to unreliable regulations/certifications/specialist advice, while accepting more technical reviews should have occurred",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0102",
-      "claim_ids": [
-        "GT_D04_008",
-        "GT_D04_009"
-      ],
-      "relationship_type": "Facility-1 cladding choice directly created the precedent that contractors at Tower-X relied upon",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0103",
-      "claim_ids": [
-        "GT_D04_010",
-        "GT_D04_012"
-      ],
-      "relationship_type": "Environmental sustainability drive led directly to combustible insulation selection",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0104",
-      "claim_ids": [
-        "GT_D04_015",
-        "GT_D04_016"
-      ],
-      "relationship_type": "Procurement circumvention led to unqualified architect being retained",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0105",
-      "claim_ids": [
-        "GT_D04_018",
-        "GT_D04_019"
-      ],
-      "relationship_type": "Private cost negotiation with Contractor-J led to cladding material change without safety consideration",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0106",
-      "claim_ids": [
-        "GT_D04_031",
-        "GT_D04_032"
-      ],
-      "relationship_type": "Flawed fire strategy documents contained the negligent misrepresentation about external fire spread",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0107",
-      "claim_ids": [
-        "GT_D04_037",
-        "GT_D04_039"
-      ],
-      "relationship_type": "Company-A knew product was Euroclass E but planned to increase UK sales",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0108",
-      "claim_ids": [
-        "GT_D04_045",
-        "GT_D04_046"
-      ],
-      "relationship_type": "Company-B test discrepancies and lambda value understatement enabled misleading marketing",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0109",
-      "claim_ids": [
-        "GT_D04_057",
-        "GT_D04_059"
-      ],
-      "relationship_type": "Contractor-J's failure to appoint fire engineer was driven by cost avoidance",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0110",
-      "claim_ids": [
-        "GT_D04_108",
-        "GT_D04_109"
-      ],
-      "relationship_type": "Contractor-I knew ACM was dangerous but promoted it externally",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0111",
-      "claim_ids": [
-        "GT_D04_121",
-        "GT_D04_122"
-      ],
-      "relationship_type": "Claire Williams' Lacknell moment concern was not followed up, representing the last chance to avert disaster",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0112",
-      "claim_ids": [
-        "GT_D04_099",
-        "GT_D04_100"
-      ],
-      "relationship_type": "Negative NPV assessment drove Authority-L to prioritise cost above all other considerations",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0113",
-      "claim_ids": [
-        "GT_D04_062",
-        "GT_D04_098"
-      ],
-      "relationship_type": "Government knowledge of ADB flaws from 2001 was not shared with industry",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0114",
-      "claim_ids": [
-        "GT_D04_123",
-        "GT_D04_125"
-      ],
-      "relationship_type": "Resident warnings about safety were consistently ignored by Authority-L and Organization-D",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0115",
-      "claim_ids": [
-        "GT_D04_006",
-        "GT_D04_053"
-      ],
-      "relationship_type": "Aesthetic obsession with Tower-X appearance drove material selection at expense of fire safety",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0116",
-      "claim_ids": [
-        "GT_D04_027",
-        "GT_D04_028"
-      ],
-      "relationship_type": "Despite clear regulatory requirements, no formal compliance route was followed at Tower-X",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0117",
-      "claim_ids": [
-        "GT_D05_006"
-      ],
-      "relationship_type": "related",
-      "description": "Phase 1 firefighter evidence given without undertaking - contrasted with corporate witnesses' Phase 2 application",
-      "confidence": 1.0,
-      "related_document": "hearing_transcript_day_01"
-    },
-    {
-      "xref_id": "GT_XREF_0118",
-      "claim_ids": [
-        "GT_D05_028"
-      ],
-      "relationship_type": "related",
-      "description": "Oral opening statements of Firm-H at Day1/36:17-23 and Contractor-I at Day1/94:9-12 cited by Lead-Counsel as evidence of no prior warning of privilege claims",
-      "confidence": 1.0,
-      "related_document": "hearing_transcript_day_01"
-    },
-    {
-      "xref_id": "GT_XREF_0119",
-      "claim_ids": [
-        "GT_D05_015"
-      ],
-      "relationship_type": "related",
-      "description": "Counsel-H's original undertaking application made on Day 4 (Thursday); transcript reference Day4/124:24-25 cited regarding Contractor-I funding constraints",
-      "confidence": 1.0,
-      "related_document": "hearing_transcript_day_04"
-    },
-    {
-      "xref_id": "GT_XREF_0120",
-      "claim_ids": [
-        "GT_D05_007"
-      ],
-      "relationship_type": "related",
-      "description": "Metropolitan Police corporate manslaughter investigation announced July 2017 (date-shifted to 2018) is foundational to the self-incrimination risk across all cladding parties",
-      "confidence": 1.0,
-      "related_document": "hearing_transcript_day_05"
-    },
-    {
-      "xref_id": "GT_XREF_0121",
-      "claim_ids": [
-        "GT_D05_014"
-      ],
-      "relationship_type": "related",
-      "description": "Dr Lane's Phase 1 report (mid-April 2019, date-shifted) identifying combustible cladding and missing cavity barriers used to establish Contractor-I's constructive knowledge of prosecution risk",
-      "confidence": 1.0,
-      "related_document": "hearing_transcript_day_05"
-    },
-    {
-      "xref_id": "GT_XREF_0122",
+      "cluster_id": "GT_CLUSTER_0067",
       "claim_ids": [
         "GT_D07A_010",
         "GT_D07A_011",
         "GT_D07A_034",
         "GT_D07A_085"
       ],
-      "relationship_type": "Converging claims establishing Firm-H had no experience of high-rise residential overcladding, which Witness-1 admitted would have disqualified the firm from competitive procurement",
+      "relation": "other",
+      "theme": "Converging claims establishing Firm-H had no experience of high-rise residential overcladding, which Witness-1 admitted would have disqualified the firm from competitive procurement",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0123",
+      "cluster_id": "GT_CLUSTER_0068",
       "claim_ids": [
         "GT_D07A_035",
         "GT_D07A_068",
         "GT_D07A_069",
         "GT_D07A_070"
       ],
-      "relationship_type": "Witness-2's email about being 'a little green' and subsequent explanation of what rapid CPD meant, revealing minimal actual CPD was undertaken before the Tower-X project",
+      "relation": "other",
+      "theme": "Witness-2's email about being 'a little green' and subsequent explanation of what rapid CPD meant, revealing minimal actual CPD was undertaken before the Tower-X project",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0124",
+      "cluster_id": "GT_CLUSTER_0069",
       "claim_ids": [
         "GT_D07A_022",
         "GT_D07A_026",
         "GT_D07A_100"
       ],
-      "relationship_type": "Tower-X appointment bypassed the competitive procurement scrutiny that the Facility-1 commission underwent, meaning Firm-H's suitability for Tower-X was never formally assessed",
+      "relation": "omission",
+      "theme": "Tower-X appointment bypassed the competitive procurement scrutiny that the Facility-1 commission underwent, meaning Firm-H's suitability for Tower-X was never formally assessed",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0125",
+      "cluster_id": "GT_CLUSTER_0070",
       "claim_ids": [
         "GT_D07A_048",
         "GT_D07A_049",
@@ -15958,77 +16139,62 @@
         "GT_D07A_052",
         "GT_D07A_053"
       ],
-      "relationship_type": "The timing and conduct of Firm-H's internal reviews on Tower-X: only two design reviews (November 2013 and early 2014) and one technical review (October 2016), the latter occurring after facade construction was 60% complete",
+      "relation": "other",
+      "theme": "The timing and conduct of Firm-H's internal reviews on Tower-X: only two design reviews (November 2013 and early 2014) and one technical review (October 2016), the latter occurring after facade construction was 60% complete",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0126",
+      "cluster_id": "GT_CLUSTER_0071",
       "claim_ids": [
         "GT_D07A_074",
         "GT_D07A_115",
         "GT_D07A_120"
       ],
-      "relationship_type": "Witness-2's stated reliance on Contractor-I and specialist subcontractors to take design responsibility for the cladding element",
+      "relation": "other",
+      "theme": "Witness-2's stated reliance on Contractor-I and specialist subcontractors to take design responsibility for the cladding element",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0127",
+      "cluster_id": "GT_CLUSTER_0072",
       "claim_ids": [
         "GT_D07A_056",
         "GT_D07A_057",
         "GT_D07A_113",
         "GT_D07A_114"
       ],
-      "relationship_type": "Witness-3 (Neil Witness-3) join date, qualifications, and the implication that the Tower-X project team lacked overcladding experience until mid-2015",
+      "relation": "other",
+      "theme": "Witness-3 (Neil Witness-3) join date, qualifications, and the implication that the Tower-X project team lacked overcladding experience until mid-2015",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0128",
-      "claim_ids": [
-        "GT_D07A_076",
-        "GT_D07A_077"
-      ],
-      "relationship_type": "RIBA Practice Management Handbook competence principle and Firm-H's failure to conduct any appraisal of its ability to undertake the Tower-X project",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0129",
+      "cluster_id": "GT_CLUSTER_0073",
       "claim_ids": [
         "GT_D07A_029",
         "GT_D07A_030",
         "GT_D07A_031"
       ],
-      "relationship_type": "Organization-D and Authority-L's motivations for Tower-X refurbishment: energy efficiency, investment in worst property asset, and visual improvement alongside Facility-1",
+      "relation": "other",
+      "theme": "Organization-D and Authority-L's motivations for Tower-X refurbishment: energy efficiency, investment in worst property asset, and visual improvement alongside Facility-1",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0130",
+      "cluster_id": "GT_CLUSTER_0074",
       "claim_ids": [
         "GT_D07B_001",
         "GT_D07B_002",
         "GT_D07B_003"
       ],
-      "relationship_type": "Firm-H staffing structure and hierarchy on Tower-X at outset, with Witness-1 as director and Witness-2 as project architect under firm policy requiring both",
+      "relation": "other",
+      "theme": "Firm-H staffing structure and hierarchy on Tower-X at outset, with Witness-1 as director and Witness-2 as project architect under firm policy requiring both",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0131",
-      "claim_ids": [
-        "GT_D07B_004",
-        "GT_D07B_005"
-      ],
-      "relationship_type": "Context for Witness-2's decision to front the Tower-X project directly, citing Organization-D as a new client separate from Authority-L",
-      "description": "",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0132",
+      "cluster_id": "GT_CLUSTER_0075",
       "claim_ids": [
         "GT_D07B_007",
         "GT_D07B_008",
@@ -16036,34 +16202,37 @@
         "GT_D07B_010",
         "GT_D07B_014"
       ],
-      "relationship_type": "Collectively establish that none of the Firm-H pre-novation team (Kiefer, Jess, Witness-4) had confirmed experience of residential overcladding prior to Contractor-J appointment",
+      "relation": "other",
+      "theme": "Collectively establish that none of the Firm-H pre-novation team (Kiefer, Jess, Witness-4) had confirmed experience of residential overcladding prior to Contractor-J appointment",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0133",
+      "cluster_id": "GT_CLUSTER_0076",
       "claim_ids": [
         "GT_D07B_011",
         "GT_D07B_012",
         "GT_D07B_015"
       ],
-      "relationship_type": "Witness-3 as the sole team member with relevant high-rise residential experience, but only involved from the construction phase",
+      "relation": "other",
+      "theme": "Witness-3 as the sole team member with relevant high-rise residential experience, but only involved from the construction phase",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0134",
+      "cluster_id": "GT_CLUSTER_0077",
       "claim_ids": [
         "GT_D07B_021",
         "GT_D07B_022",
         "GT_D07B_041"
       ],
-      "relationship_type": "Firm-H insolvency timeline: LLP liquidation August 2015, reduction to 9-12 staff, and transition of project work to Firm-H Limited under Contractor-J",
+      "relation": "sequence",
+      "theme": "Firm-H insolvency timeline: LLP liquidation August 2015, reduction to 9-12 staff, and transition of project work to Firm-H Limited under Contractor-J",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0135",
+      "cluster_id": "GT_CLUSTER_0078",
       "claim_ids": [
         "GT_D07B_023",
         "GT_D07B_024",
@@ -16072,35 +16241,38 @@
         "GT_D07B_029",
         "GT_D07B_030"
       ],
-      "relationship_type": "Chain of events showing how OJEU threshold was managed: initial concern, fee deferral strategy, eventual breach of £174,000 limit, and working at risk through late 2013",
+      "relation": "shared_topic",
+      "theme": "Chain of events showing how OJEU threshold was managed: initial concern, fee deferral strategy, eventual breach of £174,000 limit, and working at risk through late 2013",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0136",
+      "cluster_id": "GT_CLUSTER_0079",
       "claim_ids": [
         "GT_D07B_031",
         "GT_D07B_032",
         "GT_D07B_092"
       ],
-      "relationship_type": "Firm-H contract with Organization-D was never definitively signed, despite negotiations continuing from June 2013 to November 2014",
+      "relation": "omission",
+      "theme": "Firm-H contract with Organization-D was never definitively signed, despite negotiations continuing from June 2013 to November 2014",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0137",
+      "cluster_id": "GT_CLUSTER_0080",
       "claim_ids": [
         "GT_D07B_035",
         "GT_D07B_036",
         "GT_D07B_037",
         "GT_D07B_118"
       ],
-      "relationship_type": "Lead consultant designation: Firm-H named as lead consultant in appointment documents, confirmed in Consultant-K contract, but Witness-2 was unaware of Consultant-K's contract confirming this",
+      "relation": "awareness",
+      "theme": "Lead consultant designation: Firm-H named as lead consultant in appointment documents, confirmed in Consultant-K contract, but Witness-2 was unaware of Consultant-K's contract confirming this",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0138",
+      "cluster_id": "GT_CLUSTER_0081",
       "claim_ids": [
         "GT_D07B_044",
         "GT_D07B_045",
@@ -16108,12 +16280,13 @@
         "GT_D07B_048",
         "GT_D07B_049"
       ],
-      "relationship_type": "Tension between obligations in the Contractor-J schedule of services and Witness-2's stated understanding of Firm-H's limited reactive role post-novation",
+      "relation": "other",
+      "theme": "Tension between obligations in the Contractor-J schedule of services and Witness-2's stated understanding of Firm-H's limited reactive role post-novation",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0139",
+      "cluster_id": "GT_CLUSTER_0082",
       "claim_ids": [
         "GT_D07B_050",
         "GT_D07B_051",
@@ -16125,12 +16298,13 @@
         "GT_D07B_097",
         "GT_D07B_098"
       ],
-      "relationship_type": "Witness-2's knowledge gap regarding Approved Document B, limited combustibility requirements, European fire classifications and BR135 at time of Tower-X project",
+      "relation": "omission",
+      "theme": "Witness-2's knowledge gap regarding Approved Document B, limited combustibility requirements, European fire classifications and BR135 at time of Tower-X project",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0140",
+      "cluster_id": "GT_CLUSTER_0083",
       "claim_ids": [
         "GT_D07B_061",
         "GT_D07B_062",
@@ -16138,12 +16312,13 @@
         "GT_D07B_064",
         "GT_D07B_065"
       ],
-      "relationship_type": "NBS specification approach: proprietary specification with Company-B FR5000 and Proteus HR panel named, alternatives allowed only if equal/similar, with no compliance check performed by Firm-H",
+      "relation": "other",
+      "theme": "NBS specification approach: proprietary specification with Company-B FR5000 and Proteus HR panel named, alternatives allowed only if equal/similar, with no compliance check performed by Firm-H",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0141",
+      "cluster_id": "GT_CLUSTER_0084",
       "claim_ids": [
         "GT_D07B_073",
         "GT_D07B_074",
@@ -16151,78 +16326,63 @@
         "GT_D07B_076",
         "GT_D07B_077"
       ],
-      "relationship_type": "Agency-G background: concerns about KALC performance, threat to replace, decision to retain Agency-G for Tower-X for continuity, and Agency-G's fee proposal scope",
+      "relation": "other",
+      "theme": "Agency-G background: concerns about KALC performance, threat to replace, decision to retain Agency-G for Tower-X for continuity, and Agency-G's fee proposal scope",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0142",
+      "cluster_id": "GT_CLUSTER_0085",
       "claim_ids": [
         "GT_D07B_078",
         "GT_D07B_079",
         "GT_D07B_110",
         "GT_D07B_112"
       ],
-      "relationship_type": "Gap in Agency-G's fee proposal: no provision for design documentation review at Stage D/E or Stage F, identified as serious omission given that review by competent fire engineer enhances regulatory compliance",
+      "relation": "omission",
+      "theme": "Gap in Agency-G's fee proposal: no provision for design documentation review at Stage D/E or Stage F, identified as serious omission given that review by competent fire engineer enhances regulatory compliance",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0143",
+      "cluster_id": "GT_CLUSTER_0086",
       "claim_ids": [
         "GT_D07B_085",
         "GT_D07B_088",
         "GT_D07B_114",
         "GT_D07B_115"
       ],
-      "relationship_type": "Agency-G's limited engagement: no fire strategy produced by July 2013, no commentary on overcladding in marked-up drawings, key fire engineer (James Lee) departing",
+      "relation": "other",
+      "theme": "Agency-G's limited engagement: no fire strategy produced by July 2013, no commentary on overcladding in marked-up drawings, key fire engineer (James Lee) departing",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0144",
+      "cluster_id": "GT_CLUSTER_0087",
       "claim_ids": [
         "GT_D07B_107",
         "GT_D07B_108",
         "GT_D07B_109"
       ],
-      "relationship_type": "Witness-2's lack of awareness of rapid fire spread mechanisms documented in BR135, consistent with broader unawareness of the document itself",
+      "relation": "awareness",
+      "theme": "Witness-2's lack of awareness of rapid fire spread mechanisms documented in BR135, consistent with broader unawareness of the document itself",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0145",
-      "claim_ids": [
-        "GT_D08_018",
-        "GT_D08_024"
-      ],
-      "relationship_type": "The identical text in both issues demonstrates a pattern of repeatedly deferring the B4 external fire spread analysis that was never fulfilled",
-      "description": "Agency-G Design Note 1 (12 Sep 2012) B4 deferred analysis promise repeated verbatim in Issue 2 (24 Oct 2013) - one year later with no analysis provided",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0146",
+      "cluster_id": "GT_CLUSTER_0088",
       "claim_ids": [
         "GT_D08_003",
         "GT_D08_004",
         "GT_D08_005"
       ],
-      "relationship_type": "Internal Agency-G communications show a higher level of concern about the project than what was communicated to Firm-H, including concerns about the firefighting shaft/MOE, sprinklers, and the 'existing crap condition' being made worse",
+      "relation": "shared_topic",
+      "theme": "Internal Agency-G communications show a higher level of concern about the project than what was communicated to Firm-H, including concerns about the firefighting shaft/MOE, sprinklers, and the 'existing crap condition' being made worse",
       "description": "Witness-5 internal email of 17 Aug 2012 vs. what Witness-2 was told",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0147",
-      "claim_ids": [
-        "GT_D08_017",
-        "GT_D08_019"
-      ],
-      "relationship_type": "Agency-G issued the fire strategy in the afternoon of the same day it received the Stage C report specifying Company-B FR5000 and zinc cladding; Witness-2 never asked Agency-G whether they had reviewed the Stage C report before issuing their strategy",
-      "description": "Stage C report sent to Agency-G same morning Agency-G issued Issue 1 fire strategy",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0148",
+      "cluster_id": "GT_CLUSTER_0089",
       "claim_ids": [
         "GT_D08_010",
         "GT_D08_011",
@@ -16230,101 +16390,99 @@
         "GT_D08_017",
         "GT_D08_024"
       ],
-      "relationship_type": "Agency-G personnel attended or received minutes from design team meetings in April, July and September 2012 where overcladding with zinc composite was discussed; yet both Issue 1 and Issue 2 of the fire strategy omit any reference to overcladding",
+      "relation": "other",
+      "theme": "Agency-G personnel attended or received minutes from design team meetings in April, July and September 2012 where overcladding with zinc composite was discussed; yet both Issue 1 and Issue 2 of the fire strategy omit any reference to overcladding",
       "description": "Overcladding known to Agency-G from multiple design team meetings vs. omission from fire strategies",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0149",
-      "claim_ids": [
-        "GT_D08_021",
-        "GT_D08_022"
-      ],
-      "relationship_type": "Jess's notes of the building control meeting show no discussion of cladding or overcladding, yet Witness-2 believed building control had expressed no concern about it - suggesting the cladding was not discussed at the meeting at all",
-      "description": "Building control meeting of 6 November 2012 - no discussion of cladding",
-      "confidence": 1.0
-    },
-    {
-      "xref_id": "GT_XREF_0150",
+      "cluster_id": "GT_CLUSTER_0090",
       "claim_ids": [
         "GT_D09_003",
         "GT_D09_006",
         "GT_D09_007"
       ],
-      "relationship_type": "Witness-3's qualifications: completed parts 1 and 2, never completed part 3 — directly relevant to his technical knowledge limitations on the Tower-X project",
+      "relation": "omission",
+      "theme": "Witness-3's qualifications: completed parts 1 and 2, never completed part 3 — directly relevant to his technical knowledge limitations on the Tower-X project",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0151",
+      "cluster_id": "GT_CLUSTER_0091",
       "claim_ids": [
         "GT_D09_012",
         "GT_D09_044",
         "GT_D09_046"
       ],
-      "relationship_type": "Firm-H and Witness-3 had no prior experience of overcladding high-rise residential buildings when taking on the Tower-X project",
+      "relation": "other",
+      "theme": "Firm-H and Witness-3 had no prior experience of overcladding high-rise residential buildings when taking on the Tower-X project",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0152",
+      "cluster_id": "GT_CLUSTER_0092",
       "claim_ids": [
         "GT_D09_013",
         "GT_D09_014",
         "GT_D09_019"
       ],
-      "relationship_type": "Firm-H's CPD policy and gap: despite a formal CPD policy, Witness-3 received no specific training on Part B4, Approved Document B or rainscreen cladding fire performance",
+      "relation": "omission",
+      "theme": "Firm-H's CPD policy and gap: despite a formal CPD policy, Witness-3 received no specific training on Part B4, Approved Document B or rainscreen cladding fire performance",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0153",
+      "cluster_id": "GT_CLUSTER_0093",
       "claim_ids": [
         "GT_D09_024",
         "GT_D09_025",
         "GT_D09_026"
       ],
-      "relationship_type": "The deed of appointment between Firm-H and Contractor-J was executed at the very end of the project and Witness-3 never saw it, yet it contained obligations he was unaware of",
+      "relation": "omission",
+      "theme": "The deed of appointment between Firm-H and Contractor-J was executed at the very end of the project and Witness-3 never saw it, yet it contained obligations he was unaware of",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0154",
+      "cluster_id": "GT_CLUSTER_0094",
       "claim_ids": [
         "GT_D09_032",
         "GT_D09_033",
         "GT_D09_034",
         "GT_D09_098"
       ],
-      "relationship_type": "Firm-H's self-defined limitation of architectural intent was never formally recorded in any contractual document or communicated to Contractor-J",
+      "relation": "omission",
+      "theme": "Firm-H's self-defined limitation of architectural intent was never formally recorded in any contractual document or communicated to Contractor-J",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0155",
+      "cluster_id": "GT_CLUSTER_0095",
       "claim_ids": [
         "GT_D09_049",
         "GT_D09_052",
         "GT_D09_060",
         "GT_D09_061"
       ],
-      "relationship_type": "NBS specification material selection: the spec specified Company-B FR5000 insulation and Reynobond Duragloss as alternatives, but failed to specify fire performance criteria for infill panels or locations of mineral wool gaps",
+      "relation": "omission",
+      "theme": "NBS specification material selection: the spec specified Company-B FR5000 insulation and Reynobond Duragloss as alternatives, but failed to specify fire performance criteria for infill panels or locations of mineral wool gaps",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0156",
+      "cluster_id": "GT_CLUSTER_0096",
       "claim_ids": [
         "GT_D09_051",
         "GT_D09_091",
         "GT_D09_075"
       ],
-      "relationship_type": "Witness-3 was unaware of the PE core of the ACM panel, had no confirmation from Contractor-I that materials were checked for regulatory compliance, and deferred the compliance question to Agency-G",
+      "relation": "awareness",
+      "theme": "Witness-3 was unaware of the PE core of the ACM panel, had no confirmation from Contractor-I that materials were checked for regulatory compliance, and deferred the compliance question to Agency-G",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0157",
+      "cluster_id": "GT_CLUSTER_0097",
       "claim_ids": [
         "GT_D09_062",
         "GT_D09_063",
@@ -16332,24 +16490,26 @@
         "GT_D09_065",
         "GT_D09_066"
       ],
-      "relationship_type": "Cavity barrier design: Contractor-I's RFI proposed an alternative scheme to that shown in the employer's requirements drawings, with the witness disagreeing but the design remaining unresolved at the time of the hearing",
+      "relation": "disagrees_with",
+      "theme": "Cavity barrier design: Contractor-I's RFI proposed an alternative scheme to that shown in the employer's requirements drawings, with the witness disagreeing but the design remaining unresolved at the time of the hearing",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0158",
+      "cluster_id": "GT_CLUSTER_0098",
       "claim_ids": [
         "GT_D09_072",
         "GT_D09_073",
         "GT_D09_074",
         "GT_D09_075"
       ],
-      "relationship_type": "Routes to compliance with Approved Document B for the cladding system: Witness-3 assumed the linear route (12.6-12.9) based on conversations with Agency-G, but never investigated whether BR135 test reports existed",
+      "relation": "omission",
+      "theme": "Routes to compliance with Approved Document B for the cladding system: Witness-3 assumed the linear route (12.6-12.9) based on conversations with Agency-G, but never investigated whether BR135 test reports existed",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0159",
+      "cluster_id": "GT_CLUSTER_0099",
       "claim_ids": [
         "GT_D09_083",
         "GT_D09_084",
@@ -16357,29 +16517,32 @@
         "GT_D09_086",
         "GT_D09_087"
       ],
-      "relationship_type": "BR135 — a key document referenced in the Building Regulations for external cladding compliance — was never read by Witness-3 during his involvement in the Tower-X project",
+      "relation": "omission",
+      "theme": "BR135 — a key document referenced in the Building Regulations for external cladding compliance — was never read by Witness-3 during his involvement in the Tower-X project",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0160",
+      "cluster_id": "GT_CLUSTER_0100",
       "claim_ids": [
         "GT_D09_078",
         "GT_D09_079",
         "GT_D09_060"
       ],
-      "relationship_type": "Paragraph 12.7 of ADB requires limited-combustibility insulation in external walls of buildings over 18 metres, but the NBS specification did not specify the type or fire performance of infill panel core insulation",
+      "relation": "other",
+      "theme": "Paragraph 12.7 of ADB requires limited-combustibility insulation in external walls of buildings over 18 metres, but the NBS specification did not specify the type or fire performance of infill panel core insulation",
       "description": "",
       "confidence": 1.0
     },
     {
-      "xref_id": "GT_XREF_0161",
+      "cluster_id": "GT_CLUSTER_0101",
       "claim_ids": [
         "GT_D09_038",
         "GT_D09_040",
         "GT_D09_029"
       ],
-      "relationship_type": "Contractor-J communicated from the outset that it intended to use Firm-H less than would normally be expected, and this limitation was never documented or challenged formally",
+      "relation": "omission",
+      "theme": "Contractor-J communicated from the outset that it intended to use Firm-H less than would normally be expected, and this limitation was never documented or challenged formally",
       "description": "",
       "confidence": 1.0
     }

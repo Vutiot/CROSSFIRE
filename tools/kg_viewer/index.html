@@ -64,7 +64,22 @@
     text-transform: uppercase;
   }
   #toolbar .sep { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
-  #toolbar .group { display: flex; align-items: center; gap: 8px; }
+  #toolbar .group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-height: 28px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  #toolbar .group::-webkit-scrollbar { height: 4px; }
+  #toolbar .group::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  #type-filters { max-width: 340px; }
+  #rel-filters { max-width: 260px; }
+  #overlay-toggles { max-width: 220px; }
 
   /* Custom toggle pills */
   .toggle-pill {
@@ -79,6 +94,11 @@
     color: var(--text-muted);
     transition: all 0.2s;
     user-select: none;
+    flex-shrink: 0;
+    max-width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .toggle-pill.active {
     border-color: transparent;
@@ -106,9 +126,35 @@
     color: var(--text-secondary);
     transition: all 0.2s;
     user-select: none;
+    flex-shrink: 0;
+    max-width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .toggle-chip.active { background: var(--bg-raised); border-color: var(--text-muted); color: var(--text-primary); }
   .toggle-chip input { display: none; }
+  .pill-label {
+    display: inline-block;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+  .pill-count {
+    display: inline-block;
+    font-family: var(--font-data);
+    font-size: 9px;
+    color: var(--text-muted);
+    background: rgba(139,148,158,0.08);
+    padding: 1px 5px;
+    border-radius: 6px;
+    margin-left: 4px;
+    min-width: 14px;
+    text-align: center;
+  }
+  .toggle-chip.active .pill-count { color: var(--text-secondary); }
 
   #toolbar select {
     background: var(--bg-raised);
@@ -353,6 +399,49 @@
   .mech-temporal_contradiction { background: rgba(121,192,255,0.18); color: #79c0ff; }
   .mech-omission_based_implicit { background: rgba(86,211,100,0.18); color: #56d364; }
   .mech-temporal_revision_conflict { background: rgba(212,168,85,0.18); color: #d4a855; }
+
+  /* Inline card trace / hop buttons */
+  .inline-btn {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    font-family: var(--font-data);
+    font-size: 10px;
+    color: var(--text-secondary);
+    transition: all 0.15s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .inline-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .inline-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+  .card-section-title .inline-btn { margin-left: auto; }
+  .card-tags .inline-btn { font-size: 9px; }
+
+  .hop-row { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+
+  /* Toast */
+  #toast {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--bg-raised);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-family: var(--font-data);
+    letter-spacing: 0.5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 200;
+  }
+  #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 </style>
 </head>
 <body>
@@ -365,6 +454,8 @@
   <input type="text" id="search-box" placeholder="Search nodes...">
   <div class="sep"></div>
   <div class="group" id="type-filters"></div>
+  <div class="sep"></div>
+  <div class="group" id="rel-filters"></div>
   <div class="sep"></div>
   <div class="group" id="overlay-toggles"></div>
   <div class="sep"></div>
@@ -380,7 +471,14 @@
     <option value="grid">Grid</option>
     <option value="breadthfirst">Hierarchy</option>
   </select>
+  <select id="color-select" title="Colour nodes by">
+    <option value="type">Colour: type</option>
+    <option value="cluster">Colour: cluster</option>
+  </select>
+  <button id="link-btn" class="inline-btn" title="Copy link to this view">link</button>
 </div>
+
+<div id="toast"></div>
 
 <div id="main">
   <div id="cy"></div>
@@ -410,13 +508,25 @@ const TYPE_COLORS = {
   personnel: '#f778ba', unknown: '#484f58'
 };
 
+// Distinct palette for cluster/community colouring (colour-blind-aware)
+const CLUSTER_COLORS = [
+  '#79c0ff', '#d2a8ff', '#56d364', '#ffa657', '#f778ba',
+  '#a5d6ff', '#ff7b72', '#d4a855', '#56d364', '#a371f7',
+  '#f47067', '#7ee787', '#ffb77c', '#c297ff', '#39c5cf',
+  '#e6a500', '#6ec0ff', '#b4a0ff', '#ff9e7c', '#68d391',
+];
+
 let cy, DATA = null;
 let DATASETS = [];
 let ACTIVE_VIEW = 'documents';
+let COLOR_BY = 'type';              // 'type' | 'cluster'
+let TRACE_ACTIVE_ID = null;         // contradiction id currently traced
+let RESTORING = false;              // suppress persistence writes while restoring
 
 // ── Init ──
 
 async function init() {
+  const state = parseHash();
   try {
     // Try multi-dataset endpoint first
     const listResp = await fetch('/api/datasets');
@@ -424,7 +534,10 @@ async function init() {
       DATASETS = await listResp.json();
       if (DATASETS.length > 0) {
         buildDatasetSelector();
-        await loadDataset(DATASETS[0]);
+        const pick = state.ds && DATASETS.includes(state.ds) ? state.ds : DATASETS[0];
+        if (state.view) ACTIVE_VIEW = state.view;
+        document.getElementById('dataset-select').value = pick;
+        await loadDataset(pick, { resetView: false });
         return;
       }
     }
@@ -432,7 +545,7 @@ async function init() {
   // Fallback: single dataset endpoint
   try {
     const resp = await fetch('/api/data');
-    if (resp.ok) { DATA = await resp.json(); render(); return; }
+    if (resp.ok) { DATA = await resp.json(); if (state.view) ACTIVE_VIEW = state.view; render(); return; }
   } catch (_) {}
   setupDragDrop();
 }
@@ -455,10 +568,17 @@ function buildDatasetSelector() {
   }
 }
 
-async function loadDataset(name) {
+async function loadDataset(name, opts) {
   try {
     const resp = await fetch(`/api/data/${name}`);
-    if (resp.ok) { DATA = await resp.json(); ACTIVE_VIEW = 'documents'; render(); }
+    if (resp.ok) {
+      DATA = await resp.json();
+      // Preserve the existing ACTIVE_VIEW on initial load (from hash); user-driven
+      // dataset switches reset to documents since the new dataset may not have
+      // an entity/claims graph of the same shape.
+      if (!opts || opts.resetView !== false) ACTIVE_VIEW = 'documents';
+      render();
+    }
   } catch (err) {
     console.error('Failed to load dataset:', err);
   }
@@ -508,6 +628,9 @@ function render() {
   buildGraph();
   updateStats();
   setupSearch();
+  applyHashState(parseHash());
+  // Pan/zoom & layout events flow into persistence (debounced)
+  cy.on('viewport', () => persistState());
 }
 
 function buildFilters() {
@@ -520,16 +643,51 @@ function buildFilters() {
   types.forEach(t => {
     const pill = document.createElement('label');
     pill.className = 'toggle-pill active';
+    pill.title = t;
     pill.style.color = TYPE_COLORS[t] || '#888';
     const cb = document.createElement('input');
     cb.type = 'checkbox'; cb.checked = true; cb.dataset.type = t;
-    cb.addEventListener('change', function() { pill.classList.toggle('active', this.checked); applyFilters(); });
+    cb.addEventListener('change', function() { pill.classList.toggle('active', this.checked); applyFilters(); persistState(); });
     const dot = document.createElement('span');
     dot.className = 'dot';
+    const lbl = document.createElement('span');
+    lbl.className = 'pill-label';
+    lbl.textContent = t;
     pill.appendChild(cb);
     pill.appendChild(dot);
-    pill.appendChild(document.createTextNode(t));
+    pill.appendChild(lbl);
     container.appendChild(pill);
+  });
+
+  // Relationship type filter pills, ordered by edge count so the most useful
+  // filters surface first (important on datasets where many types are sentence-
+  // long free text with only a single edge per type).
+  const relCounts = new Map();
+  activeGraph.edges.forEach(e => {
+    const k = e.relationship_type || '(none)';
+    relCounts.set(k, (relCounts.get(k) || 0) + 1);
+  });
+  const relTypes = [...relCounts.entries()].sort((a, b) => b[1] - a[1]).map(([k]) => k);
+  const relContainer = document.getElementById('rel-filters');
+  relContainer.innerHTML = '';
+  relTypes.forEach(rt => {
+    const count = relCounts.get(rt);
+    const chip = document.createElement('label');
+    chip.className = 'toggle-chip active';
+    chip.title = `${rt} — ${count} edge${count === 1 ? '' : 's'}`;
+    const cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.checked = true; cb.dataset.rel = rt;
+    cb.addEventListener('change', function() { chip.classList.toggle('active', this.checked); applyFilters(); persistState(); });
+    const lbl = document.createElement('span');
+    lbl.className = 'pill-label';
+    lbl.textContent = rt.replace(/_/g,' ');
+    const badge = document.createElement('span');
+    badge.className = 'pill-count';
+    badge.textContent = count;
+    chip.appendChild(cb);
+    chip.appendChild(lbl);
+    chip.appendChild(badge);
+    relContainer.appendChild(chip);
   });
 
   // Overlay toggles
@@ -543,7 +701,7 @@ function buildFilters() {
     chip.className = 'toggle-chip active';
     const cb = document.createElement('input');
     cb.type = 'checkbox'; cb.checked = true; cb.id = o.id;
-    cb.addEventListener('change', function() { chip.classList.toggle('active', this.checked); applyFilters(); });
+    cb.addEventListener('change', function() { chip.classList.toggle('active', this.checked); applyFilters(); persistState(); });
     chip.appendChild(cb);
     chip.appendChild(document.createTextNode(o.label));
     overlays.appendChild(chip);
@@ -556,7 +714,7 @@ function buildFilters() {
   const sel = document.getElementById('scope-filter');
   sel.innerHTML = '<option value="all">All scopes</option>';
   scopes.forEach(s => { const opt = document.createElement('option'); opt.value = s; opt.textContent = s.replace(/_/g, ' '); sel.appendChild(opt); });
-  sel.onchange = applyFilters;
+  sel.onchange = () => { applyFilters(); persistState(); };
 
   const layoutSel = document.getElementById('layout-select');
   layoutSel.onchange = () => {
@@ -564,6 +722,20 @@ function buildFilters() {
     const opts = { name, animate: true, animationDuration: 600, padding: 40 };
     if (name === 'cose') Object.assign(opts, { nodeRepulsion: 400000, idealEdgeLength: 100, edgeElasticity: 100, gravity: 80, numIter: 1000 });
     cy.layout(opts).run();
+    persistState();
+  };
+
+  // Colour-by (type | cluster)
+  const colorSel = document.getElementById('color-select');
+  colorSel.value = COLOR_BY;
+  colorSel.onchange = () => { COLOR_BY = colorSel.value; applyColorBy(); persistState(); };
+
+  // Copy link
+  const linkBtn = document.getElementById('link-btn');
+  linkBtn.onclick = () => {
+    const url = location.href;
+    if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => showToast('link copied'));
+    else { prompt('copy this url', url); }
   };
 
   // View toggle (documents / entities / claims) — only for claims-layout datasets
@@ -644,8 +816,34 @@ function buildGraph() {
     elements.push({ data: nodeData, classes: [n.entity_type || 'unknown'] });
   });
 
+  // Pre-compute a node-id → contradiction-id-set map so we can tag edges
+  // whose endpoints both participate in the same contradiction.
+  const contraIdsByNode = new Map();
+  graphData.nodes.forEach(n => {
+    const ids = (ann[n.id] && ann[n.id].contradiction_ids) || [];
+    if (ids.length) contraIdsByNode.set(n.id, new Set(ids));
+  });
+
   graphData.edges.forEach((e, i) => {
-    elements.push({ data: { id: `e_${i}`, source: e.source, target: e.target, relationship_type: e.relationship_type || '', weight: e.weight || 0 } });
+    const srcContras = contraIdsByNode.get(e.source);
+    const tgtContras = contraIdsByNode.get(e.target);
+    const shared = [];
+    if (srcContras && tgtContras) {
+      srcContras.forEach(id => { if (tgtContras.has(id)) shared.push(id); });
+    }
+    const classes = shared.length ? ['contradiction-edge'] : [];
+    elements.push({
+      data: {
+        id: `e_${i}`,
+        source: e.source,
+        target: e.target,
+        relationship_type: e.relationship_type || '',
+        rationale: e.rationale || '',
+        weight: e.weight || 0,
+        shared_contradictions: shared,
+      },
+      classes,
+    });
   });
 
   const styleRules = [
@@ -695,6 +893,15 @@ function buildGraph() {
     // Search
     { selector: 'node.search-match', style: { 'border-width': 2, 'border-color': '#d4a855', 'color': '#d4a855', 'width': 14, 'height': 14 } },
     { selector: 'node.search-dim', style: { 'opacity': 0.2 } },
+    // Contradiction edges — endpoints share at least one contradiction id
+    { selector: 'edge.contradiction-edge', style: {
+      'line-color': '#f47067', 'target-arrow-color': '#f47067',
+      'line-style': 'dashed', 'width': 1.5, 'opacity': 0.85,
+      'z-index': 10,
+    }},
+    // Trace mode — show only the isolated subgraph at full opacity
+    { selector: 'node.trace-member', style: { 'opacity': 1, 'border-width': 2, 'border-color': '#f47067' } },
+    { selector: 'edge.trace-member', style: { 'opacity': 1, 'width': 2, 'line-color': '#f47067', 'target-arrow-color': '#f47067' } },
     // Hidden
     { selector: '.hidden', style: { 'display': 'none' } },
   ];
@@ -743,10 +950,64 @@ function buildGraph() {
     minZoom: 0.2, maxZoom: 5,
   });
 
+  // Community detection (built-in Markov Clustering). Falls back silently
+  // on empty graphs or if the algorithm errors on disconnected inputs.
+  computeClusters();
+  applyColorBy();
+
   // Interactions
-  cy.on('tap', 'node', e => { highlightNeighborhood(e.target); showNodeDetails(e.target.data()); });
+  cy.on('tap', 'node', e => {
+    TRACE_ACTIVE_ID = null;
+    highlightNeighborhood(e.target);
+    showNodeDetails(e.target.data());
+    persistState();
+  });
   cy.on('tap', 'edge', e => { showEdgeDetails(e.target.data()); });
-  cy.on('tap', e => { if (e.target === cy) { resetHighlight(); clearSidebar(); } });
+  cy.on('tap', e => {
+    if (e.target === cy) {
+      TRACE_ACTIVE_ID = null;
+      resetHighlight();
+      clearSidebar();
+      persistState();
+    }
+  });
+}
+
+// ── Clustering ──
+
+function computeClusters() {
+  if (!cy || cy.nodes().length === 0) return;
+  try {
+    // Markov clustering on the visible graph. Weights bias clusters toward
+    // tightly-connected subgraphs (shared_facts > shared_entities).
+    const clusters = cy.elements().markovClustering({
+      attributes: [ function(edge) { return edge.data('weight') || 1; } ],
+      expandFactor: 2,
+      inflateFactor: 2,
+      maxIterations: 20,
+    }) || [];
+    clusters.forEach((cluster, idx) => {
+      cluster.nodes().forEach(n => n.data('cluster_idx', idx));
+    });
+    // Any orphan not touched by clustering → its own group
+    cy.nodes().forEach(n => { if (n.data('cluster_idx') === undefined) n.data('cluster_idx', -1); });
+  } catch (err) {
+    console.warn('markovClustering failed, skipping cluster colouring', err);
+  }
+}
+
+function applyColorBy() {
+  if (!cy) return;
+  if (COLOR_BY === 'cluster') {
+    cy.nodes().forEach(n => {
+      const idx = n.data('cluster_idx');
+      const color = (idx === undefined || idx < 0) ? '#484f58' : CLUSTER_COLORS[idx % CLUSTER_COLORS.length];
+      n.style('background-color', color);
+    });
+  } else {
+    // Remove our override so the stylesheet's entity-type rule takes over again
+    cy.nodes().removeStyle('background-color');
+  }
 }
 
 // ── Neighborhood Highlight ──
@@ -760,7 +1021,7 @@ function highlightNeighborhood(node) {
 }
 
 function resetHighlight() {
-  cy.elements().removeClass('dimmed neighbor');
+  cy.elements().removeClass('dimmed neighbor trace-member');
 }
 
 // ── Filters ──
@@ -771,6 +1032,8 @@ function applyFilters() {
   const scopeFilter = document.getElementById('scope-filter').value;
   const activeTypes = new Set();
   document.querySelectorAll('#type-filters input[type="checkbox"]').forEach(cb => { if (cb.checked) activeTypes.add(cb.dataset.type); });
+  const activeRels = new Set();
+  document.querySelectorAll('#rel-filters input[type="checkbox"]').forEach(cb => { if (cb.checked) activeRels.add(cb.dataset.rel); });
 
   const activeContraIds = new Set();
   const activeDistIds = new Set();
@@ -786,9 +1049,75 @@ function applyFilters() {
       node.data('distractor_count', (d.distractor_ids || []).filter(id => activeDistIds.has(id)).length);
     });
     cy.edges().forEach(edge => {
-      edge.toggleClass('hidden', edge.source().hasClass('hidden') || edge.target().hasClass('hidden'));
+      const relKey = edge.data('relationship_type') || '(none)';
+      const hidden = edge.source().hasClass('hidden') || edge.target().hasClass('hidden') || !activeRels.has(relKey);
+      edge.toggleClass('hidden', hidden);
     });
   });
+}
+
+// ── Contradiction trace & N-hop isolation ──
+
+function traceContradiction(cid) {
+  if (!cy) return;
+  resetHighlight();
+  clearTrace();
+  TRACE_ACTIVE_ID = cid;
+  // Nodes participating in this contradiction
+  const members = cy.nodes().filter(n => (n.data('contradiction_ids') || []).includes(cid));
+  if (members.length === 0) return;
+  // Edges among those nodes + edges that explicitly share the same contradiction id
+  const memberEdges = members.edgesWith(members);
+  const sharedEdges = cy.edges().filter(e => (e.data('shared_contradictions') || []).includes(cid));
+  const traceSet = members.union(memberEdges).union(sharedEdges);
+  cy.elements().addClass('dimmed');
+  traceSet.removeClass('dimmed').addClass('trace-member');
+  cy.animate({ fit: { eles: traceSet, padding: 80 } }, { duration: 400 });
+  persistState();
+}
+
+function clearTrace() {
+  if (!cy) return;
+  cy.elements().removeClass('trace-member dimmed');
+  TRACE_ACTIVE_ID = null;
+}
+
+function isolateHop(nodeId, hops) {
+  if (!cy) return;
+  const start = cy.getElementById(nodeId);
+  if (!start || start.empty()) return;
+  // BFS up to `hops` distance
+  let frontier = start;
+  let included = start;
+  for (let i = 0; i < hops; i++) {
+    const next = frontier.openNeighborhood('node');
+    included = included.union(frontier.connectedEdges()).union(next);
+    frontier = next;
+  }
+  included = included.union(included.connectedEdges().filter(e => included.contains(e.source()) && included.contains(e.target())));
+  cy.batch(() => {
+    cy.elements().addClass('hidden');
+    included.removeClass('hidden');
+  });
+  cy.animate({ fit: { eles: included, padding: 80 } }, { duration: 400 });
+  showToast(`isolated ${hops}-hop neighbourhood`);
+}
+
+function resetIsolation() {
+  if (!cy) return;
+  cy.batch(() => {
+    cy.elements().removeClass('hidden');
+    applyFilters(); // re-apply current filter state on top
+  });
+  showToast('reset');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(showToast._timer);
+  showToast._timer = setTimeout(() => t.classList.remove('show'), 1500);
 }
 
 // ── Sidebar ──
@@ -801,6 +1130,11 @@ function showNodeDetails(d) {
   const sb = document.getElementById('sidebar');
   let html = `<div class="sidebar-header"><h3>${esc(d.label)}</h3>`;
   html += `<span class="tag type-${d.entity_type}">${d.entity_type}</span>`;
+  html += `<div class="hop-row">`;
+  html += `<button class="inline-btn" data-action="hop1" data-node="${esc(d.id)}">1-hop</button>`;
+  html += `<button class="inline-btn" data-action="hop2" data-node="${esc(d.id)}">2-hop</button>`;
+  html += `<button class="inline-btn" data-action="reset-isolation">reset</button>`;
+  html += `</div>`;
   html += `</div><div class="sidebar-body">`;
 
   if (ACTIVE_VIEW === 'claims') {
@@ -848,17 +1182,22 @@ function showEdgeDetails(d) {
   html += field('Source', `<span class="tag type-${src.entity_type}">${esc(src.label)}</span>`);
   html += field('Target', `<span class="tag type-${tgt.entity_type}">${esc(tgt.label)}</span>`);
   html += field('Type', `<span class="mono">${d.relationship_type}</span>`);
+  if (d.rationale) {
+    html += field('Rationale', `<span style="line-height:1.5">${esc(d.rationale)}</span>`);
+  }
   if (d.weight) html += field('Weight', d.weight);
   html += '</div>';
   sb.innerHTML = html;
 }
 
 function contradictionCard(c) {
+  const traceActive = TRACE_ACTIVE_ID === c.id;
   let html = `<div class="evidence-card contra"><div class="card-tags">`;
   html += `<span class="tag mech-${c.mechanism || 'unknown'}">${(c.mechanism||'unknown').replace(/_/g,' ')}</span>`;
   html += `<span class="tag" style="background:rgba(139,148,158,0.1);color:var(--text-secondary)">${(c.scope||'').replace(/_/g,' ')}</span>`;
   if (c.detectability) html += `<span class="tag" style="background:rgba(139,148,158,0.1);color:var(--text-muted)">${c.detectability.replace(/_/g,' ')}</span>`;
   if (c.difficulty) html += `<span class="tag" style="background:rgba(139,148,158,0.1);color:var(--text-muted)">${c.difficulty}</span>`;
+  html += `<button class="inline-btn${traceActive ? ' active' : ''}" data-action="${traceActive ? 'untrace' : 'trace'}" data-cid="${esc(c.id)}">${traceActive ? 'untrace' : 'trace'}</button>`;
   html += `</div>`;
   if (c.original_text) html += `<div class="diff-label">original</div><div class="diff-block"><span class="removed">${esc(trunc(c.original_text, 180))}</span></div>`;
   if (c.modified_text) html += `<div class="diff-label" style="margin-top:6px">injected</div><div class="diff-block"><span class="added">${esc(trunc(c.modified_text, 180))}</span></div>`;
@@ -907,7 +1246,123 @@ function updateStats() {
   el.innerHTML = html;
 }
 
-window.addEventListener('DOMContentLoaded', init);
+// ── Sidebar action delegation ──
+
+function setupSidebarActions() {
+  document.getElementById('sidebar').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-action]');
+    if (!btn) return;
+    const action = btn.dataset.action;
+    if (action === 'trace') traceContradiction(btn.dataset.cid);
+    else if (action === 'untrace') { clearTrace(); const n = cy.$(':selected'); if (n.length) showNodeDetails(n.data()); else clearSidebar(); }
+    else if (action === 'hop1') isolateHop(btn.dataset.node, 1);
+    else if (action === 'hop2') isolateHop(btn.dataset.node, 2);
+    else if (action === 'reset-isolation') resetIsolation();
+  });
+}
+
+// ── URL-hash view persistence ──
+//
+// Serialise enough state so a copied URL restores the same view:
+// dataset, active view, enabled entity-type / relationship-type / overlay
+// filters, scope, layout, colour mode, selected node, and pan/zoom.
+
+function persistState() {
+  if (RESTORING || !cy) return;
+  clearTimeout(persistState._timer);
+  persistState._timer = setTimeout(_persistNow, 150);
+}
+
+function _persistNow() {
+  if (!cy) return;
+  const types = [];
+  document.querySelectorAll('#type-filters input[type="checkbox"]').forEach(cb => { if (!cb.checked) types.push(cb.dataset.type); });
+  const rels = [];
+  document.querySelectorAll('#rel-filters input[type="checkbox"]').forEach(cb => { if (!cb.checked) rels.push(cb.dataset.rel); });
+  const contraOn = document.getElementById('show-contradictions')?.checked;
+  const distOn = document.getElementById('show-distractors')?.checked;
+  const scope = document.getElementById('scope-filter')?.value || 'all';
+  const layout = document.getElementById('layout-select')?.value || 'cose';
+  const selected = cy.$('node:selected');
+  const params = new URLSearchParams();
+  params.set('ds', DATA && DATA.dataset_name ? DATA.dataset_name : '');
+  if (ACTIVE_VIEW !== 'documents') params.set('v', ACTIVE_VIEW);
+  if (types.length) params.set('xt', types.join(','));        // excluded types
+  if (rels.length) params.set('xr', rels.join(','));           // excluded rels
+  if (!contraOn) params.set('xc', '1');
+  if (!distOn) params.set('xd', '1');
+  if (scope !== 'all') params.set('sc', scope);
+  if (layout !== 'cose') params.set('lo', layout);
+  if (COLOR_BY !== 'type') params.set('cb', COLOR_BY);
+  if (selected.length) params.set('sel', selected.id());
+  if (TRACE_ACTIVE_ID) params.set('tr', TRACE_ACTIVE_ID);
+  const zoom = cy.zoom();
+  const pan = cy.pan();
+  params.set('z', zoom.toFixed(3));
+  params.set('p', `${pan.x.toFixed(0)},${pan.y.toFixed(0)}`);
+  const newHash = '#' + params.toString();
+  if (location.hash !== newHash) history.replaceState(null, '', newHash);
+}
+
+function parseHash() {
+  const raw = location.hash.replace(/^#/, '');
+  if (!raw) return {};
+  const p = new URLSearchParams(raw);
+  return {
+    ds: p.get('ds'),
+    view: p.get('v'),
+    xt: p.get('xt') ? p.get('xt').split(',') : [],
+    xr: p.get('xr') ? p.get('xr').split(',') : [],
+    xc: p.get('xc') === '1',
+    xd: p.get('xd') === '1',
+    scope: p.get('sc'),
+    layout: p.get('lo'),
+    color: p.get('cb'),
+    sel: p.get('sel'),
+    trace: p.get('tr'),
+    zoom: p.get('z') ? parseFloat(p.get('z')) : null,
+    pan: p.get('p') ? p.get('p').split(',').map(Number) : null,
+  };
+}
+
+function applyHashState(state) {
+  if (!state || !cy) return;
+  // If the hash belongs to a different dataset, don't restore per-dataset
+  // artefacts (selection / trace / zoom-pan) — node ids won't match.
+  const dsMatches = !state.ds || (DATA && DATA.dataset_name === state.ds);
+  RESTORING = true;
+  try {
+    if (state.xt && state.xt.length) {
+      document.querySelectorAll('#type-filters input[type="checkbox"]').forEach(cb => {
+        if (state.xt.includes(cb.dataset.type)) { cb.checked = false; cb.closest('.toggle-pill').classList.remove('active'); }
+      });
+    }
+    if (state.xr && state.xr.length) {
+      document.querySelectorAll('#rel-filters input[type="checkbox"]').forEach(cb => {
+        if (state.xr.includes(cb.dataset.rel)) { cb.checked = false; cb.closest('.toggle-chip').classList.remove('active'); }
+      });
+    }
+    if (state.xc) { const el = document.getElementById('show-contradictions'); if (el) { el.checked = false; el.closest('.toggle-chip').classList.remove('active'); } }
+    if (state.xd) { const el = document.getElementById('show-distractors'); if (el) { el.checked = false; el.closest('.toggle-chip').classList.remove('active'); } }
+    if (state.scope) { const el = document.getElementById('scope-filter'); if (el) el.value = state.scope; }
+    if (state.layout) { const el = document.getElementById('layout-select'); if (el) el.value = state.layout; }
+    if (state.color) { COLOR_BY = state.color; const el = document.getElementById('color-select'); if (el) el.value = COLOR_BY; applyColorBy(); }
+    applyFilters();
+    if (dsMatches) {
+      if (state.sel) {
+        const n = cy.getElementById(state.sel);
+        if (n && !n.empty()) { n.select(); highlightNeighborhood(n); showNodeDetails(n.data()); }
+      }
+      if (state.trace) traceContradiction(state.trace);
+      if (state.zoom) cy.zoom(state.zoom);
+      if (state.pan && state.pan.length === 2 && !isNaN(state.pan[0]) && !isNaN(state.pan[1])) cy.pan({ x: state.pan[0], y: state.pan[1] });
+    }
+  } finally {
+    RESTORING = false;
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => { setupSidebarActions(); init(); });
 </script>
 </body>
 </html>
