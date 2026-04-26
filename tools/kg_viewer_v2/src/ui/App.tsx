@@ -4,7 +4,6 @@ import {
   commandPaletteOpen,
   currentDataset,
   datasetNames,
-  detailsOpen,
   filterPaneOpen,
   filters,
   focus,
@@ -18,7 +17,7 @@ import { applyUrl, readUrl, startUrlSync } from "../state/url";
 import { fetchDataset, fetchDatasetNames, readDroppedPayload } from "../api";
 import { Topbar } from "./Topbar";
 import { FilterPane } from "./FilterPane";
-import { DetailsPane } from "./DetailsPane";
+import { SelectionCard } from "./SelectionCard";
 import { StatusBar } from "./StatusBar";
 import { GraphCanvas } from "./GraphCanvas";
 import { CommandPalette } from "./CommandPalette";
@@ -148,9 +147,11 @@ export function App() {
     <div
       class="app"
       style={{
-        gridTemplateColumns: `${filterPaneOpen.value ? "var(--left-w)" : "0"} 1fr ${
-          detailsOpen.value && selection.value.nodeId ? "var(--right-w)" : "0"
-        }`,
+        // Two-column shell: filter pane on the left, canvas takes the rest.
+        // Selection details overlay the canvas as a node-anchored card so
+        // opening them never resizes the canvas (which is what made
+        // single-click feel like the camera was moving).
+        gridTemplateColumns: `${filterPaneOpen.value ? "var(--left-w)" : "0"} 1fr`,
       }}
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
@@ -160,6 +161,7 @@ export function App() {
       <FilterPane />
       <div class="main" ref={mainRef}>
         <GraphCanvas />
+        <SelectionCard />
         {dragOver.value && (
           <div class="dropzone">Drop dataset JSON to load</div>
         )}
@@ -179,7 +181,6 @@ export function App() {
           </div>
         )}
       </div>
-      <DetailsPane />
       <StatusBar />
       {commandPaletteOpen.value && <CommandPalette />}
       {helpOpen.value && <HelpDialog />}

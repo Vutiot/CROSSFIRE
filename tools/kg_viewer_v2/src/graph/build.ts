@@ -40,21 +40,24 @@ export interface EdgeAttrs {
   type: "line" | "arrow";
 }
 
-// 12-color palette mirroring the legacy viewer for visual continuity
+// Type palette tuned for the light theme — saturated enough to read against
+// paper-white but desaturated enough to coexist when many types are visible
+// at once. Same hue assignments as the dark legacy palette so users carry
+// over their mental color-code.
 const TYPE_COLORS: Record<string, string> = {
-  person: "#58a6ff",
-  organization: "#bc8cff",
-  equipment: "#7ee787",
-  regulation: "#ffa657",
-  location: "#79c0ff",
-  temporal: "#d4a855",
-  mechanical: "#ff7b72",
-  causal: "#f47067",
-  procedural: "#56d4dd",
-  meteorological: "#a5d6ff",
-  numeric: "#e3b341",
-  personnel: "#ffa198",
-  unknown: "#8b949e",
+  person: "#1f6feb",
+  organization: "#8250df",
+  equipment: "#1a7f37",
+  regulation: "#bc4c00",
+  location: "#0969da",
+  temporal: "#b88600",
+  mechanical: "#cf222e",
+  causal: "#d4351c",
+  procedural: "#0e7a78",
+  meteorological: "#3692e0",
+  numeric: "#9e6a03",
+  personnel: "#bf3989",
+  unknown: "#7a7466",
 };
 
 export function colorForType(t: string): string {
@@ -62,43 +65,50 @@ export function colorForType(t: string): string {
 }
 
 export function colorForCommunity(c: number): string {
-  // Categorical palette derived from D3 Tableau10 + Set3 — readable on dark bg
+  // Categorical palette tuned for paper-white background. Derived from a
+  // muted Tableau-style scheme — saturated mid-tones that hold up at
+  // small sizes without flaring.
   const palette = [
-    "#58a6ff", "#7ee787", "#d4a855", "#bc8cff", "#ff7b72",
-    "#56d4dd", "#ffa657", "#a5d6ff", "#e3b341", "#ffa198",
-    "#79c0ff", "#f47067", "#3fb950", "#db61a2", "#a371f7",
+    "#1f6feb", "#1a7f37", "#b88600", "#8250df", "#cf222e",
+    "#0e7a78", "#bc4c00", "#3692e0", "#9e6a03", "#bf3989",
+    "#0969da", "#d4351c", "#137d4f", "#a04075", "#7048d6",
   ];
   return palette[c % palette.length];
 }
 
-const REL_TYPE_DEFAULT = "#30363d";
+const REL_TYPE_DEFAULT = "#c8c2ad";
 const REL_TYPE_COLORS: Record<string, string> = {
-  shared_facts: "#3fb950",
-  shared_entities: "#58a6ff",
-  cross_reference: "#bc8cff",
-  contradiction: "#f47067",
-  distractor: "#a371f7",
-  temporal_proximity: "#d4a855",
-  causal_link: "#ff7b72",
-  aircraft_context: "#7ee787",
+  shared_facts: "#1a7f37",
+  shared_entities: "#1f6feb",
+  cross_reference: "#8250df",
+  contradiction: "#cf222e",
+  distractor: "#bf3989",
+  temporal_proximity: "#b88600",
+  causal_link: "#cf222e",
+  aircraft_context: "#1a7f37",
 };
 
 export function colorForRelation(rel: string): string {
   return REL_TYPE_COLORS[rel] ?? REL_TYPE_DEFAULT;
 }
 
-const SIZE_MIN = 4;
-const SIZE_MAX = 22;
+// Refined size scale — the original 4–22 range was too dominant and made
+// hub nodes overwhelm the canvas. 3–11 keeps a clear visual hierarchy
+// without nodes blotting out their own neighborhoods.
+const SIZE_MIN = 3;
+const SIZE_MAX = 11;
 
 function nodeSize(claimCount: number, contradictionCount: number, maxClaims: number): number {
-  // Log-scaled by claim count, plus small bump per contradiction.
   const base = Math.log2((claimCount || 1) + 1) / Math.log2(maxClaims + 1);
   const sized = SIZE_MIN + base * (SIZE_MAX - SIZE_MIN);
-  return sized + Math.min(contradictionCount, 6) * 0.5;
+  return sized + Math.min(contradictionCount, 6) * 0.35;
 }
 
+// Edges go thicker than before so they're visible against the lighter
+// theme AND big enough for Sigma's hit-test to register clicks reliably.
+// The previous 0.5px floor was effectively unclickable.
 function edgeSize(weight: number): number {
-  return Math.max(0.5, Math.min(6, Math.log2((weight || 1) + 1)));
+  return Math.max(1.6, Math.min(5, 1.6 + Math.log2((weight || 1) + 1) * 0.9));
 }
 
 export interface BuildOpts {

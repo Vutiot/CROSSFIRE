@@ -34,17 +34,24 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
     renderEdgeLabels: false,
     labelSize: 12,
     labelWeight: "500",
-    labelFont: "Inter, system-ui, sans-serif",
-    labelColor: { color: "#c9d1d9" },
+    labelFont: '"Hanken Grotesk", system-ui, sans-serif',
+    labelColor: { color: "#3d3d3a" },
     edgeLabelSize: 10,
-    edgeLabelColor: { color: "#8b949e" },
-    defaultNodeColor: "#8b949e",
-    defaultEdgeColor: "#30363d",
+    edgeLabelColor: { color: "#6e6a5e" },
+    defaultNodeColor: "#9b9789",
+    // Light-theme edge default — warm grey that reads on paper-white without
+    // dominating. Saturated edge types (shared_facts/contradiction/etc.)
+    // override this in styles.
+    defaultEdgeColor: "#c8c2ad",
     minCameraRatio: 0.05,
     maxCameraRatio: 8,
     labelDensity: 0.5,
     labelGridCellSize: 100,
     labelRenderedSizeThreshold: 6,
+    // Sigma defaults edge events to off for performance. Without this, no
+    // clickEdge / doubleClickEdge / enterEdge ever fires, so the edge
+    // properties panel can't open.
+    enableEdgeEvents: true,
     nodeReducer: (id, data) => {
       const a = data as NodeAttrs;
       if (a.hidden) return { ...data, hidden: true };

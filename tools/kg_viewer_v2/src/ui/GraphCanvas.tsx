@@ -287,27 +287,56 @@ export function GraphCanvas() {
       });
       fitToNodes(s, visible);
     };
-    w.__kgTraceContradiction = (cId: string) => {
-      const g = graphRef.current;
+    // Position helpers used by the SelectionCard to anchor itself to the
+    // selected node / edge midpoint in canvas-local coordinates.
+    w.__kgGetNodeViewport = (id: string) => {
       const s = sigmaRef.current;
-      if (!g || !s) return;
-      const affected: string[] = [];
-      g.forEachNode((id, a) => {
-        if (a.raw && Array.isArray((a.raw as { contradiction_ids?: string[] }).contradiction_ids)) {
-          // not present on RawNode; rely on annotation map (lookup elsewhere)
+      const g = graphRef.current;
+      if (!s || !g || !g.hasNode(id)) return null;
+      const a = g.getNodeAttributes(id) as { x: number; y: number };
+      const v = s.graphToViewport({ x: a.x, y: a.y });
+      return { x: v.x, y: v.y };
+    };
+    w.__kgGetEdgeViewport = (id: string) => {
+      const s = sigmaRef.current;
+      const g = graphRef.current;
+      if (!s || !g || !g.hasEdge(id)) return null;
+      const [aId, bId] = g.extremities(id);
+      const a = g.getNodeAttributes(aId) as { x: number; y: number };
+      const b = g.getNodeAttributes(bId) as { x: number; y: number };
+      const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      const v = s.graphToViewport(mid);
+      return { x: v.x, y: v.y };
+    };
+    // Subscribe to Sigma's afterRender so the card can keep its position in
+    // sync during pan / zoom / drag / layout animation. Returns an
+    // unsubscribe function.
+    w.__kgOnRender = (cb: () => void) => {
+      const s = sigmaRef.current;
+      if (!s) return () => undefined;
+      const handler = () => cb();
+      s.on("afterRender", handler);
+      return () => {
+        try {
+          s.off("afterRender", handler);
+        } catch {
+          /* sigma may already be killed */
         }
-        // We lookup via annotation through selection.highlight populated externally
-        void id;
-      });
-      void affected;
-      void cId;
+      };
+    };
+    w.__kgViewportSize = () => {
+      const c = containerRef.current;
+      return { w: c?.clientWidth ?? window.innerWidth, h: c?.clientHeight ?? window.innerHeight };
     };
     return () => {
       delete w.__kgFocusVisible;
       delete w.__kgFocusNeighborhood;
       delete w.__kgFocusEdgeNeighborhood;
       delete w.__kgFitAll;
-      delete w.__kgTraceContradiction;
+      delete w.__kgGetNodeViewport;
+      delete w.__kgGetEdgeViewport;
+      delete w.__kgOnRender;
+      delete w.__kgViewportSize;
     };
   }, []);
 
