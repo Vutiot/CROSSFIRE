@@ -1,0 +1,83 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "tag:#contradiction",
+      "color": { "a": 1, "rgb": 14692650 }
+    },
+    {
+      "query": "tag:#distractor",
+      "color": { "a": 1, "rgb": 16753920 }
+    },
+    {
+      "query": "tag:#cluster",
+      "color": { "a": 1, "rgb": 9521895 }
+    },
+    {
+      "query": "tag:#xref",
+      "color": { "a": 1, "rgb": 4960954 }
+    },
+    {
+      "query": "path:documents/",
+      "color": { "a": 1, "rgb": 8421504 }
+    },
+    {
+      "query": "tag:#entity/person",
+      "color": { "a": 1, "rgb": 5025616 }
+    },
+    {
+      "query": "tag:#entity/organization",
+      "color": { "a": 1, "rgb": 16776960 }
+    },
+    {
+      "query": "tag:#entity/equipment",
+      "color": { "a": 1, "rgb": 16744448 }
+    },
+    {
+      "query": "tag:#entity/location",
+      "color": { "a": 1, "rgb": 39423 }
+    },
+    {
+      "query": "tag:#category/temporal",
+      "color": { "a": 1, "rgb": 5025616 }
+    },
+    {
+      "query": "tag:#category/numerical",
+      "color": { "a": 1, "rgb": 16744448 }
+    },
+    {
+      "query": "tag:#category/spatial",
+      "color": { "a": 1, "rgb": 39423 }
+    },
+    {
+      "query": "tag:#category/equipment",
+      "color": { "a": 1, "rgb": 16753920 }
+    },
+    {
+      "query": "tag:#category/personnel",
+      "color": { "a": 1, "rgb": 9521895 }
+    },
+    {
+      "query": "[\"confidence\":<0.7]",
+      "color": { "a": 1, "rgb": 14692650 }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": false,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.6,
+  "close": false
+}

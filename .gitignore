@@ -14,3 +14,7 @@ data/grenfell_extracted/
 data/copa_raw/
 data/copa_extracted/
 corpus/
+
+# Derivative output of tools/kg_to_obsidian/export.py — regenerated from the
+# dataset JSON. Don't commit; runs are idempotent.
+data/datasets/*/obsidian-vault/

@@ -1,0 +1,68 @@
+{
+  "items": [
+    {
+      "type": "search",
+      "query": "path:documents/",
+      "title": "Documents only"
+    },
+    {
+      "type": "search",
+      "query": "path:claims/",
+      "title": "Claims only"
+    },
+    {
+      "type": "search",
+      "query": "path:entities/",
+      "title": "Entities only"
+    },
+    {
+      "type": "search",
+      "query": "path:clusters/",
+      "title": "Clusters only"
+    },
+    {
+      "type": "search",
+      "query": "path:xrefs/",
+      "title": "Cross-references only"
+    },
+    {
+      "type": "search",
+      "query": "tag:#contradiction",
+      "title": "All contradictions"
+    },
+    {
+      "type": "search",
+      "query": "tag:#detectability/multi_hop",
+      "title": "Multi-hop contradictions"
+    },
+    {
+      "type": "search",
+      "query": "tag:#detectability/single_hop",
+      "title": "Single-hop contradictions"
+    },
+    {
+      "type": "search",
+      "query": "tag:#mechanism/numeric_drift",
+      "title": "Mechanism: numeric drift"
+    },
+    {
+      "type": "search",
+      "query": "tag:#mechanism/temporal_contradiction",
+      "title": "Mechanism: temporal contradiction"
+    },
+    {
+      "type": "search",
+      "query": "tag:#claim [\"confidence\":<0.7]",
+      "title": "Low-confidence claims"
+    },
+    {
+      "type": "search",
+      "query": "tag:#cluster",
+      "title": "Multi-claim clusters"
+    },
+    {
+      "type": "graph",
+      "title": "Graph view"
+    }
+  ]
+}
