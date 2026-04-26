@@ -8,20 +8,19 @@ import { HUB_DEGREE_THRESHOLD, colorForCommunity, colorForType } from "./build";
 
 type G = Graph<NodeAttrs, EdgeAttrs>;
 
-// Per spec — hover/selection fades non-adjacent down to 15% opacity. Lower
-// than the previous 0.18 so the focused subset really pops.
+// Per spec — hover/selection fades non-adjacent down to 15% opacity.
 const DIM_OPACITY = 0.15;
-const HIGHLIGHT_INK = "#2c2c2a"; // outline + bold edge color when hovered/selected
+const HIGHLIGHT_INK = "#2c2c2a"; // outline + bold edge / node color when hovered/selected
+const CANVAS_BG = "#fafaf7";
 
-// Edge colors are solid hex (no alpha). Sigma's WebGL edge program renders
-// alpha-encoded hex inconsistently against light backgrounds — the result
-// looks white instead of a faded warm grey. We pre-blend the spec values
-// against the canvas (#fafaf7) so the rendered tone matches what the spec
-// intended without going through Sigma's alpha pipeline:
-//   default = #c8c5bb @ 0.7 over #fafaf7 ≈ #d7d4cb (visible warm grey)
-//   dimmed  = #c8c5bb @ 0.10 over #fafaf7 ≈ #f4f3ed (barely-there ghost)
-const EDGE_COLOR_DEFAULT = "#bbb8ad";
-const EDGE_COLOR_DIMMED  = "#ecebe2";
+// Solid pre-blended edge tones. Sigma's WebGL programs render alpha-encoded
+// hex unreliably against light backgrounds — the result blows toward white
+// instead of producing a faded warm grey. We compute the desired blended
+// tone ourselves and ship a solid color so the alpha pipeline never runs
+// for edges. Slightly darker than a literal "#c8c5bb @ 0.7" blend because
+// 0.8 px strokes lose contrast to anti-aliasing softening.
+const EDGE_COLOR_DEFAULT = "#a8a59a"; // visible warm grey at any zoom
+const EDGE_COLOR_DIMMED  = "#dfdcd1"; // selection-far / hover-far state
 
 export interface RendererOpts {
   container: HTMLElement;
@@ -99,7 +98,11 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
       const dimmed = (a.dimmed && !a.highlighted && !a.matched) || hoverFaded;
       const highlighted = a.highlighted || a.matched;
       const isHub = a.degree >= HUB_DEGREE_THRESHOLD;
-      const finalColor = dimmed ? withAlpha(color, DIM_OPACITY) : color;
+      // Same alpha-pipeline gotcha as edges: Sigma's WebGL node program
+      // renders alpha-channel hex against the light canvas as near-white,
+      // which is exactly the "random whitening on hover" bug. preBlend
+      // returns a solid pre-composited hex so the alpha path never runs.
+      const finalColor = dimmed ? preBlend(color, DIM_OPACITY, CANVAS_BG) : color;
       const size = highlighted ? a.size * 1.25 : a.size;
       return {
         ...data,
@@ -240,16 +243,18 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
   return sigma;
 }
 
-function withAlpha(hex: string, alpha: number): string {
-  // Output 8-digit hex (#RRGGBBAA) instead of rgba(). Sigma's color parser
-  // handles the hex form deterministically across both edge and node WebGL
-  // programs; the rgba() form interacted poorly with Sigma's premultiplied-
-  // alpha blend pipeline and was rendering near-white on light backgrounds
-  // — exactly the user-reported "white edges" symptom.
-  const c = parseHex(hex);
-  const a = Math.max(0, Math.min(255, Math.round(alpha * 255)));
-  const h = (n: number) => n.toString(16).padStart(2, "0");
-  return `#${h(c.r)}${h(c.g)}${h(c.b)}${h(a)}`;
+// Composite `fg` over `bg` at `alpha`, returning a solid 6-digit hex. We use
+// this instead of the obvious 8-digit-hex / rgba() forms because Sigma's
+// WebGL programs (both node and edge) render alpha-channel inputs against
+// light backgrounds in a way that overflows toward white — pre-blending
+// produces the visually-intended result without ever feeding alpha into
+// the shader.
+function preBlend(fg: string, alpha: number, bg: string): string {
+  const c = parseHex(fg);
+  const b = parseHex(bg);
+  const mix = (a: number, b: number) => Math.round(a * alpha + b * (1 - alpha));
+  const h = (n: number) => Math.max(0, Math.min(255, n)).toString(16).padStart(2, "0");
+  return `#${h(mix(c.r, b.r))}${h(mix(c.g, b.g))}${h(mix(c.b, b.b))}`;
 }
 
 function parseHex(hex: string): { r: number; g: number; b: number } {
