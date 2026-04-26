@@ -2,6 +2,7 @@
 import { useEffect } from "preact/hooks";
 import {
   clearFocus,
+  clearSelection,
   colorMode,
   commandPaletteOpen,
   detailsOpen,
@@ -9,7 +10,6 @@ import {
   helpOpen,
   layoutKind,
   popFocus,
-  resetSelection,
   search,
   setView,
   view,
@@ -51,7 +51,7 @@ export function useGlobalKeys() {
           search.value = "";
           return;
         }
-        resetSelection();
+        clearSelection();
         return;
       }
 

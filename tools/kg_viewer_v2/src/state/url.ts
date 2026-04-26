@@ -29,7 +29,8 @@ interface SerializedState {
   ovd?: 1 | 0;
   scope?: FilterState["scope"];
   focus?: string[];
-  sel?: string;
+  sel?: string;   // selected node id
+  selE?: string;  // selected edge id (graphology key, mutually exclusive with sel)
 }
 
 function encode(obj: SerializedState): string {
@@ -79,7 +80,9 @@ export function applyUrl(state: SerializedState | null) {
     ? { active: true, nodeIds: state.focus, history: [] }
     : { active: false, nodeIds: [], history: [] };
   if (state.sel) {
-    selection.value = { nodeId: state.sel, edgeKey: null, highlight: new Set() };
+    selection.value = { nodeId: state.sel, edgeId: null, highlight: new Set() };
+  } else if (state.selE) {
+    selection.value = { nodeId: null, edgeId: state.selE, highlight: new Set() };
   }
   // Allow writes again on next tick
   queueMicrotask(() => {
@@ -116,6 +119,7 @@ export function startUrlSync() {
     if (f.scope !== "all") out.scope = f.scope;
     if (fc.active && fc.nodeIds.length) out.focus = fc.nodeIds;
     if (sel.nodeId) out.sel = sel.nodeId;
+    else if (sel.edgeId) out.selE = sel.edgeId;
 
     const next = "#" + encode(out);
     if (next !== location.hash) {

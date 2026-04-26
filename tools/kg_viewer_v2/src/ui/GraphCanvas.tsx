@@ -8,15 +8,17 @@ import type Graph from "graphology";
 import {
   activeAnnotations,
   activeRawGraph,
+  clearSelection,
   colorMode,
   communities,
   currentDataset,
-  detailsOpen,
   filters,
   focus,
   layoutKind,
   pushFocus,
   search,
+  selectEdge,
+  selectNode,
   selection,
   view,
 } from "../state/store";
@@ -78,19 +80,33 @@ export function GraphCanvas() {
         getCommunities: () => communities.value,
         onNodeClick: (id) => {
           if (!id) {
-            selection.value = { nodeId: null, edgeKey: null, highlight: new Set() };
-            detailsOpen.value = false;
+            clearSelection();
             return;
           }
-          const hl = neighborhood(graph, id, 1);
-          selection.value = { nodeId: id, edgeKey: null, highlight: hl };
-          detailsOpen.value = true;
+          // Highlight the 1-hop neighborhood — matches the legacy viewer's
+          // single-tap behavior at tools/kg_viewer/index.html:1294.
+          selectNode(id, neighborhood(graph, id, 1));
         },
         onEdgeClick: (id) => {
           if (!id) return;
           const ext = graph.extremities(id);
-          selection.value = { nodeId: null, edgeKey: id, highlight: new Set(ext) };
-          detailsOpen.value = true;
+          selectEdge(id, new Set(ext));
+        },
+        onNodeDoubleClick: (id) => {
+          // Same conceptual effect as the 1-hop button in the details pane:
+          // hide everything outside the 1-hop neighborhood and fit the camera.
+          // Click already ran (Sigma fires click before doubleClick), so the
+          // selection state is current — we just push focus on top.
+          pushFocus([...neighborhood(graph, id, 1)]);
+        },
+        onEdgeDoubleClick: (id) => {
+          // Edge equivalent: union of both endpoints' 1-hop neighborhoods so
+          // you see the edge in its local subgraph context.
+          const [a, b] = graph.extremities(id);
+          const set = new Set<string>([a, b]);
+          for (const n of neighborhood(graph, a, 1)) set.add(n);
+          for (const n of neighborhood(graph, b, 1)) set.add(n);
+          pushFocus([...set]);
         },
         onHover: () => {
           /* could update tooltip here */
@@ -249,7 +265,16 @@ export function GraphCanvas() {
       const g = graphRef.current;
       const sel = selection.value.nodeId;
       if (!g || !sel) return;
-      const set = neighborhood(g, sel, hops);
+      pushFocus([...neighborhood(g, sel, hops)]);
+    };
+    w.__kgFocusEdgeNeighborhood = (hops: number) => {
+      const g = graphRef.current;
+      const eid = selection.value.edgeId;
+      if (!g || !eid || !g.hasEdge(eid)) return;
+      const [a, b] = g.extremities(eid);
+      const set = new Set<string>([a, b]);
+      for (const n of neighborhood(g, a, hops)) set.add(n);
+      for (const n of neighborhood(g, b, hops)) set.add(n);
       pushFocus([...set]);
     };
     w.__kgFitAll = () => {
@@ -280,6 +305,7 @@ export function GraphCanvas() {
     return () => {
       delete w.__kgFocusVisible;
       delete w.__kgFocusNeighborhood;
+      delete w.__kgFocusEdgeNeighborhood;
       delete w.__kgFitAll;
       delete w.__kgTraceContradiction;
     };

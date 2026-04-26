@@ -4,7 +4,20 @@ export function HelpDialog() {
   return (
     <div class="help-backdrop fade-in" onClick={() => (helpOpen.value = false)}>
       <div class="help-card" onClick={(e) => e.stopPropagation()}>
-        <h2>Keyboard shortcuts</h2>
+        <h2>Mouse</h2>
+        <table>
+          <tbody>
+            <tr><td>Click node</td><td>Select + highlight 1-hop neighbors</td></tr>
+            <tr><td>Click edge</td><td>Select edge + highlight endpoints</td></tr>
+            <tr><td>Click empty canvas</td><td>Clear selection</td></tr>
+            <tr><td>Double-click node</td><td>Isolate to 1-hop neighborhood</td></tr>
+            <tr><td>Double-click edge</td><td>Isolate to endpoints + their 1-hops</td></tr>
+            <tr><td>Drag node</td><td>Move that node</td></tr>
+            <tr><td>Drag empty canvas</td><td>Pan the camera</td></tr>
+            <tr><td>Scroll</td><td>Zoom</td></tr>
+          </tbody>
+        </table>
+        <h2 style={{ marginTop: 18 }}>Keyboard</h2>
         <table>
           <tbody>
             <tr><td>Search nodes</td><td><kbd>/</kbd></td></tr>

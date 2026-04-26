@@ -10,6 +10,7 @@ import {
   layoutKind,
   payload,
   search,
+  selectNode,
   selection,
   setView,
   view,
@@ -199,6 +200,32 @@ function useCommands(): Cmd[] {
     },
   );
 
+  // Isolate selection (node OR edge) to N-hop. Only meaningful when something
+  // is selected — surfaced unconditionally so users can see the affordance,
+  // and the run() short-circuits with a hint when no selection exists.
+  for (const hops of [1, 2, 3]) {
+    cmds.push({
+      id: `isolate:${hops}`,
+      group: "Isolate",
+      label: `Isolate selection to ${hops}-hop`,
+      run: () => {
+        const w = window as unknown as {
+          __kgFocusNeighborhood?: (h: number) => void;
+          __kgFocusEdgeNeighborhood?: (h: number) => void;
+        };
+        if (selection.value.nodeId) {
+          w.__kgFocusNeighborhood?.(hops);
+          showToast(`Isolated ${hops}-hop neighborhood`);
+        } else if (selection.value.edgeId) {
+          w.__kgFocusEdgeNeighborhood?.(hops);
+          showToast(`Isolated edge + ${hops}-hop endpoints`);
+        } else {
+          showToast("Select a node or edge first");
+        }
+      },
+    });
+  }
+
   // Filters quick toggles
   cmds.push(
     {
@@ -254,8 +281,7 @@ function useCommands(): Cmd[] {
         hint: n.entity_type,
         keywords: `${n.canonical_name} ${n.id} ${n.aliases?.join(" ") ?? ""}`,
         run: () => {
-          selection.value = { nodeId: n.id, edgeKey: null, highlight: new Set([n.id]) };
-          detailsOpen.value = true;
+          selectNode(n.id, new Set([n.id]));
           search.value = "";
         },
       });

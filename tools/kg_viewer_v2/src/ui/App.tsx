@@ -92,7 +92,7 @@ export function App() {
           // doesn't apply stale, view-incompatible filter state to the new
           // graph and hide every node.
           focus.value = { active: false, nodeIds: [], history: [] };
-          selection.value = { nodeId: null, edgeKey: null, highlight: new Set() };
+          selection.value = { nodeId: null, edgeId: null, highlight: new Set() };
           filters.value = {
             entityTypes: {},
             relationTypes: {},

@@ -137,6 +137,6 @@ export interface FocusState {
 
 export interface SelectionState {
   nodeId: string | null;
-  edgeKey: string | null; // "source||target"
+  edgeId: string | null; // graphology edge id (the same key build.ts assigns)
   highlight: Set<string>; // node ids to highlight
 }

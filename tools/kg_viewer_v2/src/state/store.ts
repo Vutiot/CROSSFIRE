@@ -34,7 +34,7 @@ export const focus = signal<FocusState>({ active: false, nodeIds: [], history: [
 
 export const selection = signal<SelectionState>({
   nodeId: null,
-  edgeKey: null,
+  edgeId: null,
   highlight: new Set(),
 });
 
@@ -66,10 +66,24 @@ export const activeAnnotations = computed(() => {
   return p.entity_annotations;
 });
 
-// ---- helpers -----------------------------------------------------------
+// ---- selection helpers ------------------------------------------------
+// All call sites (graph clicks, double-clicks, details-pane buttons, command
+// palette, keyboard shortcuts) go through these so the state shape never
+// gets reconstructed inline. Selecting a node clears any edge selection and
+// vice versa — they're mutually exclusive.
 
-export function resetSelection() {
-  selection.value = { nodeId: null, edgeKey: null, highlight: new Set() };
+export function selectNode(id: string, highlight: Set<string>) {
+  selection.value = { nodeId: id, edgeId: null, highlight };
+  detailsOpen.value = true;
+}
+
+export function selectEdge(id: string, highlight: Set<string>) {
+  selection.value = { nodeId: null, edgeId: id, highlight };
+  detailsOpen.value = true;
+}
+
+export function clearSelection() {
+  selection.value = { nodeId: null, edgeId: null, highlight: new Set() };
   detailsOpen.value = false;
 }
 
@@ -113,7 +127,7 @@ export function setView(k: ViewKind) {
     relationTypes: {},
   };
   clearFocus();
-  resetSelection();
+  clearSelection();
 }
 
 // Re-export for ergonomics

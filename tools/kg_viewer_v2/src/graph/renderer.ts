@@ -17,6 +17,12 @@ export interface RendererOpts {
   getCommunities: () => Map<string, number>;
   onNodeClick: (id: string | null) => void;
   onEdgeClick: (id: string | null) => void;
+  // Sigma fires click* immediately, then doubleClick* if a second click
+  // lands inside the threshold. The single-click handler runs unconditionally
+  // first (so selection is always current), then doubleClick adds intent on
+  // top — typically a focus / drill-down.
+  onNodeDoubleClick?: (id: string) => void;
+  onEdgeDoubleClick?: (id: string) => void;
   onHover: (id: string | null) => void;
   onDragStart?: (nodeId: string) => void;
   onDragEnd?: (nodeId: string) => void;
@@ -92,6 +98,21 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
     if (dragMoved) return;
     opts.onNodeClick(null);
     opts.onEdgeClick(null);
+  });
+
+  // Double-click handlers — gesture shortcut for "isolate to N-hop" (the
+  // legacy viewer's 1-hop button). preventSigmaDefault stops Sigma's built-in
+  // 2× zoom-on-click for nodes/edges. Stage double-click is intentionally
+  // NOT overridden — the default zoom-at-cursor stays.
+  sigma.on("doubleClickNode", (payload) => {
+    payload.preventSigmaDefault();
+    if (dragMoved) return;
+    opts.onNodeDoubleClick?.(payload.node);
+  });
+  sigma.on("doubleClickEdge", (payload) => {
+    payload.preventSigmaDefault();
+    if (dragMoved) return;
+    opts.onEdgeDoubleClick?.(payload.edge);
   });
 
   // Hover (cursor feedback)

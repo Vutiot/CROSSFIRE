@@ -2,9 +2,12 @@ import { useEffect, useMemo, useRef, useState } from "preact/hooks";
 import {
   activeAnnotations,
   activeRawGraph,
+  clearSelection,
   detailsOpen,
   payload,
   pushFocus,
+  selectEdge,
+  selectNode,
   selection,
 } from "../state/store";
 import type { Contradiction, Distractor, RawEdge, RawNode } from "../types";
@@ -15,11 +18,11 @@ const ROW_HEIGHT = 92; // px — used by virtual list
 export function DetailsPane() {
   const sel = selection.value;
   const open = detailsOpen.value;
-  if (!open || (!sel.nodeId && !sel.edgeKey)) {
+  if (!open || (!sel.nodeId && !sel.edgeId)) {
     return <aside class="right closed" />;
   }
 
-  if (sel.edgeKey) return <EdgeDetails edgeId={sel.edgeKey} />;
+  if (sel.edgeId) return <EdgeDetails edgeId={sel.edgeId} />;
   if (sel.nodeId) return <NodeDetails nodeId={sel.nodeId} />;
   return <aside class="right closed" />;
 }
@@ -165,6 +168,22 @@ function EdgeDetails({ edgeId }: { edgeId: string }) {
         </div>
 
         <EdgeMeta edge={edge} />
+
+        <div class="pane-section">
+          <h3>Isolate</h3>
+          <div style={{ display: "flex", gap: 4 }}>
+            {[1, 2, 3].map((h) => (
+              <button
+                key={h}
+                title={`Focus to endpoints + their ${h}-hop neighborhoods`}
+                onClick={() => isolateEdgeHops(edgeId, h)}
+                style={{ flex: 1 }}
+              >
+                {h}-hop
+              </button>
+            ))}
+          </div>
+        </div>
 
         {edge.rationale && (
           <div class="pane-section">
@@ -312,13 +331,23 @@ function VirtualList<T>({
 // ---- Actions ----------------------------------------------------------
 
 function isolateHops(nodeId: string, hops: number) {
-  // Defer to global helper installed by GraphCanvas
+  // Defer to the graph-aware helper installed by GraphCanvas.
   const w = window as unknown as { __kgFocusNeighborhood?: (h: number) => void };
   if (selection.value.nodeId !== nodeId) {
-    selection.value = { nodeId, edgeKey: null, highlight: new Set([nodeId]) };
+    selectNode(nodeId, new Set([nodeId]));
   }
   w.__kgFocusNeighborhood?.(hops);
   showToast(`Isolated ${hops}-hop neighborhood`);
+}
+
+function isolateEdgeHops(edgeId: string, hops: number) {
+  const w = window as unknown as { __kgFocusEdgeNeighborhood?: (h: number) => void };
+  // Ensure selection points at this edge so the global helper picks it up.
+  if (selection.value.edgeId !== edgeId) {
+    selectEdge(edgeId, new Set());
+  }
+  w.__kgFocusEdgeNeighborhood?.(hops);
+  showToast(`Isolated edge + ${hops}-hop endpoints`);
 }
 
 function traceContradiction(c: Contradiction) {
@@ -332,6 +361,9 @@ function traceContradiction(c: Contradiction) {
     return;
   }
   pushFocus(ids);
-  selection.value = { nodeId: null, edgeKey: null, highlight: new Set(ids) };
+  // Trace replaces any prior selection with the affected node set.
+  clearSelection();
+  selection.value = { nodeId: null, edgeId: null, highlight: new Set(ids) };
+  detailsOpen.value = true;
   showToast(`Traced contradiction ${c.id} (${ids.length} nodes)`);
 }
