@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CROSSFIRE KG Viewer</title>
 <script src="https://unpkg.com/cytoscape@3/dist/cytoscape.min.js"></script>
+<script src="https://unpkg.com/layout-base/layout-base.js"></script>
+<script src="https://unpkg.com/cose-base/cose-base.js"></script>
+<script src="https://unpkg.com/cytoscape-fcose/cytoscape-fcose.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -191,8 +194,196 @@
     flex: 1;
     background: var(--bg-deep);
     background-image: radial-gradient(circle, var(--border-subtle) 1px, transparent 1px);
-    background-size: 24px 24px;
+    background-size: 18px 18px;
   }
+
+  /* ── Left filter pane ── */
+  #filter-pane {
+    width: 260px;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-shrink: 0;
+    padding: 12px 12px 40px;
+    transition: width 0.2s, padding 0.2s;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+    position: relative;
+  }
+  #filter-pane::-webkit-scrollbar { width: 5px; }
+  #filter-pane::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  #filter-pane.collapsed {
+    width: 28px;
+    padding: 12px 4px;
+  }
+  #filter-pane.collapsed .filter-section { display: none; }
+  #filter-pane-toggle {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 18px;
+    height: 18px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: var(--font-data);
+    font-size: 13px;
+    line-height: 1;
+    padding: 0;
+  }
+  #filter-pane.collapsed #filter-pane-toggle { right: 4px; top: 12px; }
+  #filter-pane-toggle:hover { color: var(--accent); }
+  .filter-section { margin-top: 16px; }
+  .filter-section:first-of-type { margin-top: 24px; }
+  .filter-section-title {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  .filter-section-title .section-hint {
+    font-family: var(--font-data);
+    font-size: 9px;
+    color: var(--text-muted);
+    opacity: 0.6;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+  }
+  .filter-section-title .section-reset {
+    font-family: var(--font-data);
+    font-size: 9px;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 1px 4px;
+    border-radius: 4px;
+    text-transform: lowercase;
+    letter-spacing: 0;
+  }
+  .filter-section-title .section-reset:hover { color: var(--accent); background: var(--accent-dim); }
+  .filter-pill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  /* Tri-state pills live inside the filter pane */
+  .filter-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: var(--text-muted);
+    transition: all 0.15s;
+    user-select: none;
+    max-width: 100%;
+    white-space: nowrap;
+  }
+  .filter-pill .fp-state {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    font-family: var(--font-data);
+    font-size: 10px;
+    line-height: 1;
+    color: transparent;
+    flex-shrink: 0;
+  }
+  .filter-pill .fp-label {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .filter-pill .fp-count {
+    font-family: var(--font-data);
+    font-size: 9px;
+    color: var(--text-muted);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+  .filter-pill[data-state="pos"] {
+    background: var(--pill-color, var(--accent-dim));
+    border-color: var(--pill-color, var(--accent));
+    color: #fff;
+  }
+  .filter-pill[data-state="pos"] .fp-state {
+    background: var(--pill-color, var(--accent));
+    border-color: var(--pill-color, var(--accent));
+    color: var(--bg-deep);
+  }
+  .filter-pill[data-state="pos"] .fp-state::before { content: "+"; color: var(--bg-deep); font-weight: 600; }
+  .filter-pill[data-state="pos"] .fp-count { color: rgba(255,255,255,0.75); opacity: 1; }
+  .filter-pill[data-state="neg"] {
+    border-color: var(--contra-color);
+    color: var(--contra-color);
+    background: var(--contra-dim);
+  }
+  .filter-pill[data-state="neg"] .fp-state {
+    background: var(--contra-color);
+    border-color: var(--contra-color);
+  }
+  .filter-pill[data-state="neg"] .fp-state::before { content: "\2212"; color: var(--bg-deep); font-weight: 600; }
+  .filter-pill[data-state="neg"] .fp-label { text-decoration: line-through; opacity: 0.8; }
+  .filter-pill[data-state="neg"] .fp-count { color: var(--contra-color); opacity: 0.8; }
+  .filter-pill:hover { border-color: var(--text-muted); }
+  .filter-pill[data-state="pos"]:hover { filter: brightness(1.1); }
+  .filter-pill[data-state="neg"]:hover { border-color: var(--contra-color); filter: brightness(1.1); }
+
+  /* Overlay section: simple on/off chips, not tri-state */
+  .overlay-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: var(--text-muted);
+    user-select: none;
+    transition: all 0.15s;
+  }
+  .overlay-toggle .ot-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--overlay-color, var(--accent));
+    opacity: 0.35; transition: opacity 0.15s;
+  }
+  .overlay-toggle.active { color: var(--text-primary); border-color: var(--overlay-color, var(--accent)); background: var(--overlay-dim, var(--accent-dim)); }
+  .overlay-toggle.active .ot-dot { opacity: 1; box-shadow: 0 0 4px var(--overlay-color, var(--accent)); }
+  .overlay-toggle input { display: none; }
+
+  .pane-select {
+    width: 100%;
+    background: var(--bg-raised);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-family: var(--font-ui);
+    cursor: pointer;
+  }
+  .pane-select:focus { outline: none; border-color: var(--accent); }
 
   /* ── Sidebar ── */
   #sidebar {
@@ -200,11 +391,16 @@
     background: var(--bg-surface);
     border-left: 1px solid var(--border);
     overflow-y: auto;
+    overflow-x: hidden;
     font-size: 13px;
     flex-shrink: 0;
-    transition: width 0.3s;
+    transition: width 0.25s, border-left-color 0.25s;
     scrollbar-width: thin;
     scrollbar-color: var(--border) transparent;
+  }
+  #sidebar.collapsed {
+    width: 0;
+    border-left-color: transparent;
   }
   #sidebar::-webkit-scrollbar { width: 5px; }
   #sidebar::-webkit-scrollbar-track { background: transparent; }
@@ -422,6 +618,35 @@
 
   .hop-row { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
 
+  /* Shared entities/facts list (doc-view edge sidebar) */
+  .shared-list { list-style: none; padding: 0; margin: 0; }
+  .shared-list li {
+    display: flex; align-items: center; gap: 6px;
+    padding: 5px 0;
+    font-size: 12px;
+    border-bottom: 1px solid var(--bg-raised);
+    min-width: 0;
+  }
+  .shared-list li:last-child { border-bottom: none; }
+  .shared-list .mono { font-family: var(--font-data); font-size: 11px; color: var(--text-secondary); white-space: nowrap; }
+  .shared-list .muted { color: var(--text-muted); font-size: 11px; white-space: nowrap; margin-left: auto; }
+  .shared-list .obj { flex: 1 1 0; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-primary); }
+  .shared-list .vs { color: var(--text-muted); flex: 0 0 auto; }
+  .tag.diverges {
+    background: rgba(255,165,0,0.15);
+    color: #ffb347;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex: 0 0 auto;
+  }
+  .shared-more {
+    font-size: 11px;
+    color: var(--text-muted);
+    padding: 4px 0;
+    font-style: italic;
+  }
+
   /* Toast */
   #toast {
     position: fixed;
@@ -453,18 +678,11 @@
   <div class="sep"></div>
   <input type="text" id="search-box" placeholder="Search nodes...">
   <div class="sep"></div>
-  <div class="group" id="type-filters"></div>
-  <div class="sep"></div>
-  <div class="group" id="rel-filters"></div>
-  <div class="sep"></div>
-  <div class="group" id="overlay-toggles"></div>
-  <div class="sep"></div>
   <select id="view-select" style="display:none">
     <option value="documents">Documents</option>
     <option value="entities">Entities</option>
     <option value="claims">Claims</option>
   </select>
-  <select id="scope-filter"><option value="all">All scopes</option></select>
   <select id="layout-select">
     <option value="cose">Force-directed</option>
     <option value="circle">Circle</option>
@@ -475,12 +693,38 @@
     <option value="type">Colour: type</option>
     <option value="cluster">Colour: cluster</option>
   </select>
+  <button id="focus-btn" class="inline-btn" title="Keep only currently-visible elements; click again to restore">focus</button>
   <button id="link-btn" class="inline-btn" title="Copy link to this view">link</button>
 </div>
 
 <div id="toast"></div>
 
 <div id="main">
+  <aside id="filter-pane">
+    <button id="filter-pane-toggle" title="Collapse / expand filters">&laquo;</button>
+    <div class="filter-section">
+      <div class="filter-section-title">
+        <span>Entity types</span>
+        <span class="section-hint">click: + / &minus; / off</span>
+      </div>
+      <div id="type-filters" class="filter-pill-list"></div>
+    </div>
+    <div class="filter-section">
+      <div class="filter-section-title">
+        <span>Relationships</span>
+        <span class="section-hint">click: + / &minus; / off</span>
+      </div>
+      <div id="rel-filters" class="filter-pill-list"></div>
+    </div>
+    <div class="filter-section">
+      <div class="filter-section-title"><span>Overlays</span></div>
+      <div id="overlay-toggles" class="filter-pill-list"></div>
+    </div>
+    <div class="filter-section">
+      <div class="filter-section-title"><span>Scope</span></div>
+      <select id="scope-filter" class="pane-select"><option value="all">All scopes</option></select>
+    </div>
+  </aside>
   <div id="cy"></div>
   <div id="sidebar">
     <div class="empty-state">
@@ -520,8 +764,13 @@ let cy, DATA = null;
 let DATASETS = [];
 let ACTIVE_VIEW = 'documents';
 let COLOR_BY = 'type';              // 'type' | 'cluster'
+let CLUSTERS_COMPUTED = false;      // reset on every buildGraph(); gates lazy MCL
 let TRACE_ACTIVE_ID = null;         // contradiction id currently traced
+let FOCUS_ACTIVE = false;           // true after a commit-focus: elements outside the filter have been removed
 let RESTORING = false;              // suppress persistence writes while restoring
+
+const FCOSE_AVAILABLE = !!window.cytoscapeFcose;
+if (FCOSE_AVAILABLE) cytoscape.use(window.cytoscapeFcose);
 
 // ── Init ──
 
@@ -575,8 +824,12 @@ async function loadDataset(name, opts) {
       DATA = await resp.json();
       // Preserve the existing ACTIVE_VIEW on initial load (from hash); user-driven
       // dataset switches reset to documents since the new dataset may not have
-      // an entity/claims graph of the same shape.
-      if (!opts || opts.resetView !== false) ACTIVE_VIEW = 'documents';
+      // an entity/claims graph of the same shape. Same treatment for focus
+      // state — it doesn't carry across datasets.
+      if (!opts || opts.resetView !== false) {
+        ACTIVE_VIEW = 'documents';
+        FOCUS_ACTIVE = false;
+      }
       render();
     }
   } catch (err) {
@@ -633,35 +886,61 @@ function render() {
   cy.on('viewport', () => persistState());
 }
 
+function _makeTriPill({ key, keyAttr, label, count, color, titleExtra }) {
+  const el = document.createElement('div');
+  el.className = 'filter-pill';
+  el.dataset.state = 'off';
+  el.dataset[keyAttr] = key;
+  if (color) el.style.setProperty('--pill-color', color);
+  el.title = `${label}${titleExtra ? ' — ' + titleExtra : ''}\nclick to cycle: off → include (+) → exclude (−) → off`;
+  const state = document.createElement('span');
+  state.className = 'fp-state';
+  const lbl = document.createElement('span');
+  lbl.className = 'fp-label';
+  lbl.textContent = label;
+  el.appendChild(state);
+  el.appendChild(lbl);
+  if (count !== undefined) {
+    const c = document.createElement('span');
+    c.className = 'fp-count';
+    c.textContent = count;
+    el.appendChild(c);
+  }
+  el.addEventListener('click', () => {
+    const cur = el.dataset.state;
+    el.dataset.state = cur === 'off' ? 'pos' : cur === 'pos' ? 'neg' : 'off';
+    applyFilters();
+    persistState();
+  });
+  return el;
+}
+
 function buildFilters() {
   const isClaims = ACTIVE_VIEW === 'claims' && DATA.claims_graph;
   const isEntities = ACTIVE_VIEW === 'entities' && DATA.entity_graph;
   const activeGraph = isClaims ? DATA.claims_graph : isEntities ? DATA.entity_graph : DATA.graph;
-  const types = [...new Set(activeGraph.nodes.map(n => n.entity_type))];
+
+  // Entity-type pills — tri-state, one per distinct type, sorted by node count.
+  const typeCounts = new Map();
+  activeGraph.nodes.forEach(n => {
+    const t = n.entity_type || 'unknown';
+    typeCounts.set(t, (typeCounts.get(t) || 0) + 1);
+  });
+  const types = [...typeCounts.entries()].sort((a, b) => b[1] - a[1]).map(([k]) => k);
   const container = document.getElementById('type-filters');
   container.innerHTML = '';
   types.forEach(t => {
-    const pill = document.createElement('label');
-    pill.className = 'toggle-pill active';
-    pill.title = t;
-    pill.style.color = TYPE_COLORS[t] || '#888';
-    const cb = document.createElement('input');
-    cb.type = 'checkbox'; cb.checked = true; cb.dataset.type = t;
-    cb.addEventListener('change', function() { pill.classList.toggle('active', this.checked); applyFilters(); persistState(); });
-    const dot = document.createElement('span');
-    dot.className = 'dot';
-    const lbl = document.createElement('span');
-    lbl.className = 'pill-label';
-    lbl.textContent = t;
-    pill.appendChild(cb);
-    pill.appendChild(dot);
-    pill.appendChild(lbl);
-    container.appendChild(pill);
+    container.appendChild(_makeTriPill({
+      key: t,
+      keyAttr: 'type',
+      label: t,
+      count: typeCounts.get(t),
+      color: TYPE_COLORS[t] || '#888',
+      titleExtra: `${typeCounts.get(t)} node${typeCounts.get(t) === 1 ? '' : 's'}`,
+    }));
   });
 
-  // Relationship type filter pills, ordered by edge count so the most useful
-  // filters surface first (important on datasets where many types are sentence-
-  // long free text with only a single edge per type).
+  // Relationship-type pills — tri-state, sorted by edge count.
   const relCounts = new Map();
   activeGraph.edges.forEach(e => {
     const k = e.relationship_type || '(none)';
@@ -671,38 +950,36 @@ function buildFilters() {
   const relContainer = document.getElementById('rel-filters');
   relContainer.innerHTML = '';
   relTypes.forEach(rt => {
-    const count = relCounts.get(rt);
-    const chip = document.createElement('label');
-    chip.className = 'toggle-chip active';
-    chip.title = `${rt} — ${count} edge${count === 1 ? '' : 's'}`;
-    const cb = document.createElement('input');
-    cb.type = 'checkbox'; cb.checked = true; cb.dataset.rel = rt;
-    cb.addEventListener('change', function() { chip.classList.toggle('active', this.checked); applyFilters(); persistState(); });
-    const lbl = document.createElement('span');
-    lbl.className = 'pill-label';
-    lbl.textContent = rt.replace(/_/g,' ');
-    const badge = document.createElement('span');
-    badge.className = 'pill-count';
-    badge.textContent = count;
-    chip.appendChild(cb);
-    chip.appendChild(lbl);
-    chip.appendChild(badge);
-    relContainer.appendChild(chip);
+    relContainer.appendChild(_makeTriPill({
+      key: rt,
+      keyAttr: 'rel',
+      label: rt.replace(/_/g, ' '),
+      count: relCounts.get(rt),
+      titleExtra: `${relCounts.get(rt)} edge${relCounts.get(rt) === 1 ? '' : 's'}`,
+    }));
   });
 
-  // Overlay toggles
+  // Overlay toggles — simple on/off (positive-only semantics make sense here).
   const overlays = document.getElementById('overlay-toggles');
   overlays.innerHTML = '';
   [
-    { id: 'show-contradictions', label: 'Contradictions', color: 'var(--contra-color)' },
-    { id: 'show-distractors', label: 'Distractors', color: 'var(--distractor-color)' }
+    { id: 'show-contradictions', label: 'Contradictions', color: 'var(--contra-color)', dim: 'var(--contra-dim)' },
+    { id: 'show-distractors', label: 'Distractors', color: 'var(--distractor-color)', dim: 'var(--distractor-dim)' },
   ].forEach(o => {
     const chip = document.createElement('label');
-    chip.className = 'toggle-chip active';
+    chip.className = 'overlay-toggle active';
+    chip.style.setProperty('--overlay-color', o.color);
+    chip.style.setProperty('--overlay-dim', o.dim);
     const cb = document.createElement('input');
     cb.type = 'checkbox'; cb.checked = true; cb.id = o.id;
-    cb.addEventListener('change', function() { chip.classList.toggle('active', this.checked); applyFilters(); persistState(); });
+    cb.addEventListener('change', function() {
+      chip.classList.toggle('active', this.checked);
+      applyFilters(); persistState();
+    });
+    const dot = document.createElement('span');
+    dot.className = 'ot-dot';
     chip.appendChild(cb);
+    chip.appendChild(dot);
     chip.appendChild(document.createTextNode(o.label));
     overlays.appendChild(chip);
   });
@@ -719,8 +996,18 @@ function buildFilters() {
   const layoutSel = document.getElementById('layout-select');
   layoutSel.onchange = () => {
     const name = layoutSel.value;
-    const opts = { name, animate: true, animationDuration: 600, padding: 40 };
-    if (name === 'cose') Object.assign(opts, { nodeRepulsion: 400000, idealEdgeLength: 100, edgeElasticity: 100, gravity: 80, numIter: 1000 });
+    const opts = { name, animate: true, animationDuration: 600, padding: 20 };
+    if (name === 'cose') {
+      if (FCOSE_AVAILABLE) {
+        opts.name = 'fcose';
+        Object.assign(opts, { quality: 'default', randomize: false, numIter: 250, nodeRepulsion: 4500, idealEdgeLength: 55, edgeElasticity: 0.1, nestingFactor: 0.1, gravity: 0.3, packComponents: true });
+      } else {
+        Object.assign(opts, { nodeRepulsion: 120000, idealEdgeLength: 55, edgeElasticity: 120, gravity: 260, numIter: 1200, componentSpacing: 36 });
+      }
+    }
+    else if (name === 'circle') opts.spacingFactor = 0.8;
+    else if (name === 'grid') opts.spacingFactor = 0.7;
+    else if (name === 'breadthfirst') opts.spacingFactor = 0.75;
     cy.layout(opts).run();
     persistState();
   };
@@ -728,7 +1015,15 @@ function buildFilters() {
   // Colour-by (type | cluster)
   const colorSel = document.getElementById('color-select');
   colorSel.value = COLOR_BY;
-  colorSel.onchange = () => { COLOR_BY = colorSel.value; applyColorBy(); persistState(); };
+  colorSel.onchange = () => {
+    COLOR_BY = colorSel.value;
+    if (COLOR_BY === 'cluster' && !CLUSTERS_COMPUTED) {
+      computeClusters();
+      CLUSTERS_COMPUTED = true;
+    }
+    applyColorBy();
+    persistState();
+  };
 
   // Copy link
   const linkBtn = document.getElementById('link-btn');
@@ -737,6 +1032,22 @@ function buildFilters() {
     if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => showToast('link copied'));
     else { prompt('copy this url', url); }
   };
+
+  // Focus / unfocus: commit the current filter as a standalone subgraph
+  const focusBtn = document.getElementById('focus-btn');
+  focusBtn.onclick = () => (FOCUS_ACTIVE ? exitFocus() : commitFocus());
+  if (FOCUS_ACTIVE) { focusBtn.classList.add('active'); focusBtn.textContent = 'unfocus'; }
+
+  // Filter-pane collapse toggle
+  const paneToggle = document.getElementById('filter-pane-toggle');
+  if (paneToggle) {
+    paneToggle.onclick = () => {
+      const pane = document.getElementById('filter-pane');
+      const collapsed = pane.classList.toggle('collapsed');
+      paneToggle.innerHTML = collapsed ? '&raquo;' : '&laquo;';
+      if (cy) cy.resize();
+    };
+  }
 
   // View toggle (documents / entities / claims) — only for claims-layout datasets
   const viewSel = document.getElementById('view-select');
@@ -775,6 +1086,9 @@ function setupSearch() {
 }
 
 function buildGraph() {
+  // cluster_idx data is destroyed with the cy instance, so MCL needs to
+  // re-run if/when cluster coloring is re-applied.
+  CLUSTERS_COMPUTED = false;
   const elements = [];
   // Pick graph + annotations based on active view
   const isClaims = ACTIVE_VIEW === 'claims' && DATA.claims_graph;
@@ -847,18 +1161,21 @@ function buildGraph() {
   });
 
   const styleRules = [
-    // Base node
+    // Base node — tightened for visual density (smaller base size, smaller
+    // label, minimum zoom threshold for text so distant nodes don't overlap
+    // each other with labels).
     { selector: 'node', style: {
       'label': 'data(label)',
       'text-valign': 'bottom', 'text-halign': 'center',
       'font-family': 'IBM Plex Mono, monospace',
-      'font-size': 8, 'font-weight': 300,
-      'color': '#6e7681', 'text-margin-y': 4,
-      'width': 10, 'height': 10,
+      'font-size': 7, 'font-weight': 300,
+      'min-zoomed-font-size': 6,
+      'color': '#6e7681', 'text-margin-y': 3,
+      'width': 7, 'height': 7,
       'background-color': '#484f58',
       'background-opacity': 0.9,
       'border-width': 0,
-      'overlay-padding': 3,
+      'overlay-padding': 2,
       'transition-property': 'background-color, border-width, border-color, width, height, opacity',
       'transition-duration': '0.2s',
     }},
@@ -879,19 +1196,19 @@ function buildGraph() {
       'opacity': 0.6, 'width': 2, 'line-color': '#d4a855', 'target-arrow-color': '#d4a855',
     }},
     // Selected states
-    { selector: 'node:selected', style: { 'border-width': 2, 'border-color': '#d4a855', 'width': 14, 'height': 14 } },
+    { selector: 'node:selected', style: { 'border-width': 2, 'border-color': '#d4a855', 'width': 11, 'height': 11 } },
     { selector: 'edge:selected', style: {
-      'label': 'data(relationship_type)', 'font-size': 8, 'font-family': 'IBM Plex Mono, monospace',
-      'color': '#8b949e', 'text-rotation': 'autorotate', 'text-margin-y': -8,
+      'label': 'data(relationship_type)', 'font-size': 7, 'font-family': 'IBM Plex Mono, monospace',
+      'color': '#8b949e', 'text-rotation': 'autorotate', 'text-margin-y': -6,
       'opacity': 1, 'width': 1.5, 'line-color': '#d4a855', 'target-arrow-color': '#d4a855',
     }},
     // Neighborhood highlighting
-    { selector: 'node.neighbor', style: { 'opacity': 1, 'width': 12, 'height': 12, 'color': '#c9d1d9' } },
+    { selector: 'node.neighbor', style: { 'opacity': 1, 'width': 9, 'height': 9, 'color': '#c9d1d9' } },
     { selector: 'edge.neighbor', style: { 'opacity': 0.85, 'width': 1, 'line-color': '#525a63', 'target-arrow-color': '#525a63' } },
     { selector: 'node.dimmed', style: { 'opacity': 0.15 } },
     { selector: 'edge.dimmed', style: { 'opacity': 0.06 } },
     // Search
-    { selector: 'node.search-match', style: { 'border-width': 2, 'border-color': '#d4a855', 'color': '#d4a855', 'width': 14, 'height': 14 } },
+    { selector: 'node.search-match', style: { 'border-width': 2, 'border-color': '#d4a855', 'color': '#d4a855', 'width': 11, 'height': 11 } },
     { selector: 'node.search-dim', style: { 'opacity': 0.2 } },
     // Contradiction edges — endpoints share at least one contradiction id
     { selector: 'edge.contradiction-edge', style: {
@@ -926,21 +1243,28 @@ function buildGraph() {
     'border-color': '#f47067', 'border-style': 'dashed',
   }});
 
-  // View-specific node sizing
+  // View-specific node sizing — shrunk to match the denser base.
   if (isClaims) {
     styleRules.push({ selector: 'node[confidence > 0]', style: {
-      'width': 'mapData(confidence, 0.7, 1.0, 6, 18)', 'height': 'mapData(confidence, 0.7, 1.0, 6, 18)'
+      'width': 'mapData(confidence, 0.7, 1.0, 4, 12)', 'height': 'mapData(confidence, 0.7, 1.0, 4, 12)'
     }});
   } else if (isClaimsLayout) {
     styleRules.push({ selector: 'node[claim_count > 0]', style: {
-      'width': 'mapData(claim_count, 1, 100, 8, 28)', 'height': 'mapData(claim_count, 1, 100, 8, 28)'
+      'width': 'mapData(claim_count, 1, 100, 6, 20)', 'height': 'mapData(claim_count, 1, 100, 6, 20)'
     }});
   }
 
-  // Layout options — claims view uses tighter packing for many orphan nodes
-  const layoutOpts = isClaims
-    ? { name: 'cose', animate: false, fit: true, padding: 40, nodeRepulsion: 200000, idealEdgeLength: 60, edgeElasticity: 100, nestingFactor: 5, gravity: 150, numIter: 1000, initialTemp: 200, coolingFactor: 0.95, minTemp: 1.0, componentSpacing: 40 }
-    : { name: 'cose', animate: false, fit: true, padding: 40, nodeRepulsion: 400000, idealEdgeLength: 100, edgeElasticity: 100, nestingFactor: 5, gravity: 80, numIter: 1000, initialTemp: 200, coolingFactor: 0.95, minTemp: 1.0, componentSpacing: 100 };
+  // Compact force-directed layout — tighter node-to-node spacing and
+  // stronger gravity so communities cluster visibly and more of them fit
+  // onscreen at once. fcose: spectral pre-positioning, ~10x fewer iters
+  // than cose for similar quality on dense graphs.
+  const claimsLayout = FCOSE_AVAILABLE
+    ? { name: 'fcose', animate: false, fit: true, padding: 20, quality: 'default', randomize: false, numIter: 250, nodeRepulsion: 4500, idealEdgeLength: 32, edgeElasticity: 0.1, nestingFactor: 0.1, gravity: 0.4, packComponents: true }
+    : { name: 'cose',  animate: false, fit: true, padding: 20, nodeRepulsion: 60000, idealEdgeLength: 32, edgeElasticity: 120, nestingFactor: 4, gravity: 320, numIter: 1200, initialTemp: 200, coolingFactor: 0.95, minTemp: 1.0, componentSpacing: 18 };
+  const otherLayout = FCOSE_AVAILABLE
+    ? { name: 'fcose', animate: false, fit: true, padding: 20, quality: 'proof',   randomize: false, numIter: 400, nodeRepulsion: 6000, idealEdgeLength: 55, edgeElasticity: 0.1, nestingFactor: 0.1, gravity: 0.3, packComponents: true }
+    : { name: 'cose',  animate: false, fit: true, padding: 20, nodeRepulsion: 120000, idealEdgeLength: 55, edgeElasticity: 120, nestingFactor: 4, gravity: 260, numIter: 1200, initialTemp: 200, coolingFactor: 0.95, minTemp: 1.0, componentSpacing: 36 };
+  const layoutOpts = isClaims ? claimsLayout : otherLayout;
 
   cy = cytoscape({
     container: document.getElementById('cy'),
@@ -948,11 +1272,20 @@ function buildGraph() {
     style: styleRules,
     layout: layoutOpts,
     minZoom: 0.2, maxZoom: 5,
+    hideEdgesOnViewport: true,
+    hideLabelsOnViewport: true,
+    textureOnViewport: true,
+    motionBlur: false,
+    pixelRatio: 1,
   });
 
-  // Community detection (built-in Markov Clustering). Falls back silently
-  // on empty graphs or if the algorithm errors on disconnected inputs.
-  computeClusters();
+  // Community detection (built-in Markov Clustering). Lazy: only pay for
+  // MCL when the user is actually viewing cluster coloring. Falls back
+  // silently on empty graphs or if the algorithm errors on disconnected inputs.
+  if (COLOR_BY === 'cluster') {
+    computeClusters();
+    CLUSTERS_COMPUTED = true;
+  }
   applyColorBy();
 
   // Interactions
@@ -960,17 +1293,38 @@ function buildGraph() {
     TRACE_ACTIVE_ID = null;
     highlightNeighborhood(e.target);
     showNodeDetails(e.target.data());
+    openSidebar();
     persistState();
   });
-  cy.on('tap', 'edge', e => { showEdgeDetails(e.target.data()); });
+  cy.on('tap', 'edge', e => {
+    showEdgeDetails(e.target.data());
+    openSidebar();
+  });
   cy.on('tap', e => {
     if (e.target === cy) {
       TRACE_ACTIVE_ID = null;
       resetHighlight();
       clearSidebar();
+      closeSidebar();
       persistState();
     }
   });
+}
+
+function openSidebar() {
+  const sb = document.getElementById('sidebar');
+  if (sb.classList.contains('collapsed')) {
+    sb.classList.remove('collapsed');
+    if (cy) cy.resize();
+  }
+}
+
+function closeSidebar() {
+  const sb = document.getElementById('sidebar');
+  if (!sb.classList.contains('collapsed')) {
+    sb.classList.add('collapsed');
+    if (cy) cy.resize();
+  }
 }
 
 // ── Clustering ──
@@ -1026,14 +1380,33 @@ function resetHighlight() {
 
 // ── Filters ──
 
+// Read tri-state pills. Returns { pos: Set, neg: Set } per dataset attribute.
+function _readTriState(containerId, keyAttr) {
+  const pos = new Set(), neg = new Set();
+  document.querySelectorAll(`#${containerId} .filter-pill`).forEach(p => {
+    const key = p.dataset[keyAttr];
+    if (p.dataset.state === 'pos') pos.add(key);
+    else if (p.dataset.state === 'neg') neg.add(key);
+  });
+  return { pos, neg };
+}
+
+// Tri-state membership test:
+//   - if `neg` contains the key → hide
+//   - else if `pos` is non-empty and does NOT contain the key → hide
+//   - else → show
+function _triPasses(key, pos, neg) {
+  if (neg.has(key)) return false;
+  if (pos.size > 0 && !pos.has(key)) return false;
+  return true;
+}
+
 function applyFilters() {
   const showContra = document.getElementById('show-contradictions').checked;
   const showDist = document.getElementById('show-distractors').checked;
   const scopeFilter = document.getElementById('scope-filter').value;
-  const activeTypes = new Set();
-  document.querySelectorAll('#type-filters input[type="checkbox"]').forEach(cb => { if (cb.checked) activeTypes.add(cb.dataset.type); });
-  const activeRels = new Set();
-  document.querySelectorAll('#rel-filters input[type="checkbox"]').forEach(cb => { if (cb.checked) activeRels.add(cb.dataset.rel); });
+  const typeFilter = _readTriState('type-filters', 'type');
+  const relFilter = _readTriState('rel-filters', 'rel');
 
   const activeContraIds = new Set();
   const activeDistIds = new Set();
@@ -1043,15 +1416,16 @@ function applyFilters() {
   cy.batch(() => {
     cy.nodes().forEach(node => {
       const d = node.data();
-      if (!activeTypes.has(d.entity_type)) { node.addClass('hidden'); return; }
+      if (!_triPasses(d.entity_type, typeFilter.pos, typeFilter.neg)) { node.addClass('hidden'); return; }
       node.removeClass('hidden');
       node.data('contradiction_count', (d.contradiction_ids || []).filter(id => activeContraIds.has(id)).length);
       node.data('distractor_count', (d.distractor_ids || []).filter(id => activeDistIds.has(id)).length);
     });
     cy.edges().forEach(edge => {
       const relKey = edge.data('relationship_type') || '(none)';
-      const hidden = edge.source().hasClass('hidden') || edge.target().hasClass('hidden') || !activeRels.has(relKey);
-      edge.toggleClass('hidden', hidden);
+      const relOk = _triPasses(relKey, relFilter.pos, relFilter.neg);
+      const endpointOk = !edge.source().hasClass('hidden') && !edge.target().hasClass('hidden');
+      edge.toggleClass('hidden', !(relOk && endpointOk));
     });
   });
 }
@@ -1110,6 +1484,63 @@ function resetIsolation() {
     applyFilters(); // re-apply current filter state on top
   });
   showToast('reset');
+}
+
+// ── Focus: commit the current filter as a standalone subgraph ──
+//
+// One-way operation: the elements outside the filter are removed from cy,
+// layout is re-run on the survivors, and the focus flag is serialised to the
+// URL hash. Exiting focus clears the hash param and re-fetches the dataset.
+
+function commitFocus() {
+  if (!cy) return;
+  const searchActive = (document.getElementById('search-box').value || '').trim() !== '';
+  const keepNodes = cy.nodes().filter(n =>
+    !n.hasClass('hidden') && (!searchActive || n.hasClass('search-match'))
+  );
+  if (keepNodes.length === 0) { showToast('no visible nodes to focus on'); return; }
+  const keepEdges = cy.edges().filter(e =>
+    !e.hasClass('hidden') && keepNodes.contains(e.source()) && keepNodes.contains(e.target())
+  );
+  const keep = keepNodes.union(keepEdges);
+  cy.elements().not(keep).remove();
+  cy.elements().removeClass('hidden search-dim search-match trace-member dimmed neighbor');
+  TRACE_ACTIVE_ID = null;
+  const layoutName = document.getElementById('layout-select').value || 'cose';
+  const opts = { name: layoutName, animate: true, animationDuration: 500, padding: 20, fit: true };
+  if (layoutName === 'cose') {
+    if (FCOSE_AVAILABLE) {
+      opts.name = 'fcose';
+      Object.assign(opts, { quality: 'default', randomize: false, numIter: 250, nodeRepulsion: 4500, idealEdgeLength: 55, edgeElasticity: 0.1, nestingFactor: 0.1, gravity: 0.3, packComponents: true });
+    } else {
+      Object.assign(opts, { nodeRepulsion: 120000, idealEdgeLength: 55, edgeElasticity: 120, gravity: 260, numIter: 1200, componentSpacing: 36 });
+    }
+  }
+  cy.layout(opts).run();
+  FOCUS_ACTIVE = true;
+  const btn = document.getElementById('focus-btn');
+  btn.classList.add('active');
+  btn.textContent = 'unfocus';
+  updateStats();
+  persistState();
+  showToast(`focused on ${keepNodes.length} node${keepNodes.length === 1 ? '' : 's'}`);
+}
+
+function exitFocus() {
+  FOCUS_ACTIVE = false;
+  // Strip the focus param from the hash before the dataset re-fetch so the
+  // reloaded data doesn't immediately re-commit.
+  const p = new URLSearchParams(location.hash.replace(/^#/, ''));
+  p.delete('fc');
+  history.replaceState(null, '', '#' + p.toString());
+  const btn = document.getElementById('focus-btn');
+  if (btn) { btn.classList.remove('active'); btn.textContent = 'focus'; }
+  const name = (DATA && DATA.dataset_name);
+  if (name && DATASETS.includes(name)) {
+    loadDataset(name, { resetView: false });
+  } else {
+    location.reload();
+  }
 }
 
 function showToast(msg) {
@@ -1173,6 +1604,151 @@ function showNodeDetails(d) {
   sb.innerHTML = html;
 }
 
+// Map a subject string to an entity-type label. First consult the
+// server-classified entity_graph (subjects with >= min_claims claims), then fall
+// back to a small prefix table that handles long-tail subjects below the
+// classifier's threshold. Datasets that don't match any prefix get "other".
+const ENTITY_TYPE_PREFIXES = [
+  ["Officer-", "officer"], ["Subject-", "complainant"], ["Witness-", "witness"],
+  ["Location-", "address"], ["Area-", "neighborhood"],
+  ["Case-", "case_identifier"], ["Log-", "log_number"], ["Event-", "event_number"],
+  ["Badge-", "badge_number"],
+  ["Civilian-", "civilian"], ["Administrator-", "administrator"], ["Judge-", "judge"],
+  ["POD-", "pod_camera"],
+];
+function entityTypeOf(subj) {
+  if (DATA && DATA.entity_graph && Array.isArray(DATA.entity_graph.nodes)) {
+    const n = DATA.entity_graph.nodes.find(x => x.id === subj);
+    if (n && n.entity_type && n.entity_type !== "unknown") return n.entity_type;
+  }
+  for (const [pre, t] of ENTITY_TYPE_PREFIXES) if (subj.startsWith(pre)) return t;
+  return "other";
+}
+function groupBy(arr, keyFn) {
+  const out = new Map();
+  for (const x of arr) {
+    const k = keyFn(x);
+    if (!out.has(k)) out.set(k, []);
+    out.get(k).push(x);
+  }
+  return out;
+}
+
+// Render a single shared-fact row. When includeSubject is true, the subject
+// chip is shown inline (used for the flat list when there are <=5 shared facts).
+function renderSharedFactRow(r, includeSubject) {
+  let html = `<li>`;
+  if (includeSubject) {
+    html += `<span class="tag type-${esc(entityTypeOf(r.subject))}">${esc(r.subject)}</span>`;
+  }
+  html += `<span class="mono">${esc(r.predicate)}</span>`;
+  if (r.diverges) {
+    html += `<span class="obj" title="${esc(String(r.objA))}">${esc(trunc(String(r.objA), 80))}</span>`;
+    html += `<span class="vs">|</span>`;
+    html += `<span class="obj" title="${esc(String(r.objB))}">${esc(trunc(String(r.objB), 80))}</span>`;
+    html += `<span class="tag diverges">diverges</span>`;
+  } else {
+    html += `<span class="obj" title="${esc(String(r.objA))}">${esc(trunc(String(r.objA), 120))}</span>`;
+  }
+  html += `</li>`;
+  return html;
+}
+
+// Build the "Shared entities" panel for a doc-view edge: subjects mentioned
+// in both docs, grouped by entity-type. Singleton groups are folded into a
+// final "Other" bucket once there are 4+ groups, to keep the panel scannable.
+function buildSharedEntitiesPanel(srcId, tgtId) {
+  const inSrc = new Map(), inTgt = new Map();
+  for (const c of DATA.claims || []) {
+    if (c.source_document === srcId) inSrc.set(c.subject, (inSrc.get(c.subject) || 0) + 1);
+    else if (c.source_document === tgtId) inTgt.set(c.subject, (inTgt.get(c.subject) || 0) + 1);
+  }
+  const shared = [...inSrc.keys()].filter(s => inTgt.has(s));
+  if (!shared.length) return '';
+
+  const groups = groupBy(shared, s => entityTypeOf(s));
+  const sorted = [...groups.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]));
+  let main = sorted, footer = [];
+  if (sorted.length >= 4) {
+    main = sorted.filter(([_, items]) => items.length > 1);
+    footer = sorted.filter(([_, items]) => items.length === 1)
+                   .flatMap(([t, items]) => items.map(s => ({ type: t, subject: s })));
+  }
+
+  let html = `<div class="card-section"><div class="card-section-title">Shared entities <span class="count">${shared.length}</span></div>`;
+  for (const [type, subjects] of main) {
+    subjects.sort((a, b) => (inSrc.get(b) + inTgt.get(b)) - (inSrc.get(a) + inTgt.get(a)) || a.localeCompare(b));
+    html += `<div class="card-section" style="margin-top:12px">`;
+    html += `<div class="card-section-title"><span class="tag type-${esc(type)}">${esc(type)}</span> <span class="count">${subjects.length}</span></div>`;
+    html += `<ul class="shared-list">`;
+    const display = subjects.slice(0, 50);
+    for (const s of display) {
+      html += `<li><span class="obj" title="${esc(s)}">${esc(s)}</span><span class="muted">${inSrc.get(s)} / ${inTgt.get(s)}</span></li>`;
+    }
+    if (subjects.length > 50) html += `<li class="shared-more">…and ${subjects.length - 50} more</li>`;
+    html += `</ul></div>`;
+  }
+  if (footer.length) {
+    footer.sort((a, b) => a.type.localeCompare(b.type) || a.subject.localeCompare(b.subject));
+    html += `<div class="card-section" style="margin-top:12px">`;
+    html += `<div class="card-section-title">Other <span class="count">${footer.length}</span></div>`;
+    html += `<ul class="shared-list">`;
+    for (const f of footer) {
+      html += `<li><span class="tag type-${esc(f.type)}">${esc(f.type)}</span><span class="obj" title="${esc(f.subject)}">${esc(f.subject)}</span><span class="muted">${inSrc.get(f.subject)} / ${inTgt.get(f.subject)}</span></li>`;
+    }
+    html += `</ul></div>`;
+  }
+  html += `</div>`;
+  return html;
+}
+
+// Build the "Shared facts" panel: (subject, predicate) tuples both docs claim.
+// Predicate noise is severe (~80-98% singletons across datasets), so we group by
+// SUBJECT instead of predicate. Below 5 shared facts, render a flat list.
+function buildSharedFactsPanel(srcId, tgtId) {
+  const SEP = "";
+  const srcFacts = new Map(), tgtFacts = new Map();
+  for (const c of DATA.claims || []) {
+    if (c.source_document === srcId) srcFacts.set(c.subject + SEP + c.predicate, c);
+    else if (c.source_document === tgtId) tgtFacts.set(c.subject + SEP + c.predicate, c);
+  }
+  const sharedKeys = [...srcFacts.keys()].filter(k => tgtFacts.has(k));
+  if (!sharedKeys.length) return '';
+
+  const rows = sharedKeys.map(k => {
+    const a = srcFacts.get(k), b = tgtFacts.get(k);
+    return {
+      subject: a.subject,
+      predicate: a.predicate,
+      objA: a.object,
+      objB: b.object,
+      diverges: String(a.object) !== String(b.object),
+    };
+  });
+
+  let html = `<div class="card-section"><div class="card-section-title">Shared facts <span class="count">${rows.length}</span></div>`;
+
+  if (rows.length <= 5) {
+    rows.sort((a, b) => a.subject.localeCompare(b.subject) || a.predicate.localeCompare(b.predicate));
+    html += `<ul class="shared-list">`;
+    for (const r of rows) html += renderSharedFactRow(r, true);
+    html += `</ul>`;
+  } else {
+    const groups = groupBy(rows, r => r.subject);
+    const sorted = [...groups.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]));
+    for (const [subj, items] of sorted) {
+      items.sort((a, b) => a.predicate.localeCompare(b.predicate));
+      html += `<div class="card-section" style="margin-top:12px">`;
+      html += `<div class="card-section-title"><span class="tag type-${esc(entityTypeOf(subj))}">${esc(subj)}</span> <span class="count">${items.length}</span></div>`;
+      html += `<ul class="shared-list">`;
+      for (const r of items) html += renderSharedFactRow(r, false);
+      html += `</ul></div>`;
+    }
+  }
+  html += `</div>`;
+  return html;
+}
+
 function showEdgeDetails(d) {
   const sb = document.getElementById('sidebar');
   const src = cy.getElementById(d.source).data();
@@ -1186,6 +1762,11 @@ function showEdgeDetails(d) {
     html += field('Rationale', `<span style="line-height:1.5">${esc(d.rationale)}</span>`);
   }
   if (d.weight) html += field('Weight', d.weight);
+  if (d.relationship_type === 'shared_entities') {
+    html += buildSharedEntitiesPanel(d.source, d.target);
+  } else if (d.relationship_type === 'shared_facts') {
+    html += buildSharedFactsPanel(d.source, d.target);
+  }
   html += '</div>';
   sb.innerHTML = html;
 }
@@ -1231,6 +1812,23 @@ function updateStats() {
   const el = document.getElementById('stats');
   const sep = ' <span style="color:var(--border)">/</span> ';
   let html = `<span>${DATA.dataset_name}</span>${sep}`;
+  if (FOCUS_ACTIVE && cy) {
+    // In focus mode the live graph is the authoritative count; still show
+    // the dataset totals for reference so the user sees "N of M".
+    const curNodes = cy.nodes().length;
+    const curEdges = cy.edges().length;
+    const totalNodes = (ACTIVE_VIEW === 'entities' && DATA.entity_graph) ? DATA.entity_graph.nodes.length
+                     : (ACTIVE_VIEW === 'claims' && DATA.claims_graph) ? DATA.claims_graph.nodes.length
+                     : s.total_nodes;
+    const totalEdges = (ACTIVE_VIEW === 'entities' && DATA.entity_graph) ? DATA.entity_graph.edges.length
+                     : (ACTIVE_VIEW === 'claims' && DATA.claims_graph) ? DATA.claims_graph.edges.length
+                     : s.total_edges;
+    html += `<span style="color:var(--accent)">focused</span>${sep}`;
+    html += `<span>nodes <span class="stat-val">${curNodes} / ${totalNodes}</span></span>${sep}`;
+    html += `<span>edges <span class="stat-val">${curEdges} / ${totalEdges}</span></span>`;
+    el.innerHTML = html;
+    return;
+  }
   if (ACTIVE_VIEW === 'claims' && DATA.claims_graph) {
     html += `<span>claims <span class="stat-val">${s.total_claims}</span></span>${sep}`;
     html += `<span>cross-refs <span class="stat-val">${s.total_cross_references}</span></span>${sep}`;
@@ -1275,10 +1873,8 @@ function persistState() {
 
 function _persistNow() {
   if (!cy) return;
-  const types = [];
-  document.querySelectorAll('#type-filters input[type="checkbox"]').forEach(cb => { if (!cb.checked) types.push(cb.dataset.type); });
-  const rels = [];
-  document.querySelectorAll('#rel-filters input[type="checkbox"]').forEach(cb => { if (!cb.checked) rels.push(cb.dataset.rel); });
+  const typeFilter = _readTriState('type-filters', 'type');
+  const relFilter = _readTriState('rel-filters', 'rel');
   const contraOn = document.getElementById('show-contradictions')?.checked;
   const distOn = document.getElementById('show-distractors')?.checked;
   const scope = document.getElementById('scope-filter')?.value || 'all';
@@ -1287,8 +1883,10 @@ function _persistNow() {
   const params = new URLSearchParams();
   params.set('ds', DATA && DATA.dataset_name ? DATA.dataset_name : '');
   if (ACTIVE_VIEW !== 'documents') params.set('v', ACTIVE_VIEW);
-  if (types.length) params.set('xt', types.join(','));        // excluded types
-  if (rels.length) params.set('xr', rels.join(','));           // excluded rels
+  if (typeFilter.pos.size) params.set('t+', [...typeFilter.pos].join(','));
+  if (typeFilter.neg.size) params.set('t-', [...typeFilter.neg].join(','));
+  if (relFilter.pos.size) params.set('r+', [...relFilter.pos].join(','));
+  if (relFilter.neg.size) params.set('r-', [...relFilter.neg].join(','));
   if (!contraOn) params.set('xc', '1');
   if (!distOn) params.set('xd', '1');
   if (scope !== 'all') params.set('sc', scope);
@@ -1296,6 +1894,7 @@ function _persistNow() {
   if (COLOR_BY !== 'type') params.set('cb', COLOR_BY);
   if (selected.length) params.set('sel', selected.id());
   if (TRACE_ACTIVE_ID) params.set('tr', TRACE_ACTIVE_ID);
+  if (FOCUS_ACTIVE) params.set('fc', '1');
   const zoom = cy.zoom();
   const pan = cy.pan();
   params.set('z', zoom.toFixed(3));
@@ -1308,11 +1907,18 @@ function parseHash() {
   const raw = location.hash.replace(/^#/, '');
   if (!raw) return {};
   const p = new URLSearchParams(raw);
+  const splitCSV = (s) => (s ? s.split(',') : []);
   return {
     ds: p.get('ds'),
     view: p.get('v'),
-    xt: p.get('xt') ? p.get('xt').split(',') : [],
-    xr: p.get('xr') ? p.get('xr').split(',') : [],
+    tPos: splitCSV(p.get('t+')),
+    tNeg: splitCSV(p.get('t-')),
+    rPos: splitCSV(p.get('r+')),
+    rNeg: splitCSV(p.get('r-')),
+    // Back-compat: older URLs used xt/xr for "excluded" — map them onto the
+    // new negative set so existing saved links still work.
+    xt: splitCSV(p.get('xt')),
+    xr: splitCSV(p.get('xr')),
     xc: p.get('xc') === '1',
     xd: p.get('xd') === '1',
     scope: p.get('sc'),
@@ -1320,6 +1926,7 @@ function parseHash() {
     color: p.get('cb'),
     sel: p.get('sel'),
     trace: p.get('tr'),
+    focus: p.get('fc') === '1',
     zoom: p.get('z') ? parseFloat(p.get('z')) : null,
     pan: p.get('p') ? p.get('p').split(',').map(Number) : null,
   };
@@ -1332,30 +1939,47 @@ function applyHashState(state) {
   const dsMatches = !state.ds || (DATA && DATA.dataset_name === state.ds);
   RESTORING = true;
   try {
-    if (state.xt && state.xt.length) {
-      document.querySelectorAll('#type-filters input[type="checkbox"]').forEach(cb => {
-        if (state.xt.includes(cb.dataset.type)) { cb.checked = false; cb.closest('.toggle-pill').classList.remove('active'); }
-      });
-    }
-    if (state.xr && state.xr.length) {
-      document.querySelectorAll('#rel-filters input[type="checkbox"]').forEach(cb => {
-        if (state.xr.includes(cb.dataset.rel)) { cb.checked = false; cb.closest('.toggle-chip').classList.remove('active'); }
-      });
-    }
-    if (state.xc) { const el = document.getElementById('show-contradictions'); if (el) { el.checked = false; el.closest('.toggle-chip').classList.remove('active'); } }
-    if (state.xd) { const el = document.getElementById('show-distractors'); if (el) { el.checked = false; el.closest('.toggle-chip').classList.remove('active'); } }
+    // Tri-state pill restoration. Legacy `xt` / `xr` params (excluded sets)
+    // are folded into the negative set so old URLs still work.
+    const typePos = new Set(state.tPos || []);
+    const typeNeg = new Set([...(state.tNeg || []), ...(state.xt || [])]);
+    const relPos = new Set(state.rPos || []);
+    const relNeg = new Set([...(state.rNeg || []), ...(state.xr || [])]);
+    document.querySelectorAll('#type-filters .filter-pill').forEach(p => {
+      const k = p.dataset.type;
+      p.dataset.state = typePos.has(k) ? 'pos' : typeNeg.has(k) ? 'neg' : 'off';
+    });
+    document.querySelectorAll('#rel-filters .filter-pill').forEach(p => {
+      const k = p.dataset.rel;
+      p.dataset.state = relPos.has(k) ? 'pos' : relNeg.has(k) ? 'neg' : 'off';
+    });
+    if (state.xc) { const el = document.getElementById('show-contradictions'); if (el) { el.checked = false; el.closest('.overlay-toggle').classList.remove('active'); } }
+    if (state.xd) { const el = document.getElementById('show-distractors'); if (el) { el.checked = false; el.closest('.overlay-toggle').classList.remove('active'); } }
     if (state.scope) { const el = document.getElementById('scope-filter'); if (el) el.value = state.scope; }
     if (state.layout) { const el = document.getElementById('layout-select'); if (el) el.value = state.layout; }
-    if (state.color) { COLOR_BY = state.color; const el = document.getElementById('color-select'); if (el) el.value = COLOR_BY; applyColorBy(); }
+    if (state.color) {
+      COLOR_BY = state.color;
+      const el = document.getElementById('color-select');
+      if (el) el.value = COLOR_BY;
+      if (COLOR_BY === 'cluster' && !CLUSTERS_COMPUTED) {
+        computeClusters();
+        CLUSTERS_COMPUTED = true;
+      }
+      applyColorBy();
+    }
     applyFilters();
     if (dsMatches) {
       if (state.sel) {
         const n = cy.getElementById(state.sel);
-        if (n && !n.empty()) { n.select(); highlightNeighborhood(n); showNodeDetails(n.data()); }
+        if (n && !n.empty()) { n.select(); highlightNeighborhood(n); showNodeDetails(n.data()); openSidebar(); }
       }
       if (state.trace) traceContradiction(state.trace);
       if (state.zoom) cy.zoom(state.zoom);
       if (state.pan && state.pan.length === 2 && !isNaN(state.pan[0]) && !isNaN(state.pan[1])) cy.pan({ x: state.pan[0], y: state.pan[1] });
+      // Focus commit must happen last: it .remove()s elements, so any
+      // selection / trace / zoom-pan applied above still lands on the
+      // full graph before we narrow it.
+      if (state.focus) commitFocus();
     }
   } finally {
     RESTORING = false;
