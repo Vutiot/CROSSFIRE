@@ -47,7 +47,7 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
     // Spec calls for Inter at 12px, weight 400. Hubs (degree ≥ 10) bump to
     // 13/500 — handled per-node via forceLabel + the labelWeight reducer
     // hook below.
-    labelSize: 12,
+    labelSize: 11,
     labelWeight: "400",
     labelFont: '"Inter", system-ui, sans-serif',
     labelColor: { color: "#2c2c2a" },
@@ -59,11 +59,11 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
     // background as near-white due to its blend pipeline; the only
     // reliable fix is to bake the desired final tone into a solid color.
     defaultEdgeColor: EDGE_COLOR_DEFAULT,
-    minCameraRatio: 0.05,
-    maxCameraRatio: 8,
+    minCameraRatio: 0.2,
+    maxCameraRatio: 5,
     labelDensity: 0.5,
     labelGridCellSize: 100,
-    labelRenderedSizeThreshold: 6,
+    labelRenderedSizeThreshold: 5,
     // Sigma defaults edge events to off for performance. Without this, no
     // clickEdge / doubleClickEdge / enterEdge ever fires, so the edge
     // properties panel can't open.
@@ -90,7 +90,7 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
       // which is exactly the "random whitening on hover" bug. preBlend
       // returns a solid pre-composited hex so the alpha path never runs.
       const finalColor = dimmed ? preBlend(color, DIM_OPACITY, CANVAS_BG) : color;
-      const size = highlighted ? a.size * 1.25 : a.size;
+      const size = highlighted ? a.size * 1.55 : a.size;
       return {
         ...data,
         color: finalColor,
@@ -120,7 +120,7 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
           ? EDGE_COLOR_DIMMED
           : EDGE_COLOR_DEFAULT;
       // Keep the user-validated highlight thickness, otherwise spec width.
-      const size = highlighted ? Math.max(1.4, a.size * 1.6) : a.size;
+      const size = highlighted ? Math.max(1.0, a.size * 3) : a.size;
       return {
         ...data,
         color,

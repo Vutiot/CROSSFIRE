@@ -4,7 +4,6 @@
 import Graph from "graphology";
 import circular from "graphology-layout/circular";
 import { random } from "graphology-layout";
-import forceAtlas2 from "graphology-layout-forceatlas2";
 import FA2Layout from "graphology-layout-forceatlas2/worker";
 import type Sigma from "sigma";
 import type { LayoutKind } from "../types";
@@ -84,12 +83,18 @@ function runForceAtlas2(
   }
   void start;
 
-  const sensibleSettings = forceAtlas2.inferSettings(graph);
   const layout = new FA2Layout(graph, {
     settings: {
-      ...sensibleSettings,
+      gravity: 1,
+      scalingRatio: 10,
       slowDown: 4,
-      barnesHutOptimize: graph.order > 1000,
+      edgeWeightInfluence: 1,
+      adjustSizes: true,
+      barnesHutOptimize: graph.order > 500,
+      barnesHutTheta: 0.5,
+      linLogMode: false,
+      outboundAttractionDistribution: false,
+      strongGravityMode: true,
     },
   });
   activeWorker = layout;

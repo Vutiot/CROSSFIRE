@@ -135,8 +135,8 @@ export function colorForRelation(rel: string): string {
 // matters) without letting hubs balloon out of proportion. The actual
 // degree → size pass runs after edges are added (see post-build loop in
 // buildGraph).
-const SIZE_MIN = 5;
-const SIZE_MAX = 16;
+const SIZE_MIN = 4;
+const SIZE_MAX = 12;
 const HUB_DEGREE = 10; // labels for nodes at or above this degree are forced visible
 
 function sizeByDegree(deg: number, maxDeg: number): number {
@@ -145,10 +145,8 @@ function sizeByDegree(deg: number, maxDeg: number): number {
   return SIZE_MIN + t * (SIZE_MAX - SIZE_MIN);
 }
 
-// Edge stroke matches the spec floor (0.8) but log-scales upward for
-// weighted edges so heavily-supported relations stay readable.
 function edgeSize(weight: number): number {
-  return Math.max(0.8, Math.min(2.5, 0.8 + Math.log2((weight || 1) + 1) * 0.5));
+  return Math.max(0.5, Math.min(2.0, 0.5 + Math.log2((weight || 1) + 1) * 0.5));
 }
 
 export interface BuildOpts {
