@@ -1,0 +1,147 @@
+{
+  "claims": [
+    {
+      "claim_id": "ORDER_001",
+      "subject": "Case-002",
+      "predicate": "is_pending_in_court",
+      "object": "Cook County Circuit Court, Criminal Division",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_002",
+      "subject": "Case-002",
+      "predicate": "case_caption_is",
+      "object": "People of the State of Illinois v. Officer-1",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_003",
+      "subject": "Officer-1",
+      "predicate": "is_defendant_in",
+      "object": "Case-002",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_004",
+      "subject": "Judge-A",
+      "predicate": "presided_over",
+      "object": "Case-002",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_005",
+      "subject": "Judge-A",
+      "predicate": "entered_order_in",
+      "object": "Case-002",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_006",
+      "subject": "the_order",
+      "predicate": "was_entered_as",
+      "object": "AGREED order between the parties",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_007",
+      "subject": "the_order",
+      "predicate": "prohibits_release_of",
+      "object": "materials related to Log-001 by the City of Chicago and its entities",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_008",
+      "subject": "the_order",
+      "predicate": "applies_under_legal_authority",
+      "object": "Transparency Policy",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_009",
+      "subject": "the_order",
+      "predicate": "applies_under_legal_authority",
+      "object": "Freedom of Information Act",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_010",
+      "subject": "the_order",
+      "predicate": "effective_during",
+      "object": "the pendency of the criminal matter (Case-002)",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_011",
+      "subject": "the_order",
+      "predicate": "signed_at_date",
+      "object": "January 25, 2022",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_012",
+      "subject": "the_order",
+      "predicate": "filed_at_date",
+      "object": "January 25, 2022",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_013",
+      "subject": "the_order",
+      "predicate": "was_filed_with_clerk",
+      "object": "Civilian-J, Clerk of the Circuit Court of Cook County, IL",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_014",
+      "subject": "Log-001",
+      "predicate": "is_subject_of_release_prohibition_in",
+      "object": "Case-002",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_015",
+      "subject": "City_of_Chicago",
+      "predicate": "is_prohibited_from_releasing",
+      "object": "materials related to Log-001 during pendency of Case-002",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    }
+  ],
+  "cross_references": [
+    {
+      "reference_id": "ORDER_xref_001",
+      "source_claim": "ORDER_002",
+      "target_claim": "ORDER_003",
+      "relationship": "elaborates",
+      "source_documents": ["copa_order"]
+    },
+    {
+      "reference_id": "ORDER_xref_002",
+      "source_claim": "ORDER_007",
+      "target_claim": "ORDER_010",
+      "relationship": "elaborates",
+      "source_documents": ["copa_order"]
+    },
+    {
+      "reference_id": "ORDER_xref_003",
+      "source_claim": "ORDER_007",
+      "target_claim": "ORDER_015",
+      "relationship": "same_fact",
+      "source_documents": ["copa_order"]
+    }
+  ]
+}

@@ -1,0 +1,1015 @@
+{
+  "claims": [
+    {
+      "claim_id": "AR_001",
+      "subject": "Officer-1",
+      "predicate": "has_occupation",
+      "object": "Police Officer - Chicago",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_002",
+      "subject": "Officer-1",
+      "predicate": "has_age_at_arrest",
+      "object": "29 years",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_003",
+      "subject": "Officer-1",
+      "predicate": "has_place_of_birth",
+      "object": "Illinois",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_004",
+      "subject": "Officer-1",
+      "predicate": "arrest_occurred_at_time",
+      "object": "09 December 2021 13:05",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_005",
+      "subject": "Officer-1",
+      "predicate": "arrested_at_location",
+      "object": "Location-Northwest",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "environmental",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_006",
+      "subject": "Officer-1",
+      "predicate": "arrested_at_beat",
+      "object": "2515",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_007",
+      "subject": "Officer-1",
+      "predicate": "arrested_at_location_type",
+      "object": "292 - Government Building / Property",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "environmental",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_008",
+      "subject": "Officer-1",
+      "predicate": "booked_at_location",
+      "object": "District 025 Male Lockup",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_009",
+      "subject": "Officer-1",
+      "predicate": "resisted_arrest",
+      "object": "No",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "force_event",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_010",
+      "subject": "Case-003",
+      "predicate": "generated_by",
+      "object": "Civilian-A",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_011",
+      "subject": "Case-003",
+      "predicate": "report_generated_at_time",
+      "object": "11 DEC 2021 10:12",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_012",
+      "subject": "Officer-1",
+      "predicate": "associated_rd_number",
+      "object": "Case-001",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_013",
+      "subject": "Officer-1",
+      "predicate": "associated_event_number",
+      "object": "Event-001",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_014",
+      "subject": "Officer-1",
+      "predicate": "physical_description",
+      "object": "Male, Black, 5'09\", 172 lbs, Brown Eyes, Black Hair, Short Hair Style, Medium Complexion",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_015",
+      "subject": "Officer-1",
+      "predicate": "charged_with_statute",
+      "object": "720 ILCS 5.0/9-1-A-1",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_016",
+      "subject": "Officer-1",
+      "predicate": "charged_with_offense",
+      "object": "MURDER - FIRST DEGREE",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_017",
+      "subject": "Officer-1",
+      "predicate": "charge_class",
+      "object": "Class M - Type F Felony",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_018",
+      "subject": "Officer-1",
+      "predicate": "charge_domestic_related",
+      "object": "Yes",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_019",
+      "subject": "AR_015",
+      "predicate": "felony_review_approved_by",
+      "object": "Civilian-I",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_020",
+      "subject": "AR_015",
+      "predicate": "felony_review_approved_at_time",
+      "object": "10 DEC 2021 21:50",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_021",
+      "subject": "AR_015",
+      "predicate": "felony_review_approved_by_office",
+      "object": "State's Attorneys's Office",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_022",
+      "subject": "Officer-1",
+      "predicate": "armed_status_at_arrest",
+      "object": "Unarmed",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "force_event",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_023",
+      "subject": "Case-003",
+      "predicate": "narcotics_recovered",
+      "object": "No",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_024",
+      "subject": "Case-003",
+      "predicate": "warrant_identified",
+      "object": "No",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_025",
+      "subject": "Victim",
+      "predicate": "assigned_beat",
+      "object": "2512",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_026",
+      "subject": "Victim",
+      "predicate": "sex",
+      "object": "Female",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_027",
+      "subject": "Victim",
+      "predicate": "injured",
+      "object": "Yes",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_028",
+      "subject": "Victim",
+      "predicate": "deceased",
+      "object": "Yes",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_029",
+      "subject": "Victim",
+      "predicate": "race",
+      "object": "Black",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_030",
+      "subject": "Victim",
+      "predicate": "age_at_incident",
+      "object": "29 years",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_031",
+      "subject": "Victim",
+      "predicate": "injury_type",
+      "object": "Gun Shot",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_032",
+      "subject": "Victim",
+      "predicate": "hospitalized",
+      "object": "No",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_033",
+      "subject": "Case-003",
+      "predicate": "property_information_available",
+      "object": "No - not available in automated arrest system",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_034",
+      "subject": "Officer-1",
+      "predicate": "relationship_to_victim",
+      "object": "boyfriend",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_035",
+      "subject": "Officer-1",
+      "predicate": "heard_arguing_with_victim_on_date",
+      "object": "08 Dec 2021",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_036",
+      "subject": "Officer-1",
+      "predicate": "observed_on_surveillance_video_as",
+      "object": "last person leaving victim's residence and homicide scene",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_037",
+      "subject": "Victim",
+      "predicate": "discovered_deceased_on_date",
+      "object": "09 Dec 2021",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_038",
+      "subject": "Victim",
+      "predicate": "cause_of_death",
+      "object": "single gunshot wound to chin",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_039",
+      "subject": "Victim",
+      "predicate": "sent_photograph_of_firearm_with_text_message_to_friend",
+      "object": "stating that if any harm came to her it was Officer-1 who did it",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_040",
+      "subject": "Officer-1",
+      "predicate": "initial_court_date",
+      "object": "11 December 2021",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_041",
+      "subject": "Officer-1",
+      "predicate": "assigned_court_branch",
+      "object": "CBC-1 Location-Southwest - Room 100",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_042",
+      "subject": "Case-003",
+      "predicate": "court_comments_additional_in_section",
+      "object": "SEE WC COMMENTS SECTION FOR ADDITIONAL COMMENTS",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_043",
+      "subject": "Officer-8",
+      "predicate": "attested_arrest_report_at_time",
+      "object": "09 DEC 2021 19:51",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_044",
+      "subject": "Officer-8",
+      "predicate": "badge_number",
+      "object": "Badge-004",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_045",
+      "subject": "Officer-7",
+      "predicate": "role_in_arrest",
+      "object": "1st Arresting Officer",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_046",
+      "subject": "Officer-7",
+      "predicate": "badge_number",
+      "object": "Badge-003",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_047",
+      "subject": "Officer-8",
+      "predicate": "role_in_arrest",
+      "object": "Arresting Officer - Second",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_048",
+      "subject": "Officer-9",
+      "predicate": "role_in_arrest",
+      "object": "Approving Supervisor",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_049",
+      "subject": "Officer-9",
+      "predicate": "approved_probable_cause_at_time",
+      "object": "09 DEC 2021 20:05",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_050",
+      "subject": "Officer-9",
+      "predicate": "badge_number",
+      "object": "Badge-005",
+      "source_document": "arrest_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_051",
+      "subject": "Officer-1",
+      "predicate": "received_in_lockup_at_time",
+      "object": "09 December 2021 20:11",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_052",
+      "subject": "Officer-1",
+      "predicate": "fingerprints_taken_at_time",
+      "object": "09 December 2021 20:29",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_053",
+      "subject": "Officer-1",
+      "predicate": "photograph_taken_at_time",
+      "object": "09 December 2021 20:17",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_054",
+      "subject": "Officer-1",
+      "predicate": "states_taking_medication",
+      "object": "No Medication",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_055",
+      "subject": "Civilian-C",
+      "predicate": "lockup_keeper_cell_update_at_time",
+      "object": "09 DEC 2021 22:42",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_056",
+      "subject": "Civilian-D",
+      "predicate": "lockup_keeper_comment",
+      "object": "Subject was not in lockup the entirety of 3rd Watch; Subject out at Area",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_057",
+      "subject": "Civilian-D",
+      "predicate": "lockup_keeper_comment_at_time",
+      "object": "10 DEC 2021 21:01",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_058",
+      "subject": "Case-003",
+      "predicate": "interviews_logged",
+      "object": "No interviews logged",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_059",
+      "subject": "Officer-1",
+      "predicate": "lockup_cell_number",
+      "object": "6-1",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_060",
+      "subject": "Officer-1",
+      "predicate": "palmprints_taken",
+      "object": "Yes",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_061",
+      "subject": "Officer-1",
+      "predicate": "transport_details",
+      "object": "1PO",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_062",
+      "subject": "Officer-1",
+      "predicate": "released_from_lockup_at_time",
+      "object": "11 December 2021 07:39",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_063",
+      "subject": "Officer-1",
+      "predicate": "obvious_pain_or_injury_at_booking",
+      "object": "No",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_064",
+      "subject": "Officer-1",
+      "predicate": "first_time_arrested",
+      "object": "Yes",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_065",
+      "subject": "Officer-1",
+      "predicate": "under_influence_of_alcohol_or_drugs_at_booking",
+      "object": "No",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_066",
+      "subject": "Officer-1",
+      "predicate": "signs_of_alcohol_drug_withdrawal",
+      "object": "No",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_067",
+      "subject": "Officer-1",
+      "predicate": "appears_despondent_at_booking",
+      "object": "No",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_068",
+      "subject": "Officer-1",
+      "predicate": "appears_irrational_at_booking",
+      "object": "No",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_069",
+      "subject": "Officer-1",
+      "predicate": "serious_mental_problems_at_booking",
+      "object": "No",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_070",
+      "subject": "Officer-1",
+      "predicate": "serious_medical_problems_at_booking",
+      "object": "No",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_071",
+      "subject": "Officer-1",
+      "predicate": "emergency_contact_provided",
+      "object": "REFUSED",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_072",
+      "subject": "Officer-1",
+      "predicate": "received_by_officer_at_time",
+      "object": "09 DEC 2021 20:22",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_073",
+      "subject": "Officer-8",
+      "predicate": "received_arrestee_at_location",
+      "object": "Area 5 Ongoing Detective Investigation",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_074",
+      "subject": "Officer-12",
+      "predicate": "released_arrestee_to_location_at_time",
+      "object": "District 025 Male Lockup at 09 DEC 2021 20:22",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_075",
+      "subject": "Officer-9",
+      "predicate": "watch_commander_comment",
+      "object": "DOES NOT APPLY TO THIS ARREST; Investigation is on going per Det. Beebe Badge-011",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_076",
+      "subject": "Officer-9",
+      "predicate": "reviewed_by_WC_at_time",
+      "object": "09 DEC 2021 20:05",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_077",
+      "subject": "Officer-22",
+      "predicate": "watch_commander_comment",
+      "object": "Duty Judge Burch: finding of probable cause at 2245 hours",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_078",
+      "subject": "Officer-22",
+      "predicate": "watch_commander_comment_at_time",
+      "object": "10 DEC 2021 23:02",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_079",
+      "subject": "Officer-23",
+      "predicate": "watch_commander_comment",
+      "object": "Pending investigation by A/5 Detectives",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_080",
+      "subject": "Officer-23",
+      "predicate": "watch_commander_comment_at_time",
+      "object": "09 DEC 2021 21:46",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_081",
+      "subject": "Officer-9",
+      "predicate": "watch_commander_comment",
+      "object": "Detectives are aware of duty judge requirement; Investigation is on going",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_082",
+      "subject": "Officer-9",
+      "predicate": "watch_commander_comment_at_time",
+      "object": "10 DEC 2021 19:00",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_083",
+      "subject": "Officer-9",
+      "predicate": "watch_commander_typo_correction_comment",
+      "object": "Typo correction by WC: arrestee Officer-1 was referred to by an incorrect name variant in the probable-cause narrative; WC noted the correct variant",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_084",
+      "subject": "Officer-9",
+      "predicate": "watch_commander_typo_correction_at_time",
+      "object": "10 DEC 2021 19:03",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_085",
+      "subject": "Civilian-D",
+      "predicate": "searched_arrestee",
+      "object": "Officer-1",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_086",
+      "subject": "Civilian-E",
+      "predicate": "role_in_processing",
+      "object": "Lockup Keeper",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_087",
+      "subject": "Officer-10",
+      "predicate": "role_in_arrest",
+      "object": "Arresting Officer - Assisting",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_088",
+      "subject": "Officer-10",
+      "predicate": "badge_number",
+      "object": "Badge-006",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_089",
+      "subject": "Officer-11",
+      "predicate": "role_in_arrest",
+      "object": "Arresting Officer - Assisting",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_090",
+      "subject": "Officer-11",
+      "predicate": "badge_number",
+      "object": "Badge-007",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_091",
+      "subject": "Civilian-E",
+      "predicate": "fingerprinted_arrestee",
+      "object": "Officer-1",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_092",
+      "subject": "Officer-13",
+      "predicate": "detective_assigned_at_time",
+      "object": "10 DEC 2021 21:55",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_093",
+      "subject": "Officer-13",
+      "predicate": "badge_number",
+      "object": "Badge-011",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_094",
+      "subject": "Officer-22",
+      "predicate": "final_approval_of_charges_at_time",
+      "object": "10 DEC 2021 23:13",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_095",
+      "subject": "Officer-22",
+      "predicate": "badge_number",
+      "object": "Badge-016",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_096",
+      "subject": "Case-003",
+      "predicate": "visitors_logged",
+      "object": "No visitors logged",
+      "source_document": "arrest_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    }
+  ],
+  "cross_references": [
+    {
+      "reference_id": "AR_xref_001",
+      "source_claim": "AR_004",
+      "target_claim": "AR_051",
+      "relationship": "temporal_sequence",
+      "note": "Arrest time (13:05, 09 Dec) precedes lockup receipt time (20:11, 09 Dec) — same subject, chronological progression within the document"
+    },
+    {
+      "reference_id": "AR_xref_002",
+      "source_claim": "AR_037",
+      "target_claim": "AR_035",
+      "relationship": "temporal_sequence",
+      "note": "Victim discovered deceased 09 Dec 2021, argument heard 08 Dec 2021 — establishes timeline context for the probable-cause narrative"
+    },
+    {
+      "reference_id": "AR_xref_003",
+      "source_claim": "AR_049",
+      "target_claim": "AR_076",
+      "relationship": "same_event_same_vantage",
+      "note": "Officer-9 (Santos) approved probable cause at 09 DEC 2021 20:05 and is noted as Watch Commander at the same timestamp — same personnel action recorded in two sections"
+    },
+    {
+      "reference_id": "AR_xref_004",
+      "source_claim": "AR_020",
+      "target_claim": "AR_077",
+      "relationship": "corroborating_procedural",
+      "note": "Felony review approved by SAO at 10 DEC 2021 21:50; Officer-22 WC comment records duty judge finding probable cause at 22:45 the same night — sequential judicial review steps"
+    },
+    {
+      "reference_id": "AR_xref_005",
+      "source_claim": "AR_083",
+      "target_claim": "AR_034",
+      "relationship": "correction_reference",
+      "note": "WC typo-correction comment clarifies that the arrestee (Officer-1) was referred to by an incorrect name variant in the probable-cause narrative (chunk 1) — cross-references the narrative error"
+    },
+    {
+      "reference_id": "AR_xref_006",
+      "source_claim": "AR_015",
+      "target_claim": "AR_016",
+      "relationship": "statute_to_offense_label",
+      "note": "Statute 720 ILCS 5.0/9-1-A-1 maps directly to offense label MURDER - FIRST DEGREE within the charges section"
+    },
+    {
+      "reference_id": "AR_xref_007",
+      "source_claim": "AR_073",
+      "target_claim": "AR_072",
+      "relationship": "same_event_same_vantage",
+      "note": "Officer-8 (Adams) received arrestee at Area 5 at 20:22; movement log records same officer receiving at same timestamp — dual recording of same custody transfer"
+    }
+  ]
+}

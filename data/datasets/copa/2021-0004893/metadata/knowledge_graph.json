@@ -1,0 +1,6103 @@
+{
+  "claims": [
+    {
+      "claim_id": "FSR1_001",
+      "subject": "Log-001",
+      "predicate": "has_case_type",
+      "object": "05E \u2014 Excessive Force Weapon Fatal",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_002",
+      "subject": "Officer-1",
+      "predicate": "has_badge_number",
+      "object": "Badge-001",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_003",
+      "subject": "Officer-1",
+      "predicate": "has_appointment_date",
+      "object": "April 25, 2016",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_004",
+      "subject": "Officer-1",
+      "predicate": "assigned_to_unit",
+      "object": "015",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_005",
+      "subject": "COPA",
+      "predicate": "was_notified_at_time",
+      "object": "December 9, 2021 at 2:08 pm",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_006",
+      "subject": "COPA",
+      "predicate": "was_notified_by",
+      "object": "Chicago Police Department Bureau of Internal Affairs",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_007",
+      "subject": "COPA",
+      "predicate": "notified_via",
+      "object": "telephone call",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_008",
+      "subject": "incident",
+      "predicate": "described_as",
+      "object": "possible officer-involved domestic homicide",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_009",
+      "subject": "Subject-A",
+      "predicate": "found_deceased_at_location",
+      "object": "Subject-A_residence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_010",
+      "subject": "Subject-A",
+      "predicate": "sustained_injury_type",
+      "object": "gunshot wound",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_011",
+      "subject": "Subject-A",
+      "predicate": "manner_of_death",
+      "object": "homicide",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_012",
+      "subject": "Officer-1",
+      "predicate": "captured_on_video_as",
+      "object": "last person entering and exiting Subject-A_residence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_013",
+      "subject": "Officer-1",
+      "predicate": "was_arrested_for",
+      "object": "First Degree Murder",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_014",
+      "subject": "allegation_1",
+      "predicate": "classified_as_finding",
+      "object": "Sustained",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_015",
+      "subject": "allegation_1",
+      "predicate": "alleges_conduct",
+      "object": "Officer-1 discharged a firearm at Subject-A without justification",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_016",
+      "subject": "allegation_1",
+      "predicate": "covers_time_period",
+      "object": "4:30 pm December 8, 2021 to 9:49 am December 9, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_017",
+      "subject": "allegation_2",
+      "predicate": "classified_as_finding",
+      "object": "Sustained",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_018",
+      "subject": "allegation_2",
+      "predicate": "alleges_conduct",
+      "object": "Officer-1 failed to report that he discharged a firearm",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_019",
+      "subject": "allegation_3",
+      "predicate": "classified_as_finding",
+      "object": "Sustained",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_020",
+      "subject": "allegation_3",
+      "predicate": "alleges_conduct",
+      "object": "Officer-1 failed to secure a firearm registered to him",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_021",
+      "subject": "allegation_4",
+      "predicate": "classified_as_finding",
+      "object": "Sustained",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_022",
+      "subject": "allegation_4",
+      "predicate": "alleges_conduct",
+      "object": "Officer-1 was absent from work without permission",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_023",
+      "subject": "allegation_4",
+      "predicate": "covers_time_period",
+      "object": "11:30 am to 8:30 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_024",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule 1 \u2014 Violation of any law or ordinance",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_025",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule 2 \u2014 Action bringing discredit upon the Department",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_026",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule 3 \u2014 Failure to promote Department's efforts",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_027",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule 5 \u2014 Failure to perform any duty",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_028",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule 6 \u2014 Disobedience of an order or directive",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_029",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule 9 \u2014 Engaging in unjustified physical altercation",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_030",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule 10 \u2014 Inattention to duty",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_031",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule 13 \u2014 Failure to secure and care for Department property",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_032",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule 22 \u2014 Failure to report violation of Rules and Regulations",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_033",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule 27 \u2014 Failure to report anticipated absence from duty",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_034",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule 28 \u2014 Being absent from duty without proper authorization",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_035",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule 30 \u2014 Leaving duty assignment without proper authorization",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_036",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule 38 \u2014 Unlawful or unnecessary use or display of a weapon",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_037",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule 39 \u2014 Failure to immediately report firearm discharge",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_038",
+      "subject": "investigation",
+      "predicate": "cited_general_order",
+      "object": "G03-02 \u2014 De-Escalation, Response to Resistance, and Use of Force (effective April 15, 2021)",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_039",
+      "subject": "investigation",
+      "predicate": "cited_general_order",
+      "object": "G03-02-01 \u2014 Response to Resistance and Force Options (effective April 15, 2021)",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_040",
+      "subject": "investigation",
+      "predicate": "cited_general_order",
+      "object": "G03-02-03 \u2014 Firearm Discharge Incidents-Authorized Use and Post-Discharge Administrative Procedures (effective April 15, 2021)",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_041",
+      "subject": "investigation",
+      "predicate": "cited_general_order",
+      "object": "G03-06 \u2014 Firearm Discharge and Officer-Involved Death Incident Response and Investigation (effective April 15, 2021)",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_042",
+      "subject": "investigation",
+      "predicate": "cited_directive",
+      "object": "E02-02 \u2014 Payroll and Timekeeping-Attendance (effective January 7, 2019)",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_043",
+      "subject": "investigation",
+      "predicate": "cited_directive",
+      "object": "U04-02 \u2014 Department Approved Weapons and Ammunition (effective May 7, 2021)",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_044",
+      "subject": "Officer-1",
+      "predicate": "was_scheduled_to_work",
+      "object": "11:30 am to 8:30 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_045",
+      "subject": "Officer-1",
+      "predicate": "assigned_to_beat",
+      "object": "Beat 1562C",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_046",
+      "subject": "Officer-1",
+      "predicate": "assigned_to_vehicle",
+      "object": "Car #4909",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_047",
+      "subject": "Officer-2",
+      "predicate": "made_statement",
+      "object": "documentation for time off is completed by requesting officer in automated system",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_048",
+      "subject": "Officer-1",
+      "predicate": "submitted_no_documentation_for",
+      "object": "time off on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_049",
+      "subject": "Officer-1_cell_phone",
+      "predicate": "utilized_cell_towers_near",
+      "object": "015th District Station",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_050",
+      "subject": "Officer-1_cell_phone",
+      "predicate": "occurred_at_time",
+      "object": "approximately 1:20 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_051",
+      "subject": "Officer-1_key_fob",
+      "predicate": "used_to_open_door",
+      "object": "015th District Tactical (TAC) Gang Office",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_052",
+      "subject": "Officer-1_key_fob_use",
+      "predicate": "occurred_at_time",
+      "object": "1:50 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_053",
+      "subject": "Officer-3",
+      "predicate": "made_statement",
+      "object": "telephoned 015th District TAC Office on December 8, 2021 and Officer-1 answered",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_054",
+      "subject": "Subject-A",
+      "predicate": "entered_residence_at_time",
+      "object": "approximately 10:35 am on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_055",
+      "subject": "Subject-A_entry",
+      "predicate": "captured_by",
+      "object": "third-party surveillance footage",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_056",
+      "subject": "Officer-1",
+      "predicate": "entered_Subject-A_residence_at_time",
+      "object": "4:05 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_057",
+      "subject": "Officer-1_entry",
+      "predicate": "captured_by",
+      "object": "third-party surveillance footage",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_058",
+      "subject": "Witness-A",
+      "predicate": "received_telephone_call_from",
+      "object": "Officer-1",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_059",
+      "subject": "first_call_to_Witness-A",
+      "predicate": "occurred_at_time",
+      "object": "approximately 4:45\u20135:00 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_060",
+      "subject": "first_call_to_Witness-A",
+      "predicate": "concerned_topic",
+      "object": "pending child support court hearing",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_061",
+      "subject": "second_call_to_Witness-A",
+      "predicate": "occurred_at_time",
+      "object": "approximately 5:15 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_062",
+      "subject": "second_call_to_Witness-A",
+      "predicate": "concerned_topic",
+      "object": "child support hearing",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_063",
+      "subject": "third_call_to_Witness-A",
+      "predicate": "occurred_at_time",
+      "object": "approximately 5:30 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_064",
+      "subject": "third_call_to_Witness-A",
+      "predicate": "included_participants",
+      "object": "Officer-1 and Subject-A",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_065",
+      "subject": "Officer-1_and_Subject-A_cell_phones",
+      "predicate": "utilized_cell_towers_near",
+      "object": "Subject-A_residence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_066",
+      "subject": "Officer-1_and_Subject-A_cell_phones_together",
+      "predicate": "occurred_at_time",
+      "object": "approximately 8:40 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_067",
+      "subject": "Subject-A_front_door",
+      "predicate": "opened_then_closed_at_time",
+      "object": "9:04 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_068",
+      "subject": "Officer-1",
+      "predicate": "exited_Subject-A_residence_via",
+      "object": "back door",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_069",
+      "subject": "Officer-1_exit",
+      "predicate": "occurred_at_time",
+      "object": "9:06 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_070",
+      "subject": "Officer-1",
+      "predicate": "observed_wearing",
+      "object": "holstered firearm on right side of waistband when exiting residence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_071",
+      "subject": "Officer-1_exit_with_firearm",
+      "predicate": "captured_by",
+      "object": "surveillance footage",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_072",
+      "subject": "Officer-1_and_Subject-A_cell_phones",
+      "predicate": "began_utilizing_cell_towers_south_of",
+      "object": "Subject-A_residence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_073",
+      "subject": "phones_moving_south",
+      "predicate": "occurred_at_time",
+      "object": "approximately 9:15 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_074",
+      "subject": "Officer-1_and_Subject-A_cell_phones",
+      "predicate": "moved_in_unison_from",
+      "object": "Subject-A_residence toward 015th District Station area",
+      "source_document": "final_summary_report",
+      "confidence": 0.8
+    },
+    {
+      "claim_id": "FSR1_075",
+      "subject": "Officer-1_and_Subject-A_cell_phones",
+      "predicate": "utilized_cell_towers_near",
+      "object": "015th District Station",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_076",
+      "subject": "phones_near_015_District",
+      "predicate": "occurred_at_time",
+      "object": "approximately 9:20 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_077",
+      "subject": "Subject-A_cell_phone",
+      "predicate": "last_utilized_cell_tower_near",
+      "object": "015th District Station",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_078",
+      "subject": "Subject-A_cell_phone_last_signal",
+      "predicate": "occurred_at_time",
+      "object": "9:46 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_079",
+      "subject": "Subject-A_cell_phone",
+      "predicate": "ceased_functioning_at_time",
+      "object": "9:46 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_080",
+      "subject": "Officer-1_cell_phone",
+      "predicate": "utilized_cell_towers_indicating_movement_east_from",
+      "object": "015th District Station",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_081",
+      "subject": "Officer-1_cell_phone_moving_east",
+      "predicate": "occurred_at_time",
+      "object": "9:49 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_082",
+      "subject": "Officer-1_cell_phone",
+      "predicate": "attempted_contact_with",
+      "object": "Subject-A_cell_phone",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_083",
+      "subject": "Subject-A_cell_phone",
+      "predicate": "not_utilizing_cell_towers_indicating",
+      "object": "no longer functioning at 9:49 pm",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_084",
+      "subject": "Officer-1_cell_phone",
+      "predicate": "utilized_cell_towers_near",
+      "object": "Officer-1_residence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_085",
+      "subject": "Officer-1_at_residence",
+      "predicate": "occurred_at_time",
+      "object": "approximately 10:00 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_086",
+      "subject": "POD-001",
+      "predicate": "showed_Officer-1_arrived_at_residence_at_time",
+      "object": "approximately 2:48 am on December 9, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_087",
+      "subject": "Subject-A_father",
+      "predicate": "telephoned_911_at_time",
+      "object": "9:49 am on December 9, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_088",
+      "subject": "Subject-A_father",
+      "predicate": "requested_police_action",
+      "object": "well-being check at Subject-A_residence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_089",
+      "subject": "Subject-A_father",
+      "predicate": "last_spoke_to_Subject-A",
+      "object": "December 7, 2021 at approximately 5:30 pm",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_090",
+      "subject": "Officer-4_and_Officer-5",
+      "predicate": "arrived_at_Subject-A_residence_at_time",
+      "object": "10:00 am on December 9, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_091",
+      "subject": "Subject-A_front_and_rear_doors",
+      "predicate": "were_locked_when",
+      "object": "officers arrived",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_092",
+      "subject": "maintenance_personnel",
+      "predicate": "unlocked",
+      "object": "back door of Subject-A_residence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_093",
+      "subject": "Subject-A",
+      "predicate": "found_deceased_at_location_in_residence",
+      "object": "floor near front door",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_094",
+      "subject": "Officer-4",
+      "predicate": "recovered_evidence_item",
+      "object": "fired cartridge casing in shoe tray near front door of Subject-A_residence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_095",
+      "subject": "Officer-1",
+      "predicate": "arrived_at_Subject-A_residence_at_time",
+      "object": "approximately 10:21 am on December 9, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_096",
+      "subject": "Officer-1",
+      "predicate": "told_Officer-4",
+      "object": "last spoke to Subject-A on December 8, 2021 at approximately 4:30 pm",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_097",
+      "subject": "Officer-1",
+      "predicate": "told_Officer-4",
+      "object": "had been at Subject-A_residence to talk about an argument the previous weekend",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_098",
+      "subject": "Officer-1",
+      "predicate": "told_Officer-4",
+      "object": "left a Springfield XDM 9mm handgun on top shelf of Subject-A_bedroom closet",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_099",
+      "subject": "Springfield_XDM_9mm",
+      "predicate": "was_never_found",
+      "object": "during course of investigation",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_100",
+      "subject": "Cook_County_States_Attorney",
+      "predicate": "charged_Officer-1_with",
+      "object": "1st Degree Murder",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_101",
+      "subject": "charge_of_1st_degree_murder",
+      "predicate": "occurred_at_time",
+      "object": "December 10, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_102",
+      "subject": "Subject-A",
+      "predicate": "sustained_injury_location",
+      "object": "gunshot wound to right side of face near nose",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_103",
+      "subject": "Subject-A_gunshot_wound",
+      "predicate": "has_characteristic",
+      "object": "no exit wound present",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_104",
+      "subject": "Subject-A_gunshot_wound",
+      "predicate": "has_characteristic",
+      "object": "stippling observed near wound",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_105",
+      "subject": "autopsy",
+      "predicate": "conducted_by",
+      "object": "Cook County Medical Examiner's Office",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_106",
+      "subject": "autopsy",
+      "predicate": "determined_cause_of_death",
+      "object": "gunshot wound to the head",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_107",
+      "subject": "autopsy",
+      "predicate": "determined_manner_of_death",
+      "object": "homicide",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_108",
+      "subject": "Officer-1_left_hand",
+      "predicate": "tested_positive_for",
+      "object": "gunshot residue",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_109",
+      "subject": "Officer-1_right_hand",
+      "predicate": "tested_negative_for",
+      "object": "gunshot residue",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_110",
+      "subject": "GSR_positive_left_hand",
+      "predicate": "indicates",
+      "object": "Officer-1 discharged a firearm or was in close proximity to a discharged firearm",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_111",
+      "subject": "investigation",
+      "predicate": "recovered_and_inventoried_firearms_count",
+      "object": "3",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_112",
+      "subject": "firearm_1",
+      "predicate": "recovered_from",
+      "object": "015th District Locker",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_113",
+      "subject": "firearm_1",
+      "predicate": "is_type",
+      "object": "Sig Sauer P320 9mm",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_114",
+      "subject": "firearm_2",
+      "predicate": "recovered_from",
+      "object": "bedroom closet inside Subject-A_residence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_115",
+      "subject": "firearm_2",
+      "predicate": "is_type",
+      "object": "Smith & Wesson M&P 9mm",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_116",
+      "subject": "firearm_3",
+      "predicate": "recovered_from",
+      "object": "inside Officer-1_vehicle",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_117",
+      "subject": "firearm_3",
+      "predicate": "is_type",
+      "object": "Smith & Wesson M&P 9mm",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_118",
+      "subject": "fired_cartridge_1",
+      "predicate": "recovered_from",
+      "object": "shoe tray near front door inside Subject-A_residence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_119",
+      "subject": "fired_cartridge_2",
+      "predicate": "recovered_from",
+      "object": "inside a bag found inside Officer-1_residence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_120",
+      "subject": "fired_cartridge_1_and_fired_cartridge_2",
+      "predicate": "determined_fired_from",
+      "object": "same firearm",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_121",
+      "subject": "fired_cartridge_1_and_fired_cartridge_2",
+      "predicate": "not_fired_from",
+      "object": "any of the three firearms associated with this investigation",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_122",
+      "subject": "Officer-1",
+      "predicate": "invoked_right",
+      "object": "Fifth Amendment right against self-incrimination",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_123",
+      "subject": "Officer-1",
+      "predicate": "declined_to_provide",
+      "object": "statement to COPA",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_124",
+      "subject": "CPD_use_of_force_policy",
+      "predicate": "was_materially_modified_on",
+      "object": "October 16, 2017",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_125",
+      "subject": "CPD_use_of_force_policy",
+      "predicate": "requires_force_to_be",
+      "object": "objectively reasonable, necessary, and proportional",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_126",
+      "subject": "deadly_force",
+      "predicate": "permitted_only_as",
+      "object": "last resort when necessary to protect against imminent threat to life or prevent great bodily harm",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_127",
+      "subject": "COPA",
+      "predicate": "standard_of_proof_for_sustained",
+      "object": "preponderance of the evidence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_128",
+      "subject": "COPA",
+      "predicate": "standard_of_proof_for_unfounded_or_exonerated",
+      "object": "clear and convincing evidence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_129",
+      "subject": "COPA",
+      "predicate": "finding_for_allegation_1",
+      "object": "Sustained \u2014 Officer-1 use of deadly force violated Department policy",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_130",
+      "subject": "COPA",
+      "predicate": "investigator_assessment",
+      "object": "no evidence gunshot wound to Subject-A was self-inflicted",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_131",
+      "subject": "COPA",
+      "predicate": "investigator_assessment",
+      "object": "no evidence Subject-A was armed or posed imminent threat to Officer-1",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_132",
+      "subject": "Officer-1",
+      "predicate": "did_not_call",
+      "object": "911 or otherwise report an incident justifying use of force",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_133",
+      "subject": "medical_examiner",
+      "predicate": "ruled_death",
+      "object": "homicide",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_134",
+      "subject": "criminal_charges",
+      "predicate": "are_relevant_to",
+      "object": "COPA administrative investigation",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_135",
+      "subject": "Subject-A",
+      "predicate": "died_from",
+      "object": "single gunshot wound to the head",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_136",
+      "subject": "Officer-1",
+      "predicate": "was_last_person_to_see",
+      "object": "Subject-A alive",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_137",
+      "subject": "COPA",
+      "predicate": "investigator_assessment",
+      "object": "fired cartridge casings from shoe tray and Officer-1 bag fired from same firearm \u2014 supports conclusion Officer-1 shot Subject-A",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_138",
+      "subject": "murder_firearm",
+      "predicate": "has_status",
+      "object": "never found",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_139",
+      "subject": "COPA",
+      "predicate": "investigator_assessment",
+      "object": "more likely than not that Officer-1 used firearm at Subject-A_residence to shoot Subject-A and then disposed of firearm",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_140",
+      "subject": "COPA",
+      "predicate": "investigator_assessment",
+      "object": "Officer-1 likely removed Subject-A cell phone from residence and discarded near 015th District Station",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_141",
+      "subject": "Subject-A_cell_phone",
+      "predicate": "ceased_transmitting_near",
+      "object": "015th District Station",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_142",
+      "subject": "Subject-A_cell_phone_ceased",
+      "predicate": "occurred_at_time",
+      "object": "approximately 9:49 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_143",
+      "subject": "COPA",
+      "predicate": "investigator_assessment",
+      "object": "no evidence anyone other than Officer-1 was involved in Subject-A death",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_144",
+      "subject": "Officer-1",
+      "predicate": "was_alone_when_exiting",
+      "object": "Subject-A_residence at 9:06 pm",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_145",
+      "subject": "Officer-1_stated_last_saw_Subject-A",
+      "predicate": "contradicted_by",
+      "object": "surveillance footage showing Officer-1 did not leave until 9:06 pm",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_146",
+      "subject": "adverse_inference",
+      "predicate": "may_be_drawn_from",
+      "object": "Officer-1 refusal to answer allegations",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_147",
+      "subject": "COPA",
+      "predicate": "finding_for_allegation_2",
+      "object": "Sustained \u2014 Officer-1 failed to report firearm discharge in violation of Department policy",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_148",
+      "subject": "Department_policy",
+      "predicate": "requires_after_firearm_discharge",
+      "object": "immediate notification to OEMC, all relevant information, and request for additional resources",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_149",
+      "subject": "Officer-1",
+      "predicate": "did_not_notify",
+      "object": "OEMC on night of December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_150",
+      "subject": "Officer-1",
+      "predicate": "did_not_call",
+      "object": "911 on night of December 8, 2021 to report firearm discharge",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_151",
+      "subject": "COPA",
+      "predicate": "finding_for_allegation_3",
+      "object": "Sustained \u2014 Officer-1 failed to secure firearms",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_152",
+      "subject": "Department_policy",
+      "predicate": "requires_members_to_secure",
+      "object": "ALL firearms owned or possessed in manner preventing unapproved access, theft, or loss",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_153",
+      "subject": "Officer-1",
+      "predicate": "admitted_to",
+      "object": "leaving a firearm on top shelf of Subject-A_bedroom closet",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_154",
+      "subject": "Officer-1",
+      "predicate": "lent_firearm_to",
+      "object": "Subject-A in violation of Department policy",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_155",
+      "subject": "firearm_2",
+      "predicate": "found_with",
+      "object": "one live round and one magazine in paper gift bag nearby",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_156",
+      "subject": "children_under_14",
+      "predicate": "were_present_at",
+      "object": "Subject-A_residence and Officer-1_relative_residence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_157",
+      "subject": "Officer-1",
+      "predicate": "failed_to_secure_firearms_count",
+      "object": "2",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_158",
+      "subject": "COPA",
+      "predicate": "finding_for_allegation_4",
+      "object": "Sustained \u2014 Officer-1 absent from duty without proper authorization",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_159",
+      "subject": "Officer-1",
+      "predicate": "was_present_at_015_District_at_time",
+      "object": "approximately 1:50 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_160",
+      "subject": "Officer-1",
+      "predicate": "entered_Subject-A_residence_at_time",
+      "object": "4:30 pm on December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_161",
+      "subject": "Officer-1",
+      "predicate": "remained_at_Subject-A_residence_duration",
+      "object": "more than four hours",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_162",
+      "subject": "Officer-1",
+      "predicate": "did_not_request_or_report_absence_from_duty",
+      "object": "December 8, 2021",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_163",
+      "subject": "Officer-1",
+      "predicate": "has_complimentary_history_total_awards",
+      "object": "87",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_164",
+      "subject": "Officer-1",
+      "predicate": "received_award",
+      "object": "Superintendent's Award of Tactical Excellence",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_165",
+      "subject": "Officer-1",
+      "predicate": "received_award",
+      "object": "Police Officer of the Month Award",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_166",
+      "subject": "Officer-1",
+      "predicate": "has_disciplinary_history",
+      "object": "one-day suspension in July 2021 for Preventable Accident",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_167",
+      "subject": "COPA",
+      "predicate": "recommends_penalty",
+      "object": "Separation",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_168",
+      "subject": "COPA",
+      "predicate": "characterizes_misconduct_as",
+      "object": "domestic related homicide \u2014 most grievous nature",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_169",
+      "subject": "FSR",
+      "predicate": "approved_by",
+      "object": "Administrator-A \u2014 Deputy Chief Administrator",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_170",
+      "subject": "FSR",
+      "predicate": "approved_by",
+      "object": "Administrator-B \u2014 Chief Administrator",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_171",
+      "subject": "FSR_approval",
+      "predicate": "occurred_at_time",
+      "object": "February 28, 2023",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_172",
+      "subject": "Log-002",
+      "predicate": "involves_same_officer",
+      "object": "Officer-1",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_173",
+      "subject": "Log-002",
+      "predicate": "is_separate_investigation_from",
+      "object": "Log-001",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_174",
+      "subject": "Log-002",
+      "predicate": "concerns",
+      "object": "allegations of domestic violence by Officer-1 toward Subject-A",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_175",
+      "subject": "Case-002",
+      "predicate": "is_criminal_case_against",
+      "object": "Officer-1",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "FSR1_176",
+      "subject": "Officer-1_entry_into_Subject-A_residence",
+      "predicate": "was_at_time",
+      "object": "4:05 pm (surveillance) vs 4:30 pm (Officer-1 claim)",
+      "source_document": "final_summary_report",
+      "confidence": 0.8
+    },
+    {
+      "claim_id": "FSR1_177",
+      "subject": "COPA_analysis",
+      "predicate": "focuses_on",
+      "object": "violation of Department general orders regarding use of force (not Fourth Amendment or Illinois state law)",
+      "source_document": "final_summary_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_001",
+      "subject": "Log-001",
+      "predicate": "document_type",
+      "object": "supplemental_summary_report_of_investigation",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_002",
+      "subject": "Log-001",
+      "predicate": "superseded_prior_conclusion",
+      "object": "original_log_closed_2023-02-28_reopened_for_revised_firearm_discharge_analysis",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_003",
+      "subject": "Administrator-A",
+      "predicate": "added_evidence",
+      "object": "superintendent_requested_additional_investigation_on_2023-05-26",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_004",
+      "subject": "Log-001",
+      "predicate": "incident_date_range",
+      "object": "December_8_2021_4:30pm_to_December_9_2021_10:00am",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_005",
+      "subject": "Log-001",
+      "predicate": "copa_notification_datetime",
+      "object": "December_9_2021_2:08pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_006",
+      "subject": "Officer-1",
+      "predicate": "date_of_appointment",
+      "object": "April_25_2016",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_007",
+      "subject": "Officer-1",
+      "predicate": "assigned_unit",
+      "object": "015",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_008",
+      "subject": "Log-001",
+      "predicate": "case_type",
+      "object": "05E_excessive_force_weapon_fatal",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_009",
+      "subject": "COPA",
+      "predicate": "notified_of_incident_via",
+      "object": "telephone_call_from_CPD_Bureau_of_Internal_Affairs",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_010",
+      "subject": "COPA_investigation",
+      "predicate": "revealed_finding",
+      "object": "officers_responded_to_residence_for_well_being_check_and_found_victim_deceased",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_011",
+      "subject": "involved_individual",
+      "predicate": "cause_of_death",
+      "object": "gunshot_wound_ruled_homicide",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_012",
+      "subject": "Officer-1",
+      "predicate": "captured_on_video_as",
+      "object": "last_person_entering_and_exiting_victims_residence",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_013",
+      "subject": "Officer-1",
+      "predicate": "arrested_and_charged_with",
+      "object": "first_degree_murder",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_014",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_1_officer_discharged_firearm_without_justification_sustained",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_015",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_2_officer_failed_to_report_firearm_discharge_sustained",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_016",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_3_officer_failed_to_secure_firearm_sustained",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_017",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_4_officer_absent_from_work_without_permission_sustained",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_018",
+      "subject": "allegation_1",
+      "predicate": "temporal_scope",
+      "object": "December_8_2021_4:30pm_to_December_9_2021_9:49am",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_019",
+      "subject": "allegation_4",
+      "predicate": "temporal_scope",
+      "object": "December_8_2021_11:30am_to_8:30pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_020",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule_1_violation_of_law_or_ordinance",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_021",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule_39_failure_to_report_firearm_discharge_to_desk_sergeant",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_022",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule_38_unlawful_or_unnecessary_use_or_display_of_weapon",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_023",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule_28_absent_from_duty_without_proper_authorization",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_024",
+      "subject": "Log-001",
+      "predicate": "separate_investigation_exists",
+      "object": "Log-002_domestic_violence_allegations_not_part_of_this_log",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_025",
+      "subject": "Officer-1",
+      "predicate": "assigned_shift_on",
+      "object": "December_8_2021_11:30am_to_8:30pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_026",
+      "subject": "Officer-1",
+      "predicate": "assigned_to_beat",
+      "object": "Beat_1562C_Car_4909_on_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_027",
+      "subject": "Officer-1",
+      "predicate": "no_documentation_found_for",
+      "object": "time_off_request_or_hours_adjustment_on_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_028",
+      "subject": "Officer-2",
+      "predicate": "stated_procedural_fact",
+      "object": "documentation_for_time_off_completed_by_requesting_officer_in_automated_system",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_029",
+      "subject": "Officer-1_cell_phone",
+      "predicate": "used_cell_towers_near",
+      "object": "Location-West_at_approximately_1:20pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_030",
+      "subject": "Officer-1_key_fob",
+      "predicate": "used_to_open_door_at",
+      "object": "015th_District_TAC_Gang_Office_at_1:50pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_031",
+      "subject": "Officer-3",
+      "predicate": "stated",
+      "object": "telephoned_TAC_office_on_December_8_2021_and_Officer-1_answered",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_032",
+      "subject": "involved_individual",
+      "predicate": "entered_apartment_at",
+      "object": "approximately_10:35am_December_8_2021_per_surveillance_footage",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_033",
+      "subject": "Officer-1",
+      "predicate": "entered_victims_front_door_at",
+      "object": "approximately_4:05pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_034",
+      "subject": "Officer-1",
+      "predicate": "made_telephone_call_to_victim_at",
+      "object": "approximately_4:45_to_5:00pm_December_8_2021_regarding_child_support_hearing",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_035",
+      "subject": "Officer-1",
+      "predicate": "made_telephone_call_to_victim_at",
+      "object": "approximately_5:15pm_December_8_2021_regarding_child_support_hearing",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_036",
+      "subject": "Officer-1",
+      "predicate": "made_telephone_call_at",
+      "object": "approximately_5:30pm_December_8_2021_third_call_victim_and_another_party_present",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_037",
+      "subject": "Officer-1_and_victim_cell_phones",
+      "predicate": "used_cell_towers_near",
+      "object": "victims_residence_at_approximately_8:40pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_038",
+      "subject": "victims_apartment_front_door",
+      "predicate": "event_occurred_at",
+      "object": "opened_then_quickly_closed_at_9:04pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_039",
+      "subject": "Officer-1",
+      "predicate": "exited_victims_apartment_through_back_door_at",
+      "object": "9:06pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_040",
+      "subject": "Officer-1",
+      "predicate": "observed_wearing_on_exit",
+      "object": "holstered_firearm_on_right_side_of_waistband",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_041",
+      "subject": "Officer-1_and_victim_cell_phones",
+      "predicate": "began_moving_south_from_victims_residence_at",
+      "object": "approximately_9:15pm_December_8_2021_in_unison",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_042",
+      "subject": "Officer-1_and_victim_cell_phones",
+      "predicate": "used_cell_towers_near",
+      "object": "Location-West_015th_District_Station_at_approximately_9:20pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_043",
+      "subject": "victim_cell_phone",
+      "predicate": "last_cell_tower_activity_at",
+      "object": "9:46pm_December_8_2021_near_015th_District_Station",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_044",
+      "subject": "Officer-1_cell_phone",
+      "predicate": "moving_east_from_015th_District_Station_at",
+      "object": "9:49pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_045",
+      "subject": "Officer-1_cell_phone",
+      "predicate": "attempted_to_contact_victim_cell_phone_at",
+      "object": "9:49pm_December_8_2021_victim_phone_not_functioning",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_046",
+      "subject": "Officer-1_cell_phone",
+      "predicate": "used_cell_towers_near",
+      "object": "Location-Central_officers_residence_at_approximately_10:00pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_047",
+      "subject": "POD-001",
+      "predicate": "recorded_officer_arriving_at_residence_at",
+      "object": "approximately_2:48am_December_9_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_048",
+      "subject": "victims_father",
+      "predicate": "called_911_at",
+      "object": "9:49am_December_9_2021_requesting_well_being_check",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_049",
+      "subject": "victims_father",
+      "predicate": "stated",
+      "object": "last_spoke_to_daughter_on_December_7_2021_at_approximately_5:30pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_050",
+      "subject": "Officer-4_and_Officer-5",
+      "predicate": "arrived_at_victims_residence_at",
+      "object": "10:00am_December_9_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_051",
+      "subject": "Officer-4_and_Officer-5",
+      "predicate": "found_victim",
+      "object": "deceased_on_floor_near_front_door_of_residence",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_052",
+      "subject": "Officer-4",
+      "predicate": "recovered_evidence_at",
+      "object": "fired_cartridge_casing_in_shoe_tray_near_front_door",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_053",
+      "subject": "Officer-1",
+      "predicate": "arrived_at_victims_residence_at",
+      "object": "approximately_10:21am_December_9_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_054",
+      "subject": "Officer-1",
+      "predicate": "stated_to_Officer-4",
+      "object": "last_spoke_to_victim_on_December_8_2021_at_approximately_4:30pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_055",
+      "subject": "Officer-1",
+      "predicate": "stated_reason_for_visiting_victim",
+      "object": "to_talk_about_argument_from_previous_weekend",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_056",
+      "subject": "Officer-1",
+      "predicate": "stated_to_Officer-4",
+      "object": "left_Springfield_XDM_9mm_handgun_on_top_shelf_of_victims_bedroom_closet",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_057",
+      "subject": "Springfield_XDM_9mm_handgun",
+      "predicate": "status",
+      "object": "never_found_during_investigation",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_058",
+      "subject": "Cook_County_States_Attorney",
+      "predicate": "charged_Officer-1_with",
+      "object": "first_degree_murder_on_December_10_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_059",
+      "subject": "Cook_County_Medical_Examiner",
+      "predicate": "determined_cause_of_death",
+      "object": "gunshot_wound_to_right_side_of_face_near_nose_no_exit_wound",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_060",
+      "subject": "Cook_County_Medical_Examiner",
+      "predicate": "determined_manner_of_death",
+      "object": "homicide",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_061",
+      "subject": "autopsy",
+      "predicate": "observed_forensic_evidence",
+      "object": "stippling_near_gunshot_wound_indicating_close_range_discharge",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_062",
+      "subject": "Officer-1_left_hand",
+      "predicate": "tested_positive_for",
+      "object": "gunshot_residue",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_063",
+      "subject": "Officer-1_right_hand",
+      "predicate": "tested_negative_for",
+      "object": "gunshot_residue",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_064",
+      "subject": "GSR_result_Officer-1_left_hand",
+      "predicate": "indicates",
+      "object": "officer_discharged_firearm_or_was_in_close_proximity_to_discharged_firearm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_065",
+      "subject": "investigation",
+      "predicate": "added_evidence",
+      "object": "three_firearms_recovered_and_inventoried",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_066",
+      "subject": "firearm_1",
+      "predicate": "recovered_from",
+      "object": "015th_District_Locker_Sig_Sauer_P320_9mm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_067",
+      "subject": "firearm_2",
+      "predicate": "recovered_from",
+      "object": "bedroom_closet_inside_victims_residence_Smith_and_Wesson_MP_9mm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_068",
+      "subject": "firearm_3",
+      "predicate": "recovered_from",
+      "object": "inside_vehicle_Smith_and_Wesson_MP_9mm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_069",
+      "subject": "fired_cartridge_casing_1",
+      "predicate": "recovered_from",
+      "object": "shoe_tray_near_front_door_of_victims_residence",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_070",
+      "subject": "fired_cartridge_casing_2",
+      "predicate": "recovered_from",
+      "object": "bag_inside_Officer-1_residence",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_071",
+      "subject": "ballistic_analysis",
+      "predicate": "added_evidence",
+      "object": "both_fired_cartridge_casings_fired_from_same_firearm_but_not_any_of_three_recovered_firearms",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_072",
+      "subject": "Officer-1",
+      "predicate": "invoked_right_against_self_incrimination",
+      "object": "declined_to_provide_statement_to_COPA_through_attorney",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_073",
+      "subject": "COPA",
+      "predicate": "standard_of_proof_applied",
+      "object": "preponderance_of_evidence_for_sustained_findings",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_074",
+      "subject": "COPA",
+      "predicate": "standard_of_proof_applied",
+      "object": "clear_and_convincing_evidence_for_unfounded_or_exonerated_findings",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_075",
+      "subject": "COPA",
+      "predicate": "revised_finding_to",
+      "object": "allegation_1_sustained_based_on_preponderance_of_evidence_officer_discharged_without_justification",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_076",
+      "subject": "COPA_analysis",
+      "predicate": "affirmed_prior_finding",
+      "object": "no_evidence_gunshot_was_self_inflicted",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_077",
+      "subject": "COPA_analysis",
+      "predicate": "noted_legal_context",
+      "object": "criminal_charges_against_Officer-1_relevant_to_administrative_proceedings_lower_burden_of_proof",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_078",
+      "subject": "COPA_analysis",
+      "predicate": "affirmed_prior_finding",
+      "object": "Officer-1_was_last_person_to_see_victim_alive",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_079",
+      "subject": "COPA_analysis",
+      "predicate": "added_evidence",
+      "object": "fired_cartridge_casings_from_same_firearm_supports_conclusion_Officer-1_shot_victim_and_disposed_of_weapon",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_080",
+      "subject": "COPA_analysis",
+      "predicate": "revised_finding_to",
+      "object": "officer_more_likely_than_not_disposed_of_firearm_used_to_shoot_victim",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_081",
+      "subject": "COPA_analysis",
+      "predicate": "added_evidence",
+      "object": "cell_phone_data_shows_victim_phone_and_officer_phone_travelled_together_to_near_015th_district_station_where_victim_phone_ceased_transmitting",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_082",
+      "subject": "COPA_analysis",
+      "predicate": "inferred_from_evidence",
+      "object": "Officer-1_removed_victims_cell_phone_and_possibly_discarded_it_near_015th_District_Station",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.8
+    },
+    {
+      "claim_id": "SFSR_083",
+      "subject": "COPA_analysis",
+      "predicate": "affirmed_prior_finding",
+      "object": "no_other_person_entered_or_exited_victims_apartment_between_last_seen_alive_and_body_discovered",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_084",
+      "subject": "Officer-1_statement_vs_video_evidence",
+      "predicate": "contradicts",
+      "object": "officer_claimed_last_saw_victim_at_4:30pm_but_video_shows_he_left_at_9:06pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_085",
+      "subject": "COPA_analysis",
+      "predicate": "inferred_from_evidence",
+      "object": "Officer-1_sought_to_mislead_police_about_key_facts_related_to_incident",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.8
+    },
+    {
+      "claim_id": "SFSR_086",
+      "subject": "Officer-1_phone_call_to_victim_phone",
+      "predicate": "cell_tower_data_reveals",
+      "object": "officer_phone_was_in_same_location_as_victim_phone_when_call_was_placed_suggesting_cover_up",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.8
+    },
+    {
+      "claim_id": "SFSR_087",
+      "subject": "COPA_analysis",
+      "predicate": "drew_adverse_inference_from",
+      "object": "Officer-1_refusal_to_answer_allegations",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_088",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_1_sustained_totality_of_circumstances",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_089",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_2_sustained_no_evidence_Officer-1_notified_CPD_of_firearm_discharge",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_090",
+      "subject": "Rule_21_and_Rule_22",
+      "predicate": "requires",
+      "object": "members_report_information_concerning_crime_or_unlawful_action",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_091",
+      "subject": "Rule_39",
+      "predicate": "requires",
+      "object": "members_immediately_report_firearm_discharge_to_sergeant",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_092",
+      "subject": "Department_policy_U04-02",
+      "predicate": "requires",
+      "object": "secure_all_firearms_owned_or_possessed_to_prevent_access_by_unapproved_individuals",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_093",
+      "subject": "Department_policy_U04-02",
+      "predicate": "prohibits",
+      "object": "officers_lending_firearms_to_others",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_094",
+      "subject": "Officer-1",
+      "predicate": "admitted_leaving_firearm",
+      "object": "on_top_shelf_of_victims_bedroom_closet_in_violation_of_policy",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_095",
+      "subject": "COPA_analysis",
+      "predicate": "affirmed_prior_finding",
+      "object": "Officer-1_kept_firearm_at_victims_home_for_her_protection",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_096",
+      "subject": "firearm_2_recovered_from_victims_residence",
+      "predicate": "found_with",
+      "object": "holster_one_live_round_and_one_magazine_in_paper_gift_bag",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_097",
+      "subject": "COPA_analysis",
+      "predicate": "added_evidence",
+      "object": "children_under_14_living_at_victims_and_another_residence_could_have_accessed_unsecured_weapons",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_098",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_3_sustained_Officer-1_failed_to_secure_two_firearms",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_099",
+      "subject": "CPD_attendance_record",
+      "predicate": "shows",
+      "object": "Officer-1_scheduled_9_hour_shift_December_8_2021_11:30am_to_8:30pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_100",
+      "subject": "CPD_attendance_record",
+      "predicate": "shows",
+      "object": "Officer-1_present_at_015th_District_at_approximately_1:50pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_101",
+      "subject": "Officer-1",
+      "predicate": "entered_victims_residence_and_remained_until",
+      "object": "9:06pm_December_8_2021_more_than_four_hours_during_duty_hours",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_102",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_4_sustained_no_evidence_of_time_off_request_or_prompt_absence_report",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_103",
+      "subject": "Officer-1",
+      "predicate": "complimentary_history_includes",
+      "object": "87_awards_including_superintendents_award_of_tactical_excellence_and_officer_of_month",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_104",
+      "subject": "Officer-1",
+      "predicate": "disciplinary_history_includes",
+      "object": "one_day_suspension_July_2021_for_preventable_accident",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_105",
+      "subject": "Officer-1_violations_allegation_1",
+      "predicate": "violated_rules",
+      "object": "Rules_1_2_3_8_9_38",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_106",
+      "subject": "Officer-1_violations_allegation_2",
+      "predicate": "violated_rules",
+      "object": "Rules_2_3_5_10_21_22_39",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_107",
+      "subject": "Officer-1_violations_allegation_3",
+      "predicate": "violated_rules",
+      "object": "Rules_2_3_5_6_10_13",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_108",
+      "subject": "Officer-1_violations_allegation_4",
+      "predicate": "violated_rules",
+      "object": "Rules_2_3_5_6_27_28_30",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_109",
+      "subject": "COPA",
+      "predicate": "recommended_penalty",
+      "object": "separation",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_110",
+      "subject": "Administrator-A",
+      "predicate": "approved_report_on",
+      "object": "November_30_2023",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_111",
+      "subject": "Administrator-B",
+      "predicate": "approved_report_on",
+      "object": "November_30_2023",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_112",
+      "subject": "Case-002",
+      "predicate": "criminal_case_reference",
+      "object": "People_v_Officer-1_first_degree_murder",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_113",
+      "subject": "COPA_analysis",
+      "predicate": "characterized_misconduct_severity",
+      "object": "domestic_related_homicide_most_egregious_form_justifying_separation",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_001",
+      "subject": "CPD",
+      "predicate": "issued_request_for_additional_investigation",
+      "object": "Log-001",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_002",
+      "subject": "CPD",
+      "predicate": "invoked_authority",
+      "object": "MCC 2-78-130-a-i-(2)",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_003",
+      "subject": "Officer-6",
+      "predicate": "authored_request_letter_dated",
+      "object": "2023-05-26",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_004",
+      "subject": "CPD",
+      "predicate": "addressed_request_to",
+      "object": "Administrator-B",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_005",
+      "subject": "CPD",
+      "predicate": "identified_deficiency",
+      "object": "COPA characterized Officer-1 conduct as officer-involved use of force rather than First Degree Murder under 720 ILCS 5/9-1",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_006",
+      "subject": "CPD",
+      "predicate": "criticized_finding",
+      "object": "COPA sustained allegation that Officer-1 discharged a firearm at victim without justification as an officer-involved shooting",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_007",
+      "subject": "CPD",
+      "predicate": "asserted_that",
+      "object": "Officer-1 was not acting within scope of employment when he killed the victim",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_008",
+      "subject": "CPD",
+      "predicate": "referenced_log",
+      "object": "Case-001",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_009",
+      "subject": "CPD",
+      "predicate": "asserted_that",
+      "object": "victim's death was not an officer-involved death under Illinois Law (50 ILCS 727/1-5)",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_010",
+      "subject": "CPD",
+      "predicate": "acknowledged_authority",
+      "object": "COPA has authority to conduct administrative investigations into firearm discharges under MCC 2-78-120-c",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_011",
+      "subject": "CPD detectives",
+      "predicate": "conducted_investigation_under",
+      "object": "Case-001",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_012",
+      "subject": "CPD detectives",
+      "predicate": "obtained_evidence_establishing",
+      "object": "probable cause that Officer-1 murdered the victim",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_013",
+      "subject": "Officer-1",
+      "predicate": "was_arrested_and_charged_with",
+      "object": "murder of victim",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_014",
+      "subject": "CPD",
+      "predicate": "directed_action",
+      "object": "COPA should re-characterize Officer-1's conduct as violation of Department Rule 1 by violating the law (First Degree Murder)",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_015",
+      "subject": "CPD",
+      "predicate": "referenced_log",
+      "object": "Log-002",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_016",
+      "subject": "Log-002",
+      "predicate": "contains_sustained_allegation_of",
+      "object": "domestic abuse against Officer-1",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_017",
+      "subject": "Log-002",
+      "predicate": "was_referred_to",
+      "object": "Department of Law for separation",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_018",
+      "subject": "COPA investigation",
+      "predicate": "established_evidence_that",
+      "object": "Officer-1 was in a domestic relationship with the victim and was the last person at her residence before her body was discovered",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_019",
+      "subject": "COPA investigation",
+      "predicate": "established_evidence_that",
+      "object": "Officer-1 and victim were engaged in an argument",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_020",
+      "subject": "CPD",
+      "predicate": "identified_deficiency",
+      "object": "no evidence that Officer-1 claimed he shot victim as part of his duties as a Chicago Police Officer",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_021",
+      "subject": "COPA",
+      "predicate": "sustained_allegation",
+      "object": "allegation 4 \u2014 Officer-1 was absent from work without permission at time of incident",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_022",
+      "subject": "CPD",
+      "predicate": "identified_deficiency",
+      "object": "Officer-1 was not properly provided his Administrative Rights (CPD-44.105)",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_023",
+      "subject": "CPD",
+      "predicate": "identified_deficiency",
+      "object": "Officer-1 was not properly ordered to give a statement during COPA investigation",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_024",
+      "subject": "CPD",
+      "predicate": "directed_action",
+      "object": "Officer-1 must be properly presented with allegations and ordered to give a Garrity-protected administrative statement",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_025",
+      "subject": "CPD",
+      "predicate": "asserted_that",
+      "object": "Officer-1's refusal to provide a properly ordered statement would result in additional allegation for insubordination under Department Rules 2, 3, 5, 6, and 51",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_026",
+      "subject": "COPA investigator",
+      "predicate": "emailed_on",
+      "object": "2022-03-11 regarding Officer-1's invocation of right to remain silent for Log-001 and Log-002",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_027",
+      "subject": "Officer-1 attorney",
+      "predicate": "invoked_on_behalf_of",
+      "object": "Fifth Amendment right to remain silent, citing active First Degree Murder indictment at Cook County Department of Corrections",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_028",
+      "subject": "Officer-1",
+      "predicate": "was_incarcerated_at",
+      "object": "Cook County Department of Corrections under indictment for First Degree Murder at time of COPA email",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_029",
+      "subject": "CPD",
+      "predicate": "identified_deficiency",
+      "object": "allegations referenced in COPA email were not included in COPA's case attachments, and it is unclear whether Officer-1 was served with CPD-44.105",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_030",
+      "subject": "CPD",
+      "predicate": "asserted_legal_position",
+      "object": "Officer-1 does not have a constitutional right to refuse to give an administrative statement on disciplinary charges related to employment once properly ordered to do so",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_031",
+      "subject": "CPD",
+      "predicate": "cited_legal_authority",
+      "object": "Satchell v. Board of Police and Fire Commissioners of the Village of Melrose Park, 2022 IL App(1st) 201361 \u2014 officer properly terminated for insubordination after invoking Fifth Amendment despite Garrity warning",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_032",
+      "subject": "CPD",
+      "predicate": "cited_legal_authority",
+      "object": "Confederation of Police v. Conlisk, 489 F.2d 891 (7th Cir 1973) \u2014 termination reversed where officers were not asked specific narrow questions and not advised of immunity",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_033",
+      "subject": "CPD Form 44.105",
+      "predicate": "provides_administrative_rights_including",
+      "object": "statement made during hearing cannot be used against officer in subsequent criminal proceeding",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_034",
+      "subject": "CPD",
+      "predicate": "required_additional_investigation_of",
+      "object": "COPA must re-serve Officer-1 with CPD-44.105 Administrative Proceeding Rights and issue a proper order to provide a statement on specific, narrow questions related to official duties",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_035",
+      "subject": "CPD",
+      "predicate": "asserted_legal_position",
+      "object": "Garrity is self-executing and attaches as a matter of law when a police officer is ordered by his public employer to answer questions about conduct that could incriminate him",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_036",
+      "subject": "Officer-6",
+      "predicate": "signed_request_as",
+      "object": "Interim Superintendent of Police, Chicago Police Department",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_001",
+      "subject": "Officer-1",
+      "predicate": "has_occupation",
+      "object": "Police Officer - Chicago",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_002",
+      "subject": "Officer-1",
+      "predicate": "has_age_at_arrest",
+      "object": "29 years",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_003",
+      "subject": "Officer-1",
+      "predicate": "has_place_of_birth",
+      "object": "Illinois",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_004",
+      "subject": "Officer-1",
+      "predicate": "arrest_occurred_at_time",
+      "object": "09 December 2021 13:05",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_005",
+      "subject": "Officer-1",
+      "predicate": "arrested_at_location",
+      "object": "Location-Northwest",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_006",
+      "subject": "Officer-1",
+      "predicate": "arrested_at_beat",
+      "object": "2515",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_007",
+      "subject": "Officer-1",
+      "predicate": "arrested_at_location_type",
+      "object": "292 - Government Building / Property",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_008",
+      "subject": "Officer-1",
+      "predicate": "booked_at_location",
+      "object": "District 025 Male Lockup",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_009",
+      "subject": "Officer-1",
+      "predicate": "resisted_arrest",
+      "object": "No",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_010",
+      "subject": "Case-003",
+      "predicate": "generated_by",
+      "object": "Civilian-A",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_011",
+      "subject": "Case-003",
+      "predicate": "report_generated_at_time",
+      "object": "11 DEC 2021 10:12",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_012",
+      "subject": "Officer-1",
+      "predicate": "associated_rd_number",
+      "object": "Case-001",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_013",
+      "subject": "Officer-1",
+      "predicate": "associated_event_number",
+      "object": "Event-001",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_014",
+      "subject": "Officer-1",
+      "predicate": "physical_description",
+      "object": "Male, Black, 5'09\", 172 lbs, Brown Eyes, Black Hair, Short Hair Style, Medium Complexion",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_015",
+      "subject": "Officer-1",
+      "predicate": "charged_with_statute",
+      "object": "720 ILCS 5.0/9-1-A-1",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_016",
+      "subject": "Officer-1",
+      "predicate": "charged_with_offense",
+      "object": "MURDER - FIRST DEGREE",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_017",
+      "subject": "Officer-1",
+      "predicate": "charge_class",
+      "object": "Class M - Type F Felony",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_018",
+      "subject": "Officer-1",
+      "predicate": "charge_domestic_related",
+      "object": "Yes",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_019",
+      "subject": "AR_015",
+      "predicate": "felony_review_approved_by",
+      "object": "Civilian-I",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_020",
+      "subject": "AR_015",
+      "predicate": "felony_review_approved_at_time",
+      "object": "10 DEC 2021 21:50",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_021",
+      "subject": "AR_015",
+      "predicate": "felony_review_approved_by_office",
+      "object": "State's Attorneys's Office",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_022",
+      "subject": "Officer-1",
+      "predicate": "armed_status_at_arrest",
+      "object": "Unarmed",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_023",
+      "subject": "Case-003",
+      "predicate": "narcotics_recovered",
+      "object": "No",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_024",
+      "subject": "Case-003",
+      "predicate": "warrant_identified",
+      "object": "No",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_025",
+      "subject": "Victim",
+      "predicate": "assigned_beat",
+      "object": "2512",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_026",
+      "subject": "Victim",
+      "predicate": "sex",
+      "object": "Female",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_027",
+      "subject": "Victim",
+      "predicate": "injured",
+      "object": "Yes",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_028",
+      "subject": "Victim",
+      "predicate": "deceased",
+      "object": "Yes",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_029",
+      "subject": "Victim",
+      "predicate": "race",
+      "object": "Black",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_030",
+      "subject": "Victim",
+      "predicate": "age_at_incident",
+      "object": "29 years",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_031",
+      "subject": "Victim",
+      "predicate": "injury_type",
+      "object": "Gun Shot",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_032",
+      "subject": "Victim",
+      "predicate": "hospitalized",
+      "object": "No",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_033",
+      "subject": "Case-003",
+      "predicate": "property_information_available",
+      "object": "No - not available in automated arrest system",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_034",
+      "subject": "Officer-1",
+      "predicate": "relationship_to_victim",
+      "object": "boyfriend",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_035",
+      "subject": "Officer-1",
+      "predicate": "heard_arguing_with_victim_on_date",
+      "object": "08 Dec 2021",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_036",
+      "subject": "Officer-1",
+      "predicate": "observed_on_surveillance_video_as",
+      "object": "last person leaving victim's residence and homicide scene",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_037",
+      "subject": "Victim",
+      "predicate": "discovered_deceased_on_date",
+      "object": "09 Dec 2021",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_038",
+      "subject": "Victim",
+      "predicate": "cause_of_death",
+      "object": "single gunshot wound to chin",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_039",
+      "subject": "Victim",
+      "predicate": "sent_photograph_of_firearm_with_text_message_to_friend",
+      "object": "stating that if any harm came to her it was Officer-1 who did it",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_040",
+      "subject": "Officer-1",
+      "predicate": "initial_court_date",
+      "object": "11 December 2021",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_041",
+      "subject": "Officer-1",
+      "predicate": "assigned_court_branch",
+      "object": "CBC-1 Location-Southwest - Room 100",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_042",
+      "subject": "Case-003",
+      "predicate": "court_comments_additional_in_section",
+      "object": "SEE WC COMMENTS SECTION FOR ADDITIONAL COMMENTS",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_043",
+      "subject": "Officer-8",
+      "predicate": "attested_arrest_report_at_time",
+      "object": "09 DEC 2021 19:51",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_044",
+      "subject": "Officer-8",
+      "predicate": "badge_number",
+      "object": "Badge-004",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_045",
+      "subject": "Officer-7",
+      "predicate": "role_in_arrest",
+      "object": "1st Arresting Officer",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_046",
+      "subject": "Officer-7",
+      "predicate": "badge_number",
+      "object": "Badge-003",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_047",
+      "subject": "Officer-8",
+      "predicate": "role_in_arrest",
+      "object": "Arresting Officer - Second",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_048",
+      "subject": "Officer-9",
+      "predicate": "role_in_arrest",
+      "object": "Approving Supervisor",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_049",
+      "subject": "Officer-9",
+      "predicate": "approved_probable_cause_at_time",
+      "object": "09 DEC 2021 20:05",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_050",
+      "subject": "Officer-9",
+      "predicate": "badge_number",
+      "object": "Badge-005",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_051",
+      "subject": "Officer-1",
+      "predicate": "received_in_lockup_at_time",
+      "object": "09 December 2021 20:11",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_052",
+      "subject": "Officer-1",
+      "predicate": "fingerprints_taken_at_time",
+      "object": "09 December 2021 20:29",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_053",
+      "subject": "Officer-1",
+      "predicate": "photograph_taken_at_time",
+      "object": "09 December 2021 20:17",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_054",
+      "subject": "Officer-1",
+      "predicate": "states_taking_medication",
+      "object": "No Medication",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_055",
+      "subject": "Civilian-C",
+      "predicate": "lockup_keeper_cell_update_at_time",
+      "object": "09 DEC 2021 22:42",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_056",
+      "subject": "Civilian-D",
+      "predicate": "lockup_keeper_comment",
+      "object": "Subject was not in lockup the entirety of 3rd Watch; Subject out at Area",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_057",
+      "subject": "Civilian-D",
+      "predicate": "lockup_keeper_comment_at_time",
+      "object": "10 DEC 2021 21:01",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_058",
+      "subject": "Case-003",
+      "predicate": "interviews_logged",
+      "object": "No interviews logged",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_059",
+      "subject": "Officer-1",
+      "predicate": "lockup_cell_number",
+      "object": "6-1",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_060",
+      "subject": "Officer-1",
+      "predicate": "palmprints_taken",
+      "object": "Yes",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_061",
+      "subject": "Officer-1",
+      "predicate": "transport_details",
+      "object": "1PO",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_062",
+      "subject": "Officer-1",
+      "predicate": "released_from_lockup_at_time",
+      "object": "11 December 2021 07:39",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_063",
+      "subject": "Officer-1",
+      "predicate": "obvious_pain_or_injury_at_booking",
+      "object": "No",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_064",
+      "subject": "Officer-1",
+      "predicate": "first_time_arrested",
+      "object": "Yes",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_065",
+      "subject": "Officer-1",
+      "predicate": "under_influence_of_alcohol_or_drugs_at_booking",
+      "object": "No",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_066",
+      "subject": "Officer-1",
+      "predicate": "signs_of_alcohol_drug_withdrawal",
+      "object": "No",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_067",
+      "subject": "Officer-1",
+      "predicate": "appears_despondent_at_booking",
+      "object": "No",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_068",
+      "subject": "Officer-1",
+      "predicate": "appears_irrational_at_booking",
+      "object": "No",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_069",
+      "subject": "Officer-1",
+      "predicate": "serious_mental_problems_at_booking",
+      "object": "No",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_070",
+      "subject": "Officer-1",
+      "predicate": "serious_medical_problems_at_booking",
+      "object": "No",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_071",
+      "subject": "Officer-1",
+      "predicate": "emergency_contact_provided",
+      "object": "REFUSED",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_072",
+      "subject": "Officer-1",
+      "predicate": "received_by_officer_at_time",
+      "object": "09 DEC 2021 20:22",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_073",
+      "subject": "Officer-8",
+      "predicate": "received_arrestee_at_location",
+      "object": "Area 5 Ongoing Detective Investigation",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_074",
+      "subject": "Officer-12",
+      "predicate": "released_arrestee_to_location_at_time",
+      "object": "District 025 Male Lockup at 09 DEC 2021 20:22",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_075",
+      "subject": "Officer-9",
+      "predicate": "watch_commander_comment",
+      "object": "DOES NOT APPLY TO THIS ARREST; Investigation is on going per Det. Beebe Badge-011",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_076",
+      "subject": "Officer-9",
+      "predicate": "reviewed_by_WC_at_time",
+      "object": "09 DEC 2021 20:05",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_077",
+      "subject": "Officer-22",
+      "predicate": "watch_commander_comment",
+      "object": "Duty Judge Burch: finding of probable cause at 2245 hours",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_078",
+      "subject": "Officer-22",
+      "predicate": "watch_commander_comment_at_time",
+      "object": "10 DEC 2021 23:02",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_079",
+      "subject": "Officer-23",
+      "predicate": "watch_commander_comment",
+      "object": "Pending investigation by A/5 Detectives",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_080",
+      "subject": "Officer-23",
+      "predicate": "watch_commander_comment_at_time",
+      "object": "09 DEC 2021 21:46",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_081",
+      "subject": "Officer-9",
+      "predicate": "watch_commander_comment",
+      "object": "Detectives are aware of duty judge requirement; Investigation is on going",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_082",
+      "subject": "Officer-9",
+      "predicate": "watch_commander_comment_at_time",
+      "object": "10 DEC 2021 19:00",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_083",
+      "subject": "Officer-9",
+      "predicate": "watch_commander_typo_correction_comment",
+      "object": "Typo correction by WC: arrestee Officer-1 was referred to by an incorrect name variant in the probable-cause narrative; WC noted the correct variant",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_084",
+      "subject": "Officer-9",
+      "predicate": "watch_commander_typo_correction_at_time",
+      "object": "10 DEC 2021 19:03",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_085",
+      "subject": "Civilian-D",
+      "predicate": "searched_arrestee",
+      "object": "Officer-1",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_086",
+      "subject": "Civilian-E",
+      "predicate": "role_in_processing",
+      "object": "Lockup Keeper",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_087",
+      "subject": "Officer-10",
+      "predicate": "role_in_arrest",
+      "object": "Arresting Officer - Assisting",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_088",
+      "subject": "Officer-10",
+      "predicate": "badge_number",
+      "object": "Badge-006",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_089",
+      "subject": "Officer-11",
+      "predicate": "role_in_arrest",
+      "object": "Arresting Officer - Assisting",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_090",
+      "subject": "Officer-11",
+      "predicate": "badge_number",
+      "object": "Badge-007",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_091",
+      "subject": "Civilian-E",
+      "predicate": "fingerprinted_arrestee",
+      "object": "Officer-1",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_092",
+      "subject": "Officer-13",
+      "predicate": "detective_assigned_at_time",
+      "object": "10 DEC 2021 21:55",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_093",
+      "subject": "Officer-13",
+      "predicate": "badge_number",
+      "object": "Badge-011",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_094",
+      "subject": "Officer-22",
+      "predicate": "final_approval_of_charges_at_time",
+      "object": "10 DEC 2021 23:13",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_095",
+      "subject": "Officer-22",
+      "predicate": "badge_number",
+      "object": "Badge-016",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "AR_096",
+      "subject": "Case-003",
+      "predicate": "visitors_logged",
+      "object": "No visitors logged",
+      "source_document": "arrest_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_001",
+      "subject": "Case-001",
+      "predicate": "has_rd_number",
+      "object": "JE471248",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_002",
+      "subject": "Event-001",
+      "predicate": "has_event_number",
+      "object": "2134303792",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_003",
+      "subject": "Case-001",
+      "predicate": "offense_classification",
+      "object": "IUCR 5078 - Death - Investigation",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_004",
+      "subject": "Case-001",
+      "predicate": "reported_incident_type",
+      "object": "Death Investigation",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_005",
+      "subject": "Event-001",
+      "predicate": "occurrence_beat",
+      "object": "2512",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_006",
+      "subject": "Event-001",
+      "predicate": "unit_assigned",
+      "object": "X2511",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_007",
+      "subject": "Event-001",
+      "predicate": "incident_occurred_at_location",
+      "object": "Location-South (090 - Apartment - Apartment Building)",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_008",
+      "subject": "Event-001",
+      "predicate": "ro_arrival_date",
+      "object": "09 December 2021 09:53",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_009",
+      "subject": "Event-001",
+      "predicate": "incident_occurred_at_time",
+      "object": "08 December 2021 16:30 - 09 December 2021 09:49",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_010",
+      "subject": "Victim",
+      "predicate": "victim_was",
+      "object": "Individual (Black female, DOB [REDACTED], age 29)",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_011",
+      "subject": "Victim",
+      "predicate": "physical_description",
+      "object": "Female, Black, 5'03\", 135 lbs, Brown Eyes, Brown Hair, Braids, Medium Brown Complexion",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_012",
+      "subject": "Victim",
+      "predicate": "residence_beat",
+      "object": "2512",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_013",
+      "subject": "Victim",
+      "predicate": "identification_type",
+      "object": "Drivers License, Illinois",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_014",
+      "subject": "ParentGuardian-1",
+      "predicate": "relationship_to_victim",
+      "object": "Parent/Guardian (Biological Father)",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_015",
+      "subject": "ParentGuardian-1",
+      "predicate": "physical_description",
+      "object": "Male, Black, 5'06\", 200 lbs, Brown Eyes, Grey/Part Grey Hair, Short Hair, Goatee, Medium Brown Complexion, age 59, DOB [REDACTED]",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_016",
+      "subject": "ParentGuardian-1",
+      "predicate": "residence_beat",
+      "object": "3100",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_017",
+      "subject": "ParentGuardian-1",
+      "predicate": "sobriety_at_time_of_report",
+      "object": "Sober",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_018",
+      "subject": "ParentGuardian-2",
+      "predicate": "relationship_to_victim",
+      "object": "Parent/Guardian (Biological Mother)",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_019",
+      "subject": "ParentGuardian-2",
+      "predicate": "physical_description",
+      "object": "Female, Black, 5'04\", 170 lbs, Brown Eyes, Blond/Strawberry Hair, age 56, DOB [REDACTED]",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_020",
+      "subject": "ParentGuardian-2",
+      "predicate": "residence_beat",
+      "object": "1823",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_021",
+      "subject": "ParentGuardian-2",
+      "predicate": "sobriety_at_time_of_report",
+      "object": "Sober",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_022",
+      "subject": "Officer-1",
+      "predicate": "suspect_relationship_to_victim",
+      "object": "Offender (Unknown to victim \u2014 listed as Suspect #1 with unknown identity at intake)",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_023",
+      "subject": "Suspect-1",
+      "predicate": "offender_was",
+      "object": "Unknown identity at time of report",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_024",
+      "subject": "Suspect-1",
+      "predicate": "physical_description",
+      "object": "Unknown Eyes, Unknown Hair, Unknown Hair Style, Unknown Complexion, Light Brown Complexion (partial), Short Hair Style",
+      "source_document": "case_incident_report",
+      "confidence": 0.6
+    },
+    {
+      "claim_id": "CIR_025",
+      "subject": "Suspect-1",
+      "predicate": "identification_type",
+      "object": "State ID, Illinois",
+      "source_document": "case_incident_report",
+      "confidence": 0.6
+    },
+    {
+      "claim_id": "CIR_026",
+      "subject": "Victim",
+      "predicate": "preliminary_injury_observed",
+      "object": "Fatal injury \u2014 Injured by offender, extent: Fatal",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_027",
+      "subject": "Victim",
+      "predicate": "hospital_record",
+      "object": "Illinois Masonic Medical Center",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_028",
+      "subject": "Victim",
+      "predicate": "removal_reason",
+      "object": "DOA",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_029",
+      "subject": "Victim",
+      "predicate": "removal_date",
+      "object": "09 December 2021",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_030",
+      "subject": "Victim",
+      "predicate": "pronounced_date",
+      "object": "09 December 2021 00:00",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_031",
+      "subject": "Victim",
+      "predicate": "injury_cause",
+      "object": "Weapon - Firearm",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_032",
+      "subject": "Victim",
+      "predicate": "weapon_type_used_against",
+      "object": "Gun Shot - Handgun",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_033",
+      "subject": "Case-004",
+      "predicate": "report_generated_by",
+      "object": "Civilian-B",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_034",
+      "subject": "Case-004",
+      "predicate": "report_generated_date",
+      "object": "10 December 2021 07:39",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_035",
+      "subject": "Firearm-1",
+      "predicate": "possessor_user",
+      "object": "Unknown at time of report",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_036",
+      "subject": "Firearm-1",
+      "predicate": "ammunition_type",
+      "object": "9mm",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_037",
+      "subject": "Firearm-1",
+      "predicate": "make_model",
+      "object": "Unknown make, model 9 (Unknown)",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_038",
+      "subject": "Firearm-1",
+      "predicate": "displayed_status",
+      "object": "No",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_039",
+      "subject": "Firearm-1",
+      "predicate": "used_status",
+      "object": "No (field entry)",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_040",
+      "subject": "Firearm-1",
+      "predicate": "recovered_status",
+      "object": "Yes",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_041",
+      "subject": "Firearm-1",
+      "predicate": "evidence_status",
+      "object": "Yes",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_042",
+      "subject": "Firearm-1",
+      "predicate": "description",
+      "object": "One Spent Grey Color 9mm Casing",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_043",
+      "subject": "Firearm-1",
+      "predicate": "spent_cartridges_count",
+      "object": "1",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_044",
+      "subject": "Event-001",
+      "predicate": "is_bwc_recorded_incident",
+      "object": "true",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_045",
+      "subject": "ReportingOfficer",
+      "predicate": "reporting_officer_was",
+      "object": "Officer-4 (BRANCH JR, Larry L), Unit 025, Beat X2511",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_046",
+      "subject": "ReportingOfficer",
+      "predicate": "dispatched_via",
+      "object": "OEMC assignment of Check Well-Being at Location-South",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_047",
+      "subject": "ParentGuardian-1",
+      "predicate": "met_officers_upon_arrival",
+      "object": "true \u2014 stated he was worried about his daughter (Victim) who had not returned his calls or picked up her daughter",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_048",
+      "subject": "ParentGuardian-1",
+      "predicate": "last_contact_with_victim",
+      "object": "Tuesday evening, 07 December 2021 at 17:30",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_049",
+      "subject": "Victim",
+      "predicate": "reported_emotional_state_to_father",
+      "object": "Depressed about her relationship with her youngest daughter's father (Officer-1)",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_050",
+      "subject": "Victim",
+      "predicate": "vehicle_identified_at_scene",
+      "object": "2021 Silver Mazda CX-5, Illinois plate (redacted), parked directly in front of apartment building",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_051",
+      "subject": "ReportingOfficer",
+      "predicate": "observed_no_occupant_in_vehicle",
+      "object": "true",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_052",
+      "subject": "ReportingOfficer",
+      "predicate": "knocked_on_front_door",
+      "object": "multiple times, received no response",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_053",
+      "subject": "Officer-5",
+      "predicate": "knocked_on_adjacent_apartment",
+      "object": "Apartment 1-S \u2014 no response received",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_054",
+      "subject": "ReportingOfficer",
+      "predicate": "contacted_building_management",
+      "object": "true \u2014 located document on wall with building management letterhead",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_055",
+      "subject": "MaintenanceWorker",
+      "predicate": "unable_to_open_front_door",
+      "object": "true \u2014 missing key to deadbolt (recently changed)",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_056",
+      "subject": "Officer-11",
+      "predicate": "notified_at_time",
+      "object": "09 December 2021 10:40",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_057",
+      "subject": "Officer-14",
+      "predicate": "on_scene_at_time",
+      "object": "09 December 2021 10:48",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_058",
+      "subject": "Officer-13",
+      "predicate": "on_scene_at_time",
+      "object": "09 December 2021 10:48",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_059",
+      "subject": "Officer-10",
+      "predicate": "on_scene_at_time",
+      "object": "09 December 2021 10:48",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_060",
+      "subject": "Civilian-F",
+      "predicate": "medical_examiner_notified_at_time",
+      "object": "09 December 2021 11:11",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_061",
+      "subject": "Civilian-G",
+      "predicate": "medical_examiner_on_scene_at_time",
+      "object": "09 December 2021 11:57",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_062",
+      "subject": "Officer-16",
+      "predicate": "evidence_technician_on_scene_at_time",
+      "object": "09 December 2021 12:35",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_063",
+      "subject": "Officer-15",
+      "predicate": "on_scene_at_time",
+      "object": "09 December 2021 13:30",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_064",
+      "subject": "MaintenanceWorker",
+      "predicate": "opened_rear_apartment_door",
+      "object": "true \u2014 relocated to rear of building to open back door",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_065",
+      "subject": "Officer-5",
+      "predicate": "discovered_victim",
+      "object": "Victim found laying on back near front door, unresponsive",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_066",
+      "subject": "Victim",
+      "predicate": "found_position",
+      "object": "Laying lifeless on floor in pool of blood on left side of face",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_067",
+      "subject": "ReportingOfficer",
+      "predicate": "checked_pulse_result",
+      "object": "No feedback \u2014 requested CFD assistance via radio through OEMC",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_068",
+      "subject": "CFD-Engine25",
+      "predicate": "arrived_on_scene_at_time",
+      "object": "09 December 2021 10:12",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_069",
+      "subject": "CFD-Engine25",
+      "predicate": "pronounced_victim_deceased_at_time",
+      "object": "09 December 2021 10:24",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_070",
+      "subject": "CFD-Engine25",
+      "predicate": "pronounced_through",
+      "object": "Dr. of Illinois Masonic Hospital",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_071",
+      "subject": "CFD-Engine25",
+      "predicate": "entry_wound_observed",
+      "object": "Entry wound of some kind on left side of victim's chin",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_072",
+      "subject": "ReportingOfficer",
+      "predicate": "searched_area_for_weapon",
+      "object": "true \u2014 search of immediate area resulted in finding one grey color spent casing (later confirmed as 9mm)",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_073",
+      "subject": "SpentCasing-1",
+      "predicate": "recovered_and_inventoried_by",
+      "object": "Officer-16 (E.T. on scene)",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_074",
+      "subject": "Officer-5",
+      "predicate": "remained_to_secure_crime_scene",
+      "object": "true \u2014 remained inside apartment",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_075",
+      "subject": "Officer-1",
+      "predicate": "arrived_at_scene_in_vehicle",
+      "object": "2019 Grey Color Audi A-4, Illinois plate (redacted), with two occupants",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_076",
+      "subject": "Officer-1",
+      "predicate": "identified_self_as",
+      "object": "Off-duty CPD officer (Star Badge-001, Emp Unit 015) and boyfriend/father of victim's youngest child",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_077",
+      "subject": "Officer-1",
+      "predicate": "relationship_to_victim",
+      "object": "Boyfriend and father of youngest child",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_078",
+      "subject": "Victim",
+      "predicate": "had_children",
+      "object": "Two children with Officer-1: Female child age 6 (DOB [REDACTED] 2015), Female child age 9 months (DOB [REDACTED] 2021)",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_079",
+      "subject": "VictimsChildren",
+      "predicate": "residing_with",
+      "object": "Relatives at time of incident",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_080",
+      "subject": "Officer-1",
+      "predicate": "last_contact_with_victim",
+      "object": "Wednesday afternoon, 08 December 2021 at 16:30",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_081",
+      "subject": "Officer-1",
+      "predicate": "disclosed_firearm_left_at_residence",
+      "object": "One of his handguns (9mm Springfield XDM, unknown serial number) left in victim's bedroom closet, top shelf",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_082",
+      "subject": "ParentGuardian-2",
+      "predicate": "contacted_officer_1_when",
+      "object": "Morning of 09 December 2021, after getting off work, worried about victim not having been in contact since early that week",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_083",
+      "subject": "Officer-1",
+      "predicate": "volunteered_to_transport_victim_mother",
+      "object": "Picked up ParentGuardian-2 and brought her to Location-South",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_084",
+      "subject": "ReportingOfficer",
+      "predicate": "notified_area5_detective",
+      "object": "Officer-11 (Detective Perez, Badge-009, Beat 5520B) at 10:40",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_085",
+      "subject": "Area5Detectives",
+      "predicate": "on_scene_at_time",
+      "object": "09 December 2021 10:48 (Officer-14, Officer-13, Officer-10)",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_086",
+      "subject": "Officer-15",
+      "predicate": "commander_on_scene_at_time",
+      "object": "09 December 2021 13:30",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_087",
+      "subject": "Officer-20",
+      "predicate": "watch_commander_notified_at_time",
+      "object": "09 December 2021 11:05",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_088",
+      "subject": "Civilian-F",
+      "predicate": "medical_examiner_notified_at_time",
+      "object": "09 December 2021 11:11 \u2014 ME number Case-005",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_089",
+      "subject": "Officer-16",
+      "predicate": "et_request_made_via_citywide2_at_time",
+      "object": "09 December 2021 11:34",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_090",
+      "subject": "Officer-16",
+      "predicate": "et_on_scene_at_time",
+      "object": "09 December 2021 12:35 (Beat 5832)",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_091",
+      "subject": "Officer-21",
+      "predicate": "cpic_notified_at_time",
+      "object": "09 December 2021 11:43",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_092",
+      "subject": "Civilian-H",
+      "predicate": "news_affairs_notified_at_time",
+      "object": "09 December 2021 11:50",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_093",
+      "subject": "BodyRemoval",
+      "predicate": "requested_at_time",
+      "object": "09 December 2021 14:44 via Citywide 2",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_094",
+      "subject": "BodyRemoval",
+      "predicate": "arrived_at_time",
+      "object": "09 December 2021 16:50",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_095",
+      "subject": "Officer-19",
+      "predicate": "assisting_officer_at_time",
+      "object": "09 December 2021 16:19, Unit 025, Beat 2531",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_096",
+      "subject": "Officer-5",
+      "predicate": "assisting_officer_at_time",
+      "object": "09 December 2021 16:19, Unit 025, Beat 2513",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_097",
+      "subject": "Officer-24",
+      "predicate": "assisting_officer_at_time",
+      "object": "09 December 2021 16:19, Unit 025, Beat 2512",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_098",
+      "subject": "Officer-17",
+      "predicate": "supervisor_on_scene_at_time",
+      "object": "09 December 2021 16:19, Unit 025, Beat 2510",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_099",
+      "subject": "Officer-18",
+      "predicate": "supervisor_on_scene_at_time",
+      "object": "09 December 2021 16:19, Unit 025, Beat 2520",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_100",
+      "subject": "Event-001",
+      "predicate": "additional_details_pending",
+      "object": "Results of Area 5 Detective further investigation",
+      "source_document": "case_incident_report",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_001",
+      "subject": "Case-002",
+      "predicate": "is_pending_in_court",
+      "object": "Cook County Circuit Court, Criminal Division",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_002",
+      "subject": "Case-002",
+      "predicate": "case_caption_is",
+      "object": "People of the State of Illinois v. Officer-1",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_003",
+      "subject": "Officer-1",
+      "predicate": "is_defendant_in",
+      "object": "Case-002",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_004",
+      "subject": "Judge-A",
+      "predicate": "presided_over",
+      "object": "Case-002",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_005",
+      "subject": "Judge-A",
+      "predicate": "entered_order_in",
+      "object": "Case-002",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_006",
+      "subject": "the_order",
+      "predicate": "was_entered_as",
+      "object": "AGREED order between the parties",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_007",
+      "subject": "the_order",
+      "predicate": "prohibits_release_of",
+      "object": "materials related to Log-001 by the City of Chicago and its entities",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_008",
+      "subject": "the_order",
+      "predicate": "applies_under_legal_authority",
+      "object": "Transparency Policy",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_009",
+      "subject": "the_order",
+      "predicate": "applies_under_legal_authority",
+      "object": "Freedom of Information Act",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_010",
+      "subject": "the_order",
+      "predicate": "effective_during",
+      "object": "the pendency of the criminal matter (Case-002)",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_011",
+      "subject": "the_order",
+      "predicate": "signed_at_date",
+      "object": "January 25, 2022",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_012",
+      "subject": "the_order",
+      "predicate": "filed_at_date",
+      "object": "January 25, 2022",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_013",
+      "subject": "the_order",
+      "predicate": "was_filed_with_clerk",
+      "object": "Civilian-J, Clerk of the Circuit Court of Cook County, IL",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_014",
+      "subject": "Log-001",
+      "predicate": "is_subject_of_release_prohibition_in",
+      "object": "Case-002",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "ORDER_015",
+      "subject": "City_of_Chicago",
+      "predicate": "is_prohibited_from_releasing",
+      "object": "materials related to Log-001 during pendency of Case-002",
+      "source_document": "copa_order",
+      "confidence": 0.95
+    }
+  ],
+  "cross_references": [
+    {
+      "reference_id": "FSR1_xref_001",
+      "source_claim": "FSR1_009",
+      "target_claim": "FSR1_093",
+      "relationship": "elaborates",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_002",
+      "source_claim": "FSR1_010",
+      "target_claim": "FSR1_102",
+      "relationship": "elaborates",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_003",
+      "source_claim": "FSR1_011",
+      "target_claim": "FSR1_107",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_004",
+      "source_claim": "FSR1_012",
+      "target_claim": "FSR1_136",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_005",
+      "source_claim": "FSR1_013",
+      "target_claim": "FSR1_100",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_006",
+      "source_claim": "FSR1_014",
+      "target_claim": "FSR1_129",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_007",
+      "source_claim": "FSR1_017",
+      "target_claim": "FSR1_147",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_008",
+      "source_claim": "FSR1_019",
+      "target_claim": "FSR1_151",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_009",
+      "source_claim": "FSR1_021",
+      "target_claim": "FSR1_158",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_010",
+      "source_claim": "FSR1_044",
+      "target_claim": "FSR1_023",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_011",
+      "source_claim": "FSR1_056",
+      "target_claim": "FSR1_160",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_012",
+      "source_claim": "FSR1_069",
+      "target_claim": "FSR1_144",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_013",
+      "source_claim": "FSR1_094",
+      "target_claim": "FSR1_118",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_014",
+      "source_claim": "FSR1_096",
+      "target_claim": "FSR1_145",
+      "relationship": "contradicts",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_015",
+      "source_claim": "FSR1_108",
+      "target_claim": "FSR1_110",
+      "relationship": "supports",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_016",
+      "source_claim": "FSR1_120",
+      "target_claim": "FSR1_137",
+      "relationship": "supports",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_017",
+      "source_claim": "FSR1_079",
+      "target_claim": "FSR1_141",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_018",
+      "source_claim": "FSR1_078",
+      "target_claim": "FSR1_142",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_019",
+      "source_claim": "FSR1_099",
+      "target_claim": "FSR1_138",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "FSR1_xref_020",
+      "source_claim": "FSR1_070",
+      "target_claim": "FSR1_071",
+      "relationship": "supports",
+      "source_documents": [
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_001",
+      "source_claim": "SFSR_002",
+      "target_claim": "SFSR_075",
+      "relationship": "causal",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_002",
+      "source_claim": "SFSR_012",
+      "target_claim": "SFSR_039",
+      "relationship": "same_fact",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_003",
+      "source_claim": "SFSR_012",
+      "target_claim": "SFSR_083",
+      "relationship": "supports",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_004",
+      "source_claim": "SFSR_033",
+      "target_claim": "SFSR_054",
+      "relationship": "contradicts",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_005",
+      "source_claim": "SFSR_039",
+      "target_claim": "SFSR_054",
+      "relationship": "contradicts",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_006",
+      "source_claim": "SFSR_084",
+      "target_claim": "SFSR_085",
+      "relationship": "causal",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_007",
+      "source_claim": "SFSR_054",
+      "target_claim": "SFSR_084",
+      "relationship": "same_fact",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_008",
+      "source_claim": "SFSR_043",
+      "target_claim": "SFSR_081",
+      "relationship": "elaborates",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_009",
+      "source_claim": "SFSR_081",
+      "target_claim": "SFSR_082",
+      "relationship": "causal",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_010",
+      "source_claim": "SFSR_045",
+      "target_claim": "SFSR_086",
+      "relationship": "elaborates",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_011",
+      "source_claim": "SFSR_069",
+      "target_claim": "SFSR_071",
+      "relationship": "supports",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_012",
+      "source_claim": "SFSR_070",
+      "target_claim": "SFSR_071",
+      "relationship": "supports",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_013",
+      "source_claim": "SFSR_071",
+      "target_claim": "SFSR_079",
+      "relationship": "supports",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_014",
+      "source_claim": "SFSR_056",
+      "target_claim": "SFSR_057",
+      "relationship": "elaborates",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_015",
+      "source_claim": "SFSR_057",
+      "target_claim": "SFSR_080",
+      "relationship": "supports",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_016",
+      "source_claim": "SFSR_062",
+      "target_claim": "SFSR_064",
+      "relationship": "causal",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_017",
+      "source_claim": "SFSR_064",
+      "target_claim": "SFSR_075",
+      "relationship": "supports",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_018",
+      "source_claim": "SFSR_040",
+      "target_claim": "SFSR_056",
+      "relationship": "contradicts",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_019",
+      "source_claim": "SFSR_025",
+      "target_claim": "SFSR_101",
+      "relationship": "elaborates",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_020",
+      "source_claim": "SFSR_101",
+      "target_claim": "SFSR_102",
+      "relationship": "causal",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_021",
+      "source_claim": "SFSR_027",
+      "target_claim": "SFSR_102",
+      "relationship": "supports",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_022",
+      "source_claim": "SFSR_094",
+      "target_claim": "SFSR_098",
+      "relationship": "causal",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_023",
+      "source_claim": "SFSR_095",
+      "target_claim": "SFSR_098",
+      "relationship": "causal",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_024",
+      "source_claim": "SFSR_072",
+      "target_claim": "SFSR_087",
+      "relationship": "causal",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_025",
+      "source_claim": "SFSR_014",
+      "target_claim": "SFSR_075",
+      "relationship": "same_fact",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_026",
+      "source_claim": "SFSR_109",
+      "target_claim": "SFSR_113",
+      "relationship": "causal",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_027",
+      "source_claim": "SFSR_030",
+      "target_claim": "SFSR_100",
+      "relationship": "same_fact",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_028",
+      "source_claim": "SFSR_041",
+      "target_claim": "SFSR_081",
+      "relationship": "same_fact",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_029",
+      "source_claim": "SFSR_058",
+      "target_claim": "SFSR_077",
+      "relationship": "elaborates",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "SFSR_xref_030",
+      "source_claim": "SFSR_059",
+      "target_claim": "SFSR_060",
+      "relationship": "sequence",
+      "source_documents": [
+        "supplemental_fsr",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "RFI_xref_001",
+      "source_claim": "RFI_006",
+      "target_claim": "RFI_005",
+      "relationship": "elaborates",
+      "source_documents": [
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "RFI_xref_002",
+      "source_claim": "RFI_021",
+      "target_claim": "RFI_007",
+      "relationship": "supports",
+      "source_documents": [
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "RFI_xref_003",
+      "source_claim": "RFI_018",
+      "target_claim": "RFI_020",
+      "relationship": "supports",
+      "source_documents": [
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "RFI_xref_004",
+      "source_claim": "RFI_022",
+      "target_claim": "RFI_023",
+      "relationship": "same_fact",
+      "source_documents": [
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "RFI_xref_005",
+      "source_claim": "RFI_029",
+      "target_claim": "RFI_022",
+      "relationship": "elaborates",
+      "source_documents": [
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "RFI_xref_006",
+      "source_claim": "RFI_027",
+      "target_claim": "RFI_023",
+      "relationship": "response_to",
+      "source_documents": [
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "RFI_xref_007",
+      "source_claim": "RFI_031",
+      "target_claim": "RFI_024",
+      "relationship": "supports",
+      "source_documents": [
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "RFI_xref_008",
+      "source_claim": "RFI_032",
+      "target_claim": "RFI_022",
+      "relationship": "elaborates",
+      "source_documents": [
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "RFI_xref_009",
+      "source_claim": "RFI_033",
+      "target_claim": "RFI_034",
+      "relationship": "supports",
+      "source_documents": [
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "RFI_xref_010",
+      "source_claim": "RFI_015",
+      "target_claim": "RFI_008",
+      "relationship": "elaborates",
+      "source_documents": [
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "AR_xref_001",
+      "source_claim": "AR_004",
+      "target_claim": "AR_051",
+      "relationship": "temporal_sequence",
+      "source_documents": []
+    },
+    {
+      "reference_id": "AR_xref_002",
+      "source_claim": "AR_037",
+      "target_claim": "AR_035",
+      "relationship": "temporal_sequence",
+      "source_documents": []
+    },
+    {
+      "reference_id": "AR_xref_003",
+      "source_claim": "AR_049",
+      "target_claim": "AR_076",
+      "relationship": "same_event_same_vantage",
+      "source_documents": []
+    },
+    {
+      "reference_id": "AR_xref_004",
+      "source_claim": "AR_020",
+      "target_claim": "AR_077",
+      "relationship": "corroborating_procedural",
+      "source_documents": []
+    },
+    {
+      "reference_id": "AR_xref_005",
+      "source_claim": "AR_083",
+      "target_claim": "AR_034",
+      "relationship": "correction_reference",
+      "source_documents": []
+    },
+    {
+      "reference_id": "AR_xref_006",
+      "source_claim": "AR_015",
+      "target_claim": "AR_016",
+      "relationship": "statute_to_offense_label",
+      "source_documents": []
+    },
+    {
+      "reference_id": "AR_xref_007",
+      "source_claim": "AR_073",
+      "target_claim": "AR_072",
+      "relationship": "same_event_same_vantage",
+      "source_documents": []
+    },
+    {
+      "reference_id": "xref_CIR_001",
+      "source_claim": "CIR_048",
+      "target_claim": "CIR_080",
+      "relationship": "corroborating_temporal_accounts",
+      "source_documents": [
+        "case_incident_report"
+      ]
+    },
+    {
+      "reference_id": "xref_CIR_002",
+      "source_claim": "CIR_081",
+      "target_claim": "CIR_072",
+      "relationship": "firearm_disclosure_vs_evidence_recovered",
+      "source_documents": [
+        "case_incident_report"
+      ]
+    },
+    {
+      "reference_id": "xref_CIR_003",
+      "source_claim": "CIR_049",
+      "target_claim": "CIR_077",
+      "relationship": "emotional_context_and_relationship",
+      "source_documents": [
+        "case_incident_report"
+      ]
+    },
+    {
+      "reference_id": "xref_CIR_004",
+      "source_claim": "CIR_068",
+      "target_claim": "CIR_069",
+      "relationship": "sequential_temporal_events",
+      "source_documents": [
+        "case_incident_report"
+      ]
+    },
+    {
+      "reference_id": "xref_CIR_005",
+      "source_claim": "CIR_022",
+      "target_claim": "CIR_076",
+      "relationship": "suspect_identity_resolution_within_document",
+      "source_documents": [
+        "case_incident_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_001",
+      "source_claim": "CIR_022",
+      "target_claim": "AR_016",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "case_incident_report",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_002",
+      "source_claim": "CIR_023",
+      "target_claim": "AR_016",
+      "relationship": "contradicts",
+      "source_documents": [
+        "case_incident_report",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_003",
+      "source_claim": "CIR_023",
+      "target_claim": "FSR1_013",
+      "relationship": "contradicts",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_004",
+      "source_claim": "CIR_076",
+      "target_claim": "AR_001",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_005",
+      "source_claim": "CIR_077",
+      "target_claim": "AR_034",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_006",
+      "source_claim": "CIR_022",
+      "target_claim": "FSR1_100",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_007",
+      "source_claim": "AR_016",
+      "target_claim": "FSR1_100",
+      "relationship": "same_fact",
+      "source_documents": [
+        "arrest_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_008",
+      "source_claim": "AR_015",
+      "target_claim": "FSR1_013",
+      "relationship": "same_fact",
+      "source_documents": [
+        "arrest_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_009",
+      "source_claim": "AR_016",
+      "target_claim": "SFSR_013",
+      "relationship": "same_fact",
+      "source_documents": [
+        "arrest_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_010",
+      "source_claim": "AR_016",
+      "target_claim": "SFSR_058",
+      "relationship": "same_fact",
+      "source_documents": [
+        "arrest_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_011",
+      "source_claim": "FSR1_100",
+      "target_claim": "SFSR_058",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_012",
+      "source_claim": "AR_016",
+      "target_claim": "RFI_013",
+      "relationship": "same_fact",
+      "source_documents": [
+        "arrest_report",
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_013",
+      "source_claim": "FSR1_013",
+      "target_claim": "RFI_013",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_014",
+      "source_claim": "CIR_081",
+      "target_claim": "FSR1_098",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_015",
+      "source_claim": "CIR_081",
+      "target_claim": "SFSR_056",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_016",
+      "source_claim": "FSR1_098",
+      "target_claim": "SFSR_056",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_017",
+      "source_claim": "CIR_042",
+      "target_claim": "FSR1_094",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_018",
+      "source_claim": "CIR_042",
+      "target_claim": "SFSR_052",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "case_incident_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_019",
+      "source_claim": "FSR1_094",
+      "target_claim": "SFSR_052",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_020",
+      "source_claim": "CIR_073",
+      "target_claim": "FSR1_118",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_021",
+      "source_claim": "CIR_036",
+      "target_claim": "FSR1_118",
+      "relationship": "elaborates",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_022",
+      "source_claim": "FSR1_099",
+      "target_claim": "SFSR_057",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_023",
+      "source_claim": "FSR1_099",
+      "target_claim": "FSR1_138",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_024",
+      "source_claim": "FSR1_120",
+      "target_claim": "SFSR_071",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_025",
+      "source_claim": "FSR1_121",
+      "target_claim": "SFSR_071",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_026",
+      "source_claim": "CIR_040",
+      "target_claim": "CIR_042",
+      "relationship": "elaborates",
+      "source_documents": [
+        "case_incident_report",
+        "case_incident_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_027",
+      "source_claim": "CIR_031",
+      "target_claim": "AR_031",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_028",
+      "source_claim": "CIR_032",
+      "target_claim": "AR_031",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_029",
+      "source_claim": "CIR_048",
+      "target_claim": "FSR1_089",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_030",
+      "source_claim": "CIR_048",
+      "target_claim": "SFSR_049",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_031",
+      "source_claim": "FSR1_089",
+      "target_claim": "SFSR_049",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_032",
+      "source_claim": "CIR_080",
+      "target_claim": "FSR1_096",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_033",
+      "source_claim": "CIR_080",
+      "target_claim": "SFSR_054",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_034",
+      "source_claim": "FSR1_096",
+      "target_claim": "SFSR_054",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_035",
+      "source_claim": "AR_035",
+      "target_claim": "FSR1_097",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "arrest_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_036",
+      "source_claim": "CIR_009",
+      "target_claim": "FSR1_016",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_037",
+      "source_claim": "CIR_009",
+      "target_claim": "SFSR_018",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_038",
+      "source_claim": "FSR1_016",
+      "target_claim": "SFSR_018",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_039",
+      "source_claim": "CIR_008",
+      "target_claim": "FSR1_090",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_040",
+      "source_claim": "CIR_008",
+      "target_claim": "SFSR_050",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "case_incident_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_041",
+      "source_claim": "FSR1_090",
+      "target_claim": "SFSR_050",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_042",
+      "source_claim": "CIR_065",
+      "target_claim": "FSR1_093",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_043",
+      "source_claim": "CIR_065",
+      "target_claim": "SFSR_051",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "case_incident_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_044",
+      "source_claim": "FSR1_093",
+      "target_claim": "SFSR_051",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_045",
+      "source_claim": "AR_037",
+      "target_claim": "CIR_008",
+      "relationship": "same_fact",
+      "source_documents": [
+        "arrest_report",
+        "case_incident_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_046",
+      "source_claim": "AR_037",
+      "target_claim": "FSR1_087",
+      "relationship": "sequence",
+      "source_documents": [
+        "arrest_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_047",
+      "source_claim": "CIR_046",
+      "target_claim": "FSR1_088",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_048",
+      "source_claim": "CIR_046",
+      "target_claim": "SFSR_048",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "case_incident_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_049",
+      "source_claim": "CIR_075",
+      "target_claim": "FSR1_095",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_050",
+      "source_claim": "CIR_075",
+      "target_claim": "SFSR_053",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "case_incident_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_051",
+      "source_claim": "FSR1_095",
+      "target_claim": "SFSR_053",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_052",
+      "source_claim": "AR_004",
+      "target_claim": "FSR1_013",
+      "relationship": "sequence",
+      "source_documents": [
+        "arrest_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_053",
+      "source_claim": "AR_004",
+      "target_claim": "CIR_008",
+      "relationship": "sequence",
+      "source_documents": [
+        "arrest_report",
+        "case_incident_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_054",
+      "source_claim": "CIR_028",
+      "target_claim": "AR_028",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_055",
+      "source_claim": "CIR_028",
+      "target_claim": "FSR1_135",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_056",
+      "source_claim": "CIR_031",
+      "target_claim": "FSR1_010",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_057",
+      "source_claim": "CIR_071",
+      "target_claim": "AR_038",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "case_incident_report",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_058",
+      "source_claim": "AR_038",
+      "target_claim": "FSR1_102",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "arrest_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_059",
+      "source_claim": "AR_038",
+      "target_claim": "SFSR_059",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "arrest_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_060",
+      "source_claim": "FSR1_102",
+      "target_claim": "SFSR_059",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_061",
+      "source_claim": "FSR1_107",
+      "target_claim": "SFSR_060",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_062",
+      "source_claim": "CIR_026",
+      "target_claim": "FSR1_011",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_063",
+      "source_claim": "FSR1_106",
+      "target_claim": "SFSR_059",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_064",
+      "source_claim": "FSR1_122",
+      "target_claim": "RFI_026",
+      "relationship": "response_to",
+      "source_documents": [
+        "final_summary_report",
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_065",
+      "source_claim": "FSR1_122",
+      "target_claim": "RFI_027",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_066",
+      "source_claim": "FSR1_123",
+      "target_claim": "RFI_023",
+      "relationship": "contradicts",
+      "source_documents": [
+        "final_summary_report",
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_067",
+      "source_claim": "FSR1_122",
+      "target_claim": "RFI_034",
+      "relationship": "response_to",
+      "source_documents": [
+        "final_summary_report",
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_068",
+      "source_claim": "RFI_024",
+      "target_claim": "SFSR_072",
+      "relationship": "causal",
+      "source_documents": [
+        "request_further_investigation",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_069",
+      "source_claim": "RFI_022",
+      "target_claim": "RFI_024",
+      "relationship": "elaborates",
+      "source_documents": [
+        "request_further_investigation",
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_070",
+      "source_claim": "FSR1_123",
+      "target_claim": "SFSR_072",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_071",
+      "source_claim": "RFI_027",
+      "target_claim": "SFSR_072",
+      "relationship": "same_fact",
+      "source_documents": [
+        "request_further_investigation",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_072",
+      "source_claim": "RFI_028",
+      "target_claim": "AR_016",
+      "relationship": "elaborates",
+      "source_documents": [
+        "request_further_investigation",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_073",
+      "source_claim": "FSR1_014",
+      "target_claim": "SFSR_014",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_074",
+      "source_claim": "FSR1_017",
+      "target_claim": "SFSR_015",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_075",
+      "source_claim": "FSR1_019",
+      "target_claim": "SFSR_016",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_076",
+      "source_claim": "FSR1_021",
+      "target_claim": "SFSR_017",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_077",
+      "source_claim": "FSR1_129",
+      "target_claim": "SFSR_075",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_078",
+      "source_claim": "FSR1_147",
+      "target_claim": "SFSR_089",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_079",
+      "source_claim": "FSR1_151",
+      "target_claim": "SFSR_098",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_080",
+      "source_claim": "FSR1_158",
+      "target_claim": "SFSR_102",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_081",
+      "source_claim": "FSR1_129",
+      "target_claim": "RFI_006",
+      "relationship": "contradicts",
+      "source_documents": [
+        "final_summary_report",
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_082",
+      "source_claim": "FSR1_014",
+      "target_claim": "RFI_005",
+      "relationship": "contradicts",
+      "source_documents": [
+        "final_summary_report",
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_083",
+      "source_claim": "FSR1_158",
+      "target_claim": "RFI_021",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_084",
+      "source_claim": "FSR1_171",
+      "target_claim": "SFSR_002",
+      "relationship": "superseded_prior_conclusion",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_085",
+      "source_claim": "RFI_003",
+      "target_claim": "SFSR_003",
+      "relationship": "causal",
+      "source_documents": [
+        "request_further_investigation",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_086",
+      "source_claim": "RFI_001",
+      "target_claim": "SFSR_003",
+      "relationship": "causal",
+      "source_documents": [
+        "request_further_investigation",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_087",
+      "source_claim": "RFI_014",
+      "target_claim": "FSR1_024",
+      "relationship": "response_to",
+      "source_documents": [
+        "request_further_investigation",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_088",
+      "source_claim": "RFI_014",
+      "target_claim": "SFSR_020",
+      "relationship": "causal",
+      "source_documents": [
+        "request_further_investigation",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_089",
+      "source_claim": "AR_034",
+      "target_claim": "FSR1_154",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "arrest_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_090",
+      "source_claim": "CIR_045",
+      "target_claim": "FSR1_094",
+      "relationship": "same_event_different_vantage",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_091",
+      "source_claim": "CIR_084",
+      "target_claim": "AR_089",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_092",
+      "source_claim": "CIR_057",
+      "target_claim": "AR_093",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_093",
+      "source_claim": "CIR_083",
+      "target_claim": "FSR1_097",
+      "relationship": "elaborates",
+      "source_documents": [
+        "case_incident_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_094",
+      "source_claim": "CIR_024",
+      "target_claim": "AR_014",
+      "relationship": "contradicts",
+      "source_documents": [
+        "case_incident_report",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_095",
+      "source_claim": "CIR_010",
+      "target_claim": "AR_028",
+      "relationship": "elaborates",
+      "source_documents": [
+        "case_incident_report",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_096",
+      "source_claim": "CIR_010",
+      "target_claim": "AR_030",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_097",
+      "source_claim": "CIR_011",
+      "target_claim": "AR_029",
+      "relationship": "same_fact",
+      "source_documents": [
+        "case_incident_report",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_098",
+      "source_claim": "FSR1_077",
+      "target_claim": "SFSR_043",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_099",
+      "source_claim": "FSR1_141",
+      "target_claim": "SFSR_043",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_100",
+      "source_claim": "FSR1_082",
+      "target_claim": "SFSR_045",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_101",
+      "source_claim": "FSR1_108",
+      "target_claim": "SFSR_062",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_102",
+      "source_claim": "FSR1_109",
+      "target_claim": "SFSR_063",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_103",
+      "source_claim": "FSR1_110",
+      "target_claim": "SFSR_064",
+      "relationship": "same_fact",
+      "source_documents": [
+        "final_summary_report",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_104",
+      "source_claim": "AR_039",
+      "target_claim": "FSR1_143",
+      "relationship": "supports",
+      "source_documents": [
+        "arrest_report",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_cross_105",
+      "source_claim": "RFI_001",
+      "target_claim": "SFSR_002",
+      "relationship": "causal",
+      "source_documents": [
+        "request_further_investigation",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "ORDER_xref_001",
+      "source_claim": "ORDER_002",
+      "target_claim": "ORDER_003",
+      "relationship": "elaborates",
+      "source_documents": [
+        "copa_order"
+      ]
+    },
+    {
+      "reference_id": "ORDER_xref_002",
+      "source_claim": "ORDER_007",
+      "target_claim": "ORDER_010",
+      "relationship": "elaborates",
+      "source_documents": [
+        "copa_order"
+      ]
+    },
+    {
+      "reference_id": "ORDER_xref_003",
+      "source_claim": "ORDER_007",
+      "target_claim": "ORDER_015",
+      "relationship": "same_fact",
+      "source_documents": [
+        "copa_order"
+      ]
+    },
+    {
+      "reference_id": "xref_order_001",
+      "source_claim": "ORDER_002",
+      "target_claim": "FSR1_175",
+      "relationship": "same_fact",
+      "source_documents": [
+        "copa_order",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_order_002",
+      "source_claim": "ORDER_002",
+      "target_claim": "SFSR_112",
+      "relationship": "same_fact",
+      "source_documents": [
+        "copa_order",
+        "supplemental_fsr"
+      ]
+    },
+    {
+      "reference_id": "xref_order_003",
+      "source_claim": "ORDER_003",
+      "target_claim": "FSR1_013",
+      "relationship": "elaborates",
+      "source_documents": [
+        "copa_order",
+        "final_summary_report"
+      ]
+    },
+    {
+      "reference_id": "xref_order_004",
+      "source_claim": "ORDER_003",
+      "target_claim": "RFI_005",
+      "relationship": "elaborates",
+      "source_documents": [
+        "copa_order",
+        "request_further_investigation"
+      ]
+    },
+    {
+      "reference_id": "xref_order_005",
+      "source_claim": "ORDER_003",
+      "target_claim": "AR_015",
+      "relationship": "elaborates",
+      "source_documents": [
+        "copa_order",
+        "arrest_report"
+      ]
+    },
+    {
+      "reference_id": "xref_order_006",
+      "source_claim": "ORDER_010",
+      "target_claim": "RFI_033",
+      "relationship": "causal",
+      "source_documents": [
+        "copa_order",
+        "request_further_investigation"
+      ]
+    }
+  ]
+}

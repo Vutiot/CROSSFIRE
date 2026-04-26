@@ -1,0 +1,1046 @@
+{
+  "claims": [
+    {
+      "claim_id": "CIR_001",
+      "subject": "Case-001",
+      "predicate": "has_rd_number",
+      "object": "JE471248",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_002",
+      "subject": "Event-001",
+      "predicate": "has_event_number",
+      "object": "2134303792",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_003",
+      "subject": "Case-001",
+      "predicate": "offense_classification",
+      "object": "IUCR 5078 - Death - Investigation",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_004",
+      "subject": "Case-001",
+      "predicate": "reported_incident_type",
+      "object": "Death Investigation",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_005",
+      "subject": "Event-001",
+      "predicate": "occurrence_beat",
+      "object": "2512",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_006",
+      "subject": "Event-001",
+      "predicate": "unit_assigned",
+      "object": "X2511",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_007",
+      "subject": "Event-001",
+      "predicate": "incident_occurred_at_location",
+      "object": "Location-South (090 - Apartment - Apartment Building)",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "environmental",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_008",
+      "subject": "Event-001",
+      "predicate": "ro_arrival_date",
+      "object": "09 December 2021 09:53",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_009",
+      "subject": "Event-001",
+      "predicate": "incident_occurred_at_time",
+      "object": "08 December 2021 16:30 - 09 December 2021 09:49",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_010",
+      "subject": "Victim",
+      "predicate": "victim_was",
+      "object": "Individual (Black female, DOB [REDACTED], age 29)",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_011",
+      "subject": "Victim",
+      "predicate": "physical_description",
+      "object": "Female, Black, 5'03\", 135 lbs, Brown Eyes, Brown Hair, Braids, Medium Brown Complexion",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_012",
+      "subject": "Victim",
+      "predicate": "residence_beat",
+      "object": "2512",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_013",
+      "subject": "Victim",
+      "predicate": "identification_type",
+      "object": "Drivers License, Illinois",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_014",
+      "subject": "ParentGuardian-1",
+      "predicate": "relationship_to_victim",
+      "object": "Parent/Guardian (Biological Father)",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_015",
+      "subject": "ParentGuardian-1",
+      "predicate": "physical_description",
+      "object": "Male, Black, 5'06\", 200 lbs, Brown Eyes, Grey/Part Grey Hair, Short Hair, Goatee, Medium Brown Complexion, age 59, DOB [REDACTED]",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_016",
+      "subject": "ParentGuardian-1",
+      "predicate": "residence_beat",
+      "object": "3100",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_017",
+      "subject": "ParentGuardian-1",
+      "predicate": "sobriety_at_time_of_report",
+      "object": "Sober",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_018",
+      "subject": "ParentGuardian-2",
+      "predicate": "relationship_to_victim",
+      "object": "Parent/Guardian (Biological Mother)",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_019",
+      "subject": "ParentGuardian-2",
+      "predicate": "physical_description",
+      "object": "Female, Black, 5'04\", 170 lbs, Brown Eyes, Blond/Strawberry Hair, age 56, DOB [REDACTED]",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_020",
+      "subject": "ParentGuardian-2",
+      "predicate": "residence_beat",
+      "object": "1823",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_021",
+      "subject": "ParentGuardian-2",
+      "predicate": "sobriety_at_time_of_report",
+      "object": "Sober",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_022",
+      "subject": "Officer-1",
+      "predicate": "suspect_relationship_to_victim",
+      "object": "Offender (Unknown to victim — listed as Suspect #1 with unknown identity at intake)",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_023",
+      "subject": "Suspect-1",
+      "predicate": "offender_was",
+      "object": "Unknown identity at time of report",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_024",
+      "subject": "Suspect-1",
+      "predicate": "physical_description",
+      "object": "Unknown Eyes, Unknown Hair, Unknown Hair Style, Unknown Complexion, Light Brown Complexion (partial), Short Hair Style",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "testimonial",
+      "confidence": 0.6
+    },
+    {
+      "claim_id": "CIR_025",
+      "subject": "Suspect-1",
+      "predicate": "identification_type",
+      "object": "State ID, Illinois",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.6
+    },
+    {
+      "claim_id": "CIR_026",
+      "subject": "Victim",
+      "predicate": "preliminary_injury_observed",
+      "object": "Fatal injury — Injured by offender, extent: Fatal",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_027",
+      "subject": "Victim",
+      "predicate": "hospital_record",
+      "object": "Illinois Masonic Medical Center",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_028",
+      "subject": "Victim",
+      "predicate": "removal_reason",
+      "object": "DOA",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_029",
+      "subject": "Victim",
+      "predicate": "removal_date",
+      "object": "09 December 2021",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_030",
+      "subject": "Victim",
+      "predicate": "pronounced_date",
+      "object": "09 December 2021 00:00",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_031",
+      "subject": "Victim",
+      "predicate": "injury_cause",
+      "object": "Weapon - Firearm",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_032",
+      "subject": "Victim",
+      "predicate": "weapon_type_used_against",
+      "object": "Gun Shot - Handgun",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_033",
+      "subject": "Case-004",
+      "predicate": "report_generated_by",
+      "object": "Civilian-B",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_034",
+      "subject": "Case-004",
+      "predicate": "report_generated_date",
+      "object": "10 December 2021 07:39",
+      "source_document": "case_incident_report",
+      "chunk_index": 0,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_035",
+      "subject": "Firearm-1",
+      "predicate": "possessor_user",
+      "object": "Unknown at time of report",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_036",
+      "subject": "Firearm-1",
+      "predicate": "ammunition_type",
+      "object": "9mm",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_037",
+      "subject": "Firearm-1",
+      "predicate": "make_model",
+      "object": "Unknown make, model 9 (Unknown)",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_038",
+      "subject": "Firearm-1",
+      "predicate": "displayed_status",
+      "object": "No",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_039",
+      "subject": "Firearm-1",
+      "predicate": "used_status",
+      "object": "No (field entry)",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_040",
+      "subject": "Firearm-1",
+      "predicate": "recovered_status",
+      "object": "Yes",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_041",
+      "subject": "Firearm-1",
+      "predicate": "evidence_status",
+      "object": "Yes",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_042",
+      "subject": "Firearm-1",
+      "predicate": "description",
+      "object": "One Spent Grey Color 9mm Casing",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_043",
+      "subject": "Firearm-1",
+      "predicate": "spent_cartridges_count",
+      "object": "1",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_044",
+      "subject": "Event-001",
+      "predicate": "is_bwc_recorded_incident",
+      "object": "true",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_045",
+      "subject": "ReportingOfficer",
+      "predicate": "reporting_officer_was",
+      "object": "Officer-4 (BRANCH JR, Larry L), Unit 025, Beat X2511",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_046",
+      "subject": "ReportingOfficer",
+      "predicate": "dispatched_via",
+      "object": "OEMC assignment of Check Well-Being at Location-South",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_047",
+      "subject": "ParentGuardian-1",
+      "predicate": "met_officers_upon_arrival",
+      "object": "true — stated he was worried about his daughter (Victim) who had not returned his calls or picked up her daughter",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_048",
+      "subject": "ParentGuardian-1",
+      "predicate": "last_contact_with_victim",
+      "object": "Tuesday evening, 07 December 2021 at 17:30",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_049",
+      "subject": "Victim",
+      "predicate": "reported_emotional_state_to_father",
+      "object": "Depressed about her relationship with her youngest daughter's father (Officer-1)",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_050",
+      "subject": "Victim",
+      "predicate": "vehicle_identified_at_scene",
+      "object": "2021 Silver Mazda CX-5, Illinois plate (redacted), parked directly in front of apartment building",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "environmental",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_051",
+      "subject": "ReportingOfficer",
+      "predicate": "observed_no_occupant_in_vehicle",
+      "object": "true",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "environmental",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_052",
+      "subject": "ReportingOfficer",
+      "predicate": "knocked_on_front_door",
+      "object": "multiple times, received no response",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_053",
+      "subject": "Officer-5",
+      "predicate": "knocked_on_adjacent_apartment",
+      "object": "Apartment 1-S — no response received",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_054",
+      "subject": "ReportingOfficer",
+      "predicate": "contacted_building_management",
+      "object": "true — located document on wall with building management letterhead",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_055",
+      "subject": "MaintenanceWorker",
+      "predicate": "unable_to_open_front_door",
+      "object": "true — missing key to deadbolt (recently changed)",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "environmental",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_056",
+      "subject": "Officer-11",
+      "predicate": "notified_at_time",
+      "object": "09 December 2021 10:40",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_057",
+      "subject": "Officer-14",
+      "predicate": "on_scene_at_time",
+      "object": "09 December 2021 10:48",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_058",
+      "subject": "Officer-13",
+      "predicate": "on_scene_at_time",
+      "object": "09 December 2021 10:48",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_059",
+      "subject": "Officer-10",
+      "predicate": "on_scene_at_time",
+      "object": "09 December 2021 10:48",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_060",
+      "subject": "Civilian-F",
+      "predicate": "medical_examiner_notified_at_time",
+      "object": "09 December 2021 11:11",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_061",
+      "subject": "Civilian-G",
+      "predicate": "medical_examiner_on_scene_at_time",
+      "object": "09 December 2021 11:57",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_062",
+      "subject": "Officer-16",
+      "predicate": "evidence_technician_on_scene_at_time",
+      "object": "09 December 2021 12:35",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_063",
+      "subject": "Officer-15",
+      "predicate": "on_scene_at_time",
+      "object": "09 December 2021 13:30",
+      "source_document": "case_incident_report",
+      "chunk_index": 1,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_064",
+      "subject": "MaintenanceWorker",
+      "predicate": "opened_rear_apartment_door",
+      "object": "true — relocated to rear of building to open back door",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_065",
+      "subject": "Officer-5",
+      "predicate": "discovered_victim",
+      "object": "Victim found laying on back near front door, unresponsive",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_066",
+      "subject": "Victim",
+      "predicate": "found_position",
+      "object": "Laying lifeless on floor in pool of blood on left side of face",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_067",
+      "subject": "ReportingOfficer",
+      "predicate": "checked_pulse_result",
+      "object": "No feedback — requested CFD assistance via radio through OEMC",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_068",
+      "subject": "CFD-Engine25",
+      "predicate": "arrived_on_scene_at_time",
+      "object": "09 December 2021 10:12",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_069",
+      "subject": "CFD-Engine25",
+      "predicate": "pronounced_victim_deceased_at_time",
+      "object": "09 December 2021 10:24",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_070",
+      "subject": "CFD-Engine25",
+      "predicate": "pronounced_through",
+      "object": "Dr. of Illinois Masonic Hospital",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_071",
+      "subject": "CFD-Engine25",
+      "predicate": "entry_wound_observed",
+      "object": "Entry wound of some kind on left side of victim's chin",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_072",
+      "subject": "ReportingOfficer",
+      "predicate": "searched_area_for_weapon",
+      "object": "true — search of immediate area resulted in finding one grey color spent casing (later confirmed as 9mm)",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_073",
+      "subject": "SpentCasing-1",
+      "predicate": "recovered_and_inventoried_by",
+      "object": "Officer-16 (E.T. on scene)",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "forensic",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_074",
+      "subject": "Officer-5",
+      "predicate": "remained_to_secure_crime_scene",
+      "object": "true — remained inside apartment",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_075",
+      "subject": "Officer-1",
+      "predicate": "arrived_at_scene_in_vehicle",
+      "object": "2019 Grey Color Audi A-4, Illinois plate (redacted), with two occupants",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "environmental",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_076",
+      "subject": "Officer-1",
+      "predicate": "identified_self_as",
+      "object": "Off-duty CPD officer (Star Badge-001, Emp Unit 015) and boyfriend/father of victim's youngest child",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_077",
+      "subject": "Officer-1",
+      "predicate": "relationship_to_victim",
+      "object": "Boyfriend and father of youngest child",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_078",
+      "subject": "Victim",
+      "predicate": "had_children",
+      "object": "Two children with Officer-1: Female child age 6 (DOB [REDACTED] 2015), Female child age 9 months (DOB [REDACTED] 2021)",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_079",
+      "subject": "VictimsChildren",
+      "predicate": "residing_with",
+      "object": "Relatives at time of incident",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_080",
+      "subject": "Officer-1",
+      "predicate": "last_contact_with_victim",
+      "object": "Wednesday afternoon, 08 December 2021 at 16:30",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_081",
+      "subject": "Officer-1",
+      "predicate": "disclosed_firearm_left_at_residence",
+      "object": "One of his handguns (9mm Springfield XDM, unknown serial number) left in victim's bedroom closet, top shelf",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_082",
+      "subject": "ParentGuardian-2",
+      "predicate": "contacted_officer_1_when",
+      "object": "Morning of 09 December 2021, after getting off work, worried about victim not having been in contact since early that week",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_083",
+      "subject": "Officer-1",
+      "predicate": "volunteered_to_transport_victim_mother",
+      "object": "Picked up ParentGuardian-2 and brought her to Location-South",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "testimonial",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_084",
+      "subject": "ReportingOfficer",
+      "predicate": "notified_area5_detective",
+      "object": "Officer-11 (Detective Perez, Badge-009, Beat 5520B) at 10:40",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_085",
+      "subject": "Area5Detectives",
+      "predicate": "on_scene_at_time",
+      "object": "09 December 2021 10:48 (Officer-14, Officer-13, Officer-10)",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_086",
+      "subject": "Officer-15",
+      "predicate": "commander_on_scene_at_time",
+      "object": "09 December 2021 13:30",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_087",
+      "subject": "Officer-20",
+      "predicate": "watch_commander_notified_at_time",
+      "object": "09 December 2021 11:05",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_088",
+      "subject": "Civilian-F",
+      "predicate": "medical_examiner_notified_at_time",
+      "object": "09 December 2021 11:11 — ME number Case-005",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_089",
+      "subject": "Officer-16",
+      "predicate": "et_request_made_via_citywide2_at_time",
+      "object": "09 December 2021 11:34",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_090",
+      "subject": "Officer-16",
+      "predicate": "et_on_scene_at_time",
+      "object": "09 December 2021 12:35 (Beat 5832)",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_091",
+      "subject": "Officer-21",
+      "predicate": "cpic_notified_at_time",
+      "object": "09 December 2021 11:43",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_092",
+      "subject": "Civilian-H",
+      "predicate": "news_affairs_notified_at_time",
+      "object": "09 December 2021 11:50",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "procedural",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_093",
+      "subject": "BodyRemoval",
+      "predicate": "requested_at_time",
+      "object": "09 December 2021 14:44 via Citywide 2",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_094",
+      "subject": "BodyRemoval",
+      "predicate": "arrived_at_time",
+      "object": "09 December 2021 16:50",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "temporal",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_095",
+      "subject": "Officer-19",
+      "predicate": "assisting_officer_at_time",
+      "object": "09 December 2021 16:19, Unit 025, Beat 2531",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_096",
+      "subject": "Officer-5",
+      "predicate": "assisting_officer_at_time",
+      "object": "09 December 2021 16:19, Unit 025, Beat 2513",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_097",
+      "subject": "Officer-24",
+      "predicate": "assisting_officer_at_time",
+      "object": "09 December 2021 16:19, Unit 025, Beat 2512",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_098",
+      "subject": "Officer-17",
+      "predicate": "supervisor_on_scene_at_time",
+      "object": "09 December 2021 16:19, Unit 025, Beat 2510",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_099",
+      "subject": "Officer-18",
+      "predicate": "supervisor_on_scene_at_time",
+      "object": "09 December 2021 16:19, Unit 025, Beat 2520",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "administrative",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "CIR_100",
+      "subject": "Event-001",
+      "predicate": "additional_details_pending",
+      "object": "Results of Area 5 Detective further investigation",
+      "source_document": "case_incident_report",
+      "chunk_index": 2,
+      "category": "administrative",
+      "confidence": 0.95
+    }
+  ],
+  "cross_references": [
+    {
+      "reference_id": "xref_CIR_001",
+      "source_claim": "CIR_048",
+      "target_claim": "CIR_080",
+      "relationship": "corroborating_temporal_accounts",
+      "note": "Father's last contact (Tuesday 07 Dec 17:30) vs Officer-1's last contact (Wednesday 08 Dec 16:30) — both are within the same OCIR. These set complementary bounds on when the victim was last seen alive and will be important for corroboration against the FSR timeline.",
+      "source_documents": ["case_incident_report"]
+    },
+    {
+      "reference_id": "xref_CIR_002",
+      "source_claim": "CIR_081",
+      "target_claim": "CIR_072",
+      "relationship": "firearm_disclosure_vs_evidence_recovered",
+      "note": "Officer-1 disclosed leaving a 9mm Springfield XDM in victim's bedroom closet (CIR_081); search of the scene found only one spent 9mm casing (CIR_072) — the firearm itself was not listed as recovered in the OCIR, creating a potential evidentiary gap for Phase 4.",
+      "source_documents": ["case_incident_report"]
+    },
+    {
+      "reference_id": "xref_CIR_003",
+      "source_claim": "CIR_049",
+      "target_claim": "CIR_077",
+      "relationship": "emotional_context_and_relationship",
+      "note": "Victim told her father she was depressed about her relationship with her youngest daughter's father (CIR_049), who is identified as Officer-1 (CIR_077). Connects father's account to Officer-1's identity as relationship subject.",
+      "source_documents": ["case_incident_report"]
+    },
+    {
+      "reference_id": "xref_CIR_004",
+      "source_claim": "CIR_068",
+      "target_claim": "CIR_069",
+      "relationship": "sequential_temporal_events",
+      "note": "CFD Engine #25 arrived at 10:12 (CIR_068) and pronounced victim deceased at 10:24 (CIR_069) — 12-minute gap is the window for the on-scene assessment.",
+      "source_documents": ["case_incident_report"]
+    },
+    {
+      "reference_id": "xref_CIR_005",
+      "source_claim": "CIR_022",
+      "target_claim": "CIR_076",
+      "relationship": "suspect_identity_resolution_within_document",
+      "note": "At intake, Suspect #1 was listed as 'UNKNOWN' (CIR_022/CIR_023), but later in the same document Officer-1 arrives and self-identifies as the victim's boyfriend with a firearm at the scene (CIR_076/CIR_081). The OCIR itself implicitly resolves the suspect from unknown to a named CPD officer — Phase 4 should note this intra-document suspect identity shift.",
+      "source_documents": ["case_incident_report"]
+    }
+  ]
+}

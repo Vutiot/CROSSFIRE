@@ -1,0 +1,242 @@
+CHICAGO POLICE DEPARTMENT
+ORIGINAL CASE INCIDENT REPORT
+RD #: Case-001
+Location: Location-South
+(For use by Chicago Police Department Personnel Only)
+CPD-11.388(6/03)-C
+
+EVENT #: Event-001
+
+IUCR: 5078 - Death - Investigation
+
+Occurrence Beat: 2512    Unit Assigned: X2511
+Location: Chicago IL     RO Arrival Date: 09 December 2021 09:53
+090 - Apartment - Apartment Building
+
+Occurrence Date/Time: 08 December 2021 16:30 - 09 December 2021 09:49
+
+------------------------------------------------------------------------
+INVOLVED PARTIES
+------------------------------------------------------------------------
+
+VICTIM - Individual
+  Name:          Demographics
+  [REDACTED]
+  Res:           Beat: 2512
+  Age:           29 Years
+  Sobriety:      Unknown
+  Birth Place:   United States of America
+  Sex:           Female
+  Race:          Black
+  Height:        5'03"
+  Weight:        135 lbs
+  CPD Officer:   No
+  Eyes:          Brown
+  Hair:          Brown / Braids Hair Style
+  Complexion:    Medium Brown
+  Facial Hair:   None
+  Identification:
+    Type: Drivers License    State: Illinois
+
+PARENT / GUARDIAN (Biological Father)
+  Name:          Demographics
+  [REDACTED]
+  Res:           Beat: 3100
+  Age:           59 Years
+  Birth Place:   United States of America
+  Sobriety:      Sober
+  Sex:           Male
+  Race:          Black
+  Height:        5'06"
+  Weight:        200 lbs
+  Eyes:          Brown
+  CPD Officer:   No
+  Hair:          Grey / Part Grey / Short Hair Style
+  Complexion:    Medium Brown
+  Facial Hair:   Goatee
+  Identification:
+    Type: Drivers License    State: Illinois
+  Other Communications and Availability:
+    Phone - Cellular: 00:01:00 - 23:59:00
+
+PARENT / GUARDIAN (Biological Mother)
+  Name:          Demographics
+  [REDACTED]
+  Res:           Beat: 1823
+  Age:           56 Years
+  Birth Place:   United States of America
+  Sobriety:      Sober
+  Sex:           Female
+  Race:          Black
+  Height:        5'04"
+  Weight:        170 lbs
+  Eyes:          Brown
+  CPD Officer:   No
+  Hair:          Blond / Strawberry
+  Other Communications and Availability:
+    Phone - Cellular: 00:01:00 - 23:59:00
+
+OTHER (Boyfriend / Father of Youngest Child)
+  Name:          Officer-1
+  Relationship:  Unknown of UNKNOWN, Unknown (Offender)
+
+Suspect #1
+  Name:          UNKNOWN, Unknown
+  Birth Place:   Unknown
+  Hair:          Unknown Hair / Unknown Hair Style
+  Eyes:          Unknown
+  Complexion:    Unknown
+  CPD Officer:   No
+  Identification:
+    Type: State ID    State: Illinois
+
+------------------------------------------------------------------------
+INJURY INFORMATION
+------------------------------------------------------------------------
+
+Injury Info (Victim):
+  Injured By:    Offender
+  Extent:        Fatal
+  Removed By:    By Dr
+  Physician:     DR
+  Hospital:      Illinois Masonic Medical Ctr.
+  Injury Cause:  Weapon - Firearm
+  Authorized By: N/A
+  Treatment:     DOA
+  Removed Date:  09-DEC-2021 00:00
+  Pronounced Date (Homicide): 09-December-2021 00:00
+
+  Type Weapon Used: Gun Shot - Handgun
+
+------------------------------------------------------------------------
+FIREARMS / EVIDENCE
+------------------------------------------------------------------------
+
+Firearm #1
+  Possessor/User: Unknown, Unknown
+  Type:          Ammunition
+  Make:          Unknown Or Unpublished Gun Make
+  Model:         9 Code--Unknown--
+  Displayed?     No     Used? No     Registered? No     Recovered? Yes
+  Taken/Stolen?  No     Taken in Burglary? No     Duty Related? No     Evidence? Yes
+  Owner Known?   No     Owner: Unknown, Unknown
+  Description:   One Spent Grey Color 9mm Casing
+  Location Status Unknown? No
+  # Spent Cartridges: 1
+
+Flash Message Sent? No
+
+------------------------------------------------------------------------
+NARRATIVE
+------------------------------------------------------------------------
+
+EVENT# Event-001   THIS IS A BWC RECORDED INCIDENT
+
+IN SUMMARY R/O'S WAS DISPATCHED TO AN OEMC OF ASSIGNMENT OF A CHECK WELL-BEING AT ABOVE
+LOCATION. UPON ARRIVAL R/O'S ALONG WITH BEAT 2513 (Officer-5) WERE MET BY [PARENT/BIOLOGICAL
+FATHER], WHO STATED THAT HE WAS WORRIED ABOUT HIS DAUGHTER [V] WHO HASN'T BEEN RETURNING HIS
+CALLS OR CAME TO PICK UP HER DAUGHTER FROM HIS HOUSE. STATED HE LAST SPOKE TO HIS
+DAUGHTER/VICTIM TUESDAY EVENING DECEMBER 7, 2021 @ 1730HRS AND SHE STATED TO HIM SHE WAS
+DEPRESS ABOUT HER RELATIONSHIP WITH HER YOUNGEST DAUGHTER'S FATHER. WHILE APPROACHING APARTMENT
+BUILDING POINTED OUT HIS DAUGHTER/VICTIM VEHICLE (2021 SILVER MAZDA CX-5 IL-PLATE# [REDACTED])
+PARKED DIRECTLY OUT FRONT. R/O'S OBSERVED NO ONE OCCUPYING VEHICLE AND PROCEEDED INSIDE AND
+KNOCKED MULTIPLE TIMES ON FRONT DOOR WITHOUT A RESPONSE. BEAT 2513 KNOCKED ON ADJACENT
+APARTMENT (1-S) DOOR TO POSSIBLY GET INFORMATION REGARDING VICTIM WHEREABOUTS BUT DIDN'T GET
+A RESPONSE AS WELL. R/O'S LOCATED A DOCUMENT POSTED ON WALL WITH LETTERHEAD IDENTIFYING THE
+BUILDING MANAGEMENT AND CALLED THEM FOR ASSISTANCE. BUILDING MANAGEMENT DISPATCHED A MAINTENANCE
+WORKER OVER WHO TRIED TO OPEN FRONT DOOR BUT WAS MISSING A KEY TO DEADBOLT WHICH HE STATED WERE
+RECENTLY CHANGED. IN AN EFFORT TO PURSUE ENTRY R/O'S WITH MAINTENANCE WORKER RELOCATED TO REAR
+OF BUILDING TO APARTMENT BACK DOOR. MAINTENANCE WORKER WAS ABLE TO OPEN DOOR AND R/O'S ALONG
+WITH BEAT 2513 MADE ENTRY. UPON BREACH OF DOOR R/O'S STATED OFFICE IN WHICH IMMEDIATELY
+FOLLOWING BEAT 2513 DISCOVERED ABOVE VICTIM LAYING ON BACK NEAR FRONT DOOR UNRESPONSIVE. R/O'S
+OBSERVED VICTIM LAYING LIFELESS ON FLOOR WITHIN A POOL OF BLOOD ON LEFT SIDE OF VICTIM FACE.
+R/O'S CHECKED PULSE AND RECEIVED NO FEEDBACK AND REQUESTED CFD ASSISTANCE VIA RADIO THROUGH
+OEMC. ENGINE #25 ARRIVED ON SCENE AT 1012HRS AND PRONOUNCED VICTIM DECEASE AT 1024HRS THROUGH
+DR OF ILLINOIS MASONIC HOSPITAL. ENGINE #25 STATED TO R/O'S THAT A ENTRY WOUND OF SOME KIND WAS
+FOUND ON LEFT SIDE OF VICTIM CHIN. R/O'S AND BEAT 2513 SEARCHED IMMEDIATE AREA OF VICTIM FOR
+POSSIBLE FIREARM/WEAPON. SEARCH RESULTED ONLY IN FINDING ONE GREY COLOR UNKNOWN SPENT CASING
+(LATER TO BE CONFIRMED AS 9MM AND RECOVERED AND INVENTORIED BY E.T. ON SCENE). BEAT 2513
+REMAINED INSIDE APARTMENT TO SECURE CRIME SCENE AND R/O'S RELOCATED BACK TO FRONT OF APARTMENT
+BUILDING TO SYMPATHETICALLY INFORM FATHER OF VICTIM CURRENT STATUS. WHILE APPROACHING FRONT
+R/O'S NOTICED A VEHICLE (2019 GREY COLOR AUDI A-4 IL-PLATE# [REDACTED]) DRIVE UP WITH TWO
+OCCUPANTS LATER TO BE IDENTIFIED AS [OTHER] Officer-1, BOYFRIEND (FATHER OF VICTIM YOUNGEST
+CHILD) AND [PARENT/BIOLOGICAL MOTHER]. Officer-1 (Badge-001, EMP# [REDACTED], UNIT 015)
+IDENTIFIED HIMSELF TO R/O'S AS AN OFF-DUTY OFFICER WITH CPD AND BOYFRIEND TO VICTIM ALONG WITH
+HIM BEING THE YOUNGEST CHILD FATHER OF THE TWO CHILDREN THAT THE VICTIM HAVE (F-1-6, DOB-
+[REDACTED] /2015), (F-1-9MNTHS DOB- [REDACTED] /2021). BOTH CHILDREN WERE RESIDING WITH
+RELATIVES DURING TIME OF INCIDENT. Officer-1 STATED TO R/O'S THAT HE LAST SPOKE TO VICTIM
+WEDNESDAY AFTERNOON AT 1630HRS ON DECEMBER 8, 2021. WHEN ASKED BY R/O'S WERE THERE ANY FIREARMS
+LOCATED INSIDE OF RESIDENCE, Officer-1 STATED THAT HE LEFT ONE OF HIS HANDGUNS (9MM SPRINGFIELD
+XDM UNKNOWN SERIAL) INSIDE THE VICTIM BEDROOM IN THE CLOSET ON THE TOP SHELF. MOTHER OF VICTIM
+STATED SHE CALLED Officer-1 UPON GETTING OFF WORK THIS MORNING AND STATED THAT SHE WAS WORRIED
+ABOUT HER DAUGHTER/VICTIM DUE TO THE FACT SHE HASN'T TALKED TO HER SINCE EARLY THIS WEEK AND
+THE CHILDREN WEREN'T WITH HER. (VICTIM-MOTHER) RELATED THAT Officer-1 (VICTIM-BOYFRIEND)
+VOLUNTEER TO PICK HER UP AND BRING HER TO THE LOCATION. R/O'S NOTIFIED AREA 5 Officer-11
+Badge-009 BEAT 5520B @ 1040HRS. AREA 5 DETECTIVES AS FOLLOW WERE ON SCENE AT 1048HRS;
+Officer-14 Badge-010 BEAT 5514H, Officer-13 Badge-011 BEAT 5514H, Officer-10 Badge-006 BEAT
+5514H AND Officer-15 Badge-012 OF AREA 5 DETECTIVES WAS ON SCENE @1330HRS. 025 DESK SGT/WATCH
+COMMANDER WAS NOTIFIED @ 1105HRS. MEDICAL EXAMINER Civilian-F Badge-018 WAS NOTIFIED @ 1111HRS
+(Case-005), MEDICAL EXAMINER Civilian-G Badge-019 WAS ON SCENE @ 1157HRS. REQUEST FOR E.T. WAS
+MADE THROUGH CITYWIDE 2 @ 1134HRS. Officer-16 Badge-013 BEAT 5832 WAS ON SCENE @1235 HRS.
+Officer-21 Badge-015 WAS NOTIFIED @1243HRS. NEWS AFFAIRS CIVILIAN Civilian-H EMP-[REDACTED] WAS
+NOTIFIED @ 1150HRS. BODY REMOVAL WAS REQUESTED THROUGH CITYWIDE 2 AT 1444HRS AND ARRIVED AT
+1650HRS. ADDITIONAL INFORMATION/DETAILS WILL BE PENDING THE RESULTS OF AREA 5 DETECTIVES PER
+FURTHER INVESTIGATION.
+
+NOTIFICATION: WATCH COMMANDER (WC), Officer-20, Beat#: 2501, Star#: Badge-014, Emp#: [REDACTED],
+Date: 09-DEC-2021, Time: 11:05
+
+NOTIFICATION: CRIME PREVENTION INFORMATION CENTER (CPIC), Officer-21, Beat#: [REDACTED],
+Star#: Badge-015, Emp#: [REDACTED], Date: 09-DEC-2021, Time: 11:43
+
+------------------------------------------------------------------------
+NOTIFICATIONS
+------------------------------------------------------------------------
+
+Request Type  Unit                      Agency Name           Date              Star #   Empl #   Name
+Notification  650 Detectives - Area 5                         09 December 2021  Badge-009          Officer-11
+                                                              10:40
+On Scene      650 Detectives - Area 5                         09 December 2021  Badge-010          Officer-14
+                                                              10:48
+On Scene      650 Detectives - Area 5                         09 December 2021  Badge-011          Officer-13
+                                                              10:48
+On Scene      650 Detectives - Area 5                         09 December 2021  Badge-006          Officer-10
+                                                              10:48
+Notification  Medical Examiner (ME)                           09 December 2021  Badge-018          Civilian-F
+                                                              11:11
+Request       OEMC - Citywide 2                               09 December 2021
+                                                              11:34
+Notification  102 Communications Division (CD)               09 December 2021             [REDACTED]  Civilian-H
+                                                              11:50
+On Scene      650 Detectives - Area 5                         09 December 2021  Badge-012          Officer-15
+                                                              13:30
+On Scene      Medical Examiner (ME)                           09 December 2021  Badge-019          Civilian-G
+                                                              11:57
+On Scene      177 Forensic Services Division (FSD)            09 December 2021  Badge-013          Officer-16
+                                                              12:35
+
+------------------------------------------------------------------------
+PERSONNEL
+------------------------------------------------------------------------
+
+Role                          Name           Date/Time             Dist  Beat
+Assisting Officer             Officer-19     09 Dec 2021 16:19     025   2531
+Assisting Officer             Officer-5      09 Dec 2021 16:19     025   2513
+Assisting Officer             Officer-24     09 Dec 2021 16:19     025   2512
+Detective - Notified          Officer-11     09 Dec 2021 16:19     650   5520B
+Detective - On Scene          Officer-15     09 Dec 2021 16:19     650   5500
+Detective - On Scene          Officer-13     09 Dec 2021 16:19     650   5514H
+Detective - On Scene          Officer-10     09 Dec 2021 16:19     650   5514H
+Detective - On Scene          Officer-14     09 Dec 2021 16:19     650   5514H
+Evidence Technician - On Scene Officer-16   09 Dec 2021 16:19     277   5832
+Reporting Officer             Officer-4      09 Dec 2021 16:19     025   X2511
+Supervisor - On Scene         Officer-17     09 Dec 2021 16:19     025   2510
+Supervisor - On Scene         Officer-18     09 Dec 2021 16:19     025   2520
+
+------------------------------------------------------------------------
+ADMINISTRATIVE
+------------------------------------------------------------------------
+
+Print Generated By: Civilian-B      Page: 4 of 4      10-DEC-2021 07:39
+Case ID: Case-004
+Approval Status: COMPLETE

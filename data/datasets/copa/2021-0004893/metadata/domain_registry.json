@@ -1,0 +1,360 @@
+{
+  "case_id": "2021-0004893",
+  "entries": [
+    {
+      "domain": "officer",
+      "original_value": "MACKIN, James, P",
+      "anonymized_value": "Officer-24"
+    },
+    {
+      "domain": "other",
+      "original_value": "Judge Mary M. Brosnahan",
+      "anonymized_value": "Judge-A"
+    },
+    {
+      "domain": "other",
+      "original_value": "Iris Y. Martinez",
+      "anonymized_value": "Civilian-J"
+    },
+    {
+      "domain": "administrator",
+      "original_value": "larciay Jackson",
+      "anonymized_value": "Administrator-A"
+    },
+    {
+      "domain": "administrator",
+      "original_value": "Andrea Kersten",
+      "anonymized_value": "Administrator-B"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "Star: 10228",
+      "anonymized_value": "Badge-001"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "Star: 15091",
+      "anonymized_value": "Badge-002"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#440",
+      "anonymized_value": "Badge-003"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#20261",
+      "anonymized_value": "Badge-004"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#335R",
+      "anonymized_value": "Badge-005"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#20640",
+      "anonymized_value": "Badge-006"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#20783",
+      "anonymized_value": "Badge-007"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#1733",
+      "anonymized_value": "Badge-008"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#2070",
+      "anonymized_value": "Badge-009"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#21384",
+      "anonymized_value": "Badge-010"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#20600",
+      "anonymized_value": "Badge-011"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#20",
+      "anonymized_value": "Badge-012"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#16570",
+      "anonymized_value": "Badge-013"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#294",
+      "anonymized_value": "Badge-014"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#12605",
+      "anonymized_value": "Badge-015"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#422",
+      "anonymized_value": "Badge-016"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#1074",
+      "anonymized_value": "Badge-017"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#79",
+      "anonymized_value": "Badge-018"
+    },
+    {
+      "domain": "badge_number",
+      "original_value": "#4",
+      "anonymized_value": "Badge-019"
+    },
+    {
+      "domain": "case_identifier",
+      "original_value": "RD #: JE471248",
+      "anonymized_value": "Case-001"
+    },
+    {
+      "domain": "case_identifier",
+      "original_value": "People v. Tyler, 22CR0075701",
+      "anonymized_value": "Case-002"
+    },
+    {
+      "domain": "case_identifier",
+      "original_value": "CB #: 30103671",
+      "anonymized_value": "Case-003"
+    },
+    {
+      "domain": "case_identifier",
+      "original_value": "Case ID: 12562998",
+      "anonymized_value": "Case-004"
+    },
+    {
+      "domain": "case_identifier",
+      "original_value": "ME 2021-11448",
+      "anonymized_value": "Case-005"
+    },
+    {
+      "domain": "civilian",
+      "original_value": "HAYES, Shannon",
+      "anonymized_value": "Civilian-A"
+    },
+    {
+      "domain": "civilian",
+      "original_value": "OLIVERI, Caterina",
+      "anonymized_value": "Civilian-B"
+    },
+    {
+      "domain": "civilian",
+      "original_value": "SANTIAGO, Michael F",
+      "anonymized_value": "Civilian-C"
+    },
+    {
+      "domain": "civilian",
+      "original_value": "WOOD, Charles F",
+      "anonymized_value": "Civilian-D"
+    },
+    {
+      "domain": "civilian",
+      "original_value": "KIMBROUGH, M K",
+      "anonymized_value": "Civilian-E"
+    },
+    {
+      "domain": "civilian",
+      "original_value": "WILLIAM,",
+      "anonymized_value": "Civilian-F"
+    },
+    {
+      "domain": "civilian",
+      "original_value": "KEARNEY,",
+      "anonymized_value": "Civilian-G"
+    },
+    {
+      "domain": "civilian",
+      "original_value": "JAMES,",
+      "anonymized_value": "Civilian-H"
+    },
+    {
+      "domain": "civilian",
+      "original_value": "Cunneen, Kelly",
+      "anonymized_value": "Civilian-I"
+    },
+    {
+      "domain": "event_number",
+      "original_value": "Event #2134303792",
+      "anonymized_value": "Event-001"
+    },
+    {
+      "domain": "address",
+      "original_value": "131 S. Leavitt Street",
+      "anonymized_value": "Location-Central"
+    },
+    {
+      "domain": "address",
+      "original_value": "1615 West Chicago Avenue, 4th Floor",
+      "anonymized_value": "Location-East"
+    },
+    {
+      "domain": "address",
+      "original_value": "5555 W Grand Ave, Chicago, IL 60639",
+      "anonymized_value": "Location-Northwest"
+    },
+    {
+      "domain": "address",
+      "original_value": "3510 S. Michigan Avenue, Chicago, Illinois 60653",
+      "anonymized_value": "Location-South"
+    },
+    {
+      "domain": "address",
+      "original_value": "2600 S CALIFORNIA",
+      "anonymized_value": "Location-Southwest"
+    },
+    {
+      "domain": "address",
+      "original_value": "5701 W. Madison Street",
+      "anonymized_value": "Location-West"
+    },
+    {
+      "domain": "log_number",
+      "original_value": "Complaint Register (CR) Number: #2021-4893",
+      "anonymized_value": "Log-001"
+    },
+    {
+      "domain": "log_number",
+      "original_value": "Log #2021-0000970",
+      "anonymized_value": "Log-002"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Officer Pierre Tyler",
+      "anonymized_value": "Officer-1"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Daly, Brian M",
+      "anonymized_value": "Officer-10"
+    },
+    {
+      "domain": "officer",
+      "original_value": "PEREZ, Adrian, S",
+      "anonymized_value": "Officer-11"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Flechsig, Mark E",
+      "anonymized_value": "Officer-12"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Beebe, Thomas A",
+      "anonymized_value": "Officer-13"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Lynn, Kevin P",
+      "anonymized_value": "Officer-14"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Winstrom, Eric W",
+      "anonymized_value": "Officer-15"
+    },
+    {
+      "domain": "officer",
+      "original_value": "MARCONI, Angelo",
+      "anonymized_value": "Officer-16"
+    },
+    {
+      "domain": "officer",
+      "original_value": "CARRENO, Jesse",
+      "anonymized_value": "Officer-17"
+    },
+    {
+      "domain": "officer",
+      "original_value": "KANE, Ronni, B",
+      "anonymized_value": "Officer-18"
+    },
+    {
+      "domain": "officer",
+      "original_value": "CHAVEZ, Terri, L",
+      "anonymized_value": "Officer-19"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Sgt. Theophilo Kerkeres",
+      "anonymized_value": "Officer-2"
+    },
+    {
+      "domain": "officer",
+      "original_value": "NAVARRETE, Antonio",
+      "anonymized_value": "Officer-20"
+    },
+    {
+      "domain": "officer",
+      "original_value": "GONZALEZ, Hector",
+      "anonymized_value": "Officer-21"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Losik, Richard F",
+      "anonymized_value": "Officer-22"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Meilinger, Chris M",
+      "anonymized_value": "Officer-23"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Officer Juan Perez",
+      "anonymized_value": "Officer-3"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Officer Larry Branch",
+      "anonymized_value": "Officer-4"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Officer Adriel Zurita",
+      "anonymized_value": "Officer-5"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Fred L. Waller",
+      "anonymized_value": "Officer-6"
+    },
+    {
+      "domain": "officer",
+      "original_value": "FOSTER, J L",
+      "anonymized_value": "Officer-7"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Adams, James W",
+      "anonymized_value": "Officer-8"
+    },
+    {
+      "domain": "officer",
+      "original_value": "Santos, Michael",
+      "anonymized_value": "Officer-9"
+    },
+    {
+      "domain": "pod_camera",
+      "original_value": "POD #7519W",
+      "anonymized_value": "POD-001"
+    }
+  ]
+}

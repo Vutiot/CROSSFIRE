@@ -1,0 +1,364 @@
+{
+  "claims": [
+    {
+      "claim_id": "RFI_001",
+      "subject": "CPD",
+      "predicate": "issued_request_for_additional_investigation",
+      "object": "Log-001",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_002",
+      "subject": "CPD",
+      "predicate": "invoked_authority",
+      "object": "MCC 2-78-130-a-i-(2)",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_003",
+      "subject": "Officer-6",
+      "predicate": "authored_request_letter_dated",
+      "object": "2023-05-26",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_004",
+      "subject": "CPD",
+      "predicate": "addressed_request_to",
+      "object": "Administrator-B",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_005",
+      "subject": "CPD",
+      "predicate": "identified_deficiency",
+      "object": "COPA characterized Officer-1 conduct as officer-involved use of force rather than First Degree Murder under 720 ILCS 5/9-1",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_006",
+      "subject": "CPD",
+      "predicate": "criticized_finding",
+      "object": "COPA sustained allegation that Officer-1 discharged a firearm at victim without justification as an officer-involved shooting",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_007",
+      "subject": "CPD",
+      "predicate": "asserted_that",
+      "object": "Officer-1 was not acting within scope of employment when he killed the victim",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_008",
+      "subject": "CPD",
+      "predicate": "referenced_log",
+      "object": "Case-001",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_009",
+      "subject": "CPD",
+      "predicate": "asserted_that",
+      "object": "victim's death was not an officer-involved death under Illinois Law (50 ILCS 727/1-5)",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_010",
+      "subject": "CPD",
+      "predicate": "acknowledged_authority",
+      "object": "COPA has authority to conduct administrative investigations into firearm discharges under MCC 2-78-120-c",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_011",
+      "subject": "CPD detectives",
+      "predicate": "conducted_investigation_under",
+      "object": "Case-001",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_012",
+      "subject": "CPD detectives",
+      "predicate": "obtained_evidence_establishing",
+      "object": "probable cause that Officer-1 murdered the victim",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_013",
+      "subject": "Officer-1",
+      "predicate": "was_arrested_and_charged_with",
+      "object": "murder of victim",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_014",
+      "subject": "CPD",
+      "predicate": "directed_action",
+      "object": "COPA should re-characterize Officer-1's conduct as violation of Department Rule 1 by violating the law (First Degree Murder)",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_015",
+      "subject": "CPD",
+      "predicate": "referenced_log",
+      "object": "Log-002",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_016",
+      "subject": "Log-002",
+      "predicate": "contains_sustained_allegation_of",
+      "object": "domestic abuse against Officer-1",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_017",
+      "subject": "Log-002",
+      "predicate": "was_referred_to",
+      "object": "Department of Law for separation",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_018",
+      "subject": "COPA investigation",
+      "predicate": "established_evidence_that",
+      "object": "Officer-1 was in a domestic relationship with the victim and was the last person at her residence before her body was discovered",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_019",
+      "subject": "COPA investigation",
+      "predicate": "established_evidence_that",
+      "object": "Officer-1 and victim were engaged in an argument",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_020",
+      "subject": "CPD",
+      "predicate": "identified_deficiency",
+      "object": "no evidence that Officer-1 claimed he shot victim as part of his duties as a Chicago Police Officer",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_021",
+      "subject": "COPA",
+      "predicate": "sustained_allegation",
+      "object": "allegation 4 — Officer-1 was absent from work without permission at time of incident",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_022",
+      "subject": "CPD",
+      "predicate": "identified_deficiency",
+      "object": "Officer-1 was not properly provided his Administrative Rights (CPD-44.105)",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_023",
+      "subject": "CPD",
+      "predicate": "identified_deficiency",
+      "object": "Officer-1 was not properly ordered to give a statement during COPA investigation",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_024",
+      "subject": "CPD",
+      "predicate": "directed_action",
+      "object": "Officer-1 must be properly presented with allegations and ordered to give a Garrity-protected administrative statement",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_025",
+      "subject": "CPD",
+      "predicate": "asserted_that",
+      "object": "Officer-1's refusal to provide a properly ordered statement would result in additional allegation for insubordination under Department Rules 2, 3, 5, 6, and 51",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_026",
+      "subject": "COPA investigator",
+      "predicate": "emailed_on",
+      "object": "2022-03-11 regarding Officer-1's invocation of right to remain silent for Log-001 and Log-002",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_027",
+      "subject": "Officer-1 attorney",
+      "predicate": "invoked_on_behalf_of",
+      "object": "Fifth Amendment right to remain silent, citing active First Degree Murder indictment at Cook County Department of Corrections",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_028",
+      "subject": "Officer-1",
+      "predicate": "was_incarcerated_at",
+      "object": "Cook County Department of Corrections under indictment for First Degree Murder at time of COPA email",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_029",
+      "subject": "CPD",
+      "predicate": "identified_deficiency",
+      "object": "allegations referenced in COPA email were not included in COPA's case attachments, and it is unclear whether Officer-1 was served with CPD-44.105",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_030",
+      "subject": "CPD",
+      "predicate": "asserted_legal_position",
+      "object": "Officer-1 does not have a constitutional right to refuse to give an administrative statement on disciplinary charges related to employment once properly ordered to do so",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_031",
+      "subject": "CPD",
+      "predicate": "cited_legal_authority",
+      "object": "Satchell v. Board of Police and Fire Commissioners of the Village of Melrose Park, 2022 IL App(1st) 201361 — officer properly terminated for insubordination after invoking Fifth Amendment despite Garrity warning",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_032",
+      "subject": "CPD",
+      "predicate": "cited_legal_authority",
+      "object": "Confederation of Police v. Conlisk, 489 F.2d 891 (7th Cir 1973) — termination reversed where officers were not asked specific narrow questions and not advised of immunity",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_033",
+      "subject": "CPD Form 44.105",
+      "predicate": "provides_administrative_rights_including",
+      "object": "statement made during hearing cannot be used against officer in subsequent criminal proceeding",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_034",
+      "subject": "CPD",
+      "predicate": "required_additional_investigation_of",
+      "object": "COPA must re-serve Officer-1 with CPD-44.105 Administrative Proceeding Rights and issue a proper order to provide a statement on specific, narrow questions related to official duties",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_035",
+      "subject": "CPD",
+      "predicate": "asserted_legal_position",
+      "object": "Garrity is self-executing and attaches as a matter of law when a police officer is ordered by his public employer to answer questions about conduct that could incriminate him",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "RFI_036",
+      "subject": "Officer-6",
+      "predicate": "signed_request_as",
+      "object": "Interim Superintendent of Police, Chicago Police Department",
+      "source_document": "request_further_investigation",
+      "confidence": 0.95
+    }
+  ],
+  "cross_references": [
+    {
+      "reference_id": "RFI_xref_001",
+      "source_claim": "RFI_006",
+      "target_claim": "RFI_005",
+      "relationship": "elaborates",
+      "source_documents": ["request_further_investigation"]
+    },
+    {
+      "reference_id": "RFI_xref_002",
+      "source_claim": "RFI_021",
+      "target_claim": "RFI_007",
+      "relationship": "supports",
+      "source_documents": ["request_further_investigation"]
+    },
+    {
+      "reference_id": "RFI_xref_003",
+      "source_claim": "RFI_018",
+      "target_claim": "RFI_020",
+      "relationship": "supports",
+      "source_documents": ["request_further_investigation"]
+    },
+    {
+      "reference_id": "RFI_xref_004",
+      "source_claim": "RFI_022",
+      "target_claim": "RFI_023",
+      "relationship": "same_fact",
+      "source_documents": ["request_further_investigation"]
+    },
+    {
+      "reference_id": "RFI_xref_005",
+      "source_claim": "RFI_029",
+      "target_claim": "RFI_022",
+      "relationship": "elaborates",
+      "source_documents": ["request_further_investigation"]
+    },
+    {
+      "reference_id": "RFI_xref_006",
+      "source_claim": "RFI_027",
+      "target_claim": "RFI_023",
+      "relationship": "response_to",
+      "source_documents": ["request_further_investigation"]
+    },
+    {
+      "reference_id": "RFI_xref_007",
+      "source_claim": "RFI_031",
+      "target_claim": "RFI_024",
+      "relationship": "supports",
+      "source_documents": ["request_further_investigation"]
+    },
+    {
+      "reference_id": "RFI_xref_008",
+      "source_claim": "RFI_032",
+      "target_claim": "RFI_022",
+      "relationship": "elaborates",
+      "source_documents": ["request_further_investigation"]
+    },
+    {
+      "reference_id": "RFI_xref_009",
+      "source_claim": "RFI_033",
+      "target_claim": "RFI_034",
+      "relationship": "supports",
+      "source_documents": ["request_further_investigation"]
+    },
+    {
+      "reference_id": "RFI_xref_010",
+      "source_claim": "RFI_015",
+      "target_claim": "RFI_008",
+      "relationship": "elaborates",
+      "source_documents": ["request_further_investigation"]
+    }
+  ]
+}

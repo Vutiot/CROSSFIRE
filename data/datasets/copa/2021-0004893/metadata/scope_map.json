@@ -1,0 +1,29 @@
+{
+  "case_id": "2021-0004893",
+  "entries": [
+    {
+      "document_id": "final_summary_report",
+      "scope_classification": "investigation_analysis, credibility_assessment, findings, force_event_analysis, rule_violation_adjudication"
+    },
+    {
+      "document_id": "supplemental_fsr",
+      "scope_classification": "revised_investigation_analysis, reaffirmed_findings, ballistic_evidence, timeline_reconstruction"
+    },
+    {
+      "document_id": "request_further_investigation",
+      "scope_classification": "investigative_deficiency_identification, procedural_remand, garrity_compulsion_directive, legal_authority_citation"
+    },
+    {
+      "document_id": "copa_order",
+      "scope_classification": "administrative_order"
+    },
+    {
+      "document_id": "arrest_report",
+      "scope_classification": "booking_information, charging_decision, probable_cause_narrative, lockup_log, WC_review"
+    },
+    {
+      "document_id": "case_incident_report",
+      "scope_classification": "complaint_intake, complainant_account, offense_classification, initial_allegations, preliminary_injury_description"
+    }
+  ]
+}

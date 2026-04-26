@@ -1,0 +1,1120 @@
+{
+  "claims": [
+    {
+      "claim_id": "SFSR_001",
+      "subject": "Log-001",
+      "predicate": "document_type",
+      "object": "supplemental_summary_report_of_investigation",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_002",
+      "subject": "Log-001",
+      "predicate": "superseded_prior_conclusion",
+      "object": "original_log_closed_2023-02-28_reopened_for_revised_firearm_discharge_analysis",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_003",
+      "subject": "Administrator-A",
+      "predicate": "added_evidence",
+      "object": "superintendent_requested_additional_investigation_on_2023-05-26",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_004",
+      "subject": "Log-001",
+      "predicate": "incident_date_range",
+      "object": "December_8_2021_4:30pm_to_December_9_2021_10:00am",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_005",
+      "subject": "Log-001",
+      "predicate": "copa_notification_datetime",
+      "object": "December_9_2021_2:08pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_006",
+      "subject": "Officer-1",
+      "predicate": "date_of_appointment",
+      "object": "April_25_2016",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_007",
+      "subject": "Officer-1",
+      "predicate": "assigned_unit",
+      "object": "015",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_008",
+      "subject": "Log-001",
+      "predicate": "case_type",
+      "object": "05E_excessive_force_weapon_fatal",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_009",
+      "subject": "COPA",
+      "predicate": "notified_of_incident_via",
+      "object": "telephone_call_from_CPD_Bureau_of_Internal_Affairs",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_010",
+      "subject": "COPA_investigation",
+      "predicate": "revealed_finding",
+      "object": "officers_responded_to_residence_for_well_being_check_and_found_victim_deceased",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_011",
+      "subject": "involved_individual",
+      "predicate": "cause_of_death",
+      "object": "gunshot_wound_ruled_homicide",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_012",
+      "subject": "Officer-1",
+      "predicate": "captured_on_video_as",
+      "object": "last_person_entering_and_exiting_victims_residence",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_013",
+      "subject": "Officer-1",
+      "predicate": "arrested_and_charged_with",
+      "object": "first_degree_murder",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_014",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_1_officer_discharged_firearm_without_justification_sustained",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_015",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_2_officer_failed_to_report_firearm_discharge_sustained",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_016",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_3_officer_failed_to_secure_firearm_sustained",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_017",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_4_officer_absent_from_work_without_permission_sustained",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_018",
+      "subject": "allegation_1",
+      "predicate": "temporal_scope",
+      "object": "December_8_2021_4:30pm_to_December_9_2021_9:49am",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_019",
+      "subject": "allegation_4",
+      "predicate": "temporal_scope",
+      "object": "December_8_2021_11:30am_to_8:30pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_020",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule_1_violation_of_law_or_ordinance",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_021",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule_39_failure_to_report_firearm_discharge_to_desk_sergeant",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_022",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule_38_unlawful_or_unnecessary_use_or_display_of_weapon",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_023",
+      "subject": "Officer-1",
+      "predicate": "violated_rule",
+      "object": "Rule_28_absent_from_duty_without_proper_authorization",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_024",
+      "subject": "Log-001",
+      "predicate": "separate_investigation_exists",
+      "object": "Log-002_domestic_violence_allegations_not_part_of_this_log",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_025",
+      "subject": "Officer-1",
+      "predicate": "assigned_shift_on",
+      "object": "December_8_2021_11:30am_to_8:30pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_026",
+      "subject": "Officer-1",
+      "predicate": "assigned_to_beat",
+      "object": "Beat_1562C_Car_4909_on_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_027",
+      "subject": "Officer-1",
+      "predicate": "no_documentation_found_for",
+      "object": "time_off_request_or_hours_adjustment_on_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_028",
+      "subject": "Officer-2",
+      "predicate": "stated_procedural_fact",
+      "object": "documentation_for_time_off_completed_by_requesting_officer_in_automated_system",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_029",
+      "subject": "Officer-1_cell_phone",
+      "predicate": "used_cell_towers_near",
+      "object": "Location-West_at_approximately_1:20pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_030",
+      "subject": "Officer-1_key_fob",
+      "predicate": "used_to_open_door_at",
+      "object": "015th_District_TAC_Gang_Office_at_1:50pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_031",
+      "subject": "Officer-3",
+      "predicate": "stated",
+      "object": "telephoned_TAC_office_on_December_8_2021_and_Officer-1_answered",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_032",
+      "subject": "involved_individual",
+      "predicate": "entered_apartment_at",
+      "object": "approximately_10:35am_December_8_2021_per_surveillance_footage",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_033",
+      "subject": "Officer-1",
+      "predicate": "entered_victims_front_door_at",
+      "object": "approximately_4:05pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_034",
+      "subject": "Officer-1",
+      "predicate": "made_telephone_call_to_victim_at",
+      "object": "approximately_4:45_to_5:00pm_December_8_2021_regarding_child_support_hearing",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_035",
+      "subject": "Officer-1",
+      "predicate": "made_telephone_call_to_victim_at",
+      "object": "approximately_5:15pm_December_8_2021_regarding_child_support_hearing",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_036",
+      "subject": "Officer-1",
+      "predicate": "made_telephone_call_at",
+      "object": "approximately_5:30pm_December_8_2021_third_call_victim_and_another_party_present",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_037",
+      "subject": "Officer-1_and_victim_cell_phones",
+      "predicate": "used_cell_towers_near",
+      "object": "victims_residence_at_approximately_8:40pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_038",
+      "subject": "victims_apartment_front_door",
+      "predicate": "event_occurred_at",
+      "object": "opened_then_quickly_closed_at_9:04pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_039",
+      "subject": "Officer-1",
+      "predicate": "exited_victims_apartment_through_back_door_at",
+      "object": "9:06pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_040",
+      "subject": "Officer-1",
+      "predicate": "observed_wearing_on_exit",
+      "object": "holstered_firearm_on_right_side_of_waistband",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_041",
+      "subject": "Officer-1_and_victim_cell_phones",
+      "predicate": "began_moving_south_from_victims_residence_at",
+      "object": "approximately_9:15pm_December_8_2021_in_unison",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_042",
+      "subject": "Officer-1_and_victim_cell_phones",
+      "predicate": "used_cell_towers_near",
+      "object": "Location-West_015th_District_Station_at_approximately_9:20pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_043",
+      "subject": "victim_cell_phone",
+      "predicate": "last_cell_tower_activity_at",
+      "object": "9:46pm_December_8_2021_near_015th_District_Station",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_044",
+      "subject": "Officer-1_cell_phone",
+      "predicate": "moving_east_from_015th_District_Station_at",
+      "object": "9:49pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_045",
+      "subject": "Officer-1_cell_phone",
+      "predicate": "attempted_to_contact_victim_cell_phone_at",
+      "object": "9:49pm_December_8_2021_victim_phone_not_functioning",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_046",
+      "subject": "Officer-1_cell_phone",
+      "predicate": "used_cell_towers_near",
+      "object": "Location-Central_officers_residence_at_approximately_10:00pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_047",
+      "subject": "POD-001",
+      "predicate": "recorded_officer_arriving_at_residence_at",
+      "object": "approximately_2:48am_December_9_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_048",
+      "subject": "victims_father",
+      "predicate": "called_911_at",
+      "object": "9:49am_December_9_2021_requesting_well_being_check",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_049",
+      "subject": "victims_father",
+      "predicate": "stated",
+      "object": "last_spoke_to_daughter_on_December_7_2021_at_approximately_5:30pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_050",
+      "subject": "Officer-4_and_Officer-5",
+      "predicate": "arrived_at_victims_residence_at",
+      "object": "10:00am_December_9_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_051",
+      "subject": "Officer-4_and_Officer-5",
+      "predicate": "found_victim",
+      "object": "deceased_on_floor_near_front_door_of_residence",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_052",
+      "subject": "Officer-4",
+      "predicate": "recovered_evidence_at",
+      "object": "fired_cartridge_casing_in_shoe_tray_near_front_door",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_053",
+      "subject": "Officer-1",
+      "predicate": "arrived_at_victims_residence_at",
+      "object": "approximately_10:21am_December_9_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_054",
+      "subject": "Officer-1",
+      "predicate": "stated_to_Officer-4",
+      "object": "last_spoke_to_victim_on_December_8_2021_at_approximately_4:30pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_055",
+      "subject": "Officer-1",
+      "predicate": "stated_reason_for_visiting_victim",
+      "object": "to_talk_about_argument_from_previous_weekend",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_056",
+      "subject": "Officer-1",
+      "predicate": "stated_to_Officer-4",
+      "object": "left_Springfield_XDM_9mm_handgun_on_top_shelf_of_victims_bedroom_closet",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_057",
+      "subject": "Springfield_XDM_9mm_handgun",
+      "predicate": "status",
+      "object": "never_found_during_investigation",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_058",
+      "subject": "Cook_County_States_Attorney",
+      "predicate": "charged_Officer-1_with",
+      "object": "first_degree_murder_on_December_10_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_059",
+      "subject": "Cook_County_Medical_Examiner",
+      "predicate": "determined_cause_of_death",
+      "object": "gunshot_wound_to_right_side_of_face_near_nose_no_exit_wound",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_060",
+      "subject": "Cook_County_Medical_Examiner",
+      "predicate": "determined_manner_of_death",
+      "object": "homicide",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_061",
+      "subject": "autopsy",
+      "predicate": "observed_forensic_evidence",
+      "object": "stippling_near_gunshot_wound_indicating_close_range_discharge",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_062",
+      "subject": "Officer-1_left_hand",
+      "predicate": "tested_positive_for",
+      "object": "gunshot_residue",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_063",
+      "subject": "Officer-1_right_hand",
+      "predicate": "tested_negative_for",
+      "object": "gunshot_residue",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_064",
+      "subject": "GSR_result_Officer-1_left_hand",
+      "predicate": "indicates",
+      "object": "officer_discharged_firearm_or_was_in_close_proximity_to_discharged_firearm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_065",
+      "subject": "investigation",
+      "predicate": "added_evidence",
+      "object": "three_firearms_recovered_and_inventoried",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_066",
+      "subject": "firearm_1",
+      "predicate": "recovered_from",
+      "object": "015th_District_Locker_Sig_Sauer_P320_9mm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_067",
+      "subject": "firearm_2",
+      "predicate": "recovered_from",
+      "object": "bedroom_closet_inside_victims_residence_Smith_and_Wesson_MP_9mm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_068",
+      "subject": "firearm_3",
+      "predicate": "recovered_from",
+      "object": "inside_vehicle_Smith_and_Wesson_MP_9mm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_069",
+      "subject": "fired_cartridge_casing_1",
+      "predicate": "recovered_from",
+      "object": "shoe_tray_near_front_door_of_victims_residence",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_070",
+      "subject": "fired_cartridge_casing_2",
+      "predicate": "recovered_from",
+      "object": "bag_inside_Officer-1_residence",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_071",
+      "subject": "ballistic_analysis",
+      "predicate": "added_evidence",
+      "object": "both_fired_cartridge_casings_fired_from_same_firearm_but_not_any_of_three_recovered_firearms",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_072",
+      "subject": "Officer-1",
+      "predicate": "invoked_right_against_self_incrimination",
+      "object": "declined_to_provide_statement_to_COPA_through_attorney",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_073",
+      "subject": "COPA",
+      "predicate": "standard_of_proof_applied",
+      "object": "preponderance_of_evidence_for_sustained_findings",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_074",
+      "subject": "COPA",
+      "predicate": "standard_of_proof_applied",
+      "object": "clear_and_convincing_evidence_for_unfounded_or_exonerated_findings",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_075",
+      "subject": "COPA",
+      "predicate": "revised_finding_to",
+      "object": "allegation_1_sustained_based_on_preponderance_of_evidence_officer_discharged_without_justification",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_076",
+      "subject": "COPA_analysis",
+      "predicate": "affirmed_prior_finding",
+      "object": "no_evidence_gunshot_was_self_inflicted",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_077",
+      "subject": "COPA_analysis",
+      "predicate": "noted_legal_context",
+      "object": "criminal_charges_against_Officer-1_relevant_to_administrative_proceedings_lower_burden_of_proof",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_078",
+      "subject": "COPA_analysis",
+      "predicate": "affirmed_prior_finding",
+      "object": "Officer-1_was_last_person_to_see_victim_alive",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_079",
+      "subject": "COPA_analysis",
+      "predicate": "added_evidence",
+      "object": "fired_cartridge_casings_from_same_firearm_supports_conclusion_Officer-1_shot_victim_and_disposed_of_weapon",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_080",
+      "subject": "COPA_analysis",
+      "predicate": "revised_finding_to",
+      "object": "officer_more_likely_than_not_disposed_of_firearm_used_to_shoot_victim",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_081",
+      "subject": "COPA_analysis",
+      "predicate": "added_evidence",
+      "object": "cell_phone_data_shows_victim_phone_and_officer_phone_travelled_together_to_near_015th_district_station_where_victim_phone_ceased_transmitting",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_082",
+      "subject": "COPA_analysis",
+      "predicate": "inferred_from_evidence",
+      "object": "Officer-1_removed_victims_cell_phone_and_possibly_discarded_it_near_015th_District_Station",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.8
+    },
+    {
+      "claim_id": "SFSR_083",
+      "subject": "COPA_analysis",
+      "predicate": "affirmed_prior_finding",
+      "object": "no_other_person_entered_or_exited_victims_apartment_between_last_seen_alive_and_body_discovered",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_084",
+      "subject": "Officer-1_statement_vs_video_evidence",
+      "predicate": "contradicts",
+      "object": "officer_claimed_last_saw_victim_at_4:30pm_but_video_shows_he_left_at_9:06pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_085",
+      "subject": "COPA_analysis",
+      "predicate": "inferred_from_evidence",
+      "object": "Officer-1_sought_to_mislead_police_about_key_facts_related_to_incident",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.8
+    },
+    {
+      "claim_id": "SFSR_086",
+      "subject": "Officer-1_phone_call_to_victim_phone",
+      "predicate": "cell_tower_data_reveals",
+      "object": "officer_phone_was_in_same_location_as_victim_phone_when_call_was_placed_suggesting_cover_up",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.8
+    },
+    {
+      "claim_id": "SFSR_087",
+      "subject": "COPA_analysis",
+      "predicate": "drew_adverse_inference_from",
+      "object": "Officer-1_refusal_to_answer_allegations",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_088",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_1_sustained_totality_of_circumstances",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_089",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_2_sustained_no_evidence_Officer-1_notified_CPD_of_firearm_discharge",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_090",
+      "subject": "Rule_21_and_Rule_22",
+      "predicate": "requires",
+      "object": "members_report_information_concerning_crime_or_unlawful_action",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_091",
+      "subject": "Rule_39",
+      "predicate": "requires",
+      "object": "members_immediately_report_firearm_discharge_to_sergeant",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_092",
+      "subject": "Department_policy_U04-02",
+      "predicate": "requires",
+      "object": "secure_all_firearms_owned_or_possessed_to_prevent_access_by_unapproved_individuals",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_093",
+      "subject": "Department_policy_U04-02",
+      "predicate": "prohibits",
+      "object": "officers_lending_firearms_to_others",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_094",
+      "subject": "Officer-1",
+      "predicate": "admitted_leaving_firearm",
+      "object": "on_top_shelf_of_victims_bedroom_closet_in_violation_of_policy",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_095",
+      "subject": "COPA_analysis",
+      "predicate": "affirmed_prior_finding",
+      "object": "Officer-1_kept_firearm_at_victims_home_for_her_protection",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_096",
+      "subject": "firearm_2_recovered_from_victims_residence",
+      "predicate": "found_with",
+      "object": "holster_one_live_round_and_one_magazine_in_paper_gift_bag",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_097",
+      "subject": "COPA_analysis",
+      "predicate": "added_evidence",
+      "object": "children_under_14_living_at_victims_and_another_residence_could_have_accessed_unsecured_weapons",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_098",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_3_sustained_Officer-1_failed_to_secure_two_firearms",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_099",
+      "subject": "CPD_attendance_record",
+      "predicate": "shows",
+      "object": "Officer-1_scheduled_9_hour_shift_December_8_2021_11:30am_to_8:30pm",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_100",
+      "subject": "CPD_attendance_record",
+      "predicate": "shows",
+      "object": "Officer-1_present_at_015th_District_at_approximately_1:50pm_December_8_2021",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_101",
+      "subject": "Officer-1",
+      "predicate": "entered_victims_residence_and_remained_until",
+      "object": "9:06pm_December_8_2021_more_than_four_hours_during_duty_hours",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_102",
+      "subject": "COPA",
+      "predicate": "affirmed_prior_finding",
+      "object": "allegation_4_sustained_no_evidence_of_time_off_request_or_prompt_absence_report",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_103",
+      "subject": "Officer-1",
+      "predicate": "complimentary_history_includes",
+      "object": "87_awards_including_superintendents_award_of_tactical_excellence_and_officer_of_month",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_104",
+      "subject": "Officer-1",
+      "predicate": "disciplinary_history_includes",
+      "object": "one_day_suspension_July_2021_for_preventable_accident",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_105",
+      "subject": "Officer-1_violations_allegation_1",
+      "predicate": "violated_rules",
+      "object": "Rules_1_2_3_8_9_38",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_106",
+      "subject": "Officer-1_violations_allegation_2",
+      "predicate": "violated_rules",
+      "object": "Rules_2_3_5_10_21_22_39",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_107",
+      "subject": "Officer-1_violations_allegation_3",
+      "predicate": "violated_rules",
+      "object": "Rules_2_3_5_6_10_13",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_108",
+      "subject": "Officer-1_violations_allegation_4",
+      "predicate": "violated_rules",
+      "object": "Rules_2_3_5_6_27_28_30",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_109",
+      "subject": "COPA",
+      "predicate": "recommended_penalty",
+      "object": "separation",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_110",
+      "subject": "Administrator-A",
+      "predicate": "approved_report_on",
+      "object": "November_30_2023",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_111",
+      "subject": "Administrator-B",
+      "predicate": "approved_report_on",
+      "object": "November_30_2023",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_112",
+      "subject": "Case-002",
+      "predicate": "criminal_case_reference",
+      "object": "People_v_Officer-1_first_degree_murder",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    },
+    {
+      "claim_id": "SFSR_113",
+      "subject": "COPA_analysis",
+      "predicate": "characterized_misconduct_severity",
+      "object": "domestic_related_homicide_most_egregious_form_justifying_separation",
+      "source_document": "supplemental_fsr",
+      "confidence": 0.95
+    }
+  ],
+  "cross_references": [
+    {
+      "reference_id": "SFSR_xref_001",
+      "source_claim": "SFSR_002",
+      "target_claim": "SFSR_075",
+      "relationship": "causal",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_002",
+      "source_claim": "SFSR_012",
+      "target_claim": "SFSR_039",
+      "relationship": "same_fact",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_003",
+      "source_claim": "SFSR_012",
+      "target_claim": "SFSR_083",
+      "relationship": "supports",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_004",
+      "source_claim": "SFSR_033",
+      "target_claim": "SFSR_054",
+      "relationship": "contradicts",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_005",
+      "source_claim": "SFSR_039",
+      "target_claim": "SFSR_054",
+      "relationship": "contradicts",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_006",
+      "source_claim": "SFSR_084",
+      "target_claim": "SFSR_085",
+      "relationship": "causal",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_007",
+      "source_claim": "SFSR_054",
+      "target_claim": "SFSR_084",
+      "relationship": "same_fact",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_008",
+      "source_claim": "SFSR_043",
+      "target_claim": "SFSR_081",
+      "relationship": "elaborates",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_009",
+      "source_claim": "SFSR_081",
+      "target_claim": "SFSR_082",
+      "relationship": "causal",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_010",
+      "source_claim": "SFSR_045",
+      "target_claim": "SFSR_086",
+      "relationship": "elaborates",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_011",
+      "source_claim": "SFSR_069",
+      "target_claim": "SFSR_071",
+      "relationship": "supports",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_012",
+      "source_claim": "SFSR_070",
+      "target_claim": "SFSR_071",
+      "relationship": "supports",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_013",
+      "source_claim": "SFSR_071",
+      "target_claim": "SFSR_079",
+      "relationship": "supports",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_014",
+      "source_claim": "SFSR_056",
+      "target_claim": "SFSR_057",
+      "relationship": "elaborates",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_015",
+      "source_claim": "SFSR_057",
+      "target_claim": "SFSR_080",
+      "relationship": "supports",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_016",
+      "source_claim": "SFSR_062",
+      "target_claim": "SFSR_064",
+      "relationship": "causal",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_017",
+      "source_claim": "SFSR_064",
+      "target_claim": "SFSR_075",
+      "relationship": "supports",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_018",
+      "source_claim": "SFSR_040",
+      "target_claim": "SFSR_056",
+      "relationship": "contradicts",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_019",
+      "source_claim": "SFSR_025",
+      "target_claim": "SFSR_101",
+      "relationship": "elaborates",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_020",
+      "source_claim": "SFSR_101",
+      "target_claim": "SFSR_102",
+      "relationship": "causal",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_021",
+      "source_claim": "SFSR_027",
+      "target_claim": "SFSR_102",
+      "relationship": "supports",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_022",
+      "source_claim": "SFSR_094",
+      "target_claim": "SFSR_098",
+      "relationship": "causal",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_023",
+      "source_claim": "SFSR_095",
+      "target_claim": "SFSR_098",
+      "relationship": "causal",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_024",
+      "source_claim": "SFSR_072",
+      "target_claim": "SFSR_087",
+      "relationship": "causal",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_025",
+      "source_claim": "SFSR_014",
+      "target_claim": "SFSR_075",
+      "relationship": "same_fact",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_026",
+      "source_claim": "SFSR_109",
+      "target_claim": "SFSR_113",
+      "relationship": "causal",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_027",
+      "source_claim": "SFSR_030",
+      "target_claim": "SFSR_100",
+      "relationship": "same_fact",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_028",
+      "source_claim": "SFSR_041",
+      "target_claim": "SFSR_081",
+      "relationship": "same_fact",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_029",
+      "source_claim": "SFSR_058",
+      "target_claim": "SFSR_077",
+      "relationship": "elaborates",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    },
+    {
+      "reference_id": "SFSR_xref_030",
+      "source_claim": "SFSR_059",
+      "target_claim": "SFSR_060",
+      "relationship": "sequence",
+      "source_documents": ["supplemental_fsr", "supplemental_fsr"]
+    }
+  ]
+}
