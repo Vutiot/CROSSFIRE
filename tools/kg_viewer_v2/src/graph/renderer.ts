@@ -57,10 +57,11 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
     edgeLabelSize: 10,
     edgeLabelColor: { color: "#5f5e5a" },
     defaultNodeColor: "#9b9789",
-    // Spec edge default — desaturated warm grey #c8c5bb at 0.7 opacity. We
-    // bake the alpha into the color so Sigma's WebGL edge program respects
-    // it without needing custom programs.
-    defaultEdgeColor: "rgba(200, 197, 187, 0.7)",
+    // Spec edge stroke #c8c5bb at 0.7 opacity, encoded as 8-digit hex
+    // (B3 = round(0.7 * 255)). This form is parsed deterministically by
+    // Sigma's edge program; the rgba() form was rendering near-white due
+    // to a premultiplied-alpha quirk in Sigma's blend pipeline.
+    defaultEdgeColor: "#c8c5bbb3",
     minCameraRatio: 0.05,
     maxCameraRatio: 8,
     labelDensity: 0.5,
@@ -227,8 +228,15 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
 }
 
 function withAlpha(hex: string, alpha: number): string {
+  // Output 8-digit hex (#RRGGBBAA) instead of rgba(). Sigma's color parser
+  // handles the hex form deterministically across both edge and node WebGL
+  // programs; the rgba() form interacted poorly with Sigma's premultiplied-
+  // alpha blend pipeline and was rendering near-white on light backgrounds
+  // — exactly the user-reported "white edges" symptom.
   const c = parseHex(hex);
-  return `rgba(${c.r},${c.g},${c.b},${alpha})`;
+  const a = Math.max(0, Math.min(255, Math.round(alpha * 255)));
+  const h = (n: number) => n.toString(16).padStart(2, "0");
+  return `#${h(c.r)}${h(c.g)}${h(c.b)}${h(a)}`;
 }
 
 function parseHex(hex: string): { r: number; g: number; b: number } {

@@ -102,9 +102,16 @@ export function colorForCommunity(c: number): string {
   return palette[c % palette.length];
 }
 
-// Default edge stroke from the spec — a desaturated warm grey that lets
-// node colors carry the visual hierarchy without edges fighting them.
-const REL_TYPE_DEFAULT = "#c8c5bb";
+// Per design spec, edges in the graph itself use a single uniform stroke
+// color so the node palette carries the categorical hierarchy on its own.
+// The previous per-relation rainbow made the graph harder to scan because
+// edge color competed with node color for attention. Relation type is
+// still surfaced via the edge details card and the filter-pane swatches.
+export const EDGE_STROKE = "#c8c5bb";
+
+// Per-relation colors used ONLY for the FilterPane swatches so users can
+// still visually distinguish relation kinds in the filter list. The actual
+// rendered edges in the canvas always paint with EDGE_STROKE.
 const REL_TYPE_COLORS: Record<string, string> = {
   shared_facts: "#59a14f",
   shared_entities: "#4e79a7",
@@ -114,10 +121,12 @@ const REL_TYPE_COLORS: Record<string, string> = {
   temporal_proximity: "#f28e2b",
   causal_link: "#e15759",
   aircraft_context: "#59a14f",
+  same_fact: "#4e79a7",
+  causal: "#e15759",
 };
 
 export function colorForRelation(rel: string): string {
-  return REL_TYPE_COLORS[rel] ?? REL_TYPE_DEFAULT;
+  return REL_TYPE_COLORS[rel] ?? "#9c9890";
 }
 
 // Per-spec node sizing: degree-based with sqrt scaling, 5–16px range.
@@ -186,7 +195,7 @@ export function buildGraph({ raw, annotations }: BuildOpts): Graph<NodeAttrs, Ed
       raw: e,
       relationshipType: e.relationship_type,
       weight: e.weight ?? 1,
-      color: colorForRelation(e.relationship_type),
+      color: EDGE_STROKE,
       size: edgeSize(e.weight ?? 1),
       hidden: false,
       dimmed: false,
