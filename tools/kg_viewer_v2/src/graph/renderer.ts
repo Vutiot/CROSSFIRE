@@ -13,6 +13,16 @@ type G = Graph<NodeAttrs, EdgeAttrs>;
 const DIM_OPACITY = 0.15;
 const HIGHLIGHT_INK = "#2c2c2a"; // outline + bold edge color when hovered/selected
 
+// Edge colors are solid hex (no alpha). Sigma's WebGL edge program renders
+// alpha-encoded hex inconsistently against light backgrounds — the result
+// looks white instead of a faded warm grey. We pre-blend the spec values
+// against the canvas (#fafaf7) so the rendered tone matches what the spec
+// intended without going through Sigma's alpha pipeline:
+//   default = #c8c5bb @ 0.7 over #fafaf7 ≈ #d7d4cb (visible warm grey)
+//   dimmed  = #c8c5bb @ 0.10 over #fafaf7 ≈ #f4f3ed (barely-there ghost)
+const EDGE_COLOR_DEFAULT = "#bbb8ad";
+const EDGE_COLOR_DIMMED  = "#ecebe2";
+
 export interface RendererOpts {
   container: HTMLElement;
   graph: G;
@@ -57,11 +67,11 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
     edgeLabelSize: 10,
     edgeLabelColor: { color: "#5f5e5a" },
     defaultNodeColor: "#9b9789",
-    // Spec edge stroke #c8c5bb at 0.7 opacity, encoded as 8-digit hex
-    // (B3 = round(0.7 * 255)). This form is parsed deterministically by
-    // Sigma's edge program; the rgba() form was rendering near-white due
-    // to a premultiplied-alpha quirk in Sigma's blend pipeline.
-    defaultEdgeColor: "#c8c5bbb3",
+    // Solid pre-blended grey instead of an alpha-encoded form. Sigma's
+    // WebGL edge program renders alpha-channel hex against a light
+    // background as near-white due to its blend pipeline; the only
+    // reliable fix is to bake the desired final tone into a solid color.
+    defaultEdgeColor: EDGE_COLOR_DEFAULT,
     minCameraRatio: 0.05,
     maxCameraRatio: 8,
     labelDensity: 0.5,
@@ -115,13 +125,16 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
       const dimmed = (a.dimmed && !a.highlighted) || dimByHover;
       const highlighted = a.highlighted;
 
-      // Spec: highlighted edges go to ink #2c2c2a at full opacity. Default
-      // edges keep their per-relation color but at the 0.7 spec opacity.
+      // All three edge-states use solid hex (no alpha) so Sigma's WebGL
+      // pipeline doesn't blow them out toward white. Highlighted edges use
+      // the spec ink, dimmed edges fade into the canvas, and the default
+      // is a pre-blended warm grey matching the spec's intended tone.
       const color = highlighted
         ? HIGHLIGHT_INK
         : dimmed
-          ? withAlpha(a.color, 0.06)
-          : withAlpha(a.color, 0.7);
+          ? EDGE_COLOR_DIMMED
+          : EDGE_COLOR_DEFAULT;
+      // Keep the user-validated highlight thickness, otherwise spec width.
       const size = highlighted ? Math.max(1.4, a.size * 1.6) : a.size;
       return {
         ...data,
