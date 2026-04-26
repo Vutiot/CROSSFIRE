@@ -40,19 +40,7 @@ export interface RendererOpts {
   onDragEnd?: (nodeId: string) => void;
 }
 
-// True when both endpoints of `edgeId` are in the hover set.
-function hoverSetContainsEdge(graph: G, set: Set<string>, edgeId: string): boolean {
-  if (!graph.hasEdge(edgeId)) return false;
-  const [a, b] = graph.extremities(edgeId);
-  return set.has(a) && set.has(b);
-}
-
 export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> {
-  // Hover-neighborhood set — populated on enterNode (the hovered node + its
-  // 1-hop neighbors), cleared on leaveNode. Reducers below close over this
-  // variable so the dim treatment redraws on the next Sigma refresh.
-  let hoverSet: Set<string> | null = null;
-
   const sigma = new Sigma<NodeAttrs, EdgeAttrs>(opts.graph, opts.container, {
     renderLabels: true,
     renderEdgeLabels: false,
@@ -91,11 +79,10 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
       } else {
         color = colorForType(a.entityType);
       }
-      // Hover-fade: when something is hovered (and nothing is click-selected
-      // taking precedence), nodes outside the hover neighborhood dim.
-      const hoverFaded = !!hoverSet && !hoverSet.has(id);
-
-      const dimmed = (a.dimmed && !a.highlighted && !a.matched) || hoverFaded;
+      // Fade only on click-selection — hover stays still. Hovering large
+      // graphs with a fade behaviour caused too much visual churn (and was
+      // the trigger for the alpha-blend white-out artefact users reported).
+      const dimmed = a.dimmed && !a.highlighted && !a.matched;
       const highlighted = a.highlighted || a.matched;
       const isHub = a.degree >= HUB_DEGREE_THRESHOLD;
       // Same alpha-pipeline gotcha as edges: Sigma's WebGL node program
@@ -115,17 +102,12 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
         forceLabel: a.matched || highlighted || isHub,
       };
     },
-    edgeReducer: (edgeId, data) => {
+    edgeReducer: (_edgeId, data) => {
       const a = data as EdgeAttrs;
       if (a.hidden) return { ...data, hidden: true };
 
-      // For edges, "in the hover neighborhood" means both endpoints are in
-      // the hover set. Edge attrs don't carry source/target, so we look up
-      // via the graph reference passed in via opts.
-      const dimByHover = hoverSet
-        ? !hoverSetContainsEdge(opts.graph, hoverSet, edgeId)
-        : false;
-      const dimmed = (a.dimmed && !a.highlighted) || dimByHover;
+      // Click-selection fade only; hover doesn't dim anything.
+      const dimmed = a.dimmed && !a.highlighted;
       const highlighted = a.highlighted;
 
       // All three edge-states use solid hex (no alpha) so Sigma's WebGL
@@ -179,21 +161,15 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
     opts.onEdgeDoubleClick?.(payload.edge);
   });
 
-  // Hover — cursor feedback PLUS hover-neighborhood fade. The reducers
-  // above read the hoverSet closure directly; we just refresh after each
-  // change so the new state paints.
+  // Hover — cursor feedback only. The graph stays visually still so the
+  // user can read labels and node positions without flicker. Click is the
+  // committed gesture that fades and surfaces the selection card.
   sigma.on("enterNode", ({ node }) => {
     opts.container.style.cursor = draggedNode ? "grabbing" : "grab";
-    const set = new Set<string>([node]);
-    opts.graph.forEachNeighbor(node, (nb) => set.add(nb));
-    hoverSet = set;
-    sigma.refresh();
     opts.onHover(node);
   });
   sigma.on("leaveNode", () => {
     opts.container.style.cursor = "default";
-    hoverSet = null;
-    sigma.refresh();
     opts.onHover(null);
   });
 
