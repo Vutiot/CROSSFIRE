@@ -103,10 +103,17 @@ function NodeCardBody({ nodeId }: { nodeId: string }) {
   const p = payload.value;
 
   const node = useMemo(
-    () => (raw ? raw.nodes.find((n) => n.id === nodeId) ?? null : null),
+    () => (raw ? raw.nodes.find((n) => String(n.id) === String(nodeId)) ?? null : null),
     [raw, nodeId],
   );
   const a = ann[nodeId];
+
+  // Stale selections can survive view / dataset switches via the URL hash —
+  // if the node isn't in the current view, drop the selection instead of
+  // showing a useless "missing" placeholder card.
+  useEffect(() => {
+    if (raw && !node) clearSelection();
+  }, [raw, node]);
 
   const contradictions = useMemo(() => {
     if (!a || !p) return [];
@@ -120,18 +127,7 @@ function NodeCardBody({ nodeId }: { nodeId: string }) {
     return p.distractors.filter((d) => ids.has(d.id));
   }, [a, p?.distractors]);
 
-  if (!node) {
-    return (
-      <>
-        <div class="card-head">
-          <button class="close" onClick={clearSelection} title="Close">×</button>
-          <div class="type-tag">missing</div>
-          <h2>Node not found in current view</h2>
-          <div class="id">{nodeId}</div>
-        </div>
-      </>
-    );
-  }
+  if (!node) return null;
 
   return (
     <>
@@ -214,29 +210,26 @@ function NodeProps({ node }: { node: RawNode }) {
 
 function EdgeCardBody({ edgeId }: { edgeId: string }) {
   const raw = activeRawGraph.value;
-  if (!raw) return null;
   const [sId, tId] = edgeId.split("||");
-  const edge = useMemo(
-    () =>
-      raw.edges.find(
-        (e) => (e.source === sId && e.target === tId) || (e.source === tId && e.target === sId),
-      ) ?? null,
-    [raw, sId, tId],
-  );
-  const sourceNode = raw.nodes.find((n) => n.id === sId);
-  const targetNode = raw.nodes.find((n) => n.id === tId);
+  const edge = useMemo(() => {
+    if (!raw) return null;
+    return raw.edges.find(
+      (e) =>
+        (String(e.source) === sId && String(e.target) === tId) ||
+        (String(e.source) === tId && String(e.target) === sId),
+    ) ?? null;
+  }, [raw, sId, tId]);
 
-  if (!edge) {
-    return (
-      <>
-        <div class="card-head">
-          <button class="close" onClick={clearSelection} title="Close">×</button>
-          <h2>Edge not found</h2>
-          <div class="id">{edgeId}</div>
-        </div>
-      </>
-    );
-  }
+  // Drop stale edge selections from URL hash — same logic as nodes above.
+  useEffect(() => {
+    if (raw && !edge) clearSelection();
+  }, [raw, edge]);
+
+  if (!raw) return null;
+  const sourceNode = raw.nodes.find((n) => String(n.id) === sId);
+  const targetNode = raw.nodes.find((n) => String(n.id) === tId);
+
+  if (!edge) return null;
 
   return (
     <>

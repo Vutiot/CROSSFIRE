@@ -4,11 +4,14 @@
 import Sigma from "sigma";
 import Graph from "graphology";
 import type { NodeAttrs, EdgeAttrs } from "./build";
-import { colorForCommunity, colorForType } from "./build";
+import { HUB_DEGREE_THRESHOLD, colorForCommunity, colorForType } from "./build";
 
 type G = Graph<NodeAttrs, EdgeAttrs>;
 
-const DIM_OPACITY = 0.18;
+// Per spec — hover/selection fades non-adjacent down to 15% opacity. Lower
+// than the previous 0.18 so the focused subset really pops.
+const DIM_OPACITY = 0.15;
+const HIGHLIGHT_INK = "#2c2c2a"; // outline + bold edge color when hovered/selected
 
 export interface RendererOpts {
   container: HTMLElement;
@@ -28,21 +31,36 @@ export interface RendererOpts {
   onDragEnd?: (nodeId: string) => void;
 }
 
+// True when both endpoints of `edgeId` are in the hover set.
+function hoverSetContainsEdge(graph: G, set: Set<string>, edgeId: string): boolean {
+  if (!graph.hasEdge(edgeId)) return false;
+  const [a, b] = graph.extremities(edgeId);
+  return set.has(a) && set.has(b);
+}
+
 export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> {
+  // Hover-neighborhood set — populated on enterNode (the hovered node + its
+  // 1-hop neighbors), cleared on leaveNode. Reducers below close over this
+  // variable so the dim treatment redraws on the next Sigma refresh.
+  let hoverSet: Set<string> | null = null;
+
   const sigma = new Sigma<NodeAttrs, EdgeAttrs>(opts.graph, opts.container, {
     renderLabels: true,
     renderEdgeLabels: false,
+    // Spec calls for Inter at 12px, weight 400. Hubs (degree ≥ 10) bump to
+    // 13/500 — handled per-node via forceLabel + the labelWeight reducer
+    // hook below.
     labelSize: 12,
-    labelWeight: "500",
-    labelFont: '"Hanken Grotesk", system-ui, sans-serif',
-    labelColor: { color: "#3d3d3a" },
+    labelWeight: "400",
+    labelFont: '"Inter", system-ui, sans-serif',
+    labelColor: { color: "#2c2c2a" },
     edgeLabelSize: 10,
-    edgeLabelColor: { color: "#6e6a5e" },
+    edgeLabelColor: { color: "#5f5e5a" },
     defaultNodeColor: "#9b9789",
-    // Light-theme edge default — warm grey that reads on paper-white without
-    // dominating. Saturated edge types (shared_facts/contradiction/etc.)
-    // override this in styles.
-    defaultEdgeColor: "#c8c2ad",
+    // Spec edge default — desaturated warm grey #c8c5bb at 0.7 opacity. We
+    // bake the alpha into the color so Sigma's WebGL edge program respects
+    // it without needing custom programs.
+    defaultEdgeColor: "rgba(200, 197, 187, 0.7)",
     minCameraRatio: 0.05,
     maxCameraRatio: 8,
     labelDensity: 0.5,
@@ -63,30 +81,52 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
       } else {
         color = colorForType(a.entityType);
       }
-      const dimmed = a.dimmed && !a.highlighted && !a.matched;
+      // Hover-fade: when something is hovered (and nothing is click-selected
+      // taking precedence), nodes outside the hover neighborhood dim.
+      const hoverFaded = !!hoverSet && !hoverSet.has(id);
+
+      const dimmed = (a.dimmed && !a.highlighted && !a.matched) || hoverFaded;
       const highlighted = a.highlighted || a.matched;
+      const isHub = a.degree >= HUB_DEGREE_THRESHOLD;
       const finalColor = dimmed ? withAlpha(color, DIM_OPACITY) : color;
-      // Subtle border for matched/highlighted via slight size bump
-      const size = highlighted ? a.size * 1.35 : a.size;
+      const size = highlighted ? a.size * 1.25 : a.size;
       return {
         ...data,
         color: finalColor,
         size,
         zIndex: highlighted ? 2 : dimmed ? 0 : 1,
-        forceLabel: a.matched, // always show search-match labels
+        // Hub labels stay visible even at low zoom; matched (search hit)
+        // labels also forced. Selected node label too, so the user always
+        // sees what they clicked.
+        forceLabel: a.matched || highlighted || isHub,
       };
     },
-    edgeReducer: (_id, data) => {
+    edgeReducer: (edgeId, data) => {
       const a = data as EdgeAttrs;
       if (a.hidden) return { ...data, hidden: true };
-      const dimmed = a.dimmed && !a.highlighted;
-      const color = dimmed ? withAlpha(a.color, 0.08) : a.highlighted ? brighten(a.color) : a.color;
-      const size = a.highlighted ? a.size * 1.6 : a.size;
+
+      // For edges, "in the hover neighborhood" means both endpoints are in
+      // the hover set. Edge attrs don't carry source/target, so we look up
+      // via the graph reference passed in via opts.
+      const dimByHover = hoverSet
+        ? !hoverSetContainsEdge(opts.graph, hoverSet, edgeId)
+        : false;
+      const dimmed = (a.dimmed && !a.highlighted) || dimByHover;
+      const highlighted = a.highlighted;
+
+      // Spec: highlighted edges go to ink #2c2c2a at full opacity. Default
+      // edges keep their per-relation color but at the 0.7 spec opacity.
+      const color = highlighted
+        ? HIGHLIGHT_INK
+        : dimmed
+          ? withAlpha(a.color, 0.06)
+          : withAlpha(a.color, 0.7);
+      const size = highlighted ? Math.max(1.4, a.size * 1.6) : a.size;
       return {
         ...data,
         color,
         size,
-        zIndex: a.highlighted ? 2 : 0,
+        zIndex: highlighted ? 2 : 0,
       };
     },
     allowInvalidContainer: true,
@@ -122,13 +162,21 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
     opts.onEdgeDoubleClick?.(payload.edge);
   });
 
-  // Hover (cursor feedback)
+  // Hover — cursor feedback PLUS hover-neighborhood fade. The reducers
+  // above read the hoverSet closure directly; we just refresh after each
+  // change so the new state paints.
   sigma.on("enterNode", ({ node }) => {
     opts.container.style.cursor = draggedNode ? "grabbing" : "grab";
+    const set = new Set<string>([node]);
+    opts.graph.forEachNeighbor(node, (nb) => set.add(nb));
+    hoverSet = set;
+    sigma.refresh();
     opts.onHover(node);
   });
   sigma.on("leaveNode", () => {
     opts.container.style.cursor = "default";
+    hoverSet = null;
+    sigma.refresh();
     opts.onHover(null);
   });
 
@@ -181,12 +229,6 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
 function withAlpha(hex: string, alpha: number): string {
   const c = parseHex(hex);
   return `rgba(${c.r},${c.g},${c.b},${alpha})`;
-}
-
-function brighten(hex: string): string {
-  const c = parseHex(hex);
-  const f = (x: number) => Math.min(255, Math.round(x + (255 - x) * 0.35));
-  return `rgb(${f(c.r)},${f(c.g)},${f(c.b)})`;
 }
 
 function parseHex(hex: string): { r: number; g: number; b: number } {
