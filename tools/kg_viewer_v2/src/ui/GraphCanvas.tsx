@@ -132,6 +132,14 @@ export function GraphCanvas() {
       }
       sigmaRef.current = sigma;
 
+      // The previous graph's community map (if any) references node ids
+      // that may not exist in the new graph — letting it stick would make
+      // the reducer fall through to Sigma's default grey for unmatched ids
+      // ("colors lost" after a dataset switch). Clearing here triggers the
+      // color effect to re-detect against the fresh graph if the user is
+      // in community color mode.
+      communities.value = new Map();
+
       // Apply current filter state synchronously so the very first paint
       // reflects active filters/search/focus instead of a one-frame flash
       // of "everything visible" before the rAF lands.
