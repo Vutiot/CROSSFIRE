@@ -4,7 +4,7 @@
 import Sigma from "sigma";
 import Graph from "graphology";
 import type { NodeAttrs, EdgeAttrs } from "./build";
-import { HUB_DEGREE_THRESHOLD, colorForCommunity } from "./build";
+import { HUB_DEGREE_THRESHOLD, colorForCommunity, colorForType } from "./build";
 
 type G = Graph<NodeAttrs, EdgeAttrs>;
 
@@ -72,10 +72,12 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
       const a = data as NodeAttrs;
       if (a.hidden) return { ...data, hidden: true };
       const colorMode = opts.getColorMode();
-      let color = a.color; // type-mode color, set in buildGraph via colorForNode
+      let color = a.color;
       if (colorMode === "community") {
         const c = opts.getCommunities().get(id);
         color = c === undefined ? "#8b949e" : colorForCommunity(c);
+      } else {
+        color = colorForType(a.entityType);
       }
       // Fade only on click-selection — hover stays still. Hovering large
       // graphs with a fade behaviour caused too much visual churn (and was
@@ -199,7 +201,15 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
     e.original.stopPropagation();
   });
   mouse.on("mouseup", () => {
-    if (draggedNode) opts.onDragEnd?.(draggedNode);
+    if (draggedNode) {
+      opts.onDragEnd?.(draggedNode);
+      // Release the bbox freeze set in downNode so subsequent renders
+      // recompute the bbox against current node positions. Without this,
+      // a future FA2 run that fans nodes far beyond the drag-snapshot
+      // bbox would leave the camera unable to dezoom out (Sigma's
+      // normalization would still be clamped to the snapshot).
+      sigma.setCustomBBox(null);
+    }
     draggedNode = null;
     // Reset dragMoved on next tick so the synthesized clickNode (which fires
     // after mouseup) can be filtered out, but a fresh click still works.
@@ -207,12 +217,8 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
       dragMoved = false;
     }, 0);
   });
-  mouse.on("mousedown", () => {
-    // If the user starts a stage-pan, ensure no stale drag state remains.
-    if (!draggedNode && !sigma.getCustomBBox()) {
-      sigma.setCustomBBox(sigma.getBBox());
-    }
-  });
+  // (no stage-mousedown handler — locking customBBox on every stage click
+  //  is what previously trapped the camera and broke layout transitions.)
 
   return sigma;
 }

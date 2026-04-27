@@ -39,6 +39,13 @@ export async function applyLayout(opts: ApplyLayoutOpts): Promise<void> {
   const { graph, kind, sigma, animate = true, onSettle } = opts;
   if (!graph.order) return;
 
+  // Release any frozen bbox before running a new layout. Otherwise switching
+  // layouts (especially into FA2, which spreads nodes much further than the
+  // previous static layouts) leaves Sigma's camera locked to the previous
+  // layout's bbox — the user's dezoom gesture clamps at maxCameraRatio
+  // because the graph now extends beyond the normalization range.
+  sigma.setCustomBBox(null);
+
   // Snapshot starting positions for animation
   const start = new Map<string, [number, number]>();
   graph.forEachNode((id, a) => start.set(id, [a.x, a.y]));
@@ -46,10 +53,17 @@ export async function applyLayout(opts: ApplyLayoutOpts): Promise<void> {
   switch (kind) {
     case "forceatlas2":
       return runForceAtlas2(graph, sigma, animate, start, onSettle);
-    case "circle":
-      circular.assign(graph, { scale: 1 });
+    case "circle": {
+      // Scale the circle radius with √N so denser graphs get more arc per
+      // node. At scale 1 (the previous default) anything past ~50 nodes
+      // packs the perimeter tighter than node-size resolution and the
+      // ring renders as a stack of overlapping discs.
+      const n = graph.order;
+      const scale = Math.max(1, Math.sqrt(n) * 0.5);
+      circular.assign(graph, { scale });
       animateTo(graph, sigma, start, animate, onSettle);
       return;
+    }
     case "grid":
       gridLayout(graph);
       animateTo(graph, sigma, start, animate, onSettle);
