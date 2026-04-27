@@ -5,13 +5,13 @@ import { useEffect, useRef } from "preact/hooks";
 import { effect } from "@preact/signals";
 import type Sigma from "sigma";
 import type Graph from "graphology";
+import type { RawGraph } from "../types";
 import {
   activeAnnotations,
   activeRawGraph,
   clearSelection,
   colorMode,
   communities,
-  currentDataset,
   filters,
   focus,
   layoutKind,
@@ -20,7 +20,6 @@ import {
   selectEdge,
   selectNode,
   selection,
-  view,
 } from "../state/store";
 import { buildGraph, type EdgeAttrs, type NodeAttrs } from "../graph/build";
 import { applyAll, neighborhood } from "../graph/filters";
@@ -33,20 +32,25 @@ export function GraphCanvas() {
   const containerRef = useRef<HTMLDivElement>(null);
   const sigmaRef = useRef<Sigma<NodeAttrs, EdgeAttrs> | null>(null);
   const graphRef = useRef<Graph<NodeAttrs, EdgeAttrs> | null>(null);
-  const lastBuildKey = useRef<string | null>(null);
+  // Cache rebuilds by the raw graph reference. activeRawGraph is a computed
+  // signal that returns a new reference whenever payload OR view changes, so
+  // reference equality is the canonical "data actually changed" check.
+  // The previous string-key approach (`${dataset}::${view}`) caused a stale
+  // build to be cached: changing currentDataset triggered the effect BEFORE
+  // the async fetch updated payload, so the rebuild ran with the old data
+  // but stored the new key — and the next effect (with fresh data) hit the
+  // cache and skipped. Switching datasets only "took" on the second swap.
+  const lastRawRef = useRef<RawGraph | null>(null);
   const lastLayoutKey = useRef<string | null>(null);
 
-  // Build / rebuild graph when payload + view change
+  // Build / rebuild graph when activeRawGraph changes (payload OR view).
   useEffect(() => {
     const dispose = effect(() => {
       const raw = activeRawGraph.value;
       const ann = activeAnnotations.value;
-      const ds = currentDataset.value;
-      const v = view.value;
-      const buildKey = `${ds}::${v}`;
       if (!raw || !containerRef.current) return;
-      if (buildKey === lastBuildKey.current && graphRef.current) return;
-      lastBuildKey.current = buildKey;
+      if (raw === lastRawRef.current && graphRef.current) return;
+      lastRawRef.current = raw;
 
       // Clean previous instance — wrapped because a faulty kill mustn't
       // propagate into the caller (the loader would otherwise leave its
@@ -66,7 +70,7 @@ export function GraphCanvas() {
         graph = buildGraph({ raw, annotations: ann });
       } catch (err) {
         // eslint-disable-next-line no-console
-        console.error("[kg-viewer] buildGraph failed for", buildKey, err);
+        console.error("[kg-viewer] buildGraph failed", err);
         return;
       }
       graphRef.current = graph;
@@ -123,7 +127,7 @@ export function GraphCanvas() {
         });
       } catch (err) {
         // eslint-disable-next-line no-console
-        console.error("[kg-viewer] createRenderer failed for", buildKey, err);
+        console.error("[kg-viewer] createRenderer failed", err);
         return;
       }
       sigmaRef.current = sigma;
