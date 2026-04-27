@@ -4,7 +4,7 @@
 import Sigma from "sigma";
 import Graph from "graphology";
 import type { NodeAttrs, EdgeAttrs } from "./build";
-import { HUB_DEGREE_THRESHOLD, colorForCommunity, colorForType } from "./build";
+import { HUB_DEGREE_THRESHOLD, colorForCommunity } from "./build";
 
 type G = Graph<NodeAttrs, EdgeAttrs>;
 
@@ -72,12 +72,10 @@ export function createRenderer(opts: RendererOpts): Sigma<NodeAttrs, EdgeAttrs> 
       const a = data as NodeAttrs;
       if (a.hidden) return { ...data, hidden: true };
       const colorMode = opts.getColorMode();
-      let color = a.color;
+      let color = a.color; // type-mode color, set in buildGraph via colorForNode
       if (colorMode === "community") {
         const c = opts.getCommunities().get(id);
         color = c === undefined ? "#8b949e" : colorForCommunity(c);
-      } else {
-        color = colorForType(a.entityType);
       }
       // Fade only on click-selection — hover stays still. Hovering large
       // graphs with a fade behaviour caused too much visual churn (and was
