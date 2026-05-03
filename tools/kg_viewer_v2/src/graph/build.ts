@@ -90,22 +90,6 @@ export function colorForType(t: string): string {
   return TYPE_COLORS[t] ?? "#8b949e";
 }
 
-// Fallback palette for nodes whose entity_type is "unknown" or missing
-// (e.g. the COPA dataset where every node arrives as "unknown" because the
-// upstream pipeline didn't populate categories). We hash the node id into
-// this palette so the canvas still shows visual variation instead of a
-// uniform monochrome blob. Real entity_types continue to use TYPE_COLORS.
-const FALLBACK_PALETTE = [
-  "#4e79a7", "#f28e2b", "#59a14f", "#e15759", "#b07aa1", "#9c755f",
-  "#a0cbe8", "#ffbe7d", "#8cd17d", "#ff9d9a", "#d4a6c8", "#d7b5a6",
-];
-
-export function colorForNode(entityType: string, nodeId: string): string {
-  const known = TYPE_COLORS[entityType];
-  if (known && entityType !== "unknown") return known;
-  return FALLBACK_PALETTE[strHash(nodeId) % FALLBACK_PALETTE.length];
-}
-
 export function colorForCommunity(c: number): string {
   // Tableau-20 alternating fill / lightVariant — picks read as a coherent
   // categorical scheme with sub-typing built in (each pair belongs to one
@@ -185,10 +169,7 @@ export function buildGraph({ raw, annotations }: BuildOpts): Graph<NodeAttrs, Ed
       x: Math.cos(angle) * r,
       y: Math.sin(angle) * r,
       size: SIZE_MIN,
-      // Use colorForNode so unknown/missing types still get a stable
-      // per-node hue. The reducer reads a.color directly in type mode so
-      // it doesn't need to recompute this each frame.
-      color: colorForNode(n.entity_type, n.id),
+      color: colorForType(n.entity_type),
       label: n.canonical_name || n.id,
       raw: n,
       entityType: n.entity_type,
